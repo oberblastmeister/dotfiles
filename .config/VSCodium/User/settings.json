@@ -37,7 +37,7 @@
     // "outline.problems.colors": false,
     "problems.showCurrentInStatus": true,
     "editor.renderWhitespace": "none",
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     "workbench.activityBar.visible": false,
     "redhat.telemetry.enabled": false,
 
