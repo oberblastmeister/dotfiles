@@ -9,5 +9,6 @@ lib.makeExtensible (
         modules = import ./modules.nix args;
         attrs = import ./attrs.nix args;
         hosts = import ./hosts.nix args;
+        options = import ./options.nix args;
       }
 )

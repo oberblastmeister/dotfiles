@@ -1,4 +1,6 @@
 {
+  description = "my system";
+
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable"; # primary nixpkgs
     nixpkgs-unstable.url = "nixpkgs/master"; # for packages on the edge
@@ -13,8 +15,8 @@
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    naersk.url = "github:nmattia/naersk";
+
+    yo.url = "path:./yo";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, utils, ... }@inputs:
@@ -26,18 +28,11 @@
         config.allowUnfree = true;
         overlays = [ self.overlay ] ++ extraOverlays ++ (builtins.attrValues self.overlays);
       };
-      overlays = [
-        inputs.neovim-nightly-overlay.overlay
-        inputs.rust-overlay.overlay
-      ];
+      overlays = [];
       pkgs = mkPkgs nixpkgs overlays;
       pkgs-unstable = mkPkgs nixpkgs-unstable overlays;
       lib = nixpkgs.lib.extend
-        (final: prev: { my = import ./lib { inherit pkgs inputs; lib = prev; }; });
-      naersk-lib = inputs.naersk.lib."${system}".override {
-        rustc = pkgs.rust-bin.stable.latest.default;
-        cargo = pkgs.rust-bin.stable.latest.default;
-      };
+        (final: prev: { my = import ./lib { inherit pkgs inputs; lib = final; }; });
       # packages for this system only
       system_packages = self.packages."${system}";
     in
@@ -47,27 +42,28 @@
           my = self.packages."${system}";
         };
 
-        overlays = {};
+        overlays = lib.my.modules.importAll ./overlays;
 
-        nixosModules =
-          { dotfiles = import ./.; } // lib.my.modules.map ./modules import;
+        nixosModules = { dotfiles = import ./.; } // lib.my.modules.importAll ./modules;
 
         nixosConfigurations = lib.my.hosts.map ./hosts {};
-      } // (
-        utils.lib.eachDefaultSystem (
+      }
+      // (
+        utils.lib.eachSystem [ system ] (
           system:
             rec {
-              packages = lib.my.modules.map ./packages (p: pkgs.callPackage p {}) // {
-                yo = import ./yo { inherit naersk-lib; };
-              };
-
-              defaultPackage = packages.yo;
+              packages = lib.my.modules.map ./packages (p: pkgs.callPackage p {}) // {};
 
               apps = {
-                yo = utils.lib.mkApp { drv = packages.yo; };
+                yo = {
+                  type = "app";
+                  program = ./bin/yo;
+                };
               };
 
               defaultApp = apps.yo;
+
+              devShell = import ./shell.nix pkgs;
             }
         )
       );
