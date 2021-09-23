@@ -17,9 +17,8 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, utils, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, utils, ... }@inputs:
     let
-      /* inherit (lib.my) */
       system = "x86_64-linux";
       mkPkgs = pkgs: extraOverlays: import pkgs {
         inherit system;
@@ -29,10 +28,7 @@
       overlays = [];
       pkgs = mkPkgs nixpkgs overlays;
       pkgs-unstable = mkPkgs nixpkgs-unstable overlays;
-      lib = nixpkgs.lib.extend
-        (final: prev: { my = import ./lib { inherit pkgs inputs; lib = final; }; });
-      # packages for this system only
-      system_packages = self.packages."${system}";
+      lib = nixpkgs.lib.extend (final: prev: { my = import ./lib { inherit pkgs inputs; lib = final; }; });
     in
       rec {
         overlay = final: prev: {

@@ -11,6 +11,7 @@ rec {
       modules = [
         {
           nixpkgs.pkgs = pkgs;
+          nixpkgs.config.allowUnfree = true;
           networking.hostName = lib.mkDefault (lib.removeSuffix ".nix" (baseNameOf path));
         }
         (lib.filterAttrs (n: v: !lib.elem n [ "system" ]) attrs)

@@ -5,7 +5,10 @@ let
 in
 
 {
-  mkBool = mkOption {
+  mkOpt = type: default:
+    mkOption { inherit type default; };
+
+  mkEnable = mkOption {
     default = false;
     type = types.bool;
     example = true;

@@ -10,4 +10,10 @@
       gnome.enable = true;
     };
   };
+
+  home-manager.users.brian.modules = {
+    editors = {
+      vim.enable = true;
+    };
+  };
 }

@@ -6,7 +6,7 @@ let
 in
 {
   options.modules.desktop.gnome = {
-    enable = lib.my.options.mkBool;
+    enable = lib.my.options.mkEnable;
   };
 
   config = lib.mkIf cfg.enable {
