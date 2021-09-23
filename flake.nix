@@ -15,8 +15,6 @@
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
-    yo.url = "path:./yo";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, utils, ... }@inputs:
