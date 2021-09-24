@@ -8,7 +8,7 @@ in
     enable = my.options.mkEnable;
   };
 
-  conifg = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       clang
       gcc

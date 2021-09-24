@@ -47,6 +47,7 @@ def generate_hardware_config(root: Path, dir: Path) -> None:
     subprocess.run(["nixos-generate-config", "--root", root, "--dir", new_dir])
     (dir / "configuration.nix").unlink()
 
+
 def add_host(args: dict[str, Any]) -> None:
     if len(Path(args['host_name']).parts) != 1:
         raise ValueError('The name must only have one path component')
@@ -98,7 +99,10 @@ def parse_args() -> Tuple[dict[str, Any], ArgumentParser]:
         '--hardware-conf', type=Path, help="hardware-configuration.nix path")
     add_host_parser.add_argument(
         '--conf', type=Path, help="configuration.nix path. Will be copied to hosts/<host>/default.nix")
-    add_host_parser.add_argument('--root', type=Path, help="the root to use", default='/')
+    add_host_parser.add_argument(
+        '--root', type=Path, help="the root to use", default='/')
+    add_host_parser.add_argument(
+        '--force', action='store_true', help="Override an existing host")
     args = vars(parser.parse_args())
     args['flake'] = args['flake'].resolve(strict=True)
     is_flake_dir(args['flake'])
