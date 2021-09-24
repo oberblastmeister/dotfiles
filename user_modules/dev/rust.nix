@@ -1,4 +1,4 @@
-{ options, config, pkgs, lib, my, ... }:
+{ options, config, unstable, pkgs, lib, my, ... }:
 
 let
   cfg = config.modules.dev.rust;
