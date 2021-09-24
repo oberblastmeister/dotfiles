@@ -14,6 +14,7 @@
   home-manager.users.brian.modules = {
     editors = {
       vim.enable = true;
+      vscode.enable = true;
     };
   };
 }
