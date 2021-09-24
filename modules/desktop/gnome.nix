@@ -10,13 +10,26 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    programs.dconf.enable = true;
+
     services = {
       xserver = {
         enable = true;
         displayManager.gdm.enable = true;
+        # this will enable a bunch of services and apps for us
         desktopManager.gnome.enable = true;
       };
-      gnome.gnome-keyring.enable = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      gnome.gnome-tweaks
+      gnome.dconf-editor
+      dconf2nix
+
+      gnomeExtensions.clipboard-indicator
+
+      orchis
+      papirus-icon-theme
+    ];
   };
 }
