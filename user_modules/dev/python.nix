@@ -20,7 +20,9 @@ in
     ];
 
     programs.vscode.extensions = with pkgs; [
-      vscode-extensions.ms-python.python
+      # fails for some reason
+      # vscode-extensions.ms-python.python
+      vscode-extensions.ms-python.vscode-pylance
     ];
   };
 }
