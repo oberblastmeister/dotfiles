@@ -18,10 +18,11 @@ in
       };
 
       gnome.gnome-keyring.enable = true;
-      
-      environment.systemPackages = with pkgs; [
-        orchis
-      ];
+
     };
+
+    environment.systemPackages = with pkgs; [
+      orchis
+    ];
   };
 }
