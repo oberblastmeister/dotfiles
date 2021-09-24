@@ -17,5 +17,12 @@ in
     programs.vscode.extensions = with pkgs; [
       vscode-extensions.matklad.rust-analyzer
     ];
+
+    home.sessionVariables = {
+      RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
+      CARGO_HOME = "{config.xdg.cargoHome/cargo";
+    };
+
+    home.sessionPath = [ "${config.home.sessionVariables.CARGO_HOME}/bin" ];
   };
 }

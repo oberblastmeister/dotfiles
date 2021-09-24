@@ -11,6 +11,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       clang
+      # note: gcc has a conflict with nix for some reason
       gdb
       cmake
     ];
