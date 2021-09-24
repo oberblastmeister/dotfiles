@@ -23,6 +23,7 @@ in
     environment.systemPackages = with pkgs; [
       gnome.gnome-tweaks
       orchis
+      papirus-icon-theme
     ];
   };
 }
