@@ -12,8 +12,8 @@ in
         type = types.str;
         default = (
           lib.findFirst builtins.pathExists (toString ../.) [
-            "~/.config/dotfiles"
             "/etc/dotfiles"
+            "/etc/nixos"
           ]
         );
       };
