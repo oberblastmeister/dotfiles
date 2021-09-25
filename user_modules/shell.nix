@@ -2,7 +2,7 @@
 
 let
   cfg = config.modules.shell;
-  inherit (lib) types mkOption;
+  inherit (lib) types mkOption mkAliasDefinitions;
 in
 {
   # must be used to allow home-manager to manage the shell
@@ -19,7 +19,7 @@ in
   config = {
     programs.${cfg.enable} = {
       enable = true;
-      shellAliases = config.modules.shell.aliases;
+      shellAliases = mkAliasDefinitions options.modules.shell.aliases;
     };
   };
 }
