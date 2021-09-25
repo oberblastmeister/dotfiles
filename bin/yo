@@ -9,6 +9,18 @@ import subprocess
 from argparse import ArgumentParser
 from typing import Any, Tuple
 import shutil
+import os
+import sys
+
+
+def is_root() -> bool:
+    return os.getuid() == 0
+
+
+def check_is_root() -> None:
+    if not is_root():
+        print('You must be root to run this subcommand!')
+        sys.exit(1)
 
 
 def auto_push(args: dict[str, Any]) -> None:
@@ -18,10 +30,12 @@ def auto_push(args: dict[str, Any]) -> None:
 
 
 def rebuild(args: dict[str, Any], extra: list[str]) -> None:
+    check_is_root()
     subprocess.run(["nixos-rebuild", "--flake", args['flake']] + extra)
 
 
 def gc() -> None:
+    check_is_root()
     subprocess.run(["nix-collect-garbage", "-d"])
     subprocess.run(["nix-store", "--optimise"])
 
@@ -31,11 +45,13 @@ def update(args: dict[str, Any]) -> None:
 
 
 def upgrade(args: dict[str, Any]) -> None:
+    check_is_root()
     update(args)
     rebuild(args, ["switch"])
 
 
 def rollback(args: dict[str, Any]) -> None:
+    check_is_root()
     rebuild(args, ["--rollback", "switch"])
 
 
@@ -48,6 +64,7 @@ def generate_hardware_config(root: Path, dir: Path) -> None:
 
 
 def add_host(args: dict[str, Any]) -> None:
+    check_is_root()
     if len(Path(args['host_name']).parts) != 1:
         raise ValueError('The name must only have one path component')
     host_path = args['flake'] / 'hosts' / args['host_name']
