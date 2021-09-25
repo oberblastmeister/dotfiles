@@ -1,4 +1,4 @@
-{ config, options, ... }:
+{ config, options, unstable, pkgs, lib, my, ... }:
 
 let
   cfg = config.modules.presets;
