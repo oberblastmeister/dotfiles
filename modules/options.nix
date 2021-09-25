@@ -28,9 +28,9 @@ in
 
   config = {
     environment.variables = {
-      DOTFILES = config.dotfiles.dir;
-      DOTFILES_BIN = config.dotfiles.binDir;
-      PATH = [ config.dotfiles.binDir ];
+      DOTFILES = toString config.dotfiles.dir;
+      DOTFILES_BIN = toString config.dotfiles.binDir;
+      PATH = [ (toString config.dotfiles.binDir) ];
     };
   };
 }
