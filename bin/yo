@@ -94,6 +94,7 @@ def parse_args() -> Tuple[dict[str, Any], ArgumentParser]:
     _ = subparsers.add_parser('gc')
     _ = subparsers.add_parser('update')
     _ = subparsers.add_parser('upgrade')
+    _ = subparsers.add_parser('rebuild')
     add_host_parser = subparsers.add_parser('add-host')
     add_host_parser.add_argument(
         'host_name', type=str, help="Required hostname")

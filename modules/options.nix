@@ -7,25 +7,20 @@ in
 {
   options = {
     dotfiles = {
-      # we use strings so the path is nice and doesn't point to nix store
       dir = mkOption {
-        type = types.str;
-        default = "/etc/dotfiles";
-        # default = lib.findFirst builtins.pathExists (toString ../.) [
-        #   "/etc/dotfiles"
-        #   "/etc/nixos"
-        # ];
+        type = types.path;
+        default = ../.;
       };
       binDir = mkOption {
-        type = types.str;
+        type = types.path;
         default = config.dotfiles.dir + "/bin";
       };
       modulesDir = mkOption {
-        type = types.str;
+        type = types.path;
         default = config.dotfiles.dir + "/modules";
       };
       userModulesDir = mkOption {
-        type = types.str;
+        type = types.path;
         default = config.dotfiles.dir + "/user_modules";
       };
     };
