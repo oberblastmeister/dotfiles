@@ -17,7 +17,9 @@ in
   };
 
   config = {
-    programs.${cfg.enable}.enable = true;
-    programs.${cfg.enable}.shellAliases = config.modules.shell.aliases;
+    programs.${cfg.enable} = {
+      enable = true;
+      shellAliases = config.modules.shell.aliases;
+    };
   };
 }
