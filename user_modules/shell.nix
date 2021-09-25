@@ -5,20 +5,29 @@ let
   inherit (lib) types mkOption;
 in
 {
-  options.modules.shell.enable = mkOption {
-    type = (types.enum [ "bash" "zsh" "fish" ]);
+  # must be used to allow home-manager to manage the shell
+  options.modules.shell = {
+    enable = mkOption {
+      type = types.enum [ "bash" "zsh" "fish" ];
+    };
+    aliases = mkOption {
+      default = {};
+      type = types.attrsOf types.str;
+      example = literalExample ''
+        {
+          ll = "ls -l";
+          ".." = "cd ..";
+        }
+      '';
+      description = ''
+        An attribute set that maps aliases (the top level attribute names in
+        this option) to command strings or directly to build outputs.
+      '';
+    };
   };
 
   config = {
-    warnings =
-      if config.modules.shell.enable == null
-      then [
-        ''
-          You must select a shell for `modules.shell.enable` because home-manager needs to manage the shell
-          for things like `sessionVariables` and `shellAliases` to work.
-        ''
-      ]
-      else [];
     programs.${cfg.enable}.enable = true;
+    programs.${cfg.enable}.shellAliases = config.modules.shell.aliases;
   };
 }
