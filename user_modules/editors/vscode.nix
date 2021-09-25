@@ -18,7 +18,7 @@ in
         bodil.file-browser
         eamodio.gitlens
         kahole.magit
-        vscode-extensions.streetsidesoftware.code-spell-checker
+        streetsidesoftware.code-spell-checker
       ];
     };
   };
