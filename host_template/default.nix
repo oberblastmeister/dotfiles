@@ -11,10 +11,10 @@
     };
   };
 
-  home-manager.users.brian.modules = {
-    editors = {
-      vim.enable = true;
-      vscode.enable = true;
-    };
+  users.users.brian = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
   };
+
+  home-manager.users.brian.modules.presets.enable = "full";
 }
