@@ -10,7 +10,8 @@
     utils.url = "github:numtide/flake-utils";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      # url = "github:nix-community/home-manager";
+      url = "github:oberblastmeister/home-manager/shell_aliases";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
