@@ -6,7 +6,7 @@ let
 in
 {
   options.modules.shell.enable = mkOption {
-    type = types.nullOr (types.enum [ "bash" "zsh" "fish" ]);
+    type = (types.enum [ "bash" "zsh" "fish" ]);
   };
 
   config = {
