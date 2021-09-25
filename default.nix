@@ -21,6 +21,7 @@
     loader = {
       efi.canTouchEfiVariables = lib.mkDefault true;
       systemd-boot.enable = lib.mkDefault true;
+      systemd-boot.configurationLimit = lib.mkDefault 10;
     };
   };
 
