@@ -22,7 +22,7 @@ in
       shellAliases = mkAliasDefinitions options.modules.shell.aliases;
     };
 
-    shell.aliases = {
+    modules.shell.aliases = {
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
