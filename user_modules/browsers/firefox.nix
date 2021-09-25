@@ -12,7 +12,7 @@ in
     home.packages = with pkgs; [
       firefox
       (
-        lib.makeDesktopItem {
+        pkgs.makeDesktopItem {
           name = "firefox-private";
           desktopName = "Firefox (Private)";
           genericName = "Open a private Firefox window";
