@@ -18,6 +18,7 @@ let
       };
       shell = {
         enable = mkDefault "bash";
+        programs.enable = mkDefault true;
       };
       browsers.firefox.enable = true;
     };
