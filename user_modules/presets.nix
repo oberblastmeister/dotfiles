@@ -17,7 +17,7 @@ let
         cc.enable = mkDefault true;
       };
       shell = {
-        enable = "bash";
+        enable = mkDefault "bash";
       };
     };
   };
