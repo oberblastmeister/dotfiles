@@ -11,7 +11,7 @@ in
       dir = {
         type = types.str;
         default = (
-          findFirst pathExists (toString ../.) [
+          lib.findFirst builtins.pathExists (toString ../.) [
             "~/.config/dotfiles"
             "/etc/dotfiles"
           ]
