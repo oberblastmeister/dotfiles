@@ -18,15 +18,15 @@ in
         );
       };
       binDir = mkOption {
-        type = type.str;
+        type = types.str;
         default = config.dotfiles.dir + "/bin";
       };
       modulesDir = mkOption {
-        type = type.str;
+        type = types.str;
         default = config.dotfiles.dir + "/modules";
       };
       userModulesDir = mkOption {
-        type = type.str;
+        type = types.str;
         default = config.dotfiles.dir + "/user_modules";
       };
     };
