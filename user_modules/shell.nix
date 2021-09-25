@@ -2,7 +2,7 @@
 
 let
   cfg = config.modules.shell;
-  inherit (lib) mkOption;
+  inherit (lib) types mkOption;
 in
 {
   options.modules.shell.enable = mkOption {
