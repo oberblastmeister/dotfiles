@@ -52,7 +52,6 @@ in
 
         home.packages = with pkgs; [
           bat
-          bat-extras
           exa
           fd
           fzf
