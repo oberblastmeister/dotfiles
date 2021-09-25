@@ -12,11 +12,11 @@ import shutil
 from tempfile import TemporaryDirectory
 
 
-# def with_generated_hardware_config(root: Path | None, path: Path, f: Callable[[Path], None]) -> None:
-#     with TemporaryDirectory() as tmpdirname:
-#         path = Path(tmpdirname)
-#         subprocess.run(["nixos-generate-config", "--dir", path])
-#         f(path / "hardware-configuration.nix")
+def auto_push(args: dict[str, Any]) -> None:
+    subprocess.run(["git", "add", "."])
+    subprocess.run(["git", "commit", "-m", "autopush"])
+    subprocess.run(["git", "push"])
+
 
 def rebuild(args: dict[str, Any], extra: list[str]) -> None:
     subprocess.run(["nixos-rebuild", "--flake", args['flake']] + extra)
@@ -106,6 +106,7 @@ def parse_args() -> Tuple[dict[str, Any], ArgumentParser]:
         '--root', type=Path, help="the root to use", default='/')
     add_host_parser.add_argument(
         '--force', action='store_false', help="Override an existing host")
+    _ = subparsers.add_parser('autopush')
     args = vars(parser.parse_args())
     args['flake'] = args['flake'].resolve(strict=True)
     is_flake_dir(args['flake'])
@@ -124,6 +125,8 @@ def run(args: dict[str, Any], parser: argparse.ArgumentParser) -> None:
             rollback(args)
         case "add-host":
             add_host(args)
+        case "autopush":
+            auto_push(args)
         case _:
             parser.print_help()
 
