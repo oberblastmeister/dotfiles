@@ -12,8 +12,13 @@ in
   config = lib.mkIf cfg.enable {
     programs.vscode = {
       enable = true;
-      extensions = with pkgs; [
-        vscode-extensions.jnoortheen.nix-ide
+      extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+        vscodevim.vim
+        bodil.file-browser
+        eamodio.gitlens
+        kahole.magit
+        vscode-extensions.streetsidesoftware.code-spell-checker
       ];
     };
   };
