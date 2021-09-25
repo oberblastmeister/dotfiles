@@ -21,5 +21,17 @@ in
       enable = true;
       shellAliases = mkAliasDefinitions options.modules.shell.aliases;
     };
+
+    shell.aliases = {
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
+      "1" = "cd -";
+      "2" = "cd -2";
+      "3" = "cd -3";
+      "4" = "cd -4";
+      "5" = "cd -5";
+    };
   };
 }

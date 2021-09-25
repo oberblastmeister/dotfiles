@@ -19,5 +19,10 @@ in
       nodePackages.neovim
       python39Packages.pynvim
     ];
+    
+    modules.shell.aliases = {
+      "vim" = "nvim";
+      "vi" = "nvim";
+    };
   };
 }

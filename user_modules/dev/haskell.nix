@@ -15,5 +15,11 @@ in
       stack
       ghc
     ];
+
+    programs.vscode = {
+      extensions = with pkgs; [
+        vscode-extensions.haskell.haskell
+      ];
+    };
   };
 }
