@@ -10,12 +10,11 @@ in
       # we use strings so the path is nice and doesn't point to nix store
       dir = mkOption {
         type = types.str;
-        default = (
-          lib.findFirst builtins.pathExists (toString ../.) [
-            "/etc/dotfiles"
-            "/etc/nixos"
-          ]
-        );
+        default = "/etc/dotfiles";
+        # default = lib.findFirst builtins.pathExists (toString ../.) [
+        #   "/etc/dotfiles"
+        #   "/etc/nixos"
+        # ];
       };
       binDir = mkOption {
         type = types.str;
