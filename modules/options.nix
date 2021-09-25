@@ -6,7 +6,7 @@ in
 
 {
   options = {
-    dotfiles = mkOption {
+    dotfiles = {
       dir = {
         type = types.path;
         default = ../.;
