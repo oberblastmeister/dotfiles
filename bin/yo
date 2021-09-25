@@ -7,9 +7,8 @@ import pathlib
 from pathlib import Path
 import subprocess
 from argparse import ArgumentParser
-from typing import Any, Tuple, Callable
+from typing import Any, Tuple
 import shutil
-from tempfile import TemporaryDirectory
 
 
 def auto_push(args: dict[str, Any]) -> None:
@@ -127,6 +126,8 @@ def run(args: dict[str, Any], parser: argparse.ArgumentParser) -> None:
             add_host(args)
         case "autopush":
             auto_push(args)
+        case "rebuild":
+            rebuild(args, ["switch"])
         case _:
             parser.print_help()
 
