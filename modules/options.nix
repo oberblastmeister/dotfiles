@@ -9,7 +9,7 @@ in
     dotfiles = {
       dir = mkOption {
         type = types.str;
-        default = findFirst pathExists (toString ../.) [
+        default = lib.findFirst builtins.pathExists (toString ../.) [
           "/etc/dotfiles"
           "/etc/nixos"
         ];
