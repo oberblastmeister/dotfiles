@@ -29,7 +29,7 @@ in
       };
     };
 
-    programs.delta = {
+    programs.git.delta = {
       enable = true;
     };
 
