@@ -133,11 +133,16 @@ class UpdateDconf:
     force: bool
 
     def run(self) -> None:
-        path = Path(os.environ['DOTFILES_CONFIG']) / 'dconf' / 'dconf.settings'
-        if path.exists() and not self.force:
-            raise Exception("File exists, pass --force to override it")
-        with path.open(mode='w') as file: 
+        dconf_dir =Path(os.environ['DOTFILES_CONFIG']) / 'dconf' 
+        dconf_settings =  dconf_dir / 'dconf.settings'
+        if dconf_settings.exists() and not self.force:
+            raise Exception("dconf.settings exists, pass --force to override it")
+        with dconf_settings.open(mode='w') as file: 
             subprocess.run(['dconf', 'dump', '/'], stdout=file)
+        dconf_nix = dconf_dir / 'dconf.nix'
+        if dconf_nix.exists() and not self.force:
+            raise Exception("dconf.nix exists, pass --force to override it")
+        subprocess.run(['dconf2nix', '-i', dconf_settings, '-o', dconf_nix])
         
         
 @dataclass(frozen=True)
