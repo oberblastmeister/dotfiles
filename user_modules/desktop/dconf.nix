@@ -10,7 +10,7 @@ in
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super>q" ];
         maximize = [ "<Alt><Super>k" ];
-        minimize = [];
+        minimize = [ "<Super>n" ];
         move-to-monitor-down = [ "<Shift><Super>braceleft" ];
         move-to-monitor-left = [ "<Shift><Super>braceright" ];
         move-to-workspace-1 = [ "<Shift><Super>exclam" ];

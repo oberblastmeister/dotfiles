@@ -22,9 +22,7 @@ in
       userEmail = lib.mkDefault "littlebubu.shu@gmail.com";
       userName = lib.mkDefault "brian";
       extraConfig = {
-        pull = {
-          rebase = true;
-        };
+        pull.rebase = true;
         init.defaultBranch = "main";
         # make it work with gnome keyring
         # this will cache the password
