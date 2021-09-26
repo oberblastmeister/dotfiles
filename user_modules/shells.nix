@@ -80,6 +80,8 @@ in
             ${cfgIntegration} = true;
           };
         };
+        
+        modules.shell.git.enable = true;
       }
     )
   ];
