@@ -167,7 +167,7 @@ def get_parser() -> ArgumentParser:
     _ = subparsers.add_parser('rebuild')
     add_host_parser = subparsers.add_parser('add-host')
     add_host_parser.add_argument(
-        'host_name', type=str, help="Required hostname")
+        'hostname', type=str, help="Required hostname")
     add_host_parser.add_argument(
         '--hardware-conf', type=Path, help="hardware-configuration.nix path")
     add_host_parser.add_argument(
