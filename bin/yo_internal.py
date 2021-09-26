@@ -46,12 +46,12 @@ class Rebuild:
 
 
 @dataclass(frozen=True)
-class AutoPush:
+class Push:
     pass
 
     def run(self) -> None:
         subprocess.run(["git", "add", "."])
-        subprocess.run(["git", "commit", "-m", "autopush"])
+        subprocess.run(["git", "commit", "-m", "."])
         subprocess.run(["git", "push"])
         
 
@@ -153,7 +153,7 @@ class Help:
         self.parser.print_help()
         
 
-Subcmd = Gc | Rebuild | AutoPush | Update | Upgrade | RollBack | AddHost | Help | Cd | UpdateDconf
+Subcmd = Gc | Rebuild | Push | Update | Upgrade | RollBack | AddHost | Help | Cd | UpdateDconf
 
 @dataclass(frozen=True)
 class Opt:
@@ -172,7 +172,7 @@ class Opt:
                 self.subcmd.run(self.flake)
             case AddHost():
                 self.subcmd.run(self.flake)
-            case AutoPush():
+            case Push():
                 self.subcmd.run()
             case Rebuild():
                 self.subcmd.run(self.flake)
@@ -210,7 +210,7 @@ def get_parser() -> ArgumentParser:
         '--root', type=Path, help="the root to use", default='/')
     add_host_parser.add_argument(
         '--force', action='store_true', help="Override an existing host")
-    _ = subparsers.add_parser('autopush')
+    _ = subparsers.add_parser('push')
     return parser
     
 def is_flake_dir(path: Path) -> None:
@@ -236,8 +236,8 @@ def from_args() -> Opt:
             subcmd = RollBack()
         case 'add-host':
             subcmd = AddHost(args['hostname'], args.get('hardware_conf'), args.get('conf'), args.get('root'), args['force'])
-        case 'autopush':
-            subcmd = AutoPush()
+        case 'push':
+            subcmd = Push()
         case 'rebuild':
             subcmd = Rebuild(["switch"])
         case 'cd':

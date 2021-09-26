@@ -1,5 +1,8 @@
 { inputs, config, lib, pkgs, ... }:
 
+let
+  inherit (lib) mkDefault;
+in
 {
   imports =
     [ inputs.home-manager.nixosModules.home-manager ]
@@ -19,12 +22,13 @@
 
   boot = {
     loader = {
-      efi.canTouchEfiVariables = lib.mkDefault true;
-      systemd-boot.enable = lib.mkDefault true;
-      systemd-boot.configurationLimit = lib.mkDefault 10;
+      efi.canTouchEfiVariables = mkDefault true;
+      systemd-boot.enable = mkDefault true;
+      systemd-boot.configurationLimit = mkDefault 10;
     };
   };
 
+  # essentials
   environment.systemPackages = with pkgs; [
     cached-nix-shell
     git
