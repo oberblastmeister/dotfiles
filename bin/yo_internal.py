@@ -119,6 +119,15 @@ class AddHost:
                 pass
             raise
 
+
+@dataclass(frozen=True)
+class Cd:
+    pass
+
+    def run(self, flake: Path) -> None:
+        subprocess.run(["cd", flake])
+        
+        
         
 @dataclass(frozen=True)
 class Help:
@@ -128,10 +137,12 @@ class Help:
         self.parser.print_help()
         
 
+Subcmd = Gc | Rebuild | AutoPush | Update | Upgrade | RollBack | AddHost | Help | Cd
+
 @dataclass(frozen=True)
 class Opt:
     flake: Path
-    subcmd: Gc | Rebuild | AutoPush | Update | Upgrade | RollBack | AddHost | Help
+    subcmd: Subcmd
     
     def run(self) -> None:
         match self.subcmd:
@@ -148,6 +159,8 @@ class Opt:
             case AutoPush():
                 self.subcmd.run()
             case Rebuild():
+                self.subcmd.run(self.flake)
+            case Cd():
                 self.subcmd.run(self.flake)
             case Help():
                 self.subcmd.run()
@@ -206,6 +219,8 @@ def from_args() -> Opt:
             subcmd = AutoPush()
         case "rebuild":
             subcmd = Rebuild(["switch"])
+        case "cd":
+            subcmd = Cd()
         case _:
             subcmd = Help(parser)
     return Opt(args['flake'], subcmd)
