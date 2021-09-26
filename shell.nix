@@ -6,7 +6,7 @@ pkgs.mkShell {
     nixpkgs-fmt
     python310
     python39Packages.pylint
-    python39Packages.autopep8
+    python39Packages.black
     python39Packages.rope
   ];
 }
