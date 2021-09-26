@@ -8,29 +8,48 @@ in
   options = {
     dotfiles = {
       dir = mkOption {
-        type = types.path;
-        default = ../.;
+        type = types.str;
+        default = findFirst pathExists (toString ../.) [
+          "/etc/dotfiles"
+          "/etc/nixos"
+        ];
       };
       binDir = mkOption {
-        type = types.path;
+        type = types.str;
         default = config.dotfiles.dir + "/bin";
       };
       modulesDir = mkOption {
-        type = types.path;
+        type = types.str;
         default = config.dotfiles.dir + "/modules";
       };
       userModulesDir = mkOption {
-        type = types.path;
+        type = types.str;
         default = config.dotfiles.dir + "/user_modules";
+      };
+      realDir = mkOption {
+        type = types.path;
+        default = ../.;
+      };
+      realBinDir = mkOption {
+        type = types.path;
+        default = config.dotfiles.realDir + "/bin";
+      };
+      realModulesDir = mkOption {
+        type = types.path;
+        default = config.dotfiles.realDir + "/modules";
+      };
+      realUserModulesDir = mkOption {
+        type = types.path;
+        default = config.dotfiles.realDir + "/user_modules";
       };
     };
   };
 
   config = {
     environment.variables = {
-      DOTFILES = toString config.dotfiles.dir;
-      DOTFILES_BIN = toString config.dotfiles.binDir;
-      PATH = [ (toString config.dotfiles.binDir) ];
+      DOTFILES = config.dotfiles.dir;
+      DOTFILES_BIN = config.dotfiles.binDir;
+      PATH = [ config.dotfiles.binDir ];
     };
   };
 }
