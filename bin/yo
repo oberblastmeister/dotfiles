@@ -2,6 +2,10 @@
 #! nix-shell -i python3 -p python310 nixFlakes
 # vim: ft=python
 
+# yo command
+# use this when you have finished the install
+# cached-nix-shell will be available which is much faster
+
 import yo_internal
 
 if __name__ == '__main__':
