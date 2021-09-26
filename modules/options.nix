@@ -10,10 +10,6 @@ in
       dir = mkOption {
         type = types.str;
         default = "/etc/dotfiles";
-        # default = lib.findFirst builtins.pathExists (toString ../.) [
-        #   "/etc/dotfiles"
-        #   "/etc/nixos"
-        # ];
       };
       binDir = mkOption {
         type = types.str;
