@@ -118,6 +118,7 @@ class AddHost:
             except Exception:
                 pass
             raise
+        subprocess.run(["git", "add", host_path])
 
 
 @dataclass(frozen=True)
