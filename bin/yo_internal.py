@@ -128,6 +128,17 @@ class Cd:
         subprocess.run(["cd", os.environ['DOTFILES']])
         
         
+@dataclass(frozen=True)
+class UpdateDconf:
+    force: bool
+
+    def run(self) -> None:
+        path = Path(os.environ['DOTFILES_CONFIG']) / 'dconf' / 'dconf.settings'
+        if path.exists() and not self.force:
+            raise Exception("File exists, pass --force to override it")
+        with path.open(mode='w') as file: 
+            subprocess.run(['dconf', 'dump', '/'], stdout=file)
+        
         
 @dataclass(frozen=True)
 class Help:
@@ -137,7 +148,7 @@ class Help:
         self.parser.print_help()
         
 
-Subcmd = Gc | Rebuild | AutoPush | Update | Upgrade | RollBack | AddHost | Help | Cd
+Subcmd = Gc | Rebuild | AutoPush | Update | Upgrade | RollBack | AddHost | Help | Cd | UpdateDconf
 
 @dataclass(frozen=True)
 class Opt:
@@ -162,6 +173,8 @@ class Opt:
                 self.subcmd.run(self.flake)
             case Cd():
                 self.subcmd.run()
+            case UpdateDconf():
+                self.subcmd.run()
             case Help():
                 self.subcmd.run()
     
@@ -179,6 +192,8 @@ def get_parser() -> ArgumentParser:
     _ = subparsers.add_parser('upgrade')
     _ = subparsers.add_parser('rebuild')
     _ = subparsers.add_parser('cd')
+    update_dconf_parser = subparsers.add_parser('update-dconf')
+    update_dconf_parser.add_argument('--force', action='store_false', help='Override the file')
     add_host_parser = subparsers.add_parser('add-host')
     add_host_parser.add_argument(
         'hostname', type=str, help="Required hostname")
@@ -206,27 +221,27 @@ def from_args() -> Opt:
     is_flake_dir(args['flake'])
     subcmd = None
     match args['subcmd']:
-        case "gc":
+        case 'gc':
             subcmd = Gc()
-        case "update":
+        case 'update':
             subcmd = Update()
-        case "upgrade":
+        case 'upgrade':
             subcmd = Upgrade()
-        case "rollback":
+        case 'rollback':
             subcmd = RollBack()
-        case "add-host":
+        case 'add-host':
             subcmd = AddHost(args['hostname'], args.get('hardware_conf'), args.get('conf'), args.get('root'), args['force'])
-        case "autopush":
+        case 'autopush':
             subcmd = AutoPush()
-        case "rebuild":
+        case 'rebuild':
             subcmd = Rebuild(["switch"])
-        case "cd":
+        case 'cd':
             subcmd = Cd()
+        case 'update-dconf':
+            subcmd = UpdateDconf(args['force'])
         case _:
             subcmd = Help(parser)
     return Opt(args['flake'], subcmd)
-
-
 
 
 
