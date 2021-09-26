@@ -26,6 +26,8 @@ in
       gnome.gnome-tweaks
       orchis
       papirus-icon-theme
+      dconf2nix
+      gnome.dconf-editor
     ];
   };
 }
