@@ -23,6 +23,7 @@ in
     };
 
     environment.systemPackages = with pkgs; [
+      my.pop-shell
       gnome.gnome-tweaks
       orchis
       papirus-icon-theme
