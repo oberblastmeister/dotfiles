@@ -124,7 +124,7 @@ class AddHost:
 class Cd:
     pass
 
-    def run(self, flake: Path) -> None:
+    def run(self) -> None:
         subprocess.run(["cd", os.environ['DOTFILES']])
         
         
@@ -161,7 +161,7 @@ class Opt:
             case Rebuild():
                 self.subcmd.run(self.flake)
             case Cd():
-                self.subcmd.run(self.flake)
+                self.subcmd.run()
             case Help():
                 self.subcmd.run()
     
