@@ -9,10 +9,11 @@ in
     dotfiles = {
       dir = mkOption {
         type = types.str;
-        default = lib.findFirst builtins.pathExists (toString ../.) [
-          "/etc/dotfiles"
-          "/etc/nixos"
-        ];
+        default = "/etc/dotfiles";
+        # default = lib.findFirst builtins.pathExists (toString ../.) [
+        #   "/etc/dotfiles"
+        #   "/etc/nixos"
+        # ];
       };
       binDir = mkOption {
         type = types.str;
