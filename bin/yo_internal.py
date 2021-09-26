@@ -198,7 +198,7 @@ def get_parser() -> ArgumentParser:
     _ = subparsers.add_parser('rebuild')
     _ = subparsers.add_parser('cd')
     update_dconf_parser = subparsers.add_parser('update-dconf')
-    update_dconf_parser.add_argument('--force', action='store_false', help='Override the file')
+    update_dconf_parser.add_argument('--force', action='store_true', help='Override the file')
     add_host_parser = subparsers.add_parser('add-host')
     add_host_parser.add_argument(
         'hostname', type=str, help="Required hostname")
@@ -209,7 +209,7 @@ def get_parser() -> ArgumentParser:
     add_host_parser.add_argument(
         '--root', type=Path, help="the root to use", default='/')
     add_host_parser.add_argument(
-        '--force', action='store_false', help="Override an existing host")
+        '--force', action='store_true', help="Override an existing host")
     _ = subparsers.add_parser('autopush')
     return parser
     
