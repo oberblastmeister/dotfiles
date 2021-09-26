@@ -125,7 +125,7 @@ class Cd:
     pass
 
     def run(self, flake: Path) -> None:
-        subprocess.run(["cd", flake])
+        subprocess.run(["cd", os.environ['DOTFILES']])
         
         
         
