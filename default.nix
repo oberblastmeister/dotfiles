@@ -28,6 +28,9 @@ in
     };
   };
 
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
+
   # essentials
   environment.systemPackages = with pkgs; [
     cached-nix-shell
