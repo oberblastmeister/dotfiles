@@ -17,7 +17,7 @@ let
         cc.enable = mkDefault true;
       };
       shell = {
-        enable = mkDefault "bash";
+        enable = mkDefault "fish";
         programs.enable = mkDefault true;
       };
       desktop = {
