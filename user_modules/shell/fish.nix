@@ -9,5 +9,11 @@ in
     enable = mkEnable;
   };
 
-  config = lib.mkIf cfg.enable {};
+  config = lib.mkIf cfg.enable {
+    programs.fish = {
+      shellInit = ''
+        source ${config.dotfiles.realConfigDir + "/fish/config.fish"}
+      '';
+    };
+  };
 }
