@@ -28,12 +28,6 @@ in
     };
   };
 
-  programs = {
-    fish.enable = true;
-    zsh.enable = true;
-  };
-  users.defaultUserShell = pkgs.fish;
-
   security = {
     sudo.enable = mkDefault true;
     # has some permission denied issues when installing fonts
@@ -59,5 +53,26 @@ in
     vim
     curl
     wget
+    nix-index
   ];
+
+  programs = let
+    nix-index-shell = ''
+      source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+    '';
+  in
+    {
+      fish.enable = true;
+      zsh.enable = true;
+      # replace command-not-found with nix-index
+      # command-not-found is buggy and doesn't work sometimes
+      # when the channel hasn't been added
+      command-not-found.enable = false;
+      bash.interactiveShellInit = nix-index-shell;
+      zsh.interactiveShellInit = nix-index-shell;
+
+      fish.interactiveShellInit = nix-index-shell;
+    };
+
+  users.defaultUserShell = pkgs.fish;
 }
