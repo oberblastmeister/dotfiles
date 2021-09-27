@@ -14,6 +14,7 @@ let
 in
 {
   options.modules.presets.enable = mkOption {
+    default = null;
     type = with types; nullOr (enum [ "full" "minimal" ]);
   };
 
