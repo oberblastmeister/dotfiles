@@ -11,8 +11,6 @@ let
     enableZshIntegration = true;
     enableFishIntegration = true;
   };
-
-  cfgIntegration = integrationMap.${cfg.enable};
 in
 {
   # must be used to allow home-manager to manage the shell
