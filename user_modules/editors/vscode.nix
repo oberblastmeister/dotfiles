@@ -15,7 +15,7 @@ in
       extensions = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide
         arrterian.nix-env-selector
-        vscode-extensions.asvetliakov.vscode-neovim
+        asvetliakov.vscode-neovim
         bodil.file-browser
         eamodio.gitlens
         kahole.magit
