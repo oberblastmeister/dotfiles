@@ -35,7 +35,7 @@ in
   users.defaultUserShell = pkgs.fish;
 
   security = {
-    sudo.enable = mkDefault false;
+    sudo.enable = mkDefault true;
     doas = {
       enable = mkDefault true;
       extraRules = [
