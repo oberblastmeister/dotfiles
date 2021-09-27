@@ -22,8 +22,8 @@ in
         kahole.magit
         streetsidesoftware.code-spell-checker
       ];
-      userSettings = builtins.fromJSON (builtins.readFile (codeDir + "/settings.json"));
-      keybindings = builtins.fromJSON (builtins.readFile (codeDir + "/keybindings.json"));
+      # userSettings = builtins.fromJSON (builtins.readFile (codeDir + "/settings.json"));
+      # keybindings = builtins.fromJSON (builtins.readFile (codeDir + "/keybindings.json"));
     };
   };
 }
