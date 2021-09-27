@@ -44,14 +44,13 @@ in
         www = [ "<Super>b" ];
       };
       "org/gnome/desktop/interface" = {
-        clock-show-seconds = false;
-        clock-show-weekday = true;
         cursor-theme = "Adwaita";
-        font-antialiasing = "grayscale";
-        font-hinting = "slight";
         gtk-theme = "Orchis";
         icon-theme = "ePapirus";
-        show-battery-percentage = true;
+        font-name = "Noto Sans 11";
+        document-font-name = "Noto Sans 11";
+        monospace-font-name = "FiraCode Nerd Font 10";
+        titlebar-font = "Noto Sans Bold 11";
       };
       "org/gnome/shell/extensions/user-theme" = {
         name = "Orchis";
