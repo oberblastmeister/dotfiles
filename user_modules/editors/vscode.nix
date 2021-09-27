@@ -26,6 +26,6 @@ in
     };
 
     home.file."${toDir}/settings.json".source = codeDir + "/settings.json";
-    home.file."${toDir}/keybindings.json}".source = codeDir + "/keybindings.json";
+    home.file."${toDir}/keybindings.json".source = codeDir + "/keybindings.json";
   };
 }
