@@ -19,7 +19,7 @@ in
       python39Packages.poetry
     ];
 
-    programs.vscode.extensions = with pkgs; [
+    programs.vscode.extensions = with pkgs.vscode-extensions; [
       # fails for some reason
       # vscode-extensions.ms-python.python
       ms-python.vscode-pylance
