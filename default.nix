@@ -28,7 +28,11 @@ in
     };
   };
 
-  programs.fish.enable = true;
+  programs ={
+    fish.enable = true;
+    bash.enable = true;
+    zsh.enable = true;
+  };
   users.defaultUserShell = pkgs.fish;
 
   # essentials
