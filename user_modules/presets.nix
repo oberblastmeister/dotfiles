@@ -6,7 +6,6 @@ let
 
   fullPreset = {
     modules = {
-      fonts.enable = true;
       editors = {
         vim.enable = mkDefault true;
         vscode.enable = mkDefault true;
