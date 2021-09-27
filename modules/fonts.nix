@@ -15,7 +15,7 @@ in
       noto-fonts-cjk
       noto-fonts-emoji
       # (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      # (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
   };
 }
