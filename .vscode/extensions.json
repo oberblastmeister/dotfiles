@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "christian-kohler.path-intellisense",
+        "efoerster.texlab",
+        "evzen-wybitul.magic-racket",
+        "goessner.mdmath",
+        "mathiasfrohlich.Kotlin",
+        "mushan.vscode-paste-image",
+        "pascalsenn.keyboard-quickfix",
+        "sainnhe.gruvbox-material",
+        "zhuangtongfa.material-theme",
+    ]
+}

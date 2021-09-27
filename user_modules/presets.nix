@@ -11,10 +11,13 @@ let
         vscode.enable = mkDefault true;
       };
       dev = {
-        python.enable = mkDefault true;
         rust.enable = mkDefault true;
         haskell.enable = mkDefault true;
+        python.enable = mkDefault true;
         cc.enable = mkDefault true;
+        markdown.enable = mkDefault true;
+        racket.enable = mkDefault true;
+        java.enable = mkDefault true;
       };
       shell = {
         fish.enable = true;

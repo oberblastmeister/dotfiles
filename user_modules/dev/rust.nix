@@ -14,8 +14,10 @@ in
       unstable.rust-analyzer
     ];
 
-    programs.vscode.extensions = with pkgs; [
-      vscode-extensions.matklad.rust-analyzer
+    programs.vscode.extensions = with pkgs.vscode-extensions; [
+      matklad.rust-analyzer
+      tamasfe.even-better-toml
+      vadimcn.vscode-lldb
     ];
 
     home.sessionVariables = {

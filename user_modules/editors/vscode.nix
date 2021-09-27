@@ -14,7 +14,8 @@ in
       enable = true;
       extensions = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide
-        vscodevim.vim
+        arrterian.nix-env-selector
+        vscode-extensions.asvetliakov.vscode-neovim
         bodil.file-browser
         eamodio.gitlens
         kahole.magit
