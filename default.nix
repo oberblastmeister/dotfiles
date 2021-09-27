@@ -33,6 +33,13 @@ in
     zsh.enable = true;
   };
   users.defaultUserShell = pkgs.fish;
+  
+  security = {
+    sudo.enable = mkDefault false;
+    doas = {
+      enable = mkDefault true;
+    };
+  };
 
   # essentials
   environment.systemPackages = with pkgs; [
