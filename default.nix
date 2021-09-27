@@ -58,6 +58,9 @@ in
   programs = {
     fish.enable = true;
     zsh.enable = true;
+    # very buggy perl script
+    # sometimes needs the channel to be there
+    command-not-found.enable = false;
   };
   users.defaultUserShell = pkgs.fish;
 }
