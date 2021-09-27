@@ -11,5 +11,6 @@
   };
 
   modules.presets.enable = "full";
+  modules.hardware.opengl.enable = true;
   home-manager.users.brian.modules.presets.enable = "full";
 }
