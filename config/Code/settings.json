@@ -1,0 +1,377 @@
+{
+    "vim.leader": "<space>",
+    "vim.surround": true,
+    "vim.useSystemClipboard": true,
+    "vim.highlightedyank.enable": true,
+    "vim.debug.loggingLevelForConsole": "debug",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "<C-a>"
+            ],
+            "commands": [
+                "cursorHome"
+            ]
+        },
+        {
+            "before": [
+                "<C-e>"
+            ],
+            "commands": [
+                "cursorEnd"
+            ]
+        },
+        {
+            "before": [
+                "<C-f>"
+            ],
+            "commands": [
+                "cursorRight"
+            ]
+        },
+        {
+            "before": [
+                "<C-b>"
+            ],
+            "commands": [
+                "cursorLeft"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // navigation
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "after": [
+                "<C-w>",
+                "C-l"
+            ],
+        },
+        {
+            "before": [
+                "<C-h>"
+            ],
+            "after": [
+                "<C-w>",
+                "C-h"
+            ],
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "after": [
+                "<C-w>",
+                "C-k"
+            ],
+        },
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<C-w>",
+                "C-j"
+            ],
+        },
+        // lsp stuff
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "g"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "[",
+                "g"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "G"
+            ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ]
+        },
+        {
+            "before": [
+                "[",
+                "G"
+            ],
+            "commands": [
+                "editor.action.marker.prevInFiles"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "y"
+            ],
+            "commands": [
+                "editor.action.goToTypeDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "D"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "="
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "a"
+            ],
+            "commands": [
+                "keyboard-quickfix.openQuickFix"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r",
+                "n"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "l"
+            ],
+            "commands": [
+                "codelens.showLensesInCurrentLine"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "<leader>"
+            ],
+            "commands": [
+                "editor.action.openLink"
+            ]
+        },
+        // git stuff
+        {
+            "before": [
+                "<leader>",
+                "h",
+                "r"
+            ],
+            "commands": [
+                "git.revertSelectedRanges"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h",
+                "s"
+            ],
+            "commands": [
+                "git.stageSelectedRanges"
+            ]
+        },
+        // default stuff
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                ":write"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                ":quit"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "o"
+            ],
+            "commands": [
+                ":only"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "/"
+            ],
+            "commands": [
+                "editor.action.startFindReplaceAction"
+            ]
+        },
+        {
+            "before": [
+                "<C-b>"
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ]
+        },
+        {
+            "before": [
+                "<C-e>"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": [
+                "<tab>"
+            ],
+            "commands": [
+                "editor.fold"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "c"
+            ],
+            "after": [
+                "g",
+                "c",
+                "c"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "after": [
+                "g",
+                "c"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        }
+    ],
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    // colorscheme
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "gruvboxMaterial.darkPalette": "original",
+    // turn off fuzzy finding on type in exploerer
+    "workbench.list.automaticKeyboardNavigation": false,
+    "editor.lineNumbers": "relative",
+    // scrolling
+    "editor.smoothScrolling": false,
+    "workbench.list.smoothScrolling": true,
+    // fonts
+    "editor.fontWeight": "normal",
+    "editor.fontSize": 16,
+    "editor.fontFamily": "'OperatorMono Nerd Font'",
+    "editor.fontLigatures": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    // do not accept completions on enter
+    "editor.acceptSuggestionOnEnter": "off",
+    "window.menuBarVisibility": "toggle",
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "julia.enableTelemetry": false,
+    "editor.largeFileOptimizations": false,
+    // "outline.problems.colors": false,
+    "problems.showCurrentInStatus": true,
+    "editor.renderWhitespace": "none",
+    "workbench.activityBar.visible": false,
+    "redhat.telemetry.enabled": false,
+    "workbench.startupEditor": "none",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true,
+    },
+    "editor.cursorBlinking": "solid",
+    "editor.suggest.localityBonus": true,
+    "terminal.integrated.scrollback": 10000,
+    // languages
+    "vim.foldfix": true,
+    "gitlens.codeLens.enabled": false,
+    "[haskell]": {
+        "editor.tabSize": 2
+    },
+    "[racket]": {
+        "editor.bracketPairColorization.enabled": true,
+        "editor.tabSize": 2,
+    },
+    "[nix]": {
+        "editor.tabSize": 2
+    },
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.typeCheckingMode": "strict",
+    "nix.enableLanguageServer": true,
+    "markdown.extension.math.enabled": false,
+    "cSpell.enabledLanguageIds": [
+        "markdown",
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+}

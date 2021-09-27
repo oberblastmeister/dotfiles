@@ -46,6 +46,14 @@ in
     };
   };
 
+  networking = {
+    firewall.enable = true;
+    # the installation environment enables this
+    # gnome enables this
+    # but other ones don't
+    networkmanager.enable = true;
+  };
+
   # essentials
   environment.systemPackages = with pkgs; [
     cached-nix-shell

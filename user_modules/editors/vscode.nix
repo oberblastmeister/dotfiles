@@ -1,7 +1,8 @@
-{ config, my, lib, pkgs, inputs, ... }:
+{ config, config', my, lib, pkgs, inputs, ... }:
 
 let
   cfg = config.modules.editors.vscode;
+  codeDir = config'.dotfiles.realConfigDir + "/Code";
   inherit (lib) mkOption types;
 in
 {
@@ -21,6 +22,8 @@ in
         kahole.magit
         streetsidesoftware.code-spell-checker
       ];
+      userSettings = builtins.fromJSON (builtins.readFile (codeDir + "/settings.json"));
+      keybindings = builtins.fromJSON (builtins.readFile (codeDir + "/keybindings.json"));
     };
   };
 }
