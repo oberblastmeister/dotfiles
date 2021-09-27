@@ -36,8 +36,9 @@ in
 
   security = {
     sudo.enable = mkDefault true;
+    # has some permission denied issues with install fonts
     doas = {
-      enable = mkDefault true;
+      enable = mkDefault false;
       extraRules = [
         {
           groups = [ "wheel" ];
