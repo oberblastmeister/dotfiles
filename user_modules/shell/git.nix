@@ -20,7 +20,7 @@ in
         a = "add";
         c = "commit";
         p = "push";
-        P = "pull";
+        "P" = "pull";
         co = "checkout";
       };
       userEmail = lib.mkDefault "littlebubu.shu@gmail.com";
