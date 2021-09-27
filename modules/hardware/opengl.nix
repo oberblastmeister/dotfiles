@@ -1,7 +1,8 @@
-{ config, options, unstable, pkgs, lib, my, ... }:
+{ config, options, pkgs, lib, ... }:
 
 let
   cfg = config.modules.hardware.opengl;
+  inherit (lib) my;
 in
 {
   options.modules.hardware.opengl = {
