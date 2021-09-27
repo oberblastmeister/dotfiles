@@ -16,8 +16,8 @@ in
     };
 
     "ca/desrt/dconf-editor" = {
-      saved-pathbar-path = "/org/gnome/desktop/wm/keybindings/";
-      saved-view = "/org/gnome/desktop/wm/keybindings/";
+      saved-pathbar-path = "/org/gnome/desktop/interface/monospace-font-name";
+      saved-view = "/org/gnome/desktop/interface/monospace-font-name";
       show-warning = false;
       window-height = 500;
       window-is-maximized = false;
@@ -53,7 +53,7 @@ in
     };
 
     "org/gnome/control-center" = {
-      last-panel = "keyboard";
+      last-panel = "universal-access";
     };
 
     "org/gnome/desktop/a11y/magnifier" = {
@@ -74,19 +74,22 @@ in
     "org/gnome/desktop/input-sources" = {
       per-window = false;
       sources = [ (mkTuple [ "xkb" "us" ]) ];
-      xkb-options = [ "terminate:ctrl_alt_bksp" "lv3:ralt_switch" "ctrl:nocaps" ];
+      xkb-options = [ "ctrl:nocaps" ];
     };
 
     "org/gnome/desktop/interface" = {
       clock-show-seconds = false;
       clock-show-weekday = true;
       cursor-theme = "Adwaita";
+      document-font-name = "Noto Sans 11";
       enable-hot-corners = true;
       font-antialiasing = "grayscale";
       font-hinting = "slight";
+      font-name = "Noto Sans 11";
       gtk-im-module = "gtk-im-context-simple";
       gtk-theme = "Orchis";
       icon-theme = "ePapirus";
+      monospace-font-name = "FiraCode Nerd Font 10";
       show-battery-percentage = true;
     };
 
@@ -130,7 +133,7 @@ in
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
       maximize = [ "<Alt><Super>k" ];
-      minimize = [];
+      minimize = [ "<Super>n" ];
       move-to-monitor-down = [ "<Shift><Super>braceleft" ];
       move-to-monitor-left = [ "<Shift><Super>braceright" ];
       move-to-workspace-1 = [ "<Shift><Super>exclam" ];
@@ -139,7 +142,7 @@ in
       move-to-workspace-4 = [ "<Shift><Super>dollar" ];
       move-to-workspace-left = [ "<Alt><Super>bracketleft" ];
       move-to-workspace-right = [ "<Alt><Super>bracketright" ];
-      show-desktop = [ "<Shift><Super>h" ];
+      show-desktop = [ "<Primary><Super>n" ];
       switch-to-workspace-1 = [ "<Super>1" ];
       switch-to-workspace-2 = [ "<Super>2" ];
       switch-to-workspace-3 = [ "<Super>3" ];
@@ -155,6 +158,7 @@ in
       auto-raise = true;
       button-layout = "appmenu:close";
       focus-mode = "click";
+      titlebar-font = "Noto Sans Bold 11";
     };
 
     "org/gnome/epiphany/state" = {
@@ -196,6 +200,20 @@ in
       side-panel-size = 200;
       size = mkTuple [ 900 495 ];
       state = 87168;
+    };
+
+    "org/gnome/gnome-system-monitor" = {
+      current-tab = "disks";
+      maximized = false;
+      network-total-in-bits = false;
+      show-dependencies = false;
+      show-whose-processes = "user";
+      window-state = mkTuple [ 700 500 ];
+    };
+
+    "org/gnome/gnome-system-monitor/disktreenew" = {
+      col-6-visible = true;
+      col-6-width = 0;
     };
 
     "org/gnome/maps" = {
@@ -255,6 +273,7 @@ in
     };
 
     "org/gnome/shell/keybindings" = {
+      focus-active-notification = [];
       toggle-message-tray = [];
       toggle-overview = [];
     };

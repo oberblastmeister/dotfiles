@@ -6,8 +6,8 @@ height=476
 width=600
 
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/org/gnome/desktop/wm/keybindings/'
-saved-view='/org/gnome/desktop/wm/keybindings/'
+saved-pathbar-path='/org/gnome/desktop/interface/monospace-font-name'
+saved-view='/org/gnome/desktop/interface/monospace-font-name'
 show-warning=false
 window-height=500
 window-is-maximized=false
@@ -37,7 +37,7 @@ size=(915, 725)
 state=87168
 
 [org/gnome/control-center]
-last-panel='keyboard'
+last-panel='universal-access'
 
 [org/gnome/desktop/a11y/magnifier]
 mag-factor=2.0
@@ -54,18 +54,21 @@ show-weekdate=false
 [org/gnome/desktop/input-sources]
 per-window=false
 sources=[('xkb', 'us')]
-xkb-options=['terminate:ctrl_alt_bksp', 'lv3:ralt_switch', 'ctrl:nocaps']
+xkb-options=['ctrl:nocaps']
 
 [org/gnome/desktop/interface]
 clock-show-seconds=false
 clock-show-weekday=true
 cursor-theme='Adwaita'
+document-font-name='Noto Sans 11'
 enable-hot-corners=true
 font-antialiasing='grayscale'
 font-hinting='slight'
+font-name='Noto Sans 11'
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Orchis'
 icon-theme='ePapirus'
+monospace-font-name='FiraCode Nerd Font 10'
 show-battery-percentage=true
 
 [org/gnome/desktop/notifications]
@@ -100,7 +103,7 @@ sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gn
 [org/gnome/desktop/wm/keybindings]
 close=['<Super>q']
 maximize=['<Alt><Super>k']
-minimize=@as []
+minimize=['<Super>n']
 move-to-monitor-down=['<Shift><Super>braceleft']
 move-to-monitor-left=['<Shift><Super>braceright']
 move-to-workspace-1=['<Shift><Super>exclam']
@@ -109,7 +112,7 @@ move-to-workspace-3=['<Shift><Super>numbersign']
 move-to-workspace-4=['<Shift><Super>dollar']
 move-to-workspace-left=['<Alt><Super>bracketleft']
 move-to-workspace-right=['<Alt><Super>bracketright']
-show-desktop=['<Shift><Super>h']
+show-desktop=['<Primary><Super>n']
 switch-to-workspace-1=['<Super>1']
 switch-to-workspace-2=['<Super>2']
 switch-to-workspace-3=['<Super>3']
@@ -124,6 +127,7 @@ unmaximize=['<Alt><Super>j']
 auto-raise=true
 button-layout='appmenu:close'
 focus-mode='click'
+titlebar-font='Noto Sans Bold 11'
 
 [org/gnome/epiphany/state]
 is-maximized=false
@@ -158,6 +162,18 @@ side-panel-active-page='GeditWindowDocumentsPanel'
 side-panel-size=200
 size=(900, 495)
 state=87168
+
+[org/gnome/gnome-system-monitor]
+current-tab='disks'
+maximized=false
+network-total-in-bits=false
+show-dependencies=false
+show-whose-processes='user'
+window-state=(700, 500, 56, 50)
+
+[org/gnome/gnome-system-monitor/disktreenew]
+col-6-visible=true
+col-6-width=0
 
 [org/gnome/maps]
 last-viewed-location=[13.410994034321702, 24.2578125]
@@ -207,6 +223,7 @@ welcome-dialog-last-shown-version='40.4'
 name='Orchis'
 
 [org/gnome/shell/keybindings]
+focus-active-notification=@as []
 toggle-message-tray=@as []
 toggle-overview=@as []
 
