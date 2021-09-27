@@ -6,10 +6,10 @@ let
 
   shells = [ "bash" "zsh" "fish" ];
 
-  integrationMap = {
-    bash = "enableBashIntegration";
-    zsh = "enableZshIntegration";
-    fish = "enableFishIntegration";
+  allIntegrations = {
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    enableFishIntegration = true;
   };
 
   cfgIntegration = integrationMap.${cfg.enable};
@@ -18,7 +18,8 @@ in
   # must be used to allow home-manager to manage the shell
   options.modules.shell = {
     enable = mkOption {
-      type = types.enum shells;
+      default = null;
+      type = with types; nullOr (enum shells);
     };
     aliases = mkOption {
       default = {};
@@ -49,7 +50,6 @@ in
 
     (
       lib.mkIf cfg.programs.enable {
-
         home.packages = with pkgs; [
           bat
           exa
@@ -74,14 +74,12 @@ in
         programs = {
           starship = {
             enable = true;
-            ${cfgIntegration} = true;
-          };
+          } // allIntegrations;
           fzf = {
             enable = true;
-            ${cfgIntegration} = true;
-          };
+          } // allIntegrations;
         };
-        
+
         modules.shell.git.enable = true;
       }
     )

@@ -9,6 +9,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    modules.shell.aliases = {
+      g = "git";
+    };
+
     programs.git = {
       enable = true;
       aliases = {
