@@ -47,7 +47,7 @@
             "after": [
                 "<C-w>",
                 "C-l"
-            ],
+            ]
         },
         {
             "before": [
@@ -56,7 +56,7 @@
             "after": [
                 "<C-w>",
                 "C-h"
-            ],
+            ]
         },
         {
             "before": [
@@ -65,7 +65,7 @@
             "after": [
                 "<C-w>",
                 "C-k"
-            ],
+            ]
         },
         {
             "before": [
@@ -74,7 +74,7 @@
             "after": [
                 "<C-w>",
                 "C-j"
-            ],
+            ]
         },
         // lsp stuff
         {
@@ -346,7 +346,7 @@
         "**/.classpath": true,
         "**/.project": true,
         "**/.settings": true,
-        "**/.factorypath": true,
+        "**/.factorypath": true
     },
     "editor.cursorBlinking": "solid",
     "editor.suggest.localityBonus": true,
@@ -359,7 +359,7 @@
     },
     "[racket]": {
         "editor.bracketPairColorization.enabled": true,
-        "editor.tabSize": 2,
+        "editor.tabSize": 2
     },
     "[nix]": {
         "editor.tabSize": 2
@@ -369,9 +369,9 @@
     "nix.enableLanguageServer": true,
     "markdown.extension.math.enabled": false,
     "cSpell.enabledLanguageIds": [
-        "markdown",
+        "markdown"
     ],
     "[python]": {
         "editor.defaultFormatter": "ms-python.python"
-    },
+    }
 }
