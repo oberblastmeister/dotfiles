@@ -14,7 +14,7 @@ let
 in
 {
   options.modules.presets.enable = mkOption {
-    type = with types; nullOr (enum "full" "minimal");
+    type = with types; nullOr (enum [ "full" "minimal" ]);
   };
 
   config = lib.mkIf (cfg.enable != null) (
