@@ -1,24 +1,19 @@
 { options, config, lib, my, pkgs, ... }:
 
 let
+  bashCfg = config.modules.shell.bash;
+  zshCfg = config.modules.shell.zsh;
+  fishCfg = config.modules.shell.fish;
   cfg = config.modules.shell;
   inherit (lib) types mkOption mkAliasDefinitions;
-
-  shells = [ "bash" "zsh" "fish" ];
-
   allIntegrations = {
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
+    enableBashIntegration = bashCfg.enable;
+    enableZshIntegration = zshCfg.enable;
+    enableFishIntegration = fishCfg.enable;
   };
 in
 {
-  # must be used to allow home-manager to manage the shell
   options.modules.shell = {
-    enable = mkOption {
-      default = null;
-      type = with types; nullOr (enum shells);
-    };
     aliases = mkOption {
       default = {};
       type = types.attrsOf types.str;
@@ -28,9 +23,19 @@ in
 
   config = lib.mkMerge [
     {
-      programs.${cfg.enable} = {
-        enable = true;
-        shellAliases = mkAliasDefinitions options.modules.shell.aliases;
+      programs = {
+        bash = {
+          enable = bashCfg.enable;
+          shellAliases = cfg.aliases;
+        };
+        zsh = {
+          enable = zshCfg.enable;
+          shellAliases = cfg.aliases;
+        };
+        fish = {
+          enable = fishCfg.enable;
+          shellAliases = cfg.aliases;
+        };
       };
 
       modules.shell.aliases = {
