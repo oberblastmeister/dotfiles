@@ -311,7 +311,7 @@
             ]
         }
     ],
-    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "vscode-neovim.neovimExecutablePaths.linux": "nvim",
     // colorscheme
     "workbench.colorTheme": "Gruvbox Material Dark",
     "gruvboxMaterial.darkPalette": "original",
