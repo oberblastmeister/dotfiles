@@ -1,3 +1,4 @@
+{ config, lib, ... }:
 let
   cfg = config.modules.presets;
   inherit (lib) types mkOption mkDefault;
