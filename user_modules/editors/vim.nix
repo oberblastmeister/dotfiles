@@ -1,4 +1,4 @@
-{ config, my, lib, pkgs, inputs, ... }:
+{ config, config', my, lib, pkgs, inputs, ... }:
 
 let
   cfg = config.modules.editors.vim;
@@ -19,15 +19,12 @@ in
       nodePackages.neovim
       python39Packages.pynvim
     ];
-    
+
     modules.shell.aliases = {
       "vim" = "nvim";
       "vi" = "nvim";
     };
-    
-    # xdg.configFile.nvim.source = 
-    # xdg.configFile = {
 
-    # }
+    xdg.configFile."nvim".source = config'.dotfiles.configDir + "nvim";
   };
 }
