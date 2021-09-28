@@ -34,6 +34,6 @@ in
     # home.file."${toDir}/keybindings.json".source = codeDir + "/keybindings.json";
     # home.file."test.md".source = config'.dotfiles.configDir + "/test.md";
     # home.file."test.md".source = config.lib.file.mkOutOfStoreSymlink (config'.dotfiles.configDir + "/test.md");
-    home.file."test.md".source = config.lib.file.mkOutOfStoreSymlink (config'.dotfiles.configDir + "/test.md");
+    # home.file."test.md".source = config.lib.file.mkOutOfStoreSymlink (config'.dotfiles.configDir + "/test.md");
   };
 }
