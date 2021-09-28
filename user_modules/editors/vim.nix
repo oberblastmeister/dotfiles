@@ -25,6 +25,6 @@ in
       "vi" = "nvim";
     };
 
-    xdg.configFile."nvim".source = config'.dotfiles.configDir + "nvim";
+    xdg.configFile."nvim".source = config'.dotfiles.configDir + "/nvim";
   };
 }
