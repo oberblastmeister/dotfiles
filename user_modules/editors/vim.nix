@@ -12,9 +12,8 @@ in
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlay ];
 
-    programs.neovim.enable = true;
-
     home.packages = with pkgs; [
+      neovim
       neovim-remote
       nodePackages.neovim
       python39Packages.pynvim
