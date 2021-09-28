@@ -5,6 +5,7 @@ let
   codeDir = config'.dotfiles.configDir + "/Code";
   toDir = "${config.xdg.configHome}/Code/User";
   inherit (lib) mkOption types;
+  inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 {
   options.modules.editors.vscode = {
@@ -25,7 +26,7 @@ in
       ];
     };
 
-    home.file."${toDir}/settings.json".source = codeDir + "/settings.json";
-    home.file."${toDir}/keybindings.json".source = codeDir + "/keybindings.json";
+    home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (codeDir + "/settings.json");
+    home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (codeDir + "/keybindings.json");
   };
 }
