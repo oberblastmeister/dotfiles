@@ -26,7 +26,7 @@ in
       ];
     };
 
-    home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (codeDir + "/settings.json");
-    home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (codeDir + "/keybindings.json");
+    home.file."${toDir}/settings.json".source = config.lib.file.mkOutOfStoreSymlink (codeDir + "/settings.json");
+    home.file."${toDir}/keybindings.json".source = config.lib.file.mkOutOfStoreSymlink (codeDir + "/keybindings.json");
   };
 }
