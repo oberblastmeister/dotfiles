@@ -13,19 +13,19 @@ in
       };
       naiveConfigDir = mkOption {
         type = types.str;
-        default = config.dotfiles.dir + "/config";
+        default = config.dotfiles.naiveDir + "/config";
       };
       naiveBinDir = mkOption {
         type = types.str;
-        default = config.dotfiles.dir + "/bin";
+        default = config.dotfiles.naiveDir + "/bin";
       };
       naiveModulesDir = mkOption {
         type = types.str;
-        default = config.dotfiles.dir + "/modules";
+        default = config.dotfiles.naiveDir + "/modules";
       };
       naiveUserModulesDir = mkOption {
         type = types.str;
-        default = config.dotfiles.dir + "/user_modules";
+        default = config.dotfiles.naiveDir + "/user_modules";
       };
       dir = mkOption {
         type = types.path;
@@ -33,19 +33,19 @@ in
       };
       configDir = mkOption {
         type = types.path;
-        default = config.dotfiles.realDir + "/config";
+        default = config.dotfiles.dir + "/config";
       };
       binDir = mkOption {
         type = types.path;
-        default = config.dotfiles.realDir + "/bin";
+        default = config.dotfiles.dir + "/bin";
       };
       modulesDir = mkOption {
         type = types.path;
-        default = config.dotfiles.realDir + "/modules";
+        default = config.dotfiles.dir + "/modules";
       };
       userModulesDir = mkOption {
         type = types.path;
-        default = config.dotfiles.realDir + "/user_modules";
+        default = config.dotfiles.dir + "/user_modules";
       };
     };
   };
