@@ -3,6 +3,7 @@
 let
   cfg = config.modules.editors.vim;
   inherit (lib) mkOption types;
+  inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 {
   options.modules.editors.vim = {
@@ -23,9 +24,9 @@ in
       "vim" = "nvim";
       "vi" = "nvim";
     };
-# 
+    # 
     xdg.configFile = {
-      "nvim".source = config'.dotfiles.configDir + "/nvim";
+      "nvim".source = mkOutOfStoreSymlink (config'.dotfiles.configDir + "/nvim");
     };
     # xdg.configFile."nvim".source = config'.dotfiles.configDir + "/nvim";
   };
