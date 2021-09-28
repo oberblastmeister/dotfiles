@@ -2,7 +2,7 @@
 
 let
   cfg = config.modules.editors.vscode;
-  codeDir = config'.dotfiles.realConfigDir + "/Code";
+  codeDir = config'.dotfiles.configDir + "/Code";
   toDir = "${config.xdg.configHome}/Code/User";
   inherit (lib) mkOption types;
 in

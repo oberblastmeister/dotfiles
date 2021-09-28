@@ -24,5 +24,10 @@ in
       "vim" = "nvim";
       "vi" = "nvim";
     };
+    
+    # xdg.configFile.nvim.source = 
+    # xdg.configFile = {
+
+    # }
   };
 }

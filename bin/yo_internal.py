@@ -240,7 +240,7 @@ def from_args() -> Opt:
         case 'push':
             subcmd = Push()
         case 'rebuild':
-            subcmd = Rebuild(["switch"])
+            subcmd = Rebuild(['switch'])
         case 'cd':
             subcmd = Cd()
         case 'update-dconf':

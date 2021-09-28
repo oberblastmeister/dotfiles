@@ -7,43 +7,43 @@ in
 {
   options = {
     dotfiles = {
-      dir = mkOption {
+      naiveDir = mkOption {
         type = types.str;
         default = "/etc/dotfiles";
       };
-      configDir = mkOption {
+      naiveConfigDir = mkOption {
         type = types.str;
         default = config.dotfiles.dir + "/config";
       };
-      binDir = mkOption {
+      naiveBinDir = mkOption {
         type = types.str;
         default = config.dotfiles.dir + "/bin";
       };
-      modulesDir = mkOption {
+      naiveModulesDir = mkOption {
         type = types.str;
         default = config.dotfiles.dir + "/modules";
       };
-      userModulesDir = mkOption {
+      naiveUserModulesDir = mkOption {
         type = types.str;
         default = config.dotfiles.dir + "/user_modules";
       };
-      realDir = mkOption {
+      dir = mkOption {
         type = types.path;
         default = ../.;
       };
-      realConfigDir = mkOption {
+      configDir = mkOption {
         type = types.path;
         default = config.dotfiles.realDir + "/config";
       };
-      realBinDir = mkOption {
+      binDir = mkOption {
         type = types.path;
         default = config.dotfiles.realDir + "/bin";
       };
-      realModulesDir = mkOption {
+      modulesDir = mkOption {
         type = types.path;
         default = config.dotfiles.realDir + "/modules";
       };
-      realUserModulesDir = mkOption {
+      userModulesDir = mkOption {
         type = types.path;
         default = config.dotfiles.realDir + "/user_modules";
       };
@@ -52,10 +52,10 @@ in
 
   config = {
     environment.variables = {
-      DOTFILES = config.dotfiles.dir;
-      DOTFILES_CONFIG = config.dotfiles.configDir;
-      DOTFILES_BIN = config.dotfiles.binDir;
-      PATH = [ config.dotfiles.binDir ];
+      DOTFILES = config.dotfiles.naiveDir;
+      DOTFILES_CONFIG = config.dotfiles.naiveConfigDir;
+      DOTFILES_BIN = config.dotfiles.naiveBinDir;
+      PATH = [ config.dotfiles.naiveBinDir ];
     };
   };
 }
