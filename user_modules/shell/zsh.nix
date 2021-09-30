@@ -9,5 +9,5 @@ in
     enable = mkEnable;
   };
 
-  config = lib.mkIf cfg.enable {};
+  config = lib.mkIf cfg.enable { };
 }

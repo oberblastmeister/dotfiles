@@ -25,40 +25,36 @@
         config.allowUnfree = true;
         overlays = [ self.overlay ] ++ extraOverlays ++ (builtins.attrValues self.overlays);
       };
-      overlays = [];
+      overlays = [ ];
       pkgs = mkPkgs nixpkgs overlays;
       pkgs-unstable = mkPkgs nixpkgs-unstable overlays;
       lib = nixpkgs.lib.extend (final: prev: { my = import ./lib { inherit pkgs inputs; lib = final; }; });
     in
+    rec {
+      overlay = final: prev: {
+        unstable = pkgs-unstable;
+        my = self.packages."${system}";
+      };
+
+      overlays = lib.my.modules.importAll ./overlays;
+
+      nixosModules = { dotfiles = import ./.; } // lib.my.modules.importAll ./modules;
+
+      nixosConfigurations = lib.my.hosts.map ./hosts { };
+    }
+    // (utils.lib.eachSystem [ system ] (system:
       rec {
-        overlay = final: prev: {
-          unstable = pkgs-unstable;
-          my = self.packages."${system}";
+        packages = lib.my.modules.map ./packages (p: pkgs.callPackage p { }) // { };
+
+        apps = {
+          yo = {
+            type = "app";
+            program = ./bin/yo;
+          };
         };
 
-        overlays = lib.my.modules.importAll ./overlays;
+        defaultApp = apps.yo;
 
-        nixosModules = { dotfiles = import ./.; } // lib.my.modules.importAll ./modules;
-
-        nixosConfigurations = lib.my.hosts.map ./hosts {};
-      }
-      // (
-        utils.lib.eachSystem [ system ] (
-          system:
-            rec {
-              packages = lib.my.modules.map ./packages (p: pkgs.callPackage p {}) // {};
-
-              apps = {
-                yo = {
-                  type = "app";
-                  program = ./bin/yo;
-                };
-              };
-
-              defaultApp = apps.yo;
-
-              devShell = import ./shell.nix pkgs;
-            }
-        )
-      );
+        devShell = import ./shell.nix pkgs;
+      }));
 }

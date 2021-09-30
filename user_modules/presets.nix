@@ -30,7 +30,7 @@ let
     };
   };
 
-  minimalPreset = {};
+  minimalPreset = { };
 in
 
 {

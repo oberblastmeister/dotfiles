@@ -9,11 +9,11 @@ rec {
           let
             path = "${toString dir}/${n}";
           in
-            if v == "directory" && builtins.pathExists "${path}/default.nix"
-            then lib.nameValuePair n path
-            else if v == "regular" && n != "default.nix" && lib.hasSuffix ".nix" n
-            then lib.nameValuePair (lib.removeSuffix ".nix" n) path
-            else lib.nameValuePair "" null
+          if v == "directory" && builtins.pathExists "${path}/default.nix"
+          then lib.nameValuePair n path
+          else if v == "regular" && n != "default.nix" && lib.hasSuffix ".nix" n
+          then lib.nameValuePair (lib.removeSuffix ".nix" n) path
+          else lib.nameValuePair "" null
       )
       (builtins.readDir dir);
 
@@ -28,11 +28,11 @@ rec {
           let
             path = "${toString dir}/${n}";
           in
-            if v == "directory"
-            then lib.nameValuePair n (mapRec path fn)
-            else if v == "regular" && n != "default.nix" && lib.hasSuffix ".nix" n
-            then lib.nameValuePair (lib.removeSuffix ".nix" n) (fn path)
-            else lib.nameValuePair "" null
+          if v == "directory"
+          then lib.nameValuePair n (mapRec path fn)
+          else if v == "regular" && n != "default.nix" && lib.hasSuffix ".nix" n
+          then lib.nameValuePair (lib.removeSuffix ".nix" n) (fn path)
+          else lib.nameValuePair "" null
       )
       (builtins.readDir dir);
 
@@ -52,7 +52,7 @@ rec {
       files = builtins.attrValues (get dir);
       paths = files ++ builtins.concatLists (builtins.map getRec' dirs);
     in
-      paths;
+    paths;
 
   mapRec' = dir: fn: builtins.map fn (getRec' dir);
 
@@ -71,11 +71,11 @@ rec {
           let
             path = "${toString dir}/${n}";
           in
-            if v == "directory" && builtins.pathExists "${path}/default.nix"
-            then lib.nameValuePair n (fn path)
-            else if v == "regular" && n != "default.nix" && lib.hasSuffix ".nix" n
-            then lib.nameValuePair (lib.removeSuffix ".nix" n) (fn path)
-            else lib.nameValuePair "" null
+          if v == "directory" && builtins.pathExists "${path}/default.nix"
+          then lib.nameValuePair n (fn path)
+          else if v == "regular" && n != "default.nix" && lib.hasSuffix ".nix" n
+          then lib.nameValuePair (lib.removeSuffix ".nix" n) (fn path)
+          else lib.nameValuePair "" null
       )
       (builtins.readDir dir);
 
@@ -92,5 +92,5 @@ rec {
       files = builtins.attrValues (mapModules dir lib.id);
       paths = files ++ builtins.concatLists (builtins.map (d: mapModulesRec' d lib.id) dirs);
     in
-      builtins.map fn paths;
+    builtins.map fn paths;
 }

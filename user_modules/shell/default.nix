@@ -15,7 +15,7 @@ in
 {
   options.modules.shell = {
     aliases = mkOption {
-      default = {};
+      default = { };
       type = types.attrsOf types.str;
     };
     programs.enable = my.options.mkEnable;
@@ -51,40 +51,38 @@ in
       };
     }
 
-    (
-      lib.mkIf cfg.programs.enable {
-        home.packages = with pkgs; [
-          bat
-          exa
-          fd
-          fzf
-          ripgrep
-          ripgrep-all
-          tmux
-          du-dust
-          lf
-          neofetch
-          onefetch
-          direnv
-          bottom-rs
-          zoxide
-          xclip
-          glow
-          archiver
-          notify-desktop
-        ];
+    (lib.mkIf cfg.programs.enable {
+      home.packages = with pkgs; [
+        bat
+        exa
+        fd
+        fzf
+        ripgrep
+        ripgrep-all
+        tmux
+        du-dust
+        lf
+        neofetch
+        onefetch
+        direnv
+        bottom-rs
+        zoxide
+        xclip
+        glow
+        archiver
+        notify-desktop
+      ];
 
-        programs = {
-          starship = {
-            enable = true;
-          } // allIntegrations;
-          fzf = {
-            enable = true;
-          } // allIntegrations;
-        };
+      programs = {
+        starship = {
+          enable = true;
+        } // allIntegrations;
+        fzf = {
+          enable = true;
+        } // allIntegrations;
+      };
 
-        modules.shell.git.enable = true;
-      }
-    )
+      modules.shell.git.enable = true;
+    })
   ];
 }
