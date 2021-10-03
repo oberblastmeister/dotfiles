@@ -13,11 +13,13 @@ in
         default = true;
         visibleName = "Gruvbox Dark";
         showScrollbar = false;
+        audibleBell = false;
         colors = {
-          backgroundColor = "#282828282828";
           foregroundColor = "#ebebdbdbb2b2";
+          backgroundColor = "#282828282828";
+          boldColor = "#ebebdbdbb2b2";
           cursor = {
-            foreground = "#ebebdbdbb2b2";
+            foreground = "#282828282828";
             background = "#ebebdbdbb2b2";
           };
           palette = [
@@ -38,7 +40,6 @@ in
             "#8e8ec0c07c7c"
             "#ebebdbdbb2b2"
           ];
-          boldColor = "#ebebdbdbb2b2";
         };
       };
     };
