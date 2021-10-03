@@ -27,6 +27,7 @@ let
       desktop = {
         browsers.firefox.enable = mkDefault true;
       };
+      terminals.gnome-terminal.enable = true;
     };
   };
 
