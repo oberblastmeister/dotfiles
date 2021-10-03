@@ -24,10 +24,9 @@ in
       "vim" = "nvim";
       "vi" = "nvim";
     };
-    # 
+
     xdg.configFile = {
-      "nvim".source = mkOutOfStoreSymlink (config'.dotfiles.configDir + "/nvim");
+      "nvim".source = mkOutOfStoreSymlink (config'.dotfiles.naiveConfigDir + "/nvim");
     };
-    # xdg.configFile."nvim".source = config'.dotfiles.configDir + "/nvim";
   };
 }
