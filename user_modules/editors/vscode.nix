@@ -2,7 +2,7 @@
 
 let
   cfg = config.modules.editors.vscode;
-  codeDir = config'.dotfiles.configDir + "/Code";
+  naiveCodeDir = config'.dotfiles.naiveConfigDir + "/Code";
   toDir = "${config.xdg.configHome}/Code/User";
   inherit (lib) mkOption types;
   inherit (config.lib.file) mkOutOfStoreSymlink;
@@ -26,14 +26,13 @@ in
       ];
     };
 
-    # home.file."$[toDir/settings.json".source = config.lib.file.mkOutOfStoreSymlink (../../config/)
-    # home.file."${toDir}/settings.json".source = config.lib.file.mkOutOfStoreSymlink (codeDir + "/settings.json");
-    # home.file."${toDir}/keybindings.json".source = config.lib.file.mkOutOfStoreSymlink (codeDir + "/keybindings.json");
+    home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/settings.json");
+    home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/keybindings.json");
 
     # home.file."${toDir}/settings.json".source = codeDir + "/settings.json";
     # home.file."${toDir}/keybindings.json".source = codeDir + "/keybindings.json";
     # home.file."test.md".source = ./test.md;
-    home.file."test.md".source = config.lib.file.mkOutOfStoreSymlink "${config'.dotfiles.naiveUserModulesDir}/editors/test.md";
+    # home.file."test.md".source = config.lib.file.mkOutOfStoreSymlink "${config'.dotfiles.naiveUserModulesDir}/editors/test.md";
     # home.file."test.md".source = config.lib.file.mkOutOfStoreSymlink (config'.dotfiles.configDir + "/test.md");
     # home.file."test.md".source = config.lib.file.mkOutOfStoreSymlink (config'.dotfiles.configDir + "/test.md");
   };
