@@ -327,6 +327,7 @@
     "editor.fontFamily": "FiraCode Nerd Font",
     "editor.fontLigatures": true,
     "editor.suggestSelection": "first",
+    "editor.minimap.enabled": false,
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     // do not accept completions on enter
     "editor.acceptSuggestionOnEnter": "off",
@@ -371,7 +372,4 @@
     "cSpell.enabledLanguageIds": [
         "markdown"
     ],
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.python"
-    }
 }

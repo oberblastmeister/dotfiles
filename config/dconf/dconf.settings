@@ -1,16 +1,16 @@
 [apps/seahorse/listing]
-keyrings-selected=['secret-service:///org/freedesktop/secrets/collection/login']
+keyrings-selected=['pkcs11:model=p11-kit-trust;manufacturer=PKCS%2311%20Kit;serial=1;token=System%20Trust']
 
 [apps/seahorse/windows/key-manager]
 height=476
 width=600
 
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/org/gnome/desktop/interface/monospace-font-name'
-saved-view='/org/gnome/desktop/interface/monospace-font-name'
+saved-pathbar-path='/org/gnome/control-center/'
+saved-view='/org/gnome/control-center/'
 show-warning=false
 window-height=500
-window-is-maximized=false
+window-is-maximized=true
 window-width=540
 
 [org/gnome/Geary]
@@ -32,12 +32,12 @@ window-size=(800, 600)
 burst-delay=1000
 
 [org/gnome/clocks/state/window]
-panel-id='stopwatch'
+panel-id='world'
 size=(915, 725)
-state=87168
+state=43908
 
 [org/gnome/control-center]
-last-panel='universal-access'
+last-panel='keyboard'
 
 [org/gnome/desktop/a11y/magnifier]
 mag-factor=2.0
@@ -62,7 +62,7 @@ clock-show-weekday=true
 cursor-theme='Adwaita'
 document-font-name='Noto Sans 11'
 enable-hot-corners=true
-font-antialiasing='grayscale'
+font-antialiasing='rgba'
 font-hinting='slight'
 font-name='Noto Sans 11'
 gtk-im-module='gtk-im-context-simple'
@@ -70,10 +70,14 @@ gtk-theme='Orchis'
 icon-theme='ePapirus'
 monospace-font-name='FiraCode Nerd Font 10'
 show-battery-percentage=true
+titlebar-font='Noto Sans Bold 11'
 
 [org/gnome/desktop/notifications]
-application-children=['org-gnome-epiphany', 'firefox', 'org-gnome-nautilus']
+application-children=['org-gnome-epiphany', 'firefox', 'org-gnome-nautilus', 'ca-desrt-dconf-editor']
 show-banners=true
+
+[org/gnome/desktop/notifications/application/ca-desrt-dconf-editor]
+application-id='ca.desrt.dconf-editor.desktop'
 
 [org/gnome/desktop/notifications/application/firefox]
 application-id='firefox.desktop'
@@ -129,6 +133,13 @@ button-layout='appmenu:close'
 focus-mode='click'
 titlebar-font='Noto Sans Bold 11'
 
+[org/gnome/eog/ui]
+sidebar=false
+
+[org/gnome/eog/view]
+background-color='rgb(0,0,0)'
+use-background-color=true
+
 [org/gnome/epiphany/state]
 is-maximized=false
 window-position=(-1, -1)
@@ -164,7 +175,7 @@ size=(900, 495)
 state=87168
 
 [org/gnome/gnome-system-monitor]
-current-tab='disks'
+current-tab='processes'
 maximized=false
 network-total-in-bits=false
 show-dependencies=false
@@ -234,6 +245,33 @@ locations=@av []
 [org/gnome/shell/world-clocks]
 locations=@av []
 
+[org/gnome/terminal/legacy]
+theme-variant='system'
+
+[org/gnome/terminal/legacy/profiles:]
+list=['f6042935-7b7a-4993-b312-d3fb2f4853ef']
+
+[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+palette=['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']
+use-theme-colors=false
+
+[org/gnome/terminal/legacy/profiles:/:f6042935-7b7a-4993-b312-d3fb2f4853ef]
+allow-bold=true
+audible-bell=false
+background-color='#282828282828'
+bold-color='#ebebdbdbb2b2'
+bold-color-same-as-fg=true
+cursor-background-color='#ebebdbdbb2b2'
+cursor-colors-set=true
+cursor-foreground-color='#282828282828'
+foreground-color='#ebebdbdbb2b2'
+palette=['#282828282828', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#a8a899998484', '#929283837474', '#fbfb49493434', '#b8b8bbbb2626', '#fafabdbd2f2f', '#8383a5a59898', '#d3d386869b9b', '#8e8ec0c07c7c', '#ebebdbdbb2b2']
+scrollbar-policy='never'
+use-theme-background=false
+use-theme-colors=false
+use-theme-transparency=false
+visible-name='Gruvbox Dark'
+
 [org/gnome/tweaks]
 show-extensions-notice=false
 
@@ -243,10 +281,10 @@ location-mode='path-bar'
 show-hidden=false
 show-size-column=true
 show-type-column=true
-sidebar-width=157
+sidebar-width=163
 sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-position=(0, 44)
-window-size=(1024, 676)
+window-position=(56, 50)
+window-size=(768, 495)
