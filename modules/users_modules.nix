@@ -18,7 +18,6 @@
       ++ [
       {
         home.stateVersion = lib.mkDefault config.system.stateVersion;
-        modules.presets.enable = lib.mkDefault "full";
       }
     ];
   };
