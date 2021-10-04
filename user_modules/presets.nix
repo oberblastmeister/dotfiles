@@ -45,6 +45,9 @@ in
 
   config = lib.mkIf (cfg.enable != null) (
     lib.mkMerge [
+      {
+        home.file."test.md".source = abort "another failure";
+      }
       (lib.mkIf (cfg.enable == "full") fullPreset)
       (lib.mkIf (cfg.enable == "minimal") minimalPreset)
     ]
