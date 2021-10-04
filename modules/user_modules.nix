@@ -14,6 +14,7 @@
     };
     sharedModules = [
       (import ../user_modules)
+      (import ../user_modules/editors/vscode.nix)
       {
         # Necessary for home-manager to work with flakes, otherwise it will
         # look for a nixpkgs channel.
