@@ -9,6 +9,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.flameshot.enable = true;
+    services.flameshot.enable = true;
   };
 }
