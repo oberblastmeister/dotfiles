@@ -34,7 +34,8 @@ in
       };
     };
 
-    home.file."${configDir}/flameshot/flameshot.ini" = /* mkIf (cfg.settings != { }) */ {
+    # home.file."${configDir}/flameshot/flameshot.ini" = /* mkIf (cfg.settings != { }) */ {
+    home.file."test.ini" = /* mkIf (cfg.settings != { }) */ {
       source = iniFormat.generate "flameshot.ini" {
         General = {
           contrastUiColor = "#458588";
