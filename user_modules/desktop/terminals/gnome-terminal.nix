@@ -4,7 +4,7 @@ let
   cfg = config.modules.desktop.terminals.gnome-terminal;
 in
 {
-  options.modules.terminals.gnome-terminal = {
+  options.modules.desktop.terminals.gnome-terminal = {
     enable = my.options.mkEnable;
   };
 
