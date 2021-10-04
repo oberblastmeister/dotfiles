@@ -7,8 +7,8 @@ let
   fullPreset = {
     modules = {
       editors = {
-        vim.enable = mkDefault false;
-        vscode.enable = mkDefault false;
+        vim.enable = mkDefault true;
+        vscode.enable = mkDefault true;
       };
       dev = {
         rust.enable = mkDefault true;
