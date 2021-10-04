@@ -12,6 +12,7 @@ let
     second = "another";
   };
 in
+builtins.trace stuff
 {
   options.modules.editors.vscode = {
     enable = my.options.mkEnable;
