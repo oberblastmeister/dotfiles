@@ -34,8 +34,23 @@ in
       };
     };
 
-    home.file."${configDir}/flameshot/flameshot.ini" = mkIf (cfg.settings != { }) {
-      source = iniFormat.generate "flameshot.ini" cfg.settings;
+    home.file."${configDir}/flameshot/flameshot.ini" = /* mkIf (cfg.settings != { }) */ {
+      source = iniFormat.generate "flameshot.ini" {
+        General = {
+          contrastUiColor = "#458588";
+          uiColor = "#83a598";
+          drawColor = "#8ec07c";
+          disabledTrayIcon = false;
+          drawThickness = 2;
+          # saveAfterCopyPath=/home/brian/Pictures
+          # savePath=/home/brian/Pictures
+          # savePathFixed=false;
+          # setSaveAsFileExtension=Portable Network Graphic file (PNG) (*.png)
+          showHelp = false;
+          showSidePanelButton = false;
+          showStartupLaunchMessage = false;
+        };
+      };
     };
   };
 }
