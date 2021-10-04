@@ -7,6 +7,7 @@ let
   inherit (lib) mkOption types;
   inherit (config.lib.file) mkOutOfStoreSymlink;
   iniFormat = pkgs.formats.ini { };
+  jsonFormat = pkgs.formats.json { };
   configDir = config.xdg.configHome;
 in
 {
@@ -34,7 +35,7 @@ in
 
 
   home.file."test.ini" = /* mkIf (cfg.settings != { }) */ {
-    source = iniFormat.generate "flameshot.ini" {
+    source = jsonFormat.generate "flameshot.ini" {
       General = {
         contrastUiColor = "#458588";
         uiColor = "#83a598";
