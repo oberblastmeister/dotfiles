@@ -12,30 +12,31 @@ let
     second = "another";
   };
 in
-builtins.trace stuff (abort "qwerpqweri")
-{
-  options.modules.editors.vscode = {
-    enable = my.options.mkEnable;
-  };
+abort "wat"
+# builtins.trace stuff (abort "qwerpqweri")
+# {
+#   options.modules.editors.vscode = {
+#     enable = my.options.mkEnable;
+#   };
 
-  config = lib.mkIf cfg.enable {
-    programs.vscode = {
-      enable = true;
-      extensions = with pkgs.vscode-extensions; [
-        jnoortheen.nix-ide
-        arrterian.nix-env-selector
-        asvetliakov.vscode-neovim
-        bodil.file-browser
-        eamodio.gitlens
-        kahole.magit
-        streetsidesoftware.code-spell-checker
-      ];
-    };
+#   config = lib.mkIf cfg.enable {
+#     programs.vscode = {
+#       enable = true;
+#       extensions = with pkgs.vscode-extensions; [
+#         jnoortheen.nix-ide
+#         arrterian.nix-env-selector
+#         asvetliakov.vscode-neovim
+#         bodil.file-browser
+#         eamodio.gitlens
+#         kahole.magit
+#         streetsidesoftware.code-spell-checker
+#       ];
+#     };
 
-    home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/settings.json");
-    home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/keybindings.json");
+#     home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/settings.json");
+#     home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/keybindings.json");
 
-    home.file."test.md".source = ./test.md;
-    home.file."test.json".source = builtins.trace stuff stuff;
-  };
-}
+#     home.file."test.md".source = ./test.md;
+#     home.file."test.json".source = builtins.trace stuff stuff;
+#   };
+# }
