@@ -27,6 +27,7 @@ in
       dconf2nix
 
       gnomeExtensions.clipboard-indicator
+      gnomeExtensions.appindicator
 
       orchis
       papirus-icon-theme
