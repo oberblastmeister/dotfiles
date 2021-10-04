@@ -6,6 +6,8 @@ let
   toDir = "${config.xdg.configHome}/Code/User";
   inherit (lib) mkOption types;
   inherit (config.lib.file) mkOutOfStoreSymlink;
+  iniFormat = pkgs.formats.ini { };
+  configDir = config.xdg.configHome;
 in
 {
   options.modules.editors.vscode = {
@@ -28,5 +30,25 @@ in
 
     home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/settings.json");
     home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/keybindings.json");
+  };
+
+
+  home.file."test.ini" = /* mkIf (cfg.settings != { }) */ {
+    source = iniFormat.generate "flameshot.ini" {
+      General = {
+        contrastUiColor = "#458588";
+        uiColor = "#83a598";
+        drawColor = "#8ec07c";
+        disabledTrayIcon = false;
+        drawThickness = 2;
+        # saveAfterCopyPath=/home/brian/Pictures
+        # savePath=/home/brian/Pictures
+        # savePathFixed=false;
+        # setSaveAsFileExtension=Portable Network Graphic file (PNG) (*.png)
+        showHelp = false;
+        showSidePanelButton = false;
+        showStartupLaunchMessage = false;
+      };
+    };
   };
 }
