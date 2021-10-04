@@ -19,9 +19,11 @@ in
     services.flameshot.enable = true;
 
     modules.desktop.apps.flameshot.settings = {
-      showHelp = false;
-      showSidePanelButton = false;
-      showStartupLaunchMessage = false;
+      General = {
+        showHelp = false;
+        showSidePanelButton = false;
+        showStartupLaunchMessage = false;
+      };
     };
     home.file."${configDir}/flameshot/flameshot.ini" = lib.mkIf (cfg.settings != { }) {
       source = iniFormat.generate "flameshot.ini" cfg.settings;
