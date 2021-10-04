@@ -8,6 +8,6 @@
   #   ./hardware
   # ];
   imports = [
-    ./presets.nix
     (abort "wat")
+  ];
 }
