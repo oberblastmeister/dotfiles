@@ -1,7 +1,7 @@
 { config, config', my, lib, pkgs, inputs, ... }:
 
 let
-  cfg = config.modules.terminals.gnome-terminal;
+  cfg = config.modules.desktop.terminals.gnome-terminal;
 in
 {
   options.modules.terminals.gnome-terminal = {

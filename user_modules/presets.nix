@@ -26,8 +26,11 @@ let
       };
       desktop = {
         browsers.firefox.enable = mkDefault true;
+        terminals.gnome-terminal.enable = mkDefault true;
+        apps = {
+          flameshot.enable = true;
+        };
       };
-      terminals.gnome-terminal.enable = true;
     };
   };
 

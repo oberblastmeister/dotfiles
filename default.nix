@@ -47,11 +47,11 @@ in
   };
 
   networking = {
-    firewall.enable = true;
+    firewall.enable = mkDefault true;
     # the installation environment enables this
     # gnome enables this
     # but other ones don't
-    networkmanager.enable = true;
+    networkmanager.enable = mkDefault true;
   };
 
   # essentials
@@ -70,5 +70,8 @@ in
     # sometimes needs the channel to be there
     command-not-found.enable = false;
   };
+
   users.defaultUserShell = pkgs.fish;
+  
+  modules.presets.enable = mkDefault "full";
 }

@@ -13,8 +13,13 @@
       config' = config;
     };
     sharedModules = lib.my.modules.importAllRec' ../user_modules
-    # Necessary for home-manager to work with flakes, otherwise it will
-    # look for a nixpkgs channel.
-    ++ [ { home.stateVersion = config.system.stateVersion; } ];
+      # Necessary for home-manager to work with flakes, otherwise it will
+      # look for a nixpkgs channel.
+      ++ [
+      {
+        home.stateVersion = lib.mkDefault config.system.stateVersion;
+        modules.presets.enable = lib.mkDefault "full";
+      }
+    ];
   };
 }
