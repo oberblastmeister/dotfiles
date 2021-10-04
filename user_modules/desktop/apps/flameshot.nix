@@ -23,7 +23,7 @@ in
       showSidePanelButton = false;
       showStartupLaunchMessage = false;
     };
-    home.file."${configDir}/flameshot/flameshot.ini" = mkIf (cfg.settings != { }) {
+    home.file."${configDir}/flameshot/flameshot.ini" = lib.mkIf (cfg.settings != { }) {
       source = iniFormat.generate "flameshot.ini" cfg.settings;
     };
   };
