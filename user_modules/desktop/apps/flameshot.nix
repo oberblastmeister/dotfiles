@@ -4,7 +4,6 @@ let
   cfg = config.modules.desktop.apps.flameshot;
   iniFormat = pkgs.formats.ini { };
   inherit (lib) mkOption;
-  configDir = config.xdg.configHome;
 in
 {
   options.modules.desktop.apps.flameshot = {
@@ -25,8 +24,9 @@ in
         showStartupLaunchMessage = false;
       };
     };
-    xdg.configFile."flameshot/flameshot.ini".source = lib.mkIf (cfg.settings != { }) {
-      source = toString (iniFormat.generate "flameshot.ini" cfg.settings);
+
+    home.file."${config.xdg.configHome}/flameshot/flameshot.ini" = lib.mkIf (cfg.settings != { }) {
+      source = iniFormat.generate "flameshot.ini" cfg.settings;
     };
   };
 }
