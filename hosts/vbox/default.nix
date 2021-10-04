@@ -9,4 +9,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
+
+  modules.hardware.opengl.enable = true;
 }
