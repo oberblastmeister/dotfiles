@@ -9,13 +9,28 @@ in
     enable = my.options.mkEnable;
     settings = mkOption {
       type = iniFormat.type;
-      default = { };
+      default = {
+        General = {
+          contrastUiColor = "#458588";
+          uiColor = "#83a598";
+          drawColor = "#8ec07c";
+          disabledTrayIcon = false;
+          drawThickness = 2;
+          # saveAfterCopyPath=/home/brian/Pictures
+          # savePath=/home/brian/Pictures
+          # savePathFixed=false;
+          # setSaveAsFileExtension=Portable Network Graphic file (PNG) (*.png)
+          showHelp = false;
+          showSidePanelButton = false;
+          showStartupLaunchMessage = false;
+        };
+      };
     };
   };
 
   config = lib.mkIf cfg.enable {
     services.flameshot.enable = true;
 
-    xdg.configFile."flameshot".source = iniFormat.generate "flameshot-settings" cfg.settings;
+    xdg.configFile."flameshot/flameshot.ini".source = iniFormat.generate "flameshot-settings" cfg.settings;
   };
 }
