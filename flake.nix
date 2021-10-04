@@ -40,7 +40,8 @@
 
       nixosModules = { dotfiles = import ./.; } // lib.my.modules.importAll ./modules;
 
-      nixosConfigurations = lib.my.hosts.map ./hosts { };
+      # nixosConfigurations = lib.my.hosts.map ./hosts { };
+      nixosConfigurations = abort "adfadsf";
     }
     // (utils.lib.eachSystem [ system ] (system:
       rec {
