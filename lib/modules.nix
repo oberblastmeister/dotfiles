@@ -79,18 +79,18 @@ rec {
       )
       (builtins.readDir dir);
 
-  mapModulesRec' = dir: fn:
-    let
-      dirs =
-        lib.mapAttrsToList
-          (k: _: "${dir}/${k}")
-          (
-            lib.filterAttrs
-              (n: v: v == "directory" && !(lib.hasPrefix "_" n))
-              (builtins.readDir dir)
-          );
-      files = builtins.attrValues (mapModules dir lib.id);
-      paths = files ++ builtins.concatLists (builtins.map (d: mapModulesRec' d lib.id) dirs);
-    in
-    builtins.map fn paths;
+  # mapRec' = dir: fn:
+  #   let
+  #     dirs =
+  #       lib.mapAttrsToList
+  #         (k: _: "${dir}/${k}")
+  #         (
+  #           lib.filterAttrs
+  #             (n: v: v == "directory" && !(lib.hasPrefix "_" n))
+  #             (builtins.readDir dir)
+  #         );
+  #     files = builtins.attrValues (mapModules dir lib.id);
+  #     paths = files ++ builtins.concatLists (builtins.map (d: mapModulesRec' d lib.id) dirs);
+  #   in
+  #   builtins.map fn paths;
 }

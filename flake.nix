@@ -38,7 +38,7 @@
 
       overlays = lib.my.modules.importAll ./overlays;
 
-      nixosModules = { dotfiles = import ./.; } // lib.my.modules.importAll ./modules;
+      nixosModules = { dotfiles = import ./.; };
 
       nixosConfigurations = lib.my.hosts.map ./hosts { };
     }
