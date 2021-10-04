@@ -72,6 +72,4 @@ in
   };
 
   users.defaultUserShell = pkgs.fish;
-  
-  modules.presets.enable = mkDefault "full";
 }
