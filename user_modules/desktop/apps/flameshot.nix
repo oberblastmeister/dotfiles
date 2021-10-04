@@ -19,9 +19,14 @@ in
 
     modules.desktop.apps.flameshot.settings = {
       General = {
+        uiColor = "#83a598";
+        drawColor = "#8ec07c";
+        contrastUiColor = "#458588";
         showHelp = false;
         showSidePanelButton = false;
         showStartupLaunchMessage = false;
+        disabledTrayIcon = false;
+        drawThickness = 2;
       };
     };
 
