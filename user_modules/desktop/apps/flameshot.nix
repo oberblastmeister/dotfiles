@@ -31,6 +31,6 @@ in
   config = lib.mkIf cfg.enable {
     services.flameshot.enable = true;
 
-    xdg.configFile."flameshot/flameshot.ini".source = iniFormat.generate "flameshot-settings" cfg.settings;
+    xdg.configFile."flameshot/flameshot.ini".source = iniFormat.generate "flameshot-settings.ini" cfg.settings;
   };
 }
