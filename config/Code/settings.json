@@ -372,4 +372,5 @@
     "cSpell.enabledLanguageIds": [
         "markdown"
     ],
+    "security.workspace.trust.enabled": false,
 }
