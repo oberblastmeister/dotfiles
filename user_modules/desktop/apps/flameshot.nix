@@ -25,7 +25,7 @@ in
         showStartupLaunchMessage = false;
       };
     };
-    home.file."${configDir}/flameshot/flameshot.ini" = lib.mkIf (cfg.settings != { }) {
+    xdg.configFile."flameshot/flameshot.ini".source = lib.mkIf (cfg.settings != { }) {
       source = iniFormat.generate "flameshot.ini" cfg.settings;
     };
   };
