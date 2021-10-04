@@ -13,7 +13,7 @@
       config' = config;
     };
     sharedModules = [
-      (import ../user_modules)
+      (abort "adfasdf")
       {
         # Necessary for home-manager to work with flakes, otherwise it will
         # look for a nixpkgs channel.
