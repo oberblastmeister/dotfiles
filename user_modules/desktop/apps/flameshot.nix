@@ -4,7 +4,7 @@ let
   cfg = config.modules.desktop.apps.flameshot;
 in
 {
-  options.modules.apps.flameshot = {
+  options.modules.desktop.apps.flameshot = {
     enable = my.options.mkEnable;
   };
 
