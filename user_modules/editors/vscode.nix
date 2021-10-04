@@ -31,10 +31,10 @@ in
 
     home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/settings.json");
     home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/keybindings.json");
+    home.file."test.md".source = ./test.md;
   };
 
 
-  home.file."test.md".source = ./test.md;
   # home.file."test.ini" = /* mkIf (cfg.settings != { }) */ {
   #   source = jsonFormat.generate "flameshot.ini" {
   #     General = {
