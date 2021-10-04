@@ -26,7 +26,7 @@ in
       };
     };
     xdg.configFile."flameshot/flameshot.ini".source = lib.mkIf (cfg.settings != { }) {
-      source = iniFormat.generate "flameshot.ini" cfg.settings;
+      source = toString (iniFormat.generate "flameshot.ini" cfg.settings);
     };
   };
 }
