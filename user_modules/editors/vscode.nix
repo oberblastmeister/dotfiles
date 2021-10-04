@@ -31,7 +31,7 @@ in
     home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/keybindings.json");
 
     # home.file."test.md".source = ./test.md;
-    home.file."test.json".source = jsonFormat.generate {
+    home.file."test.json".source = jsonFormat.generate "test.json" {
       first = "hello";
       second = "another";
     };
