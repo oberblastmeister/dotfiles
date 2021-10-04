@@ -143,7 +143,7 @@ class UpdateDconf:
         dconf_nix = dconf_dir / 'dconf.nix'
         if dconf_nix.exists() and not self.force:
             raise Exception("dconf.nix exists, pass --force to override it")
-        subprocess.run(['dconf2nix', '-i', dconf_settings, '-o', dconf_nix])
+        # subprocess.run(['dconf2nix', '-i', dconf_settings, '-o', dconf_nix])
         
         
 @dataclass(frozen=True)
