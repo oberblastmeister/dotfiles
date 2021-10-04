@@ -12,7 +12,7 @@ let
     second = "another";
   };
 in
-builtins.trace stuff
+builtins.trace stuff (abort "qwerpqweri")
 {
   options.modules.editors.vscode = {
     enable = my.options.mkEnable;
