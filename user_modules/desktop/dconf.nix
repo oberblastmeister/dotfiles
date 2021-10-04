@@ -36,8 +36,8 @@ in
       };
       "org/gnome/shell/keybindings" = {
         # conflicting keybindings
-        toggle-message-tray = [];
-        toggle-overview = [];
+        toggle-message-tray = [ ];
+        toggle-overview = [ ];
       };
       "org/gnome/settings-daemon/plugins/media-keys" = {
         control-center = [ "<Super>s" ];
@@ -68,6 +68,7 @@ in
           "user-theme@gnome-shell-extensions.gcampax.github.com"
           "clipboard-indicator@tudmotu.com"
           "drive-menu@gnome-shell-extensions.gcampax.github.com"
+          "appindicatorsupport@rgcjonas.gmail.com"
         ];
       };
     };
