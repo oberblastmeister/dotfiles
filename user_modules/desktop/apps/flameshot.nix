@@ -3,6 +3,7 @@
 let
   cfg = config.modules.desktop.apps.flameshot;
   iniFormat = pkgs.formats.ini { };
+  configDir = config.xdg.configHome;
 in
 {
   options.modules.desktop.apps.flameshot = {
@@ -31,9 +32,10 @@ in
         showSidePanelButton = false;
         showStartupLaunchMessage = false;
       };
-
     };
 
-    xdg.configFile."flameshot/flameshot.ini".source = iniFormat.generate "flameshot-settings.ini" cfg.settings;
+    home.file."${configDir}/flameshot/flameshot.ini" = mkIf (cfg.settings != { }) {
+      source = iniFormat.generate "flameshot.ini" cfg.settings;
+    };
   };
 }
