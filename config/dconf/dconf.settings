@@ -226,8 +226,8 @@ www=['<Super>b']
 
 [org/gnome/shell]
 disable-user-extensions=false
-disabled-extensions=['auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'native-window-placement@gnome-shell-extensions.gcampax.github.com']
-enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com', 'clipboard-indicator@tudmotu.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com']
+disabled-extensions=['auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com', 'native-window-placement@gnome-shell-extensions.gcampax.github.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com', 'clipboard-indicator@tudmotu.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'appindicatorsupport@rgcjonas.gmail.com']
 welcome-dialog-last-shown-version='40.4'
 
 [org/gnome/shell/extensions/user-theme]
@@ -246,9 +246,12 @@ locations=@av []
 locations=@av []
 
 [org/gnome/terminal/legacy]
-theme-variant='system'
+default-show-menubar=false
+schema-version=3
+theme-variant='default'
 
 [org/gnome/terminal/legacy/profiles:]
+default='f6042935-7b7a-4993-b312-d3fb2f4853ef'
 list=['f6042935-7b7a-4993-b312-d3fb2f4853ef']
 
 [org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
@@ -259,14 +262,24 @@ use-theme-colors=false
 allow-bold=true
 audible-bell=false
 background-color='#282828282828'
+backspace-binding='ascii-delete'
 bold-color='#ebebdbdbb2b2'
-bold-color-same-as-fg=true
+bold-color-same-as-fg=false
 cursor-background-color='#ebebdbdbb2b2'
+cursor-blink-mode='system'
 cursor-colors-set=true
 cursor-foreground-color='#282828282828'
+cursor-shape='block'
+delete-binding='delete-sequence'
 foreground-color='#ebebdbdbb2b2'
+highlight-colors-set=false
+login-shell=false
 palette=['#282828282828', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#a8a899998484', '#929283837474', '#fbfb49493434', '#b8b8bbbb2626', '#fafabdbd2f2f', '#8383a5a59898', '#d3d386869b9b', '#8e8ec0c07c7c', '#ebebdbdbb2b2']
+scroll-on-output=true
+scrollback-lines=10000
 scrollbar-policy='never'
+use-custom-command=false
+use-system-font=true
 use-theme-background=false
 use-theme-colors=false
 use-theme-transparency=false
