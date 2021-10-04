@@ -43,13 +43,11 @@ in
     type = types.nullOr (types.enum [ "full" "minimal" ]);
   };
 
-  config = lib.mkIf (cfg.enable != null) (
-    lib.mkMerge [
-      {
-        home.file."test.md".source = abort "another failure";
-      }
-      (lib.mkIf (cfg.enable == "full") fullPreset)
-      (lib.mkIf (cfg.enable == "minimal") minimalPreset)
-    ]
-  );
+  config = abort "failure";
+  # config = lib.mkIf (cfg.enable != null) (
+  #   lib.mkMerge [
+  #     (lib.mkIf (cfg.enable == "full") fullPreset)
+  #     (lib.mkIf (cfg.enable == "minimal") minimalPreset)
+  #   ]
+  # );
 }
