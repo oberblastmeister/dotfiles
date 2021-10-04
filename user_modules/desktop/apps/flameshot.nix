@@ -6,7 +6,9 @@ let
   inherit (lib) mkOption;
 in
 {
-  imports = abort "adf";
+  imports = [
+    (abort "adf")
+  ];
 
   options.modules.desktop.apps.flameshot = {
     enable = my.options.mkEnable;
