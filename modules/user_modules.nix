@@ -12,13 +12,14 @@
       inherit (lib) my;
       config' = config;
     };
-    sharedModules = lib.my.modules.importAllRec' ../user_modules
+    sharedModules =
       # Necessary for home-manager to work with flakes, otherwise it will
       # look for a nixpkgs channel.
-      ++ [
-      {
-        home.stateVersion = lib.mkDefault config.system.stateVersion;
-      }
-    ];
+      [
+        (import ../user_modules)
+        {
+          home.stateVersion = lib.mkDefault config.system.stateVersion;
+        }
+      ];
   };
 }

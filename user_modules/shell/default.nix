@@ -13,6 +13,13 @@ let
   };
 in
 {
+  imports = [
+    ./bash.nix
+    ./fish.nix
+    ./zsh.nix
+    ./git.nix
+  ];
+
   options.modules.shell = {
     aliases = mkOption {
       default = { };

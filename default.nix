@@ -4,9 +4,10 @@ let
   inherit (lib) mkDefault;
 in
 {
-  imports =
-    [ inputs.home-manager.nixosModules.home-manager ]
-    ++ lib.my.modules.importAllRec' ./modules;
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    (import ./modules)
+  ];
 
   nix = {
     package = pkgs.nixFlakes;
