@@ -10,7 +10,7 @@ let
 in
 {
   imports = [
-    (import "abort")
+    (abort "what")
   ];
 
   options.modules.editors.vscode = {
