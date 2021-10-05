@@ -9,10 +9,6 @@ let
   jsonFormat = pkgs.formats.json { };
 in
 {
-  imports = [
-    (abort "what")
-  ];
-
   options.modules.editors.vscode = {
     enable = my.options.mkEnable;
   };
@@ -34,7 +30,7 @@ in
     home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/settings.json");
     home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/keybindings.json");
 
-    # home.file."test.md".source = ./test.md;
+    home.file."test.md".source = ./test.md;
     # home.file."generated.json".source = jsonFormat.generate "generated.json" {
     #   hello = "world";
     # };
