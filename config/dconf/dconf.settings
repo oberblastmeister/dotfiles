@@ -19,7 +19,7 @@ window-maximize=true
 
 [org/gnome/Music]
 window-maximized=false
-window-position=[56, 50]
+window-position=[60, 120]
 window-size=[768, 600]
 
 [org/gnome/calendar]
@@ -37,7 +37,7 @@ size=(915, 725)
 state=43908
 
 [org/gnome/control-center]
-last-panel='keyboard'
+last-panel='power'
 
 [org/gnome/desktop/a11y/magnifier]
 mag-factor=2.0
@@ -53,13 +53,13 @@ show-weekdate=false
 
 [org/gnome/desktop/input-sources]
 per-window=false
-sources=[('xkb', 'us')]
+sources=[('xkb', 'us'), ('xkb', 'es')]
 xkb-options=['ctrl:nocaps']
 
 [org/gnome/desktop/interface]
 clock-show-seconds=false
 clock-show-weekday=true
-cursor-theme='Adwaita'
+cursor-theme='Bibata_Ice'
 document-font-name='Noto Sans 11'
 enable-hot-corners=true
 font-antialiasing='rgba'
@@ -164,6 +164,11 @@ window-width=600
 [org/gnome/gedit/plugins]
 active-plugins=['spell', 'sort', 'docinfo', 'filebrowser', 'modelines']
 
+[org/gnome/gedit/plugins/filebrowser]
+root='file:///'
+tree-view=true
+virtual-root='file:///home/brian/Downloads'
+
 [org/gnome/gedit/preferences/ui]
 show-tabs-mode='auto'
 
@@ -171,7 +176,7 @@ show-tabs-mode='auto'
 bottom-panel-size=140
 side-panel-active-page='GeditWindowDocumentsPanel'
 side-panel-size=200
-size=(900, 495)
+size=(833, 495)
 state=87168
 
 [org/gnome/gnome-system-monitor]
@@ -180,7 +185,7 @@ maximized=false
 network-total-in-bits=false
 show-dependencies=false
 show-whose-processes='user'
-window-state=(700, 500, 56, 50)
+window-state=(1188, 661, 316, 132)
 
 [org/gnome/gnome-system-monitor/disktreenew]
 col-6-visible=true
@@ -212,7 +217,7 @@ search-filter-time-type='last_modified'
 search-view='list-view'
 
 [org/gnome/nautilus/window-state]
-initial-size=(890, 550)
+initial-size=(833, 550)
 maximized=false
 
 [org/gnome/photos]
@@ -229,6 +234,10 @@ disable-user-extensions=false
 disabled-extensions=['auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com', 'native-window-placement@gnome-shell-extensions.gcampax.github.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']
 enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com', 'clipboard-indicator@tudmotu.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'appindicatorsupport@rgcjonas.gmail.com']
 welcome-dialog-last-shown-version='40.4'
+
+[org/gnome/shell/extensions/appindicator]
+icon-size=0
+tray-pos='right'
 
 [org/gnome/shell/extensions/user-theme]
 name='Orchis'
@@ -299,5 +308,5 @@ sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-position=(56, 50)
+window-position=(32, 166)
 window-size=(768, 495)
