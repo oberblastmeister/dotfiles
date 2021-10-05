@@ -32,8 +32,14 @@ in
 
     home.file."test.md".source = ./test.md;
 
-    # home.file."generated.json".source = jsonFormat.generate "generated.json" {
-    #   hello = "world";
-    # };
+    home.file."generated.json".source = jsonFormat.generate "generated.json" {
+      hello = "world";
+      aList = [
+        "first"
+        "second"
+        false
+        1324
+      ];
+    };
   };
 }
