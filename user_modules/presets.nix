@@ -28,6 +28,7 @@ let
         browsers.firefox.enable = mkDefault true;
         terminals.gnome-terminal.enable = mkDefault true;
         apps = {
+          enable = true;
           flameshot.enable = true;
         };
       };
