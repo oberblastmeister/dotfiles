@@ -29,7 +29,6 @@ let
         terminals.gnome-terminal.enable = mkDefault true;
         apps = {
           enable = true;
-          flameshot.enable = true;
         };
       };
     };

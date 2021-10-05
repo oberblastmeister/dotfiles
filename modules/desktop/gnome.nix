@@ -33,10 +33,5 @@ in
       papirus-icon-theme
       bibata-cursors
     ];
-
-    # qt5 = {
-    #   enable = true;
-    #   platformTheme = "gnome";
-    # };
   };
 }

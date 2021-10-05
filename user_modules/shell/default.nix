@@ -78,6 +78,7 @@ in
         glow
         archiver
         notify-desktop
+        jq
       ];
 
       programs = {

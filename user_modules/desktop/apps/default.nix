@@ -11,9 +11,15 @@ in
 
   options.modules.desktop.apps.enable = my.options.mkEnable;
 
-  config = {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       anki
+      gource # git visualizer
+      peek # simple gif recorder
     ];
+
+    modules.desktop.apps = {
+      flameshot.enable = true;
+    };
   };
 }
