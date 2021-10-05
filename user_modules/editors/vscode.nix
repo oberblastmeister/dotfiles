@@ -9,6 +9,10 @@ let
   jsonFormat = pkgs.formats.json { };
 in
 {
+  imports = [
+    (import "abort")
+  ];
+
   options.modules.editors.vscode = {
     enable = my.options.mkEnable;
   };
