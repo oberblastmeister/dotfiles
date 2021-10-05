@@ -16,6 +16,12 @@ in
       anki
       gource # git visualizer
       peek # simple gif recorder
+      elementary-planner
+      element-desktop
+      discord
+      mailspring
+      gthumb
+      mpv
     ];
 
     modules.desktop.apps = {
