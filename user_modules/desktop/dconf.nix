@@ -44,7 +44,7 @@ in
         www = [ "<Super>b" ];
       };
       "org/gnome/desktop/interface" = {
-        cursor-theme = "Adwaita";
+        cursor-theme = "Bibata_Ice";
         gtk-theme = "Orchis";
         icon-theme = "ePapirus";
         font-name = "Noto Sans 11";
