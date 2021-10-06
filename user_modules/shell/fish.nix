@@ -15,5 +15,9 @@ in
         source ${config'.dotfiles.configDir + "/fish/config.fish"}
       '';
     };
+
+    programs.vscode.extensions = with pkgs.vscode-extensions; [
+      skyapps.fish-vscode
+    ];
   };
 }
