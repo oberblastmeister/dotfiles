@@ -1,4 +1,4 @@
-{ config, config', my, lib, pkgs, inputs, ... }:
+{ config, my, lib, pkgs, inputs, ... }:
 
 let
   cfg = config.modules.desktop.terminals.gnome-terminal;

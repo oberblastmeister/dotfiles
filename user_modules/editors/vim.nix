@@ -1,4 +1,4 @@
-{ config, config', my, lib, pkgs, inputs, ... }:
+{ config, nixosConfig, my, lib, pkgs, inputs, ... }:
 
 let
   cfg = config.modules.editors.vim;
@@ -26,7 +26,7 @@ in
     };
 
     xdg.configFile = {
-      "nvim".source = mkOutOfStoreSymlink (config'.dotfiles.naiveConfigDir + "/nvim");
+      "nvim".source = mkOutOfStoreSymlink (nixosConfig.dotfiles.naiveConfigDir + "/nvim");
     };
   };
 }

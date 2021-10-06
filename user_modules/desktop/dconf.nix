@@ -1,11 +1,11 @@
-{ config, config', options, unstable, pkgs, lib, my, ... }:
+{ config, nixosConfig, options, unstable, pkgs, lib, my, ... }:
 
 let
-  cfg' = config'.modules.desktop.gnome;
+  nixosCfg = nixosConfig.modules.desktop.gnome;
   mkTuple = lib.hm.gvariant.mkTuple;
 in
 {
-  config = lib.mkIf cfg'.enable {
+  config = lib.mkIf nixosCfg.enable {
     dconf.settings = {
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super>q" ];

@@ -10,7 +10,6 @@
       # inherit my instead of whole lib because home-manager needs to use
       # it's own special extended stdlib and it will clash with the lib name
       inherit (lib) my;
-      config' = config;
     };
     sharedModules = lib.my.modules.importAllRec' ../user_modules
       # Necessary for home-manager to work with flakes, otherwise it will

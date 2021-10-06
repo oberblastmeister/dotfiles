@@ -1,4 +1,4 @@
-{ options, config, config', lib, my, pkgs, ... }:
+{ options, config, nixosConfig, lib, my, pkgs, ... }:
 
 let
   cfg = config.modules.shell.fish;
@@ -12,7 +12,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.fish = {
       shellInit = ''
-        source ${config'.dotfiles.configDir + "/fish/config.fish"}
+        source ${nixosConfig.dotfiles.configDir + "/fish/config.fish"}
       '';
     };
 
