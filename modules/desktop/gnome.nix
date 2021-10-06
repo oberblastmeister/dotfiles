@@ -31,6 +31,7 @@ in
 
       orchis
       papirus-icon-theme
+      bibata-cursors
     ];
   };
 }
