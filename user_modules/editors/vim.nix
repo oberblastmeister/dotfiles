@@ -12,9 +12,10 @@ in
 
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlay ];
-    
+
     programs.neovim = {
       enable = true;
+      package = pkgs.neovim;
       plugins = with pkgs.vimPlugins; [
         vim-surround
         vim-commentary
