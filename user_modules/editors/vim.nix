@@ -27,7 +27,7 @@ in
         packadd vim-surround
         packadd targets-vim
         
-        source ${nvimConfigDir + "vscode_mappings.vim"}
+        source ${nvimConfigDir + "/vscode_mappings.vim"}
       '';
     };
 
