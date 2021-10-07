@@ -20,6 +20,14 @@ in
 
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlay ];
+    
+    modules.editors.vim = {
+      vscodeExtraConfig = ''
+        packadd vim-commentary
+        packadd vim-surround
+        packadd targets-vim
+      '';
+    };
 
     programs.neovim = {
       enable = true;
