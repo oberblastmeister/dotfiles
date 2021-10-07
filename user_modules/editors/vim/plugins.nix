@@ -21,7 +21,7 @@ in
               luarocks = {
                 python_cmd = 'python' -- Set the python command to use for running hererocks
               }
-            },
+            }
             EOF
           '';
         }
