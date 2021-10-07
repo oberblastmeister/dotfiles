@@ -63,7 +63,7 @@ in
         two-finger-scrolling-enabled = true;
       };
       "org/gnome/desktop/peripherals/keyboard" = {
-        repeat-interval = 18;
+        repeat-interval = "uint32 17";
       };
       "org/gnome/shell" = {
         disable-user-extensions = false;
