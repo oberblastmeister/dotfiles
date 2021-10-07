@@ -19,12 +19,21 @@ in
         vim-surround
         vim-commentary
       ];
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      withNodeJs = true;
+      withPython3 = true;
+      withRuby = true;
+      extraConfig = ''
+        set noloadplugins
+      '';
     };
 
-    modules.shell.aliases = {
-      "vim" = "nvim";
-      "vi" = "nvim";
-    };
+    # modules.shell.aliases = {
+    #   "vim" = "nvim";
+    #   "vi" = "nvim";
+    # };
 
     # xdg.configFile = {
     #   "nvim".source = mkOutOfStoreSymlink (nixosConfig.dotfiles.naiveConfigDir + "/nvim");
