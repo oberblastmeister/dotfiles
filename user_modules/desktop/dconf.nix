@@ -62,6 +62,9 @@ in
         disable-while-typing = false;
         two-finger-scrolling-enabled = true;
       };
+      "org/gnome/desktop/peripherals/keyboard" = {
+        repeat-interval = 18;
+      };
       "org/gnome/shell" = {
         disable-user-extensions = false;
         enabled-extensions = [
