@@ -38,7 +38,7 @@ in
         }
         vim-fugitive
         {
-          plugin = vimPlugins.gitsigns-nvim;
+          plugin = gitsigns-nvim;
           config = ''
             require('gitsigns').setup {
               signs = {
