@@ -27,6 +27,8 @@ in
       withRuby = true;
       extraConfig = ''
         set noloadplugins
+        
+        packadd vim-surround
       '';
     };
 
