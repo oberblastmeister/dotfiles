@@ -346,9 +346,19 @@
         "when": "editorFocus && findWidgetVisible && !isComposing"
     },
     {
+        "key": "ctrl+b",
+        "command": "cursorLeft",
+        "when": "textInputFocus && neovim.mode == insert"
+    },
+    {
         "key": "left",
         "command": "-cursorLeft",
         "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "cursorRight",
+        "when": "textInputFocus && neovim.mode == insert"
     },
     {
         "key": "right",
@@ -366,6 +376,16 @@
         "when": "textInputFocus"
     },
     {
+        "key": "ctrl+a",
+        "command": "cursorHome",
+        "when": "textInputFocus && neovim.mode == insert"
+    },
+    {
+        "key": "home",
+        "command": "-cursorHome",
+        "when": "textInputFocus"
+    },
+    {
         "key": "ctrl+]",
         "command": "-markdown.extension.onIndentLines",
         "when": "editorTextFocus && !suggestWidgetVisible && editorLangId == 'markdown'"
@@ -379,14 +399,5 @@
         "key": "f12",
         "command": "-editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
-    },
-    {
-        "key": "ctrl+f",
-        "command": "-actions.find",
-        "when": "editorFocus || editorIsOpen"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
+    }
 ]
