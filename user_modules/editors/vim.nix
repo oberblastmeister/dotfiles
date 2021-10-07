@@ -4,6 +4,7 @@ let
   cfg = config.modules.editors.vim;
   inherit (lib) mkOption types;
   inherit (config.lib.file) mkOutOfStoreSymlink;
+  nvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
 in
 {
   options.modules.editors.vim = {
@@ -20,12 +21,13 @@ in
 
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlay ];
-    
+
     modules.editors.vim = {
       vscodeExtraConfig = ''
-        packadd vim-commentary
         packadd vim-surround
         packadd targets-vim
+        
+        source ${nvimConfigDir + "vscode_mappings.vim"}
       '';
     };
 
