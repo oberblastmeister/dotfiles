@@ -32,6 +32,10 @@ in
       '';
     };
 
+    xdg.configFile = {
+      # a copy of init.vim in fact
+      "nvim/init.generated.vim".text = config.programs.neovim.generatedConfigViml;
+    };
     # modules.shell.aliases = {
     #   "vim" = "nvim";
     #   "vi" = "nvim";
