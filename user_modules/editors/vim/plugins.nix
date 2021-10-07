@@ -13,6 +13,18 @@ in
   config = {
     programs.neovim.plugins =
       with pkgs.vimPlugins; [
+        {
+          plugin = packer-nvim;
+          config = ''
+            lua << EOF
+            require('packer').init {
+              luarocks = {
+                python_cmd = 'python' -- Set the python command to use for running hererocks
+              }
+            },
+            EOF
+          '';
+        }
         vim-surround
         {
           plugin = vim-commentary;
