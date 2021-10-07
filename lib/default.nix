@@ -5,6 +5,7 @@ lib.makeExtensible (self:
     args = { inherit self lib pkgs inputs; };
   in
   {
+    utils = import ./utils.nix args;
     modules = import ./modules.nix args;
     attrs = import ./attrs.nix args;
     hosts = import ./hosts.nix args;

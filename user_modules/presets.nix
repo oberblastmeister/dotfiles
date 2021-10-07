@@ -20,15 +20,15 @@ let
         java.enable = mkDefault true;
       };
       shell = {
-        fish.enable = true;
-        bash.enable = true;
+        fish.enable = mkDefault true;
+        bash.enable = mkDefault true;
         programs.enable = mkDefault true;
       };
       desktop = {
         browsers.firefox.enable = mkDefault true;
         terminals.gnome-terminal.enable = mkDefault true;
         apps = {
-          flameshot.enable = true;
+          enableAll = mkDefault true;
         };
       };
     };
