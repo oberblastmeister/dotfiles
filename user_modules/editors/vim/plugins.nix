@@ -40,7 +40,7 @@ in
         {
           plugin = gitsigns-nvim;
           config = ''
-            lua <<< EOF
+            lua << EOF
             require('gitsigns').setup {
               signs = {
                 add          = {hl = 'GitGutterAdd'   , text = '┃'},
