@@ -4,7 +4,8 @@ let
   cfg = config.modules.editors.vim;
   inherit (lib) mkOption types;
   inherit (config.lib.file) mkOutOfStoreSymlink;
-  nvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
+  naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
+  nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
 in
 {
   options.modules.editors.vim = {
@@ -25,9 +26,9 @@ in
     modules.editors.vim = {
       vscodeExtraConfig = ''
         packadd vim-surround
-        packadd targets-vim
+        packadd targets.vim
         
-        source ${nvimConfigDir + "/vscode_mappings.vim"}
+        ${builtins.readFile (nvimConfigDir + /vscode_mappings.vim)}
       '';
     };
 
