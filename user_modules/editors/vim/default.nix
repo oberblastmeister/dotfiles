@@ -30,7 +30,7 @@ in
         
         ${builtins.readFile (nvimConfigDir + /vscode_mappings.vim)}
       '';
-      
+
       extraConfig = ''
         source ${nvimConfigDir + /settings.vim}
       '';
@@ -38,31 +38,6 @@ in
 
     programs.neovim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [
-        vim-surround
-        {
-          plugin = vim-commentary;
-          config = ''
-            xmap <Space>c  <Plug>Commentary
-            nmap <Space>c  <Plug>Commentary
-            omap <Space>c  <Plug>Commentary
-            nmap <Space>cc <Plug>CommentaryLine
-            nmap <Space>cu <Plug>Commentary<Plug>Commentary
-
-            noremap gc <Nop>
-          '';
-        }
-        targets-vim
-        {
-          plugin = gruvbox-community;
-          config = ''
-            colorscheme gruvbox
-            let g:gruvbox_sign_column = 'bg0'
-            let g:gruvbox_italic = 1
-            let g:gruvbox_invert_selection = 0
-          '';
-        }
-      ];
       extraConfig = ''
         if exists('g:vscode')
           set noloadplugins
@@ -87,13 +62,5 @@ in
       # a copy of init.vim in fact
       "nvim/init.generated.vim".text = config.programs.neovim.generatedConfigViml;
     };
-    # modules.shell.aliases = {
-    #   "vim" = "nvim";
-    #   "vi" = "nvim";
-    # };
-
-    # xdg.configFile = {
-    #   "nvim".source = mkOutOfStoreSymlink (nixosConfig.dotfiles.naiveConfigDir + "/nvim");
-    # };
   };
 }
