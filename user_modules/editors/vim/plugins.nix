@@ -54,6 +54,16 @@ in
             EOF
           '';
         }
+
+        {
+          plugin = fzf-vim;
+        }
+
+        {
+          plugin = telescope-nvim;
+        }
+        telescope-fzy-native-nvim
+        telescope-fzf-native-nvim
       ];
   };
 }
