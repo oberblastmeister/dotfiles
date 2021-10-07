@@ -9,5 +9,6 @@
         "pascalsenn.keyboard-quickfix",
         "sainnhe.gruvbox-material",
         "zhuangtongfa.material-theme",
+        "llvm-vs-code-extensions.vscode-clangd",
     ]
 }

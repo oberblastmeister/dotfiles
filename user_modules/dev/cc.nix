@@ -16,8 +16,7 @@ in
       cmake
     ];
 
-    programs.vscode.extensions = with pkgs; [
-      vscode-extensions.ms-vscode.cpptools
-    ];
+    # use clangd instead of microsoft c/cpp, its much better
+    programs.vscode.extensions = with pkgs; [ ];
   };
 }

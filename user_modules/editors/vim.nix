@@ -25,8 +25,8 @@ in
       "vi" = "nvim";
     };
 
-    xdg.configFile = {
-      "nvim".source = mkOutOfStoreSymlink (nixosConfig.dotfiles.naiveConfigDir + "/nvim");
-    };
+    # xdg.configFile = {
+    #   "nvim".source = mkOutOfStoreSymlink (nixosConfig.dotfiles.naiveConfigDir + "/nvim");
+    # };
   };
 }
