@@ -8,6 +8,14 @@ in
 {
   options.modules.editors.vim = {
     enable = my.options.mkEnable;
+    vscodeExtraConfig = mkOption {
+      type = types.str;
+      default = "";
+    };
+    extraConfig = mkOption {
+      type = types.str;
+      default = "";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -31,14 +39,21 @@ in
         }
         targets-vim
       ];
+      extraConfig = ''
+        if exists('g:vscode')
+          ${cfg.vscodeExtraConfig}
+          
+          finish
+        endif
+        
+        ${cfg.extraConfig}
+      '';
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
       withNodeJs = true;
       withPython3 = true;
       withRuby = true;
-      extraConfig = ''
-      '';
     };
 
     xdg.configFile = {
