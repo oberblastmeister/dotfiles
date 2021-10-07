@@ -39,7 +39,7 @@ in
         vim-fugitive
         {
           plugin = gitsigns-nvim;
-          config = ''
+          luaConfig = ''
             require('gitsigns').setup {
               signs = {
                 add          = {hl = 'GitGutterAdd'   , text = '┃'},
