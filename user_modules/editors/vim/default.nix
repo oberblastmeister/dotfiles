@@ -50,6 +50,11 @@ in
         
         ${cfg.extraConfig}
       '';
+      extraPackages = with pkgs; [
+        fd
+        ripgrep
+        bat
+      ];
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
