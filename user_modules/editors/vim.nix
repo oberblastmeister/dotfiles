@@ -15,7 +15,7 @@ in
 
     programs.neovim = {
       enable = true;
-      # package = pkgs.neovim;
+      package = pkgs.neovim;
       plugins = with pkgs.vimPlugins; [
         vim-surround
         vim-commentary
