@@ -41,6 +41,9 @@ in
       ];
       extraConfig = ''
         if exists('g:vscode')
+          set noloadplugins
+          set clipboard^=unnamed,unnamedplus
+
           ${cfg.vscodeExtraConfig}
           
           finish
