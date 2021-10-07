@@ -30,6 +30,10 @@ in
         
         ${builtins.readFile (nvimConfigDir + /vscode_mappings.vim)}
       '';
+      
+      extraConfig = ''
+        source ${nvimConfigDir + /settings.vim}
+      '';
     };
 
     programs.neovim = {
