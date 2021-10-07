@@ -18,6 +18,7 @@ in
       plugins = with pkgs.vimPlugins; [
         vim-surround
         vim-commentary
+        targets-vim
       ];
       viAlias = true;
       vimAlias = true;
@@ -26,9 +27,6 @@ in
       withPython3 = true;
       withRuby = true;
       extraConfig = ''
-        set noloadplugins
-        
-        packadd vim-surround
       '';
     };
 
