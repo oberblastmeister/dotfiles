@@ -3,6 +3,8 @@
 let
   cfg = config.modules.editors.vim.plugins;
   inherit (lib) mkOption types;
+  naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
+  nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
 in
 {
   options.modules.editors.vim.plugins = mkOption {
@@ -29,16 +31,17 @@ in
         {
           plugin = vim-commentary;
           config = ''
-            xmap <Space>c  <Plug>Commentary
-            nmap <Space>c  <Plug>Commentary
-            omap <Space>c  <Plug>Commentary
-            nmap <Space>cc <Plug>CommentaryLine
-            nmap <Space>cu <Plug>Commentary<Plug>Commentary
+            xmap <space>c  <Plug>Commentary
+            nmap <space>c  <Plug>Commentary
+            omap <space>c  <Plug>Commentary
+            nmap <space>cc <Plug>CommentaryLine
+            nmap <space>cu <Plug>Commentary<Plug>Commentary
 
             noremap gc <Nop>
           '';
         }
         targets-vim
+        vim-cool
         {
           plugin = gruvbox-community;
           config = ''
@@ -69,12 +72,19 @@ in
 
         {
           plugin = fzf-vim;
+          config = ''
+            nnoremap <space>fe :nohl<CR>:Files<CR>
+            nnoremap <c-f> :nohl<CR>:Rg<CR>
+          '';
         }
 
         {
           plugin = telescope-nvim;
-          # config = ''
-          # '';
+          config = ''
+            lua << EOF
+            ${builtins.readFile (nvimConfigDir + /telescope.lua)}
+            EOF
+          '';
         }
         telescope-fzy-native-nvim
         telescope-fzf-native-nvim
