@@ -2,7 +2,7 @@
 
 let
   nixosCfg = nixosConfig.modules.desktop.gnome;
-  mkTuple = lib.hm.gvariant.mkTuple;
+  inherit (lib.hm) gvariant;
 in
 {
   config = lib.mkIf nixosCfg.enable {
@@ -63,8 +63,7 @@ in
         two-finger-scrolling-enabled = true;
       };
       "org/gnome/desktop/peripherals/keyboard" = {
-        # broken for some reason
-        repeat-interval = "uint32 17";
+        repeat-interval = gvariant.mkUint32 18;
       };
       "org/gnome/shell" = {
         disable-user-extensions = false;
