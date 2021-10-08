@@ -1,4 +1,5 @@
 local telescope = require('telescope')
+local api = vim.api
 
 telescope.load_extension('fzy_native')
 
