@@ -14,7 +14,6 @@ in
       misc.enable = mkDefault true;
       flameshot.enable = mkDefault true;
       discord.enable = mkDefault true;
-      zoom.enable = mkDefault true;
     };
   };
 }
