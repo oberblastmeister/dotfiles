@@ -7,7 +7,7 @@ let
   nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
   dummyPlugin = pkgs.vimUtils.buildVimPlugin {
     name = "dummy_plugin";
-    src = nvimConfigDir + "/dummy_plugin";
+    src = ./dummy_plugin;
   };
 in
 {
