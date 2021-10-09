@@ -391,6 +391,12 @@
             "command": "workbench.action.closeAllEditors",
         },
         {
+            "key": "x",
+            "name": "save and quit",
+            "command": "vscode-neovim.send",
+            "args": ":Wq<CR>",
+        },
+        {
             "key": "o",
             "name": "only",
             "command": "vscode-neovim.send",
