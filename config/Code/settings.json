@@ -373,4 +373,101 @@
         "markdown"
     ],
     "security.workspace.trust.enabled": false,
+    "whichkey.delay": 500,
+    "whichkey.bindings": [
+        {
+            "key": "w",
+            "name": "write",
+            "command": "workbench.action.files.save",
+        },
+        {
+            "key": "q",
+            "name": "quit",
+            "command": "workbench.action.closeActiveEditor",
+        },
+        {
+            "key": "Q",
+            "name": "quit all",
+            "command": "workbench.action.closeAllEditors",
+        },
+        {
+            "key": "o",
+            "name": "only",
+            "command": "vscode-neovim.send",
+            "args": ":Only<CR>",
+        },
+        {
+            "key": "=",
+            "name": "format document",
+            "command": "editor.action.formatDocument",
+        },
+        {
+            "key": "l",
+            "name": "lsp",
+            "bindings": [
+                {
+                    "key": "a",
+                    "name": "code actions",
+                    "command": "keyboard-quickfix.openQuickFix",
+                },
+                {
+                    "key": "l",
+                    "name": "code lens",
+                    "command": "codelens.showLensesInCurrentLine",
+                },
+            ],
+        },
+        {
+            "key": "r",
+            "name": "rename",
+            "bindings": [
+                {
+                    "key": "rn",
+                    "command": "editor.action.rename",
+                }
+            ],
+        },
+        {
+            "key": "space",
+            "name": "open link",
+            "command": "editor.action.openLink",
+        },
+        {
+            "key": "h",
+            "name": "Hunk",
+            "bindings": [
+                {
+                    "key": "r",
+                    "name": "revert",
+                    "command": "git.revertSelectedRanges",
+                },
+                {
+                    "key": "s",
+                    "name": "stage",
+                    "command": "git.stageSelectedRanges",
+                }
+            ],
+        },
+        {
+            "key": "g",
+            "name": "git",
+            "bindings": [
+                {
+                    "key": "s",
+                    "name": "magit status",
+                    "command": "magit.status",
+                }
+            ]
+        },
+        {
+            "key": "b",
+            "name": "toggle sidebar",
+            "command": "workbench.action.toggleSidebarVisibility",
+        },
+        {
+            "key": "/",
+            "name": "replace in files",
+            "command": "workbench.action.replaceInFiles",
+        },
+    ],
 }

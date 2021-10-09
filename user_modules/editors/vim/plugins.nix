@@ -6,6 +6,7 @@ let
   naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
   nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
   vscodeConfigDir = nvimConfigDir + "/vscode";
+  naiveVscodeConfigDir = naiveNvimConfigDir + "/vscode";
   dummyPlugin = pkgs.vimUtils.buildVimPlugin {
     name = "dummy";
     src = ./dummy_plugin;
@@ -31,7 +32,7 @@ in
               packadd vim-surround
               packadd targets.vim
               
-              source ${vscodeConfigDir + /mappings.vim}
+              source ${naiveVscodeConfigDir + "/mappings.vim"}
               
               finish
             endif

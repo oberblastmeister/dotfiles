@@ -1,4 +1,107 @@
 [
+    // space mappings
+    {
+        "key": "space",
+        "command": "whichkey.show",
+        "when": "neovim.mode != insert && textInputFocus"
+    },
+    // {
+    //     "key": "space w",
+    //     "command": "workbench.action.files.save",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space q",
+    //     "command": "workbench.action.closeActiveEditor",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space q",
+    //     "command": "workbench.action.closeAllEditors",
+    //     "when": "neovim.mode == normal"
+    // },
+    // {
+    //     "key": "space o",
+    //     "command": "vscode-neovim.send",
+    //     "args": ":Only<CR>",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space =",
+    //     "command": "editor.action.formatDocument",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space r n",
+    //     "command": "editor.action.rename",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space a",
+    //     "command": "keyboard-quickfix.openQuickFix",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space l",
+    //     "command": "codelens.showLensesInCurrentLine",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space space",
+    //     "command": "editor.action.openLink",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space h r",
+    //     "command": "git.revertSelectedRanges",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space h s",
+    //     "command": "git.stageSelectedRanges",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space b",
+    //     "command": "workbench.action.toggleSidebarVisibility",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "space /",
+    //     "command": "workbench.action.replaceInFiles",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "ctrl+/",
+    //     "command": "editor.action.startFindReplaceAction",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "[ g",
+    //     "command": "editor.action.marker.prev",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "] g",
+    //     "command": "editor.action.marker.next",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "[ G",
+    //     "command": "editor.action.marker.prevInFiles",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //     "key": "] G",
+    //     "command": "editor.action.marker.nextInFiles",
+    //     "when": "neovim.mode == normal",
+    // },
+    // {
+    //   "key": "ctrl+shift+[",
+    //   "command": "editor.fold",
+    //   "when": "editorTextFocus && foldingEnabled"
+    // },
+    // other vscode mappings
     {
         "key": "shift+ctrl+e",
         "command": "actions.findWithSelection"
@@ -130,7 +233,6 @@
         "command": "closeFindWidget",
         "when": "editorFocus && findWidgetVisible && !isComposing"
     },
-    
     // cursor stuff
     {
         "key": "ctrl+b",
@@ -152,7 +254,6 @@
         "command": "cursorHome",
         "when": "textInputFocus && neovim.mode == insert"
     },
-
     // magit stuff
     {
         "command": "magit.toggle-fold",

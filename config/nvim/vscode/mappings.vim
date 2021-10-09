@@ -1,10 +1,13 @@
-nnoremap <C-/> <Cmd>call VSCodeNotify('editor.action.startFindReplaceAction')<CR>
-nnoremap <space>/ <Cmd>call VSCodeNotify('workbench.action.replaceInFiles')<CR>
+nnoremap c* <Cmd>call VSCodeNotify('editor.action.changeAll')<CR>
 
-xmap <space>c  <Plug>VSCodeCommentary
-nmap <space>c  <Plug>VSCodeCommentary
-omap <space>c  <Plug>VSCodeCommentary
-nmap <space>cc <Plug>VSCodeCommentaryLine
+" xmap <space>c  <Plug>VSCodeCommentary
+" nmap <space>c  <Plug>VSCodeCommentary
+" omap <space>c  <Plug>VSCodeCommentary
+" nmap <space>cc <Plug>VSCodeCommentaryLine
+xmap gc  <Plug>VSCodeCommentary
+nmap gc  <Plug>VSCodeCommentary
+omap gc  <Plug>VSCodeCommentary
+nmap gcc <Plug>VSCodeCommentaryLine
 
 nnoremap <C-j> <Cmd>call VSCodeNotify('workbench.action.focusBelowGroup')<CR>
 xnoremap <C-j> <Cmd>call VSCodeNotify('workbench.action.focusBelowGroup')<CR>
@@ -32,24 +35,6 @@ nnoremap <space><space> <Cmd>call VSCodeNotify('editor.action.openLink')<CR>
 
 nnoremap <space>q <Cmd>Quit<CR>
 nnoremap <space>Q <Cmd>Quit!<CR>
-
-nnoremap <space>w <Cmd>Write<CR>
-nnoremap <space>W <Cmd>Wall<CR>
-
-nnoremap <space>x <Cmd>Wq<CR>
-nnoremap <space>X <Cmd>Wq!<CR>
-
-nnoremap <space>o <Cmd>Only<CR>
-
-inoremap <C-f> <Right>
-inoremap <C-b> <Left>
-inoremap <C-e> <End>
-inoremap <C-a> <Home>
-
-nnoremap <space>hr <Cmd>call VSCodeNotify('git.revertSelectedRanges')<CR>
-nnoremap <space>hs <Cmd>call VSCodeNotify('git.stageSelectedRanges')<CR>
-nnoremap <space>b <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
-nnoremap <space>b <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
 
 nnoremap <S-Tab> <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
 nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
