@@ -2,7 +2,7 @@
 
 let
   cfg = config.modules.editors;
-  inherit (lib) types;
+  inherit (lib) mkOption types;
 in
 {
   options.modules.editors = {
