@@ -16,6 +16,11 @@ in
     programs.neovim.plugins =
       with pkgs.vimPlugins; [
         {
+          config = ''
+            " dummy config
+          '';
+        }
+        {
           plugin = packer-nvim;
           config = ''
             lua << EOF
