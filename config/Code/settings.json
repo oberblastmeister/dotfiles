@@ -373,6 +373,9 @@
         "markdown"
     ],
     "security.workspace.trust.enabled": false,
+    "workbench.editorAssociations": {
+        "git-rebase-todo": "default"
+    },
     "whichkey.delay": 500,
     "whichkey.bindings": [
         {
