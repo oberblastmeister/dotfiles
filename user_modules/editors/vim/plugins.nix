@@ -5,6 +5,10 @@ let
   inherit (lib) mkOption types;
   naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
   nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
+  vscodePlugin = pkgs.vimUtils.buildVimPlugin {
+    name = "vscode";
+    src = nvimConfigDir + "/vscode";
+  };
 in
 {
   options.modules.editors.vim.plugins = mkOption {
@@ -16,8 +20,10 @@ in
     programs.neovim.plugins =
       with pkgs.vimPlugins; [
         {
+          # must be loaded first
+          plugin = vscodePlugin;
           config = ''
-            " dummy config
+          " dummy config
           '';
         }
         {
