@@ -2,6 +2,9 @@
 " Settings {{{
 " ============================================================================
 
+let mapleader="\<Space>"
+let maplocalleader = "\\"
+
 " correct number options
 set number relativenumber
 

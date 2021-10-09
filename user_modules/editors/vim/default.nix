@@ -5,7 +5,8 @@ let
   inherit (lib) mkOption types;
   inherit (config.lib.file) mkOutOfStoreSymlink;
   naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
-  nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
+  nvimConfigDir = nixosConfig.dotfiles.configDir + /nvim;
+  nvimMappingsDir = nvimConfigDir + /mappings;
 in
 {
   options.modules.editors.vim = {
@@ -32,7 +33,15 @@ in
       '';
 
       extraConfig = ''
+        " settings
         source ${nvimConfigDir + /settings.vim}
+        
+        " mappings
+        source ${nvimMappingsDir + /command.vim}
+        source ${nvimMappingsDir + /normal.vim}
+        source ${nvimMappingsDir + /leader.vim}
+        source ${nvimMappingsDir + /visual.vim}
+        source ${nvimMappingsDir + /insert.vim}
       '';
     };
 

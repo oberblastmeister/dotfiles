@@ -81,9 +81,7 @@ in
         {
           plugin = telescope-nvim;
           config = ''
-            lua << EOF
-            ${builtins.readFile (nvimConfigDir + /telescope.lua)}
-            EOF
+            source ${nvimConfigDir + /telescope.lua}
           '';
         }
         telescope-fzy-native-nvim
