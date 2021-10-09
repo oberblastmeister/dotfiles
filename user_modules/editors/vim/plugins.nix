@@ -5,9 +5,9 @@ let
   inherit (lib) mkOption types;
   naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
   nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
-  vscodePlugin = pkgs.vimUtils.buildVimPlugin {
-    name = "vscode";
-    src = nvimConfigDir + "/vscode";
+  dummyPlugin = pkgs.vimUtils.buildVimPlugin {
+    name = "dummy_plugin";
+    src = nvimConfigDir + "/dummy_plugin";
   };
 in
 {
@@ -21,9 +21,18 @@ in
       with pkgs.vimPlugins; [
         {
           # must be loaded first
-          plugin = vscodePlugin;
+          plugin = dummyPlugin;
           config = ''
-          " dummy config
+            if exists('g:vscode')
+              set noloadplugins
+              set clipboard^=unnamed,unnamedplus
+
+              " dummy config
+              packadd vim-surround
+              packadd targets.vim
+              
+              finish
+            endif
           '';
         }
         {

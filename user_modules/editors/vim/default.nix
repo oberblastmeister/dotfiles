@@ -11,10 +11,6 @@ in
 {
   options.modules.editors.vim = {
     enable = my.options.mkEnable;
-    vscodeExtraConfig = mkOption {
-      type = types.str;
-      default = "";
-    };
     extraConfig = mkOption {
       type = types.str;
       default = "";
@@ -25,13 +21,6 @@ in
     nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlay ];
 
     modules.editors.vim = {
-      vscodeExtraConfig = ''
-        packadd vim-surround
-        packadd targets.vim
-        
-        ${builtins.readFile (nvimConfigDir + /vscode_mappings.vim)}
-      '';
-
       extraConfig = ''
         " settings
         source ${nvimConfigDir + /settings.vim}
@@ -48,15 +37,6 @@ in
     programs.neovim = {
       enable = true;
       extraConfig = ''
-        if exists('g:vscode')
-          set noloadplugins
-          set clipboard^=unnamed,unnamedplus
-
-          ${cfg.vscodeExtraConfig}
-          
-          finish
-        endif
-        
         ${cfg.extraConfig}
       '';
       extraPackages = with pkgs; [
