@@ -7,7 +7,7 @@ let
   nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
   vscodeConfigDir = nvimConfigDir + "/vscode";
   dummyPlugin = pkgs.vimUtils.buildVimPlugin {
-    name = "dummy_plugin";
+    name = "dummy";
     src = ./dummy_plugin;
   };
 in
@@ -28,7 +28,6 @@ in
               set noloadplugins
               set clipboard^=unnamed,unnamedplus
 
-              " dummy config
               packadd vim-surround
               packadd targets.vim
               
@@ -36,6 +35,12 @@ in
               
               finish
             endif
+          '';
+        }
+        {
+          plugin = dummyPlugin;
+          config = ''
+            " second dummy config
           '';
         }
         {
