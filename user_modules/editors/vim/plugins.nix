@@ -5,6 +5,7 @@ let
   inherit (lib) mkOption types;
   naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
   nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
+  vscodeConfigDir = nvimConfigDir + "/vscode";
   dummyPlugin = pkgs.vimUtils.buildVimPlugin {
     name = "dummy_plugin";
     src = ./dummy_plugin;
@@ -30,6 +31,8 @@ in
               " dummy config
               packadd vim-surround
               packadd targets.vim
+              
+              source ${vscodeConfigDir + /mappings.vim}
               
               finish
             endif
