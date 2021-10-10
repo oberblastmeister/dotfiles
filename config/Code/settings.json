@@ -373,4 +373,132 @@
         "markdown"
     ],
     "security.workspace.trust.enabled": false,
+    "workbench.editorAssociations": {
+        "git-rebase-todo": "default"
+    },
+    "whichkey.delay": 500,
+    "whichkey.bindings": [
+        {
+            "key": "w",
+            "name": "write",
+            "command": "workbench.action.files.save",
+        },
+        {
+            "key": "q",
+            "name": "quit",
+            "command": "workbench.action.closeActiveEditor",
+        },
+        {
+            "key": "Q",
+            "name": "quit all",
+            "command": "workbench.action.closeAllEditors",
+        },
+        {
+            "key": "x",
+            "name": "save and quit",
+            "command": "vscode-neovim.send",
+            "args": ":Wq<CR>",
+        },
+        {
+            "key": "o",
+            "name": "only",
+            "command": "vscode-neovim.send",
+            "args": ":Only<CR>",
+        },
+        {
+            "key": "=",
+            "name": "format document",
+            "command": "editor.action.formatDocument",
+        },
+        {
+            "key": "a",
+            "name": "code actions",
+            "command": "keyboard-quickfix.openQuickFix",
+        },
+        {
+            "key": "L",
+            "name": "code lens",
+            "command": "codelens.showLensesInCurrentLine",
+        },
+        {
+            "key": "l",
+            "name": "lsp",
+            "bindings": [
+                {
+                    "key": "r",
+                    "name": "rename",
+                    "command": "editor.action.rename",
+                },
+                {
+                    "key": "y",
+                    "name": "type definition",
+                    "command": "editor.action.goToTypeDefinition",
+                },
+                {
+                    "key": "D",
+                    "name": "references",
+                    "command": "editor.action.goToImplementation",
+                },
+            ],
+        },
+        {
+            "key": "space",
+            "name": "open link",
+            "command": "editor.action.openLink",
+        },
+        {
+            "key": "h",
+            "name": "Hunk",
+            "bindings": [
+                {
+                    "key": "r",
+                    "name": "revert",
+                    "command": "git.revertSelectedRanges",
+                },
+                {
+                    "key": "s",
+                    "name": "stage",
+                    "command": "git.stageSelectedRanges",
+                }
+            ],
+        },
+        {
+            "key": "g",
+            "name": "git",
+            "bindings": [
+                {
+                    "key": "s",
+                    "name": "magit status",
+                    "command": "magit.status",
+                },
+                {
+                    "key": "d",
+                    "name": "show changes",
+                    "command": "git.openChange"
+                }
+            ]
+        },
+        {
+            "key": "g",
+            "name": "bar",
+            "bindings": [
+                // {
+                //     "key": "s",
+                //     "name": "source control",
+                //     "command": 
+                // }
+            ],
+        },
+        {
+            "key": "B",
+            "name": "toggle sidebar",
+            "command": "workbench.action.toggleSidebarVisibility",
+        },
+        {
+            "key": "/",
+            "name": "replace in files",
+            "command": "workbench.action.replaceInFiles",
+        },
+    ],
+    "workbench.panel.defaultLocation": "right",
 }

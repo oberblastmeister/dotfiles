@@ -1,4 +1,18 @@
 [
+    // used to test keybindings
+    // {
+    //     "key": "adsfadf",
+    //     "command": gitne,
+    // },
+
+    // space mappings
+    {
+        "key": "space",
+        "command": "whichkey.show",
+        "when": "neovim.mode != insert && textInputFocus"
+    },
+
+    // other vscode mappings
     {
         "key": "shift+ctrl+e",
         "command": "actions.findWithSelection"
@@ -18,117 +32,12 @@
         "when": "neovim.mode == normal"
     },
     {
-        "key": "j",
-        "command": "list.focusDown",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "k",
-        "command": "list.focusUp",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "g g",
-        "command": "list.focusFirst",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "shift+g",
-        "command": "list.focusLast",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "ctrl+d",
-        "command": "list.focusPageDown",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "ctrl+u",
-        "command": "list.focusPageUp",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "selectNextSuggestion",
-        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "selectPrevSuggestion",
-        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
-    },
-    {
-        "key": "r",
-        "command": "renameFile",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    {
-        "key": "enter",
-        "command": "-renameFile",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    {
-        "key": "enter",
-        "command": "list.select",
-        "when": "explorerViewletVisible && filesExplorerFocus"
-    },
-    {
-        "key": "l",
-        "command": "list.select",
-        "when": "!inputFocus"
-    },
-    {
-        "key": "h",
-        "command": "list.collapse",
-        "when": "!inputFocus"
-    },
-    {
-        "key": "o",
-        "command": "list.toggleExpand",
-        "when": "!inputFocus"
-    },
-    {
-        "key": "d",
-        "command": "deleteFile",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
-    },
-    {
-        "key": "y",
-        "command": "filesExplorer.copy",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
-    },
-    {
-        "key": "x",
-        "command": "filesExplorer.cut",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
-    },
-    {
-        "key": "p",
-        "command": "filesExplorer.paste",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
-    },
-    {
-        "key": "v",
-        "command": "explorer.openToSide",
-        "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
-    },
-    {
-        "key": "a",
-        "command": "explorer.newFile",
-        "when": "filesExplorerFocus && !inputFocus"
-    },
-    {
-        "key": "shift+a",
-        "command": "explorer.newFolder",
-        "when": "filesExplorerFocus && !inputFocus"
-    },
-    {
         "key": "ctrl+l",
         "when": "sideBarFocus",
         "command": "workbench.action.focusActiveEditorGroup"
     },
     {
-        "key": "ctrl+k",
+        "key": "ctrl+h",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     },
@@ -152,16 +61,6 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "shift+escape",
-        "command": "notebook.cell.quitEdit",
-        "when": "inputFocus && notebookEditorFocused && !editorHasSelection && !editorHoverVisible"
-    },
-    {
-        "key": "escape",
-        "command": "-notebook.cell.quitEdit",
-        "when": "inputFocus && notebookEditorFocused && !editorHasSelection && !editorHoverVisible"
-    },
-    {
         "key": "ctrl+shift+l",
         "command": "workbench.action.increaseViewSize"
     },
@@ -170,68 +69,23 @@
         "command": "workbench.action.decreaseViewSize"
     },
     {
-        "key": "ctrl+shift+t",
-        "command": "-workbench.action.reopenClosedEditor",
-        "wo whtis": "woeihtih"
-    },
-    {
-        "key": "ctrl+shift+t",
-        "command": "workbench.action.toggleMaximizedPanel"
-    },
-    {
-        "key": "right",
-        "command": "-cursorRight",
-        "when": "textInputFocus && neovim.mode == insert"
-    },
-    {
-        "key": "left",
-        "command": "-cursorLeft",
-        "when": "textInputFocus && neovim.mode == insert"
-    },
-    {
-        "key": "ctrl+t",
-        "command": "-vscode-neovim.send",
-        "when": "neovim.mode == 'cmdline_insert' || neovim.mode == 'cmdline_normal' || neovim.mode == 'cmdline_replace'"
-    },
-    {
-        "key": "ctrl+t",
-        "command": "-vscode-neovim.send",
-        "when": "editorTextFocus && neovim.ctrlKeysInsert && neovim.recording && neovim.mode == 'insert'"
-    },
-    {
         "key": "ctrl+n",
         "command": "-workbench.action.files.newUntitledFile"
     },
     {
         "key": "ctrl+t",
+        "command": "-vscode-neovim.send",
+        "when": "neovim.mode == cmdline_insert || neovim.mode == cmdline_normal || neovim.mode == cmdline_replace"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert && neovim.recording && neovim.mode == insert"
+    },
+    {
+        "key": "ctrl+t",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
-    },
-    {
-        "key": "ctrl+`",
-        "command": "-workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
-    },
-    // snippets
-    {
-        "key": "ctrl+n",
-        "command": "jumpToNextSnippetPlaceholder",
-        "when": "editorTextFocus && hasNextTabstop && inSnippetMode"
-    },
-    {
-        "key": "tab",
-        "command": "-jumpToNextSnippetPlaceholder",
-        "when": "editorTextFocus && hasNextTabstop && inSnippetMode"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "jumpToPrevSnippetPlaceholder",
-        "when": "editorTextFocus && hasPrevTabstop && inSnippetMode"
-    },
-    {
-        "key": "shift+tab",
-        "command": "-jumpToPrevSnippetPlaceholder",
-        "when": "editorTextFocus && hasPrevTabstop && inSnippetMode"
     },
     // escape stuff
     {
@@ -240,18 +94,8 @@
         "when": "editorFocus && markersNavigationVisible"
     },
     {
-        "key": "escape",
-        "command": "-closeMarkersNavigation",
-        "when": "editorFocus && markersNavigationVisible"
-    },
-    {
         "key": "ctrl+[",
         "command": "cancelRenameInput",
-        "when": "editorFocus && renameInputVisible"
-    },
-    {
-        "key": "escape",
-        "command": "-cancelRenameInput",
         "when": "editorFocus && renameInputVisible"
     },
     {
@@ -260,18 +104,8 @@
         "when": "editorTextFocus && gitlens:key:escape && !findWidgetVisible && !isInEmbeddedEditor && !renameInputVisible && !suggestWidgetVisible"
     },
     {
-        "key": "escape",
-        "command": "-gitlens.key.escape",
-        "when": "editorTextFocus && gitlens:key:escape && !findWidgetVisible && !isInEmbeddedEditor && !renameInputVisible && !suggestWidgetVisible"
-    },
-    {
         "key": "ctrl+[",
         "command": "filesExplorer.cancelCut",
-        "when": "explorerResourceCut && explorerViewletVisible && filesExplorerFocus && !inputFocus"
-    },
-    {
-        "key": "escape",
-        "command": "-filesExplorer.cancelCut",
         "when": "explorerResourceCut && explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
     // Close reference to escape
@@ -281,48 +115,18 @@
         "when": "inReferenceSearchEditor && !config.editor.stablePeek"
     },
     {
-        "key": "escape",
-        "command": "-closeReferenceSearch",
-        "when": "inReferenceSearchEditor && !config.editor.stablePeek"
-    },
-    {
         "key": "ctrl+[",
         "command": "closeReferenceSearch",
-        "when": "referenceSearchVisible && !config.editor.stablePeek"
-    },
-    {
-        "key": "escape",
-        "command": "-closeReferenceSearch",
         "when": "referenceSearchVisible && !config.editor.stablePeek"
     },
     {
         "key": "ctrl+[",
         "command": "closeReferenceSearch",
         "when": "inReferenceSearchEditor && !config.editor.stablePeek && neovim.mode == 'normal'"
-    },
-    {
-        "key": "escape",
-        "command": "-closeReferenceSearch",
-        "when": "inReferenceSearchEditor && !config.editor.stablePeek && neovim.mode == 'normal'"
-    },
-    {
-        "key": "shift+escape",
-        "command": "-closeReferenceSearch",
-        "when": "referenceSearchVisible && !config.editor.stablePeek"
-    },
-    {
-        "key": "shift+escape",
-        "command": "-closeReferenceSearch",
-        "when": "inReferenceSearchEditor && !config.editor.stablePeek"
     },
     {
         "key": "ctrl+[",
         "command": "notifications.hideList",
-        "when": "notificationCenterVisible"
-    },
-    {
-        "key": "escape",
-        "command": "-notifications.hideList",
         "when": "notificationCenterVisible"
     },
     {
@@ -331,29 +135,15 @@
         "when": "inQuickOpen"
     },
     {
-        "key": "escape",
-        "command": "-workbench.action.closeQuickOpen",
-        "when": "inQuickOpen"
-    },
-    {
         "key": "ctrl+[",
         "command": "closeFindWidget",
         "when": "editorFocus && findWidgetVisible && !isComposing"
     },
-    {
-        "key": "escape",
-        "command": "-closeFindWidget",
-        "when": "editorFocus && findWidgetVisible && !isComposing"
-    },
+    // cursor stuff
     {
         "key": "ctrl+b",
         "command": "cursorLeft",
         "when": "textInputFocus && neovim.mode == insert"
-    },
-    {
-        "key": "left",
-        "command": "-cursorLeft",
-        "when": "textInputFocus"
     },
     {
         "key": "ctrl+f",
@@ -361,43 +151,72 @@
         "when": "textInputFocus && neovim.mode == insert"
     },
     {
-        "key": "right",
-        "command": "-cursorRight",
-        "when": "textInputFocus"
-    },
-    {
         "key": "ctrl+e",
         "command": "cursorEnd",
         "when": "textInputFocus && neovim.mode == insert"
-    },
-    {
-        "key": "end",
-        "command": "-cursorEnd",
-        "when": "textInputFocus"
     },
     {
         "key": "ctrl+a",
         "command": "cursorHome",
         "when": "textInputFocus && neovim.mode == insert"
     },
+    // magit stuff
     {
-        "key": "home",
-        "command": "-cursorHome",
-        "when": "textInputFocus"
+        "command": "magit.toggle-fold",
+        "key": "tab",
+        "when": "editorTextFocus && editorLangId == 'magit'"
     },
     {
-        "key": "ctrl+]",
-        "command": "-markdown.extension.onIndentLines",
-        "when": "editorTextFocus && !suggestWidgetVisible && editorLangId == 'markdown'"
+        "key": "x",
+        "command": "magit.discard-at-point",
+        "when": "editorTextFocus && editorLangId == 'magit'"
     },
     {
-        "key": "ctrl+1",
-        "command": "editor.action.revealDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+        "key": "k",
+        "command": "-magit.discard-at-point"
     },
     {
-        "key": "f12",
-        "command": "-editor.action.revealDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+        "key": "-",
+        "command": "magit.reverse-at-point",
+        "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "v",
+        "command": "-magit.reverse-at-point"
+    },
+    {
+        "key": "shift+-",
+        "command": "magit.reverting",
+        "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "shift+v",
+        "command": "-magit.reverting"
+    },
+    {
+        "key": "shift+o",
+        "command": "magit.resetting",
+        "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "shift+x",
+        "command": "-magit.resetting"
+    },
+    {
+        "key": "x",
+        "command": "-magit.reset-mixed"
+    },
+    {
+        "key": "ctrl+u x",
+        "command": "-magit.reset-hard"
+    },
+    {
+        "key": "shift+f",
+        "command": "-magit.pulling",
+    },
+    {
+        "key": "p",
+        "command": "magit.pulling",
+        "when": "editorTextFocus && editorLangId == 'magit'"
     }
 ]
