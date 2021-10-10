@@ -2,6 +2,10 @@
 
 {
   home-manager = {
+    # Install user packages to /etc/profiles instead. Necessary for
+    # nixos-rebuild build-vm to work.
+    useUserPackages = true;
+
     # give home-manager some extra arguments that we can receive in modules
     # similar to how we give lib.nixosSystem specialArgs
     extraSpecialArgs = {
