@@ -15,7 +15,8 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.vscode = {
-      enable = true;
+      # breaks sometimes
+      enable = false;
       extensions = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide
         arrterian.nix-env-selector
