@@ -17,7 +17,7 @@ in
     };
 
     programs.vscode.extensions = with pkgs.vscode-extensions; [
-      # skyapps.fish-vscode
+      skyapps.fish-vscode
     ];
   };
 }
