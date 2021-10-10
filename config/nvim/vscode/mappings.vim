@@ -1,5 +1,21 @@
 nnoremap c* <Cmd>call VSCodeNotify('editor.action.changeAll')<CR>
 
+nnoremap dp <Cmd>call VSCodeNotify('merge-conflict.accept.current')<CR>
+nnoremap dg <Cmd>call VSCodeNotify('merge-conflict.accept.incoming')<CR>
+nnoremap db <Cmd>call VSCodeNotify('merge-conflict.accept.both')<CR>
+nnoremap dD <Cmd>call VSCodeNotify('merge-conflict.compare')<CR>
+
+nnoremap ]g <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
+nnoremap [g <Cmd>call VSCodeNotify('editor.action.marker.prev')<CR>
+nnoremap ]G <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
+nnoremap [G <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
+nnoremap ]c <Cmd>call VSCodeNotify('merge-conflict.next')<CR>
+nnoremap [c <Cmd>call VSCodeNotify('merge-conflict.previous')<CR>
+nnoremap ]h <Cmd>call VSCodeNotify('workbench.action.editor.nextChange')<CR>
+nnoremap [h <Cmd>call VSCodeNotify('workbench.action.editor.previousChange')<CR>
+nnoremap ]H <Cmd>call VSCodeNotify('workbench.action.compareEditor.nextChange')<CR>
+nnoremap [H <Cmd>call VSCodeNotify('workbench.action.compareEditor.previousChange')<CR>
+
 " xmap <space>c  <Plug>VSCodeCommentary
 " nmap <space>c  <Plug>VSCodeCommentary
 " omap <space>c  <Plug>VSCodeCommentary
@@ -23,11 +39,7 @@ nnoremap [g <Cmd>call VSCodeNotify('editor.action.marker.prev')<CR>
 nnoremap ]G <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
 nnoremap [G <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
 
-nnoremap gy <Cmd>call VSCodeNotify('editor.action.goToTypeDefinition')<CR>
-nnoremap gr <Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
-nnoremap gD <Cmd>call VSCodeNotify('editor.action.goToImplementation')<CR>
 nnoremap <space>= <Cmd>call VSCodeNotify('editor.action.formatDocument')<CR>
-nnoremap <space>rn <Cmd>call VSCodeNotify('editor.action.rename')<CR>
 nnoremap <space>a <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
 nnoremap <space>l <Cmd>call VSCodeNotify('codelens.showLensesInCurrentLine')<CR>
 

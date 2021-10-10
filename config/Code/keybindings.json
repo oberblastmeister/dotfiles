@@ -1,10 +1,17 @@
 [
+    // used to test keybindings
+    // {
+    //     "key": "adsfadf",
+    //     "command": gitne,
+    // },
+
     // space mappings
     {
         "key": "space",
         "command": "whichkey.show",
         "when": "neovim.mode != insert && textInputFocus"
     },
+
     // other vscode mappings
     {
         "key": "shift+ctrl+e",
@@ -30,7 +37,7 @@
         "command": "workbench.action.focusActiveEditorGroup"
     },
     {
-        "key": "ctrl+k",
+        "key": "ctrl+h",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     },
@@ -62,27 +69,22 @@
         "command": "workbench.action.decreaseViewSize"
     },
     {
-        "key": "ctrl+t",
-        "command": "-vscode-neovim.send",
-        "when": "neovim.mode == 'cmdline_insert' || neovim.mode == 'cmdline_normal' || neovim.mode == 'cmdline_replace'"
-    },
-    {
-        "key": "ctrl+t",
-        "command": "-vscode-neovim.send",
-        "when": "editorTextFocus && neovim.ctrlKeysInsert && neovim.recording && neovim.mode == 'insert'"
-    },
-    {
         "key": "ctrl+n",
         "command": "-workbench.action.files.newUntitledFile"
     },
     {
         "key": "ctrl+t",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
+        "command": "-vscode-neovim.send",
+        "when": "neovim.mode == cmdline_insert || neovim.mode == cmdline_normal || neovim.mode == cmdline_replace"
     },
     {
-        "key": "ctrl+`",
-        "command": "-workbench.action.terminal.toggleTerminal",
+        "key": "ctrl+t",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert && neovim.recording && neovim.mode == insert"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
     },
     // escape stuff

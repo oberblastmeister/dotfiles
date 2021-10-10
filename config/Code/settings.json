@@ -411,29 +411,34 @@
             "command": "editor.action.formatDocument",
         },
         {
+            "key": "a",
+            "name": "code actions",
+            "command": "keyboard-quickfix.openQuickFix",
+        },
+        {
+            "key": "L",
+            "name": "code lens",
+            "command": "codelens.showLensesInCurrentLine",
+        },
+        {
             "key": "l",
             "name": "lsp",
             "bindings": [
                 {
-                    "key": "a",
-                    "name": "code actions",
-                    "command": "keyboard-quickfix.openQuickFix",
-                },
-                {
-                    "key": "l",
-                    "name": "code lens",
-                    "command": "codelens.showLensesInCurrentLine",
-                },
-            ],
-        },
-        {
-            "key": "r",
-            "name": "rename",
-            "bindings": [
-                {
-                    "key": "rn",
+                    "key": "r",
+                    "name": "rename",
                     "command": "editor.action.rename",
-                }
+                },
+                {
+                    "key": "y",
+                    "name": "type definition",
+                    "command": "editor.action.goToTypeDefinition",
+                },
+                {
+                    "key": "D",
+                    "name": "references",
+                    "command": "editor.action.goToImplementation",
+                },
             ],
         },
         {
@@ -465,11 +470,27 @@
                     "key": "s",
                     "name": "magit status",
                     "command": "magit.status",
+                },
+                {
+                    "key": "d",
+                    "name": "show changes",
+                    "command": "git.openChange"
                 }
             ]
         },
         {
-            "key": "b",
+            "key": "g",
+            "name": "bar",
+            "bindings": [
+                // {
+                //     "key": "s",
+                //     "name": "source control",
+                //     "command": 
+                // }
+            ],
+        },
+        {
+            "key": "B",
             "name": "toggle sidebar",
             "command": "workbench.action.toggleSidebarVisibility",
         },
@@ -479,4 +500,5 @@
             "command": "workbench.action.replaceInFiles",
         },
     ],
+    "workbench.panel.defaultLocation": "right",
 }
