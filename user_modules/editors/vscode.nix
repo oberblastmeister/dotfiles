@@ -25,6 +25,7 @@ in
         eamodio.gitlens
         kahole.magit
         streetsidesoftware.code-spell-checker
+        vspacecode.whichkey
       ];
     };
 
