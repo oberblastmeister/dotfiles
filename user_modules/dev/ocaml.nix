@@ -1,24 +1,26 @@
 { options, config, pkgs, lib, my, ... }:
 
 let
-  cfg = config.modules.dev.haskell;
+  cfg = config.modules.dev.ocaml;
 in
 {
-  options.modules.dev.haskell = {
+  options.modules.dev.ocaml = {
     enable = my.options.mkEnable;
   };
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      cabal2nix
-      haskell-language-server
-      stack
-      ghc
+      ocaml
+      dune_2
+      opam
+      ocamlformat
+      ocamlPackages.ocaml-lsp
+      ocamlPackages.utop
     ];
 
     programs.vscode = {
       extensions = with pkgs.vscode-extensions; [
-        haskell.haskell
+        ocamllabs.ocaml-platform
       ];
     };
   };

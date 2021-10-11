@@ -1,7 +1,8 @@
 { config, nixosConfig, my, lib, pkgs, inputs, ... }:
 
 let
-  cfg = config.modules.editors.vim.plugins;
+  cfg = config.modules.editors.vim;
+  lspconfigCfg = cfg.lspconfig.config;
   inherit (lib) mkOption types;
   naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
   nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
@@ -9,7 +10,7 @@ let
   naiveVscodeConfigDir = naiveNvimConfigDir + "/vscode";
   dummyPlugin = pkgs.vimUtils.buildVimPlugin {
     name = "dummy";
-    src = ./dummy_plugin;
+    src = ../dummy_plugin;
   };
 in
 {
@@ -145,6 +146,11 @@ in
               tree-sitter-ocaml
             ]
           ));
+        }
+
+        {
+          config = lspconfigCfg;
+          plugin = nvim-lspconfig;
         }
       ];
   };

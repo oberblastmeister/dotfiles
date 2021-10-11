@@ -13,6 +13,7 @@ let
       dev = {
         rust.enable = mkDefault true;
         haskell.enable = mkDefault true;
+        ocaml.enable = mkDefault true;
         python.enable = mkDefault true;
         cc.enable = mkDefault true;
         markdown.enable = mkDefault true;
