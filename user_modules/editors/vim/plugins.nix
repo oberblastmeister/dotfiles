@@ -128,6 +128,9 @@ in
         telescope-fzf-native-nvim
 
         {
+          config = ''
+            source = ${nvimConfigDir + /nvim-treesitter.lua}
+          '';
           plugin = (nvim-treesitter.withPlugins (
             plugins: with plugins; [
               tree-sitter-bash
@@ -144,3 +147,4 @@ in
       ];
   };
 }
+
