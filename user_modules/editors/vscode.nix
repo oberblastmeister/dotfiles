@@ -31,5 +31,9 @@ in
 
     home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/settings.json");
     home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/keybindings.json");
+    
+    home.packages = with pkgs; [
+      rnix-lsp
+    ];
   };
 }

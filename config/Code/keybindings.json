@@ -1,9 +1,9 @@
 [
     // used to test keybindings
-    {
-        "key": "adsfadf",
-        "command": gitne,
-    },
+    // {
+    //     "key": "adsfadf",
+    //     "command": "workbench.view.extensions",
+    // },
 
     // space mappings
     {
