@@ -16,5 +16,13 @@
       microcode.amd.enable = true;
     };
   };
-  home-manager.users.brian.modules.presets.enable = "full";
+
+  home-manager.users.brian.modules = {
+    presets.enable = "full";
+    desktop = {
+      apps = {
+        zoom.enable = true;
+      };
+    };
+  };
 }
