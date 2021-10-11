@@ -2,6 +2,8 @@
 " Settings {{{
 " ============================================================================
 
+set termguicolors
+
 let mapleader="\<Space>"
 let maplocalleader = "\\"
 

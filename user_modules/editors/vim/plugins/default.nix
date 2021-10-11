@@ -129,7 +129,7 @@ in
 
         {
           config = ''
-            source = ${nvimConfigDir + /nvim-treesitter.lua}
+            source ${nvimConfigDir + /nvim-treesitter.lua}
           '';
           plugin = (nvim-treesitter.withPlugins (
             plugins: with plugins; [
@@ -137,6 +137,8 @@ in
               tree-sitter-c
               tree-sitter-lua
               tree-sitter-json
+              tree-sitter-yaml
+              tree-sitter-toml
               tree-sitter-nix
               # tree-sitter-haskell # crashes with a loop
               tree-sitter-python
@@ -147,4 +149,3 @@ in
       ];
   };
 }
-
