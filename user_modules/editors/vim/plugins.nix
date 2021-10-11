@@ -56,6 +56,7 @@ in
             EOF
           '';
         }
+        vim-nix
         vim-surround
         {
           plugin = vim-commentary;
