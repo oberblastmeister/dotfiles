@@ -186,6 +186,7 @@
     {
         "key": "ctrl+r",
         "command": "magit.refresh",
+        "when": "editorTextFocus && editorLangId == 'magit"
     },
     {
         "key": "-",
