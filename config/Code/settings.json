@@ -340,7 +340,6 @@
     // "outline.problems.colors": false,
     "problems.showCurrentInStatus": true,
     "editor.renderWhitespace": "none",
-    "workbench.activityBar.visible": false,
     "redhat.telemetry.enabled": false,
     "workbench.startupEditor": "none",
     "files.exclude": {
@@ -479,14 +478,30 @@
             ]
         },
         {
-            "key": "g",
+            "key": "b",
             "name": "bar",
             "bindings": [
-                // {
-                //     "key": "s",
-                //     "name": "source control",
-                //     "command": 
-                // }
+                {
+                    "key": "e",
+                    "name": "file explorer",
+                    "command": "workbench.view.explorer",
+                },
+                {
+                    "key": "i",
+                    "name": "extensions",
+                    "command": "workbench.view.extensions",
+                },
+            ],
+        },
+        {
+            "key": "d",
+            "name": "debug",
+            "bindings": [
+                {
+                    "key": "c",
+                    "name": "continue",
+                    "command": "workbench.action.debug.continue",
+                }
             ],
         },
         {
