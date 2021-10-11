@@ -12,6 +12,9 @@
 
   modules = {
     presets.enable = "full";
+    desktop = {
+      apps.virtmanager.enable = true;
+    };
     hardware = {
       microcode.amd.enable = true;
     };
