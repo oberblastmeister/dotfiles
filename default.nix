@@ -10,7 +10,7 @@ in
 
   modules = {
     nix.enable = true;
-    boot.systemd-boot.enable = true;
+    boot.systemd-boot.enable = mkDefault true;
   };
 
   time = {
