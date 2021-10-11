@@ -180,6 +180,14 @@
         "command": "-magit.discard-at-point"
     },
     {
+        "key": "g",
+        "command": "-magit.refresh",
+    },
+    {
+        "key": "ctrl+r",
+        "command": "magit.refresh",
+    },
+    {
         "key": "-",
         "command": "magit.reverse-at-point",
         "when": "editorTextFocus && editorLangId == 'magit'"
