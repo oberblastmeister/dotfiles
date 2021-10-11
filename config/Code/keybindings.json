@@ -2,7 +2,7 @@
     // used to test keybindings
     // {
     //     "key": "adsfadf",
-    //     "command": "workbench.view.extensions",
+    //     "command": "workbench.action.openRecent",
     // },
     // space mappings
     {
@@ -231,5 +231,25 @@
         "key": "p",
         "command": "magit.pulling",
         "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "-workbench.action.terminal.focusNext",
+        "when": "terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "-workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus && terminalProcessSupported && !terminalEditorFocus"
     }
 ]

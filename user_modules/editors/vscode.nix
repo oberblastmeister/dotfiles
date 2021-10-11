@@ -1,4 +1,4 @@
-{ config, nixosConfig, my, lib, pkgs, inputs, ... }:
+{ config, nixosConfig, my, lib, pkgs, unstable, inputs, ... }:
 
 let
   cfg = config.modules.editors.vscode;

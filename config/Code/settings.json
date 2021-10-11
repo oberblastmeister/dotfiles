@@ -323,7 +323,7 @@
     "workbench.list.smoothScrolling": true,
     // fonts
     "editor.fontWeight": "normal",
-    "editor.fontSize": 14,
+    "editor.fontSize": 12,
     "editor.fontFamily": "FiraCode Nerd Font",
     "editor.fontLigatures": true,
     "editor.suggestSelection": "first",
@@ -385,7 +385,7 @@
         {
             "key": "q",
             "name": "quit",
-            "command": "workbench.action.closeActiveEditor",
+            "command": "workbench.action.closeEditorsInGroup",
         },
         {
             "key": "Q",
@@ -479,20 +479,21 @@
         },
         {
             "key": "b",
-            "name": "bar",
+            "name": "buffers",
             "bindings": [
-                {
-                    "key": "e",
-                    "name": "file explorer",
-                    "command": "workbench.view.explorer",
-                },
-                {
-                    "key": "i",
-                    "name": "extensions",
-                    "command": "workbench.view.extensions",
-                },
             ],
         },
+        // {
+        //     "key": "t",
+        //     "name": "tab",
+        //     "bindings": [
+        //         {
+        //             "key": "d",
+        //             "name": "close tab",
+        //             "command": "workbench.action.closeActiveEditor"
+        //         }
+        //     ],
+        // },
         {
             "key": "d",
             "name": "debug",
@@ -502,6 +503,47 @@
                     "name": "continue",
                     "command": "workbench.action.debug.continue",
                 }
+            ],
+        },
+        {
+            "key": "f",
+            "name": "find",
+            "bindings": [
+                {
+                    "key": "p",
+                    "name": "files",
+                    "command": "workbench.action.quickOpen"
+                },
+                {
+                    "key": "s",
+                    "name": "symbols",
+                    "command": "workbench.action.gotoSymbol",
+                },
+                {
+                    "key": "w",
+                    "name": "workspace symbols",
+                    "command": "workbench.action.showAllSymbols",
+                },
+                {
+                    "key": "c",
+                    "name": "commands",
+                    "command": "workbench.action.showCommands",
+                },
+                {
+                    "key": "r",
+                    "name": "recent",
+                    "command": "workbench.action.openRecent",
+                },
+                {
+                    "key": "b",
+                    "name": "buffers (editors)",
+                    "command": "workbench.action.showAllEditorsByMostRecentlyUsed",
+                }
+                // {
+                //     "key": "t",
+                //     "name": "terminals",
+                //     "command": 
+                // }
             ],
         },
         {

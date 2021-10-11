@@ -1,3 +1,19 @@
+" vendor this for now
+function! VSCodeNotifyVisual(cmd, leaveSelection, ...)
+    let mode = mode()
+    if mode ==# 'V'
+        let startLine = line('v')
+        let endLine = line('.')
+        call VSCodeNotifyRange(a:cmd, startLine, endLine, a:leaveSelection, a:000)
+    elseif mode ==# 'v' || mode ==# "\<C-v>"
+        let startPos = getpos('v')
+        let endPos = getpos('.')
+        call VSCodeNotifyRangePos(a:cmd, startPos[1], endPos[1], startPos[2], endPos[2] + 1, a:leaveSelection, a:000)
+    else
+        call VSCodeNotify(a:cmd, a:000)
+    endif
+endfunction
+
 nnoremap c* <Cmd>call VSCodeNotify('editor.action.changeAll')<CR>
 
 nnoremap dp <Cmd>call VSCodeNotify('merge-conflict.accept.current')<CR>
@@ -51,3 +67,5 @@ nnoremap <space>Q <Cmd>Quit!<CR>
 nnoremap <S-Tab> <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
 nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
 nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
+
+xnoremap K <Cmd>call VSCodeNotifyVisual('editor.action.showHover', 1)<CR>

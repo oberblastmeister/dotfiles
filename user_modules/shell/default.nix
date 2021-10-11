@@ -48,6 +48,7 @@ in
         "3" = "cd -3";
         "4" = "cd -4";
         "5" = "cd -5";
+        "top" = "bottom";
       };
     }
 
@@ -65,12 +66,12 @@ in
         neofetch
         onefetch
         direnv
-        bottom-rs
         zoxide
         xclip
         glow
         archiver
         notify-desktop
+        tokei
       ];
 
       programs = {
@@ -80,6 +81,7 @@ in
         fzf = {
           enable = true;
         } // allIntegrations;
+        bottom.enable = true;
       };
 
       modules.shell.git.enable = true;

@@ -70,8 +70,11 @@ in
             noremap gc <Nop>
           '';
         }
+
         targets-vim
+
         vim-cool
+
         {
           plugin = gruvbox-community;
           config = ''
@@ -81,7 +84,9 @@ in
             let g:gruvbox_invert_selection = 0
           '';
         }
+
         vim-fugitive
+
         {
           plugin = gitsigns-nvim;
           config = ''
@@ -100,6 +105,8 @@ in
           '';
         }
 
+        neogit
+
         {
           plugin = fzf-vim;
           config = ''
@@ -107,6 +114,9 @@ in
             nnoremap <c-f> :nohl<CR>:Rg<CR>
           '';
         }
+
+        nvim-web-devicons
+        plenary-nvim
 
         {
           plugin = telescope-nvim;
@@ -116,6 +126,21 @@ in
         }
         telescope-fzy-native-nvim
         telescope-fzf-native-nvim
+
+        {
+          plugin = (nvim-treesitter.withPlugins (
+            plugins: with plugins; [
+              tree-sitter-bash
+              tree-sitter-c
+              tree-sitter-lua
+              tree-sitter-json
+              tree-sitter-nix
+              # tree-sitter-haskell # crashes with a loop
+              tree-sitter-python
+              tree-sitter-ocaml
+            ]
+          ));
+        }
       ];
   };
 }
