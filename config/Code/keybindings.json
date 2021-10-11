@@ -4,14 +4,18 @@
     //     "key": "adsfadf",
     //     "command": "workbench.view.extensions",
     // },
-
     // space mappings
     {
         "key": "space",
         "command": "whichkey.show",
         "when": "neovim.mode != insert && textInputFocus"
     },
-
+    {
+        "key": "space",
+        "command": "whichkey.triggerKey",
+        "args": "space",
+        "when": "whichkeyVisible"
+    },
     // other vscode mappings
     {
         "key": "shift+ctrl+e",
