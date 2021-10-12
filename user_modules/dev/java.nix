@@ -8,8 +8,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    programs.java = {
+      enable = true;
+    };
+
     home.packages = with pkgs; [
-      jdk
       gradle
     ];
 
