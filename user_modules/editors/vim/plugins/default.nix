@@ -2,7 +2,6 @@
 
 let
   cfg = config.modules.editors.vim;
-  lspconfigCfg = cfg.lspconfig.config;
   inherit (lib) mkOption types;
   naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
   nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
@@ -149,9 +148,17 @@ in
         }
 
         {
-          config = lspconfigCfg;
+          config = cfg.lspconfig.config;
           plugin = nvim-lspconfig;
         }
+
+        {
+          plugin = nvim-cmp;
+        }
+        cmp-nvim-lsp
+        cmp-buffer
+        vim-vsnip
+        cmp-vsnip
       ];
   };
 }
