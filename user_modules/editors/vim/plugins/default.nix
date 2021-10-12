@@ -155,6 +155,7 @@ in
         {
           plugin = nvim-cmp;
           config = ''
+            source ${nvimConfigDir + /cmp.lua}
           '';
         }
         cmp-nvim-lsp
