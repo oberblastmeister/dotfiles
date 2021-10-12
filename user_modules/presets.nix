@@ -36,17 +36,19 @@ let
   };
 
   minimalPreset = {
-    editors = {
-      vim.enable = mkDefault true;
-      vscode.enable = mkDefault true;
-    };
-    shell = {
-      fish.enable = mkDefault true;
-      programs.enable = mkDefault true;
-    };
-    desktop = {
-      browsers.firefox.enable = mkDefault true;
-      terminals.gnome-terminal.enable = mkDefault true;
+    modules = {
+      editors = {
+        vim.enable = mkDefault true;
+        vscode.enable = mkDefault true;
+      };
+      shell = {
+        fish.enable = mkDefault true;
+        programs.enable = mkDefault true;
+      };
+      desktop = {
+        browsers.firefox.enable = mkDefault true;
+        terminals.gnome-terminal.enable = mkDefault true;
+      };
     };
   };
 in
