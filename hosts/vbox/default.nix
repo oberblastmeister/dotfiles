@@ -12,9 +12,6 @@
   
   modules.presets.enable = "full";
   home-manager.users.brian.modules = {
-    presets.enable = "full";
-    /* editors.jetbrains = { */
-    /*   intellij.enable = true; */
-    /* }; */
+    presets.enable = "minimal";
   };
 }

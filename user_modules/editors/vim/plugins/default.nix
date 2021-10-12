@@ -154,6 +154,8 @@ in
 
         {
           plugin = nvim-cmp;
+          config = ''
+          '';
         }
         cmp-nvim-lsp
         cmp-buffer
