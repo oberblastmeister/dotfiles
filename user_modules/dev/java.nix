@@ -10,6 +10,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       jdk
+      gradle
     ];
 
     programs.vscode.extensions = with pkgs.vscode-extensions; [
