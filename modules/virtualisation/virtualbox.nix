@@ -2,10 +2,10 @@
 
 # see https://nixos.wiki/wiki/VirtualBox
 let
-  cfg = config.modules.desktop.apps.virtualbox;
+  cfg = config.modules.virtualisation.virtualbox;
 in
 {
-  options.modules.desktop.apps.virtualbox = {
+  options.modules.virtualisation.virtualbox = {
     enable = lib.my.options.mkEnable;
   };
 

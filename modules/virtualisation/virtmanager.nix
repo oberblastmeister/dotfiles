@@ -2,10 +2,10 @@
 
 # see https://nixos.wiki/wiki/Virt-manager
 let
-  cfg = config.modules.desktop.apps.virtmanager;
+  cfg = config.modules.virtualisation.virt-manager;
 in
 {
-  options.modules.desktop.apps.virtmanager = {
+  options.modules.virtualisation.virt-manager = {
     enable = lib.my.options.mkEnable;
   };
 
