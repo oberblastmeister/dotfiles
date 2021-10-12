@@ -1,14 +1,16 @@
 [
     // used to test keybindings
-    // {
-    //     "key": "adsfadf",
-    //     "command": "workbench.action.openRecent",
-    // },
+    {
+        "key": "adsfadf",
+        "command": "editor.debug.action.toggleInlineBreakpoint",
+    },
+
     // space mappings
     {
         "key": "space",
         "command": "whichkey.show",
-        "when": "neovim.mode != insert && textInputFocus"
+        "when": "neovim.mode != 'insert' && editorTextFocus"
+        // "when": "neovim.mode == normal",
     },
     {
         "key": "space",

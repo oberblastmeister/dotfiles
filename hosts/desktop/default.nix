@@ -26,6 +26,7 @@
       apps = {
         zoom.enable = true;
       };
+      browsers.chrome.enable = true;
     };
   };
 }

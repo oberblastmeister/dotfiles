@@ -480,8 +480,7 @@
         {
             "key": "b",
             "name": "buffers",
-            "bindings": [
-            ],
+            "bindings": [],
         },
         // {
         //     "key": "t",
@@ -502,6 +501,89 @@
                     "key": "c",
                     "name": "continue",
                     "command": "workbench.action.debug.continue",
+                    "when": "debugStart == 'stopped'"
+                },
+                {
+                    "key": "s",
+                    "name": "start",
+                    "command": "workbench.action.debug.start",
+                    "when": "debuggersAvailable && debugState == 'inactive'"
+                },
+                {
+                    "key": "S",
+                    "name": "stop",
+                    "command": "workbench.action.debug.stop",
+                    "when": "inDebugMode && !focusedSessionIsAttach"
+                },
+                {
+                    "key": "r",
+                    "name": "restart",
+                    "command": "workbench.action.debug.restart",
+                    "when": "inDebugMode"
+                },
+                {
+                    "key": "-",
+                    "name": "step in",
+                    "command": "workbench.action.debug.stepInto",
+                    "when": "debugState != 'inactive'"
+                },
+                {
+                    "key": "+",
+                    "name": "step out",
+                    "command": "workbench.action.debug.stepOut",
+                    "when": "debugState == 'stopped'"
+                },
+                {
+                    "key": "o",
+                    "name": "step over",
+                    "command": "workbench.action.debug.stepOver",
+                    "when": "debugState == 'stopped'"
+                },
+                {
+                    "key": "b",
+                    "name": "breakpoint",
+                    "bindings": [
+                        {
+                            "key": "t",
+                            "name": "toggle",
+                            "command": "editor.debug.action.toggleBreakpoint",
+                        },
+                        {
+                            "key": "T",
+                            "name": "toggle",
+                            "command": "editor.debug.action.toggleInlineBreakpoint",
+                        },
+                        {
+                            "key": "f",
+                            "name": "function",
+                            "command": "workbench.debug.viewlet.action.addFunctionBreakpointAction",
+                        },
+                        {
+                            "key": "e",
+                            "name": "edit",
+                            "command": "debug.editBreakpoint",
+                        },
+                        {
+                            "key": "-",
+                            "name": "disable all",
+                            "command": "workbench.debug.viewlet.action.disableAllBreakpoints",
+                        },
+                        {
+                            "key": "_",
+                            "name": "remove all",
+                            "command": "workbench.debug.viewlet.action.removeAllBreakpoints",
+                        },
+                        {
+                            "key": "=",
+                            "name": "enable all",
+                            "command": "workbench.debug.viewlet.action.enableAllBreakpoints",
+                        },
+                        {
+                            "key": "c",
+                            "name": "conditional",
+                            "command": "editor.debug.action.conditionalBreakpoint",
+                        }
+                    ]
                 }
             ],
         },

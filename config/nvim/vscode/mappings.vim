@@ -54,6 +54,8 @@ nnoremap ]g <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
 nnoremap [g <Cmd>call VSCodeNotify('editor.action.marker.prev')<CR>
 nnoremap ]G <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
 nnoremap [G <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
+nnoremap ]d <Cmd>call VSCodeNotify('editor.debug.action.goToNextBreakpoint')<CR>
+nnoremap [d <Cmd>call VSCodeNotify('editor.debug.action.goToPreviousBreakpoint')<CR>
 
 nnoremap <space>= <Cmd>call VSCodeNotify('editor.action.formatDocument')<CR>
 nnoremap <space>a <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>

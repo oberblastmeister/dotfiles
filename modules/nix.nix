@@ -36,5 +36,7 @@ in
         ];
       };
 
+    # must be set so cli commands such as `nix-env` and `nix profile` work
+    environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
   };
 }
