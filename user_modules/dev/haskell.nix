@@ -12,6 +12,7 @@ in
     home.packages = with pkgs; [
       cabal2nix
       haskell-language-server
+      cabal-install
       stack
       ghc
     ];
