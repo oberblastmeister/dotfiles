@@ -18,6 +18,7 @@ in
       gthumb
       mpv
       peek
+      qalculate-gtk
     ];
   };
 }
