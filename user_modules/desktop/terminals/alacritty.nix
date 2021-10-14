@@ -10,6 +10,24 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.alacritty = { };
+    /* programs.alacritty = { */
+    /*   enable = true; */
+    /*   settings = { */
+    /*     font = { */
+    /*       normal = { */
+    /*         family = "FiraCode Nerd Font 10"; */
+    /*         style = "Regular"; */
+    /*       }; */
+    /*       bold = { */
+    /*         family = "FiraCode Nerd Font 10"; */
+    /*         style = "Bold"; */
+    /*       }; */
+    /*       italic = { */
+    /*         family = "FiraCode Nerd Font 10"; */
+    /*         style = "Regular"; */
+    /*       }; */
+    /*     }; */
+    /*   }; */
+    /* }; */
   };
 }

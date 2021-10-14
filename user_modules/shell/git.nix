@@ -22,6 +22,9 @@ in
         p = "push";
         pl = "pull";
         co = "checkout";
+        d = "diff";
+        rv = "remote -v";
+        br = "branch";
       };
       userEmail = lib.mkDefault "littlebubu.shu@gmail.com";
       userName = lib.mkDefault "brian";
