@@ -12,7 +12,7 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = {
     home.sessionVariables = {
       BROWSER = cfg.default;
     };
