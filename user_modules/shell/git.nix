@@ -25,15 +25,15 @@ in
         d = "diff";
         rv = "remote -v";
         br = "branch";
+        sw = "switch";
       };
       userEmail = lib.mkDefault "littlebubu.shu@gmail.com";
       userName = lib.mkDefault "brian";
       extraConfig = {
-        pull.rebase = true;
         init.defaultBranch = "main";
         # make it work with gnome keyring
         # this will cache the password
-        # this might compile for a long time thought,
+        # this might compile for a long time though,
         # becase we are overriding the package
         credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
       };

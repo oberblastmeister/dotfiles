@@ -5,6 +5,7 @@ let
   addIf = cond: x: if cond then [ x ] else [ ];
   devCfg = config.modules.dev;
   nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
+  naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
   inherit (lib) types mkOption;
 in
 {
@@ -14,6 +15,8 @@ in
       lua << EOF
       
       local lspconfig = require 'lspconfig'
+      local configs = require 'lspconfig/configs'
+      local util = require 'lspconfig/util'
 
       local function custom_on_attach(client, bufnr)
         vim.cmd [[source ${nvimConfigDir + /lspconfig/mappings.lua}]]
@@ -63,6 +66,7 @@ in
       
       lspconfig.bashls.setup(LspDefaults)
 
+      lspconfig.rnix.setup(LspDefaults)
       EOF
     '';
   };
@@ -76,6 +80,7 @@ in
       nodePackages.yaml-language-server
       nodePackages.bash-language-server
       nodePackages.vim-language-server
+      rnix-lsp
     ];
   };
 }

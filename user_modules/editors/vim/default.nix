@@ -31,6 +31,8 @@ in
         source ${nvimMappingsDir + /leader.vim}
         source ${nvimMappingsDir + /visual.vim}
         source ${nvimMappingsDir + /insert.vim}
+        
+        source ${naiveNvimConfigDir + "/user_init.lua"}
       '';
     };
 

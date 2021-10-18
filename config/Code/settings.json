@@ -331,7 +331,6 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     // do not accept completions on enter
     "editor.acceptSuggestionOnEnter": "off",
-    "window.menuBarVisibility": "toggle",
     "terminal.integrated.commandsToSkipShell": [
         "language-julia.interrupt"
     ],
@@ -359,6 +358,9 @@
     },
     "[racket]": {
         "editor.bracketPairColorization.enabled": true,
+        "editor.tabSize": 2
+    },
+    "[lua]": {
         "editor.tabSize": 2
     },
     "[nix]": {
@@ -424,7 +426,7 @@
             "name": "lsp",
             "bindings": [
                 {
-                    "key": "r",
+                    "key": "R",
                     "name": "rename",
                     "command": "editor.action.rename",
                 },
@@ -434,9 +436,9 @@
                     "command": "editor.action.goToTypeDefinition",
                 },
                 {
-                    "key": "D",
+                    "key": "r",
                     "name": "references",
-                    "command": "editor.action.goToImplementation",
+                    "command": "editor.action.goToReferences",
                 },
             ],
         },
@@ -643,5 +645,7 @@
     "workbench.activityBar.visible": false,
     "extensions.ignoreRecommendations": true,
     "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": true,
+    // cancel the stupid menu from popping up
+    "window.menuBarVisibility": "hidden",
+    "update.mode": "none",
 }

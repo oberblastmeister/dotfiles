@@ -15,6 +15,10 @@ in
       cabal-install
       stack
       ghc
+      ghcid
+      haskellPackages.hoogle
+      haskellPackages.stan
+      hlint
     ];
 
     programs.vscode = {
