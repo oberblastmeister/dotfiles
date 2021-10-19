@@ -67,6 +67,11 @@ in
       lspconfig.bashls.setup(LspDefaults)
 
       lspconfig.rnix.setup(LspDefaults)
+      
+      dofile('${naiveNvimConfigDir + "/lspconfig/after.lua"}') {
+        LspDefaults = LspDefaults,
+      }
+
       EOF
     '';
   };

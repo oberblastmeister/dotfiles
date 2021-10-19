@@ -7,7 +7,7 @@
 
   users.users.brian = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" ];
+    extraGroups = [ "wheel" "libvirtd" "networkmanager" ];
   };
 
   modules = {

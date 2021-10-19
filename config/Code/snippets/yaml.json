@@ -1,0 +1,49 @@
+{
+	"default extensions": {
+		"prefix": "default-extensions",
+		"body": [
+			"default-extensions:",
+			"  - FlexibleInstances",
+			"  - FlexibleContexts",
+			"  - InstanceSigs",
+			"  - MultiParamTypeClasses",
+			"  - ConstraintKinds",
+			"  - LambdaCase",
+			"  - EmptyCase",
+			"  - TupleSections",
+			"  - BangPatterns",
+			"  - TypeApplications",
+			"  - StandaloneDeriving",
+			"  - OverloadedStrings",
+			"  - RankNTypes",
+			"  - ScopedTypeVariables",
+			"  - NamedFieldPuns",
+			"  - DuplicateRecordFields",
+			"  - GeneralizedNewtypeDeriving",
+			"  - DataKinds",
+			"  - ConstraintKinds",
+			"  - TypeApplications",
+			"  - KindSignatures",
+			"  - StandaloneKindSignatures",
+			"  - DeriveFoldable",
+			"  - DeriveFunctor",
+			"  - DeriveGeneric",
+			"  - DeriveLift",
+			"  - DeriveTraversable ",
+			"  - GeneralizedNewtypeDeriving",
+			"  - GADTs"
+		],
+		"description": "default extensions"
+	},
+	"default ghc options": {
+		"prefix": "ghc-options",
+		"body": [
+			"ghc-options:",
+			"  - -Wall",
+			"  - -Wincomplete-record-updates",
+			"  - -Wincomplete-uni-patterns",
+			"  - -Wredundant-constraints"
+		],
+		"description": "default ghc options"
+	},
+}

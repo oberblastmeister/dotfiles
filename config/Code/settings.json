@@ -353,6 +353,9 @@
     // languages
     "vim.foldfix": true,
     "gitlens.codeLens.enabled": false,
+    "[markdown]": {
+        "editor.tabSize": 2,
+    },
     "[haskell]": {
         "editor.tabSize": 2
     },
@@ -365,6 +368,13 @@
     },
     "[nix]": {
         "editor.tabSize": 2
+    },
+    "[yaml]": {
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        }
     },
     "python.analysis.completeFunctionParens": true,
     "python.analysis.typeCheckingMode": "strict",
