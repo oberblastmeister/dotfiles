@@ -165,8 +165,8 @@ in
         }
         cmp-nvim-lsp
         cmp-buffer
-        vim-vsnip
-        cmp-vsnip
+        luasnip
+        cmp_luasnip
 
         {
           plugin = haskell-vim;
