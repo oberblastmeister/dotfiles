@@ -658,4 +658,6 @@
     // cancel the stupid menu from popping up
     "window.menuBarVisibility": "hidden",
     "update.mode": "none",
+    "python.formatting.provider": "black",
+    "python.languageServer": "Pylance",
 }
