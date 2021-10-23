@@ -26,6 +26,9 @@ in
         kahole.magit
         streetsidesoftware.code-spell-checker
         vspacecode.whichkey
+
+        # misc
+        redhat.vscode-yaml
       ];
     };
 

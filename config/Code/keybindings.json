@@ -1,9 +1,9 @@
 [
     // used to test keybindings
-    {
-        "key": "adsfadf",
-        "command": "editor.debug.action.toggleInlineBreakpoint",
-    },
+    // {
+    //     "key": "adsfadf",
+    //     "command": "editor.debug.action.toggleInlineBreakpoint",
+    // },
 
     // space mappings
     {
@@ -94,10 +94,11 @@
         "when": "terminal.active"
     },
     // escape stuff
+    // use this to close diagnostic popups
     {
         "key": "ctrl+[",
         "command": "closeMarkersNavigation",
-        "when": "editorFocus && markersNavigationVisible"
+        "when": "editorFocus && markersNavigationVisible && neovim.mode == normal"
     },
     {
         "key": "ctrl+[",
