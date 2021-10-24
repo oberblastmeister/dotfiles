@@ -19,6 +19,9 @@ in
       haskellPackages.hoogle
       haskellPackages.stan
       hlint
+      haskellPackages.ghci-dap
+      haskellPackages.haskell-debug-adapter
+      haskellPackages.haskell-dap # for stack
     ];
 
     programs.vscode = {
