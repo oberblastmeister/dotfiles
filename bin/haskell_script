@@ -1,0 +1,9 @@
+#! /usr/bin/env cached-nix-shell
+#! nix-shell --pure -i runghc -p "haskellPackages.ghcWithPackages (pkgs: [ pkgs.optparse-applicative pkgs.shelly ])"
+
+import Options.Applicative
+import Shelly
+
+main :: IO ()
+main = do
+  return ()

@@ -654,10 +654,36 @@
     "workbench.panel.defaultLocation": "right",
     "workbench.activityBar.visible": false,
     "extensions.ignoreRecommendations": true,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     // cancel the stupid menu from popping up
     "window.menuBarVisibility": "hidden",
+    // stop vscode update messages
     "update.mode": "none",
     "python.formatting.provider": "black",
     "python.languageServer": "Pylance",
+    "texlab.server.autoDownload": true,
+    "texlab.build.onSave": true,
+    "texlab.forwardSearch.executable": "zathura",
+    "texlab.forwardSearch.args": [
+        "--synctex-forward",
+        "%l:1:%f",
+        "%p"
+    ],
+    // See `tectonic --help` for the format
+    "texlab.build.executable": "tectonic",
+    "texlab.build.args": [
+        // Input
+        "%f",
+        // Flags
+        "--synctex",
+        "--keep-logs",
+        "--keep-intermediates"
+        // Options
+        // OPTIONAL: If you want a custom out directory,
+        // uncomment the following line.
+        //"--outdir out",
+    ],
+    // OPTIONAL: The server needs to be configured
+    // to read the logs from the out directory as well.
+    // "texlab.auxDirectory": "out",
 }

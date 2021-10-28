@@ -19,6 +19,7 @@ let
         markdown.enable = mkDefault true;
         racket.enable = mkDefault true;
         java.enable = mkDefault true;
+        latex.enable = mkDefault true;
       };
       shell = {
         fish.enable = mkDefault true;

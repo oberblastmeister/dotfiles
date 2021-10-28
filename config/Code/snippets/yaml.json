@@ -31,7 +31,12 @@
 			"  - DeriveLift",
 			"  - DeriveTraversable ",
 			"  - GeneralizedNewtypeDeriving",
-			"  - GADTs"
+			"  - GADTs",
+			"  - PolyKinds",
+			"  - ViewPatterns",
+			"  - PatternSynonyms",
+			"  - TypeFamilies",
+			"  - ExistentialQuantification"
 		],
 		"description": "default extensions"
 	},
