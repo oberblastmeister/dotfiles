@@ -1,0 +1,70 @@
+{ config, lib, my, unstable, pkgs, ... }:
+
+let
+  cfg = config.modules.desktop.apps.zathura;
+in
+{
+  options.modules.desktop.apps.zathura = {
+    enable = my.options.mkEnable;
+  };
+  config = lib.mkIf cfg.enable {
+    programs.zathura = {
+      enable = true;
+      extraConfig = ''
+        # gruvbox
+
+        set font                        "FiraCode Nerd Font 12"
+        set default-bg                  "#282828"
+        set default-fg                  "#fbf1c7"
+
+        set statusbar-bg                "#282828"
+        set statusbar-fg                "#ebdbb2"
+
+        set inputbar-bg                 "#282828"
+        set inputbar-fg                 "#ebdbb2"
+
+        set notification-error-bg       "#fb4934"
+        set notification-error-fg       "#282828"
+
+        set notification-warning-bg     "#d3869b"
+        set notification-warning-fg     "#282828"
+
+        set highlight-color             "#fabd2f"
+        set highlight-active-color      "#fe8019"
+
+        set completion-highlight-bg     "#3c3836"
+        set completion-highlight-fg     "#fb4934"
+
+        set completion-bg               "#282828"
+        set completion-fg               "#ebdbb2"
+
+        set notification-bg             "#282828"
+        set notification-fg             "#ebdbb2"
+
+        set recolor-lightcolor          "#282828"
+        set recolor-darkcolor           "#fbf1c7"
+        set recolor                     "true"
+
+        # Setting recolor-keep true will keep any color your pdf has.
+        # If it is false, it'll just be black and white.
+        set recolor-keephue             "true"
+
+        # other options is width
+        set adjust-open "best-fit"
+
+        set selection-clipboard clipboard
+        set incremental-search true
+        # don't show any gui stuff
+        set guioptions ""
+
+        set window-title-home-tilde true
+        set window-title-basename true
+        set statusbar-home-tilde true
+        set show-hidden true
+
+        map <C-r> rotate
+        map r recolor
+      '';
+    };
+  };
+}
