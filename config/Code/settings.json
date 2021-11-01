@@ -376,6 +376,9 @@
             "strings": true
         }
     },
+    "[latex]": {
+        "editor.tabSize": 2
+    },
     "python.analysis.completeFunctionParens": true,
     "python.analysis.typeCheckingMode": "strict",
     "nix.enableLanguageServer": true,

@@ -72,6 +72,7 @@ in
         archiver
         notify-desktop
         tokei
+        act
       ];
 
       programs = {

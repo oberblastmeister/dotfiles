@@ -7,12 +7,22 @@
 
   users.users.brian = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "libvirtd"
+      "networkmanager"
+      "vboxusers"
+      "docker"
+    ];
   };
 
   modules = {
     presets.enable = "full";
-    virtualisation.virt-manager.enable = true;
+    virtualisation = {
+      virt-manager.enable = true;
+      virtualbox.enable = true;
+      docker.enable = true;
+    };
     hardware = {
       microcode.amd.enable = true;
     };

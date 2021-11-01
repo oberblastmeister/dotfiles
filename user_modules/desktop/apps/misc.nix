@@ -19,7 +19,6 @@ in
       mpv
       peek
       qalculate-gtk
-      zathura
     ];
   };
 }

@@ -7,6 +7,7 @@ in
   options.modules.desktop.apps.zathura = {
     enable = my.options.mkEnable;
   };
+
   config = lib.mkIf cfg.enable {
     programs.zathura = {
       enable = true;
@@ -64,6 +65,10 @@ in
 
         map <C-r> rotate
         map r recolor
+        
+        # to work with texlab
+        set synctex true
+        set synctex-editor-command "code -g %{input}:%{line}"
       '';
     };
   };
