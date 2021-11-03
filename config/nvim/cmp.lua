@@ -27,9 +27,5 @@ cmp.setup {
     -- { name = 'ultisnips' },
 
     { name = 'buffer' },
-    
-    experimental = {
-      ghost_text = true,
-    },
   }
 }

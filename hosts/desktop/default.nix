@@ -28,6 +28,14 @@
     };
   };
 
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      gutenprint
+      brlaser
+    ];
+  };
+
   home-manager.users.brian.modules = {
     presets.enable = "full";
     desktop = {

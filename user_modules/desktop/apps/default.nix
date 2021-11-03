@@ -15,6 +15,7 @@ in
       flameshot.enable = mkDefault true;
       discord.enable = mkDefault true;
       zathura.enable = mkDefault true;
+      syncthing.enable = mkDefault true;
     };
   };
 }

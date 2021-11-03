@@ -12,7 +12,7 @@ return function(opts)
       cmd = { '/home/brian/.local/bin/notes-lsp' },
       filetypes = { 'markdown' },
       root_dir = function(fname)
-        return util.path.dirname(fname)
+        return util.root_pattern('.git', 'neuron.dhall')(fname)
       end,
     },
   }
