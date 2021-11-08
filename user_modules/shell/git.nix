@@ -9,7 +9,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    modules.shell.aliases = {
+    home.shellAliases = {
       g = "git";
     };
 

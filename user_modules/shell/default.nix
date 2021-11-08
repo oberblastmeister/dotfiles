@@ -14,10 +14,6 @@ let
 in
 {
   options.modules.shell = {
-    aliases = mkOption {
-      default = { };
-      type = types.attrsOf types.str;
-    };
     programs.enable = my.options.mkEnable;
   };
 
@@ -26,19 +22,16 @@ in
       programs = {
         bash = {
           enable = bashCfg.enable;
-          shellAliases = cfg.aliases;
         };
         zsh = {
           enable = zshCfg.enable;
-          shellAliases = cfg.aliases;
         };
         fish = {
           enable = fishCfg.enable;
-          shellAliases = cfg.aliases;
         };
       };
 
-      modules.shell.aliases = {
+      home.shellAliases = {
         ".." = "cd ..";
         "..." = "cd ../..";
         "...." = "cd ../../..";
