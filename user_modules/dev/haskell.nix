@@ -22,6 +22,7 @@ in
       haskellPackages.ghci-dap
       haskellPackages.haskell-debug-adapter
       haskellPackages.haskell-dap # for stack
+      haskellPackages.threadscope
     ];
 
     programs.vscode = {

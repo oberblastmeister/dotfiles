@@ -12,6 +12,8 @@ in
     home.packages = with pkgs; [
       rustup
       unstable.rust-analyzer
+      cargo-watch
+      cargo-edit
     ];
 
     programs.vscode.extensions = with pkgs.vscode-extensions; [
