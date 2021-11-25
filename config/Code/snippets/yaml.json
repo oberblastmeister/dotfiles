@@ -36,7 +36,9 @@
 			"  - ViewPatterns",
 			"  - PatternSynonyms",
 			"  - TypeFamilies",
-			"  - ExistentialQuantification"
+			"  - FunctionalDependencies",
+			"  - ExistentialQuantification",
+			"  - TypeOperators"
 		],
 		"description": "default extensions"
 	},

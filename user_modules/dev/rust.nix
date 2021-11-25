@@ -14,6 +14,7 @@ in
       unstable.rust-analyzer
       cargo-watch
       cargo-edit
+      cargo-expand
     ];
 
     programs.vscode.extensions = with pkgs.vscode-extensions; [

@@ -52,6 +52,7 @@ in
     vim
     curl
     wget
+    gcc
   ];
 
   programs = {
