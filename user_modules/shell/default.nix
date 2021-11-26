@@ -66,6 +66,7 @@ in
         notify-desktop
         tokei
         act
+        binutils
       ];
 
       programs = {
