@@ -67,6 +67,7 @@ in
         tokei
         act
         binutils
+        youtube-dl
       ];
 
       programs = {

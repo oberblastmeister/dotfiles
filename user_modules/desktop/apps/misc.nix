@@ -17,6 +17,7 @@ in
       element-desktop
       gthumb
       mpv
+      celluloid
       peek
       qalculate-gtk
     ];
