@@ -363,6 +363,9 @@
         "editor.bracketPairColorization.enabled": true,
         "editor.tabSize": 2
     },
+    "[cabal]": {
+        "editor.tabSize": 2,
+    },
     "[lua]": {
         "editor.tabSize": 2
     },

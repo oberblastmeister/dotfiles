@@ -1,0 +1,60 @@
+{
+	"default extensions": {
+		"prefix": "default-extensions",
+		"body": [
+			"default-extensions:",
+			"  FlexibleInstances,",
+			"  FlexibleContexts,",
+			"  InstanceSigs,",
+			"  MultiParamTypeClasses,",
+			"  ConstraintKinds,",
+			"  LambdaCase,",
+			"  EmptyCase,",
+			"  TupleSections,",
+			"  BangPatterns,",
+			"  TypeApplications,",
+			"  StandaloneDeriving,",
+			"  OverloadedStrings,",
+			"  RankNTypes,",
+			"  ScopedTypeVariables,",
+			"  NamedFieldPuns,",
+			"  DuplicateRecordFields,",
+			"  GeneralizedNewtypeDeriving,",
+			"  DataKinds,",
+			"  ConstraintKinds,",
+			"  TypeApplications,",
+			"  KindSignatures,",
+			"  StandaloneKindSignatures,",
+			"  DeriveFoldable,",
+			"  DeriveFunctor,",
+			"  DeriveGeneric,",
+			"  DeriveLift,",
+			"  DeriveTraversable ,",
+			"  GeneralizedNewtypeDeriving,",
+			"  GADTs,",
+			"  PolyKinds,",
+			"  ViewPatterns,",
+			"  PatternSynonyms,",
+			"  TypeFamilies,",
+			"  FunctionalDependencies,",
+			"  ExistentialQuantification,",
+			"  TypeOperators"
+		],
+		"description": "default extensions"
+	},
+	"test suite": {
+		"prefix": "test-suite",
+		"body": [
+			"test-suite ${1:name}-test",
+			"  type: exitcode-stdio-1.0",
+			"  hs-source-dirs: test",
+			"  main-is: Spec.hs",
+			"  build-depends: hspec",
+			"  ghc-options:",
+			"    -threaded",
+			"    -rtsopts",
+			"    -with-rtsopts=-N"
+		],
+		"description": ""
+	}
+}

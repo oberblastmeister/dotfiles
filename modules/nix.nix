@@ -17,7 +17,12 @@ in
       in
       {
         package = pkgs.nixFlakes;
-        extraOptions = "experimental-features = nix-command flakes";
+        extraOptions = ''
+          experimental-features = nix-command flakes
+
+          keep-outputs = true
+          keep-derivations = true
+        '';
         # allows stuff like <nixpkgs> to find the correct one
         nixPath = nixPathInputs ++ [
           "nixpkgs-overlays=${config.dotfiles.dir}/overlays"

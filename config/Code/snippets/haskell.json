@@ -1,2 +1,31 @@
 {
+    "haskell spec module": {
+        "prefix": "Spec",
+        "body": [
+            "module $1Spec (spec) where",
+            "",
+            "import Test.Hspec",
+            "",
+            "spec :: spec",
+            "spec = do",
+            "  $0"
+        ],
+        "description": ""
+    },
+    "hspec describe": {
+        "prefix": "describe",
+        "body": [
+            "describe \"${1:description}\" $ do",
+            "  $0"
+        ],
+        "description": ""
+    },
+    "hspec it": {
+        "prefix": "it",
+        "body": [
+            "it \"${1:description}\" $ do",
+            "  $0"
+        ],
+        "description": ""
+    }
 }

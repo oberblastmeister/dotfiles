@@ -78,6 +78,13 @@ in
           enable = true;
         } // allIntegrations;
         bottom.enable = true;
+        direnv = {
+          enable = true;
+          # make nix-shell fast
+          nix-direnv = {
+            enable = true;
+          };
+        } // allIntegrations;
       };
 
       modules.shell.git.enable = true;
