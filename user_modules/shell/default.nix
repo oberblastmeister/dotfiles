@@ -59,7 +59,6 @@ in
         neofetch
         onefetch
         direnv
-        zoxide
         xclip
         glow
         archiver
@@ -73,6 +72,9 @@ in
       programs = {
         starship = {
           enable = true;
+          settings = {
+            vlang.disabled = true;
+          };
         } // allIntegrations;
         fzf = {
           enable = true;
@@ -84,6 +86,9 @@ in
           nix-direnv = {
             enable = true;
           };
+        } // allIntegrations;
+        zoxide = {
+          enable = true;
         } // allIntegrations;
       };
       

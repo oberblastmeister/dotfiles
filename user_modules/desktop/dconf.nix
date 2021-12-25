@@ -7,6 +7,9 @@ in
 {
   config = lib.mkIf nixosCfg.enable {
     dconf.settings = {
+      "org/gnome/mutter" = {
+        edge-tiling = false;
+      };
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super>q" ];
         maximize = [ "<Alt><Super>k" ];
@@ -44,12 +47,12 @@ in
         www = [ "<Super>b" ];
       };
       "org/gnome/desktop/interface" = {
-        cursor-theme = "Bibata_Ice";
+        cursor-theme = "Bibata-Modern-Ice";
         gtk-theme = "Orchis";
         icon-theme = "ePapirus";
         font-name = "Noto Sans 11";
         document-font-name = "Noto Sans 11";
-        monospace-font-name = "FiraCode Nerd Font 10";
+        monospace-font-name = "CaskaydiaCove Nerd Font 10";
         titlebar-font = "Noto Sans Bold 11";
       };
       "org/gnome/shell/extensions/user-theme" = {
@@ -72,6 +75,7 @@ in
           "clipboard-indicator@tudmotu.com"
           "drive-menu@gnome-shell-extensions.gcampax.github.com"
           "appindicatorsupport@rgcjonas.gmail.com"
+          "pop-shell@system76.com"
         ];
       };
     };

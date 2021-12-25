@@ -5,16 +5,9 @@ let
   inherit (lib) mkOption types;
 in
 {
-  options.modules.desktop.terminals = {
-    default = mkOption {
-      type = types.str;
-      default = "gnome-terminal";
-    };
-  };
-
   config = {
     home.sessionVariables = {
-      TERMINAL = "gnome-terminal";
+      TERMINAL = "wezterm";
     };
   };
 }
