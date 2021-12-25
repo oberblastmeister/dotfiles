@@ -5,17 +5,17 @@ local util = require 'lspconfig/util'
 local configs = require 'lspconfig/configs'
 
 return function(opts)
-  local LspDefaults = opts.LspDefaults
+  -- local LspDefaults = opts.LspDefaults
 
-  configs.notes_lsp = {
-    default_config = {
-      cmd = { '/home/brian/.local/bin/notes-lsp' },
-      filetypes = { 'markdown' },
-      root_dir = function(fname)
-        return util.root_pattern('.git', 'neuron.dhall')(fname)
-      end,
-    },
-  }
+  -- configs.notes_lsp = {
+  --   default_config = {
+  --     cmd = { '/home/brian/.local/bin/notes-lsp' },
+  --     filetypes = { 'markdown' },
+  --     root_dir = function(fname)
+  --       return util.root_pattern('.git', 'neuron.dhall')(fname)
+  --     end,
+  --   },
+  -- }
 
-  lspconfig.notes_lsp.setup(LspDefaults)
+  -- lspconfig.notes_lsp.setup(LspDefaults)
 end

@@ -14,6 +14,7 @@ let
         rust.enable = mkDefault true;
         haskell.enable = mkDefault true;
         ocaml.enable = mkDefault true;
+        coq.enable = mkDefault true;
         python.enable = mkDefault true;
         cc.enable = mkDefault true;
         markdown.enable = mkDefault true;
@@ -28,7 +29,8 @@ let
       };
       desktop = {
         browsers.firefox.enable = mkDefault true;
-        terminals.gnome-terminal.enable = mkDefault true;
+        # terminals.gnome-terminal.enable = mkDefault true;
+        terminals.wezterm.enable = mkDefault true;
         apps = {
           enableAll = mkDefault true;
         };

@@ -323,8 +323,7 @@
     "workbench.list.smoothScrolling": true,
     // fonts
     "editor.fontWeight": "normal",
-    "editor.fontSize": 12,
-    "editor.fontFamily": "FiraCode Nerd Font",
+    "editor.fontFamily": "CaskaydiaCove Nerd Font",
     "editor.fontLigatures": true,
     "editor.suggestSelection": "first",
     "editor.minimap.enabled": false,
@@ -385,6 +384,9 @@
     "[makefile]": {
         "editor.insertSpaces": false,
         "editor.detectIndentation": false,
+    },
+    "[coq]": {
+        "editor.tabSize": 2
     },
     "python.analysis.completeFunctionParens": true,
     "python.analysis.typeCheckingMode": "strict",
@@ -696,6 +698,7 @@
     "haskell.plugin.ghcide-completions.config.snippetsOn": false,
     "haskell.plugin.ghcide-completions.config.autoExtendOn": false,
     "java.refactor.renameFromFileExplorer": "autoApply",
+    "editor.fontSize": 16,
     // OPTIONAL: The server needs to be configured
     // to read the logs from the out directory as well.
     // "texlab.auxDirectory": "out",

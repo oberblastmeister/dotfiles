@@ -15,7 +15,23 @@ in
     services = {
       xserver = {
         enable = true;
-        displayManager.gdm.enable = true;
+        # crashes on startup for some reason
+        # displayManager.gdm.enable = true;
+
+        # cannot start a Gnome wayland session
+        # see https://github.com/NixOS/nixpkgs/issues/56342
+        displayManager.lightdm.enable = true;
+        displayManager.lightdm.greeters.mini = {
+          enable = true;
+          user = "brian";
+          extraConfig = ''
+            [greeter]
+            show-password-label = true
+            show-sys-info = true
+            [greeter-theme]
+            background-image = ""
+          '';
+        };
         # this will enable a bunch of services and apps for us
         desktopManager.gnome.enable = true;
       };

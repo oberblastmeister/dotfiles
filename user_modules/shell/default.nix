@@ -86,6 +86,8 @@ in
           };
         } // allIntegrations;
       };
+      
+      # services.lorri.enable = true;
 
       modules.shell.git.enable = true;
     })
