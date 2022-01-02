@@ -12,15 +12,14 @@ in
   config = lib.mkIf cfg.enable {
     fonts.fonts = with pkgs; [
       noto-fonts
+      # for chinese to work
       noto-fonts-cjk
       noto-fonts-emoji
       (nerdfonts.override {
         fonts = [
           "FiraCode"
           "JetBrainsMono"
-          "Iosevka"
           "CascadiaCode"
-          "SourceCodePro"
         ];
       })
     ];

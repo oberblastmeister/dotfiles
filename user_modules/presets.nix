@@ -9,6 +9,7 @@ let
       editors = {
         vim.enable = mkDefault true;
         vscode.enable = mkDefault true;
+        emacs.enable = mkDefault true;
       };
       dev = {
         rust.enable = mkDefault true;
