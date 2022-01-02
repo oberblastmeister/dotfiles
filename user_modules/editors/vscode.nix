@@ -17,25 +17,25 @@ in
     programs.vscode = {
       # breaks sometimes
       enable = true;
-      extensions = with pkgs.vscode-extensions; [
-        jnoortheen.nix-ide
-        arrterian.nix-env-selector
-        asvetliakov.vscode-neovim
-        bodil.file-browser
-        eamodio.gitlens
-        kahole.magit
-        streetsidesoftware.code-spell-checker
-        vspacecode.whichkey
+      # extensions = with pkgs.vscode-extensions; [
+      #   jnoortheen.nix-ide
+      #   arrterian.nix-env-selector
+      #   asvetliakov.vscode-neovim
+      #   bodil.file-browser
+      #   eamodio.gitlens
+      #   kahole.magit
+      #   streetsidesoftware.code-spell-checker
+      #   vspacecode.whichkey
 
-        # misc
-        redhat.vscode-yaml
-      ];
+      #   # misc
+      #   redhat.vscode-yaml
+      # ];
     };
 
     home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/settings.json");
     home.file."${toDir}/keybindings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/keybindings.json");
     home.file."${toDir}/snippets".source = mkOutOfStoreSymlink (naiveCodeDir + "/snippets");
-    
+
     home.packages = with pkgs; [
       rnix-lsp
     ];

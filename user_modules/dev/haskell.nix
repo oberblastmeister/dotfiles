@@ -24,11 +24,5 @@ in
       haskellPackages.haskell-dap # for stack
       haskellPackages.threadscope
     ];
-
-    programs.vscode = {
-      extensions = with pkgs.vscode-extensions; [
-        haskell.haskell
-      ];
-    };
   };
 }

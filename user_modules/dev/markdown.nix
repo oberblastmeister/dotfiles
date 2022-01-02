@@ -12,10 +12,5 @@ in
     home.packages = with pkgs; [
       pandoc
     ];
-
-    programs.vscode.extensions = with pkgs.vscode-extensions; [
-      foam.foam-vscode
-      yzhang.markdown-all-in-one
-    ];
   };
 }

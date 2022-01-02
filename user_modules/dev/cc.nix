@@ -16,8 +16,5 @@ in
       gdb
       cmake
     ];
-
-    # use clangd instead of microsoft c/cpp, its much better
-    programs.vscode.extensions = with pkgs; [ ];
   };
 }

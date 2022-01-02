@@ -18,11 +18,5 @@ in
       python39Packages.pylint
       python39Packages.poetry
     ];
-
-    programs.vscode.extensions = with pkgs.vscode-extensions; [
-      # fails for some reason
-      ms-python.python
-      ms-python.vscode-pylance
-    ];
   };
 }

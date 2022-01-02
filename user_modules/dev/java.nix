@@ -15,9 +15,5 @@ in
     home.packages = with pkgs; [
       gradle
     ];
-
-    programs.vscode.extensions = with pkgs.vscode-extensions; [
-      redhat.java
-    ];
   };
 }

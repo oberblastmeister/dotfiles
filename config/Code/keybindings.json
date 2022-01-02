@@ -254,5 +254,26 @@
         "key": "ctrl+pageup",
         "command": "-workbench.action.terminal.focusPrevious",
         "when": "terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    // merge conflicts
+    {
+        "key": "d g",
+        "command": "merge-conflict.accept.incoming",
+        "when": "neovim.mode == normal && editorTextFocus && mergeConflictsCount && mergeConflictsCount != 0",
+    },
+    {
+        "key": "d p",
+        "command": "merge-conflict.accept.current",
+        "when": "neovim.mode == normal && editorTextFocus && mergeConflictsCount && mergeConflictsCount != 0",
+    },
+    {
+        "key": "d b",
+        "command": "merge-conflict.accept.both",
+        "when": "neovim.mode == normal && editorTextFocus && mergeConflictsCount && mergeConflictsCount != 0",
+    },
+    {
+        "key": "d D",
+        "command": "merge-conflict.compare",
+        "when": "neovim.mode == normal && editorTextFocus && mergeConflictsCount && mergeConflictsCount != 0",
     }
 ]

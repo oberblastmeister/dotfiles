@@ -16,10 +16,10 @@ endfunction
 
 nnoremap c* <Cmd>call VSCodeNotify('editor.action.changeAll')<CR>
 
-nnoremap dp <Cmd>call VSCodeNotify('merge-conflict.accept.current')<CR>
-nnoremap dg <Cmd>call VSCodeNotify('merge-conflict.accept.incoming')<CR>
-nnoremap db <Cmd>call VSCodeNotify('merge-conflict.accept.both')<CR>
-nnoremap dD <Cmd>call VSCodeNotify('merge-conflict.compare')<CR>
+" nnoremap dp <Cmd>call VSCodeNotify('merge-conflict.accept.current')<CR>
+" nnoremap dg <Cmd>call VSCodeNotify('merge-conflict.accept.incoming')<CR>
+" nnoremap db <Cmd>call VSCodeNotify('merge-conflict.accept.both')<CR>
+" nnoremap dD <Cmd>call VSCodeNotify('merge-conflict.compare')<CR>
 
 nnoremap ]g <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
 nnoremap [g <Cmd>call VSCodeNotify('editor.action.marker.prev')<CR>

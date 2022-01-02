@@ -17,11 +17,5 @@ in
       ocamlPackages.ocaml-lsp
       ocamlPackages.utop
     ];
-
-    programs.vscode = {
-      extensions = with pkgs.vscode-extensions; [
-        ocamllabs.ocaml-platform
-      ];
-    };
   };
 }

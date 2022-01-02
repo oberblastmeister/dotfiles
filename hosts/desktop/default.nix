@@ -45,4 +45,15 @@
       browsers.chrome.enable = true;
     };
   };
+
+  # this makes chinese work with the ibus input method
+  # if using gnome, make sure to also add Chinese (Intelligent Pinyin) to input sources with regular Chinese
+  i18n.inputMethod.enabled = "ibus";
+  i18n.inputMethod.ibus.engines = with pkgs.ibus-engines; [
+    rime
+    libpinyin
+    table
+    table-chinese
+    m17n
+  ];
 }

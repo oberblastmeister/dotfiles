@@ -5,8 +5,6 @@
     nixpkgs.url = "nixpkgs/nixos-unstable"; # primary nixpkgs
     nixpkgs-unstable.url = "nixpkgs/master"; # for packages on the edge
 
-    nixos-hardware.url = "github:nixos/nixos-hardware";
-
     utils.url = "github:numtide/flake-utils";
 
     home-manager = {
@@ -15,6 +13,7 @@
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, utils, ... }@inputs:

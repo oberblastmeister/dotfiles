@@ -17,12 +17,6 @@ in
       cargo-expand
     ];
 
-    programs.vscode.extensions = with pkgs.vscode-extensions; [
-      matklad.rust-analyzer
-      tamasfe.even-better-toml
-      vadimcn.vscode-lldb
-    ];
-
     home.sessionVariables = {
       RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
       CARGO_HOME = "${config.xdg.dataHome}/cargo";
