@@ -20,6 +20,7 @@ in
       celluloid
       peek
       qalculate-gtk
+      zotero
     ];
   };
 }

@@ -323,7 +323,7 @@
     "workbench.list.smoothScrolling": true,
     // fonts
     "editor.fontWeight": "normal",
-    "editor.fontFamily": "CaskaydiaCove Nerd Font",
+    "editor.fontFamily": "Cascadia Code",
     "editor.fontLigatures": true,
     "editor.suggestSelection": "first",
     "editor.minimap.enabled": false,
@@ -701,6 +701,7 @@
     "editor.fontSize": 16,
     "errorLens.followCursor": "closestProblem",
     "errorLens.statusBarMessageType": "closestProblem",
+    "errorLens.enabled": false,
     // OPTIONAL: The server needs to be configured
     // to read the logs from the out directory as well.
     // "texlab.auxDirectory": "out",

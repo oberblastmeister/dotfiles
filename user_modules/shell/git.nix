@@ -31,6 +31,7 @@ in
       userName = lib.mkDefault "brian";
       extraConfig = {
         init.defaultBranch = "main";
+        pull.rebase = false; # merge (the default strategy)
         # make it work with gnome keyring
         # this will cache the password
         # this might compile for a long time though,

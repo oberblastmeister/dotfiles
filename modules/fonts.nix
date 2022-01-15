@@ -11,10 +11,13 @@ in
 
   config = lib.mkIf cfg.enable {
     fonts.fonts = with pkgs; [
+      ubuntu_font_family
       noto-fonts
       # for chinese to work
       noto-fonts-cjk
       noto-fonts-emoji
+
+      # monospace
       (nerdfonts.override {
         fonts = [
           "FiraCode"
@@ -22,6 +25,7 @@ in
           "CascadiaCode"
         ];
       })
+      cascadia-code
     ];
   };
 }

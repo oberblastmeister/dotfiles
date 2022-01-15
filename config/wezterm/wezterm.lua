@@ -5,5 +5,5 @@ return {
   check_for_updates = false,
   color_scheme = 'Gruvbox Dark',
   window_decorations = "NONE",
-  font = wezterm.font('CaskaydiaCove Nerd Font'),
+  font = wezterm.font('Cascadia Code'),
 }
