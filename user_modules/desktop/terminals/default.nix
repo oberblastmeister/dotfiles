@@ -7,7 +7,7 @@ in
 {
   config = {
     home.sessionVariables = {
-      TERMINAL = "wezterm";
+      TERMINAL = "ALACRITTY";
     };
   };
 }

@@ -25,6 +25,7 @@
     };
     hardware = {
       microcode.amd.enable = true;
+      opengl.enable = true;
     };
   };
 
@@ -35,6 +36,18 @@
       brlaser
     ];
   };
+
+  # amd stuff
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
+  hardware.opengl.extraPackages = [
+    pkgs.amdvlk
+  ];
+  # To enable Vulkan support for 32-bit applications, also add:
+  hardware.opengl.extraPackages32 = [
+    pkgs.driversi686Linux.amdvlk
+  ];
 
   home-manager.users.brian.modules = {
     presets.enable = "full";

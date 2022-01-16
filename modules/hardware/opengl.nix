@@ -15,11 +15,17 @@ in
       lib.mkIf cfg.enable {
         hardware.opengl = {
           enable = true;
-          extraPackages = with pkgs; [
-            libGL
-            vaapiVdpau
-            libvdpau-va-gl
-          ];
+
+          # enable vulkan support
+          driSupport = true;
+          # For 32 bit applications
+          driSupport32Bit = true;
+
+          # extraPackages = with pkgs; [
+          #   libGL
+          #   vaapiVdpau
+          #   libvdpau-va-gl
+          # ];
         };
       }
     )
@@ -27,10 +33,10 @@ in
     (
       lib.mkIf cfg.enableIntel {
         hardware.opengl = {
-          extraPackages = with pkgs; [
-            pkgs.vaapiIntel
-            pkgs.intel-media-driver
-          ];
+          # extraPackages = with pkgs; [
+          #   pkgs.vaapiIntel
+          #   pkgs.intel-media-driver
+          # ];
         };
       }
     )

@@ -32,6 +32,7 @@ let
         browsers.firefox.enable = mkDefault true;
         # terminals.gnome-terminal.enable = mkDefault true;
         terminals.wezterm.enable = mkDefault true;
+        terminals.alacritty.enable = mkDefault true;
         apps = {
           enableAll = mkDefault true;
         };

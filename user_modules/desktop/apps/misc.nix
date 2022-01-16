@@ -21,6 +21,7 @@ in
       peek
       qalculate-gtk
       zotero
+      popsicle
     ];
   };
 }

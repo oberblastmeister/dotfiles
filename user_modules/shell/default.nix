@@ -67,6 +67,7 @@ in
         act
         binutils
         youtube-dl
+        zellij
       ];
 
       programs = {
