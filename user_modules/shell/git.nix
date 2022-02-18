@@ -37,6 +37,7 @@ in
         # this might compile for a long time though,
         # becase we are overriding the package
         credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
+        merge.tool = "vimdiff";
       };
     };
 

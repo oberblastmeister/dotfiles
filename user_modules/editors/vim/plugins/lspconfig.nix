@@ -78,7 +78,7 @@ in
 
   config = {
     home.packages = with pkgs; (addIf devCfg.python.enable nodePackages.pyright)
-      ++ (addIf devCfg.haskell.enable haskell-language-server)
+      # ++ (addIf devCfg.haskell.enable haskell-language-server)
       ++ (addIf devCfg.ocaml.enable ocamlPackages.ocaml-lsp)
       ++ (addIf devCfg.cc.enable clang-tools) ++ [
       nodePackages.vscode-json-languageserver

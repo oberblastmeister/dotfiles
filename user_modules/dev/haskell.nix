@@ -11,7 +11,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       cabal2nix
-      haskell-language-server
+      # haskell-language-server
       cabal-install
       stack
       ghc
@@ -23,6 +23,9 @@ in
       haskellPackages.haskell-debug-adapter
       haskellPackages.haskell-dap # for stack
       haskellPackages.threadscope
+      haskellPackages.ghcup
     ];
+
+    home.sessionPath = [ "$HOME/.cabal/bin" "$HOME/.ghcup/bin" ];
   };
 }
