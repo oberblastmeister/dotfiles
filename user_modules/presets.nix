@@ -14,6 +14,8 @@ let
       dev = {
         rust.enable = mkDefault true;
         haskell.enable = mkDefault true;
+        idris.enable = mkDefault true;
+        agda.enable = mkDefault true;
         ocaml.enable = mkDefault true;
         coq.enable = mkDefault true;
         python.enable = mkDefault true;

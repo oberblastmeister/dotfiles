@@ -38,6 +38,7 @@ in
         # becase we are overriding the package
         credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
         merge.tool = "vimdiff";
+        core.editor = "vim";
       };
     };
 

@@ -356,7 +356,15 @@
         "editor.tabSize": 2,
     },
     "[haskell]": {
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+    },
+    "[agda]": {
+        "editor.tabSize" :2,
+        "editor.unicodeHighlight.ambiguousCharacters": false,
+    },
+    "[idris]": {
+        "editor.tabSize": 2,
+        "editor.unicodeHighlight.ambiguousCharacters": false
     },
     "[racket]": {
         "editor.bracketPairColorization.enabled": true,
@@ -504,7 +512,14 @@
         {
             "key": "b",
             "name": "buffers",
-            "bindings": [],
+            "bindings": [
+                {
+                    "key": "d",
+                    "name": "delete",
+                    "command": "vscode-neovim.send",
+                    "args": ":Tabclose<CR>"
+                },
+            ],
         },
         // {
         //     "key": "t",
@@ -702,7 +717,11 @@
     "errorLens.followCursor": "closestProblem",
     "errorLens.statusBarMessageType": "closestProblem",
     "errorLens.enabled": false,
-    "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font",
+    "files.insertFinalNewline": true,
+    "task.problemMatchers.neverPrompt": {
+        "process": true
+    },
+    "agdaMode.connection.agdaPath": "/nix/store/irjg1q06zpiwdzvbm6rabm0yf6nrkjsh-agdaWithPackages-2.6.2.1/bin/agda",
     // OPTIONAL: The server needs to be configured
     // to read the logs from the out directory as well.
     // "texlab.auxDirectory": "out",

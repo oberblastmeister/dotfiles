@@ -4,6 +4,11 @@
     //     "key": "adsfadf",
     //     "command": "editor.debug.action.toggleInlineBreakpoint",
     // },
+    // make agda mode work
+    {
+        "key": "ctrl+c",
+        "command": "-vscode-neovim.send",
+    },
 
     // space mappings
     {
@@ -82,6 +87,7 @@
         "key": "ctrl+t",
         "command": "-vscode-neovim.send",
         "when": "neovim.mode == cmdline_insert || neovim.mode == cmdline_normal || neovim.mode == cmdline_replace"
+        
     },
     {
         "key": "ctrl+t",
