@@ -20,6 +20,7 @@ in
 
   security = {
     sudo.enable = mkDefault true;
+
     # has some permission denied issues when installing fonts
     doas = {
       enable = mkDefault false;

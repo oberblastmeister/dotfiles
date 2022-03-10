@@ -11,16 +11,17 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       firefox
-      (
-        pkgs.makeDesktopItem {
-          name = "firefox-private";
-          desktopName = "Firefox (Private)";
-          genericName = "Open a private Firefox window";
-          icon = "firefox";
-          exec = "${firefox-bin}/bin/firefox --private-window";
-          categories = "Network";
-        }
-      )
+
+      # (
+      #   pkgs.makeDesktopItem {
+      #     name = "firefox-private";
+      #     desktopName = "Firefox (Private)";
+      #     genericName = "Open a private Firefox window";
+      #     icon = "firefox";
+      #     exec = "${firefox-bin}/bin/firefox --private-window";
+      #     categories = "Network";
+      #   }
+      # )
     ];
   };
 }

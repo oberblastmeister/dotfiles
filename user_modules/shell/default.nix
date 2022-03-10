@@ -87,12 +87,15 @@ in
           nix-direnv = {
             enable = true;
           };
-        } // allIntegrations;
+        } // (builtins.removeAttrs
+          allIntegrations
+          # fish integration is read only and is already set by default
+          [ "enableFishIntegration" ]);
         zoxide = {
           enable = true;
         } // allIntegrations;
       };
-      
+
       # services.lorri.enable = true;
 
       modules.shell.git.enable = true;
