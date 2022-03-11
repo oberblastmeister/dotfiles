@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=ulauncher
+Icon=ulauncher
+Exec=ulauncher --hide-window
+Terminal=false
+Type=Application

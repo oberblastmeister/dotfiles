@@ -1,4 +1,4 @@
-{ config, options, unstable, pkgs, lib, my, ... }:
+{ config, nixosConfig, options, unstable, pkgs, lib, my, ... }:
 
 let
   package = pkgs.ulauncher;
@@ -12,21 +12,6 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = [ package ];
-
-    systemd.user.services.ulauncher = {
-      Unit = {
-        Description = "Ulauncher program launcher";
-        Requires = [ "tray.target" ];
-        After = [ "graphical-session-pre.target" "tray.target" ];
-        PartOf = [ "graphical-session.target" ];
-      };
-
-      Install = { WantedBy = [ "graphical-session.target" ]; };
-
-      Service = {
-        ExecStart = "${package}/bin/ulauncher";
-        Restart = "on-abort";
-      };
-    };
+    xdg.configFile."autostart/Ulauncher.desktop".source = nixosConfig.dotfiles.configDir + "/autostart/Ulauncher.desktop";
   };
 }

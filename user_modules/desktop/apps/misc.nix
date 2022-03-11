@@ -22,6 +22,8 @@ in
       qalculate-gtk
       zotero
       popsicle
+      # insecure right now
+      # obsidian
     ];
   };
 }
