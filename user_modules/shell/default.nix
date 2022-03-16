@@ -99,6 +99,7 @@ in
       # services.lorri.enable = true;
 
       modules.shell.git.enable = true;
+      modules.shell.tmux.enable = true;
     })
   ];
 }
