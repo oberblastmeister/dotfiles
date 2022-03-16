@@ -15,9 +15,5 @@ in
         source ${nixosConfig.dotfiles.configDir + "/fish/config.fish"}
       '';
     };
-
-    programs.vscode.extensions = with pkgs.vscode-extensions; [
-      skyapps.fish-vscode
-    ];
   };
 }

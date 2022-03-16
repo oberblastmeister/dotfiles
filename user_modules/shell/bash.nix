@@ -9,9 +9,5 @@ in
     enable = mkEnable;
   };
 
-  config = lib.mkIf cfg.enable {
-    programs.vscode.extensions = with pkgs.vscode-extensions; [
-      mads-hartmann.bash-ide-vscode
-    ];
-  };
+  config = lib.mkIf cfg.enable { };
 }
