@@ -68,6 +68,7 @@ in
         binutils
         youtube-dl
         zellij
+        cachix
       ];
 
       programs = {

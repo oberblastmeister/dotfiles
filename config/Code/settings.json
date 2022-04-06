@@ -359,7 +359,7 @@
         "editor.tabSize": 2,
     },
     "[agda]": {
-        "editor.tabSize" :2,
+        "editor.tabSize": 2,
         "editor.unicodeHighlight.ambiguousCharacters": false,
     },
     "[idris]": {
@@ -397,7 +397,7 @@
         "editor.tabSize": 2
     },
     "python.analysis.completeFunctionParens": true,
-    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.typeCheckingMode": "basic",
     "nix.enableLanguageServer": true,
     "markdown.extension.math.enabled": false,
     "cSpell.enabledLanguageIds": [
@@ -723,6 +723,21 @@
     },
     "agdaMode.connection.agdaPath": "/nix/store/irjg1q06zpiwdzvbm6rabm0yf6nrkjsh-agdaWithPackages-2.6.2.1/bin/agda",
     "python.formatting.blackPath": "",
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": false,
+        "haskell": false,
+        "cabal": false,
+        "jsonc": false,
+        "rust": false,
+        "kotlin": false
+    },
+    "files.associations": {
+        "*.dump-simpl": "haskell"
+    }
     // OPTIONAL: The server needs to be configured
     // to read the logs from the out directory as well.
     // "texlab.auxDirectory": "out",
