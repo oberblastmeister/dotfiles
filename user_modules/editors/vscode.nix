@@ -16,6 +16,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.vscode = {
       enable = true;
+      package = unstable.vscode;
     };
 
     home.file."${toDir}/settings.json".source = mkOutOfStoreSymlink (naiveCodeDir + "/settings.json");

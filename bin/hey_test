@@ -1,0 +1,287 @@
+#!/usr/bin/env cached-nix-shell
+#!nix-shell -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ turtle optparse-applicative unix ])"
+#!nix-shell -i runghc
+
+{-# LANGUAGE ApplicativeDo #-}
+{-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+
+{-# HLINT ignore "Use newtype instead of data" #-}
+
+import qualified Control.Exception as Exception
+import Data.Maybe (fromMaybe)
+import GHC.Exts (fromString)
+import Options.Applicative
+import qualified System.Environment
+import qualified System.FilePath
+import qualified System.Posix
+import Turtle hiding (root, switch)
+import Prelude hiding (FilePath)
+
+main :: IO ()
+main = customExecParser optPrefs parseOpt >>= run
+
+run :: Opt -> IO ()
+run Opt {cmd} = do
+  checkIsRoot
+  case cmd of
+    Gc -> runGc
+    Rebuild opt -> runRebuild opt
+    Push -> runPush
+    Update opt -> runUpdate opt
+    Upgrade opt -> runUpdate opt
+    Rollback opt -> runRollback opt
+    AddHost opt -> runAddHost opt
+    Cd -> runCd
+    UpdateDconf opt -> runUpdateDconf opt
+
+runGc :: IO ()
+runGc = do
+  sudoProc "nix-collect-garbage" ["-d"]
+  sudoProc "nix-store" ["--optimise"]
+  pure ()
+
+runRebuild :: FlakeOpt -> IO ()
+runRebuild flakeOpt = do
+  flakeProc "nixos-rebuild" ["switch"] flakeOpt
+  pure ()
+
+runPush :: IO ()
+runPush = do
+  proc' "git" ["add", "."]
+  proc' "git" ["commit", "-m", "."]
+  proc' "git" ["push"]
+  pure ()
+
+runUpdate :: FlakeOpt -> IO ()
+runUpdate flakeOpt = do
+  flakeProc "nix" ["flake", "update"] flakeOpt
+  pure ()
+
+runUpgrade :: FlakeOpt -> IO ()
+runUpgrade flakeOpt = do
+  runUpdate flakeOpt
+  runRebuild flakeOpt
+
+runRollback :: FlakeOpt -> IO ()
+runRollback flakeOpt@FlakeOpt {extra} = runRebuild flakeOpt {extra = "--rollback" : extra}
+
+runCd :: IO ()
+runCd = cd dotfilesDir
+
+runUpdateDconf :: UpdateDconfOpt -> IO ()
+runUpdateDconf UpdateDconfOpt {force} = do
+  let dconfDir = dotfilesDir </> "dconf"
+      dconfSettings = dconfDir </> "dconf.settings"
+      dconfNix = dconfDir </> "dconf.nix"
+  exists <- testfile dconfSettings
+  when (not exists && not force) $ die "dconf.settings exists, pass --force to override it"
+  inproc' "dconf" ["dump", "/"] & output dconfSettings
+  exists <- testfile dconfNix
+  when (not exists && not force) $ die "dconf.nix exists, pass --force to override it"
+  proc' "dconf2nix" ["-i", toText' dconfSettings, "-o", toText' dconfDir]
+  pure ()
+
+runAddHost :: AddHostOpt -> IO ()
+runAddHost AddHostOpt {flake, hostname, conf, hardwareConf, root, force} = do
+  flake <- getFlake flake
+  let hostnamePath = fromText hostname
+  when (length (splitDirectories hostnamePath) /= 1) $ die "The name must only have one path componenent"
+  let hostDir = flake </> "hosts" </> hostnamePath
+  exists <- testdir hostDir
+  when exists $
+    if force
+      then rm hostDir
+      else die "The host path already exists"
+  mkdir hostDir
+  Exception.handle (\(_ :: Exception.IOException) -> rmdir hostDir) $ do
+    case hardwareConf of
+      Nothing -> generateHardwareConfig root hostDir
+      Just hardwareConf -> cp hardwareConf $ hostDir </> "hardware-configuration.nix"
+    case conf of
+      Nothing -> cp (flake </> "host_template" </> "default.nix") (hostDir </> "default.nix")
+      Just conf -> cp conf $ hostDir </> "default.nix"
+  proc' "git" ["add", toText' hostDir]
+
+generateHardwareConfig :: FilePath -> FilePath -> IO ()
+generateHardwareConfig root dir = do
+  sudoProc "nixos-generate-config" ["--root", toText' root, "--dir", toText' dir]
+  rm $ dir </> "configuration.nix"
+
+flakeProc :: MonadIO io => Text -> [Text] -> FlakeOpt -> io ()
+flakeProc cmd args FlakeOpt {flake, extra} = do
+  flake <- getFlake flake
+  sudoProc cmd (args ++ ["--flake", toText' flake] ++ extra)
+
+sudoProc :: MonadIO io => Text -> [Text] -> io ()
+sudoProc cmd args = proc' "sudo" $ cmd : args
+
+inproc' :: Text -> [Text] -> Shell Line
+inproc' cmd args = inproc cmd args empty
+
+proc' :: MonadIO io => Text -> [Text] -> io ()
+proc' cmd args = procs cmd args empty
+
+optPrefs :: ParserPrefs
+optPrefs =
+  prefs $
+    disambiguate
+      <> showHelpOnError
+      <> showHelpOnEmpty
+
+parseOpt :: ParserInfo Opt
+parseOpt =
+  info
+    (helper <*> versionOption <*> parseOpt')
+    ( fullDesc
+        <> progDesc "Nix system helper"
+    )
+
+parseOpt' :: Parser Opt
+parseOpt' = do
+  cmd <- parseCommand
+  pure Opt {cmd}
+
+parseCommand :: Parser Command
+parseCommand =
+  subparser
+    ( command "gc" (info (pure Gc) (progDesc "Garbage collect"))
+        <> command "rebuild" (info (Rebuild <$> parseFlakeOpt) (progDesc "Rebuild system"))
+        <> command "push" (info (pure Push) (progDesc "Push configuration to github"))
+        <> command "update" (info (Update <$> parseFlakeOpt) (progDesc "Update flakes"))
+        <> command "upgrade" (info (Upgrade <$> parseFlakeOpt) (progDesc "Update and rebuild"))
+        <> command "rollback" (info (Rollback <$> parseFlakeOpt) (progDesc "Rollback configuration"))
+        <> command "add-host" (info (AddHost <$> parseAddHost) (progDesc "Add a new host"))
+        <> command "cd" (info (pure Cd) (progDesc "cd to dotfiles"))
+        <> command "update-dconf" (info (UpdateDconf <$> parseUpdateDconf) (progDesc "Update dconf configuration"))
+    )
+
+parseFlakeOpt :: Parser FlakeOpt
+parseFlakeOpt = do
+  flake <- parseFlakePath
+  extra <- parseExtra
+  pure FlakeOpt {flake, extra}
+
+parseAddHost :: Parser AddHostOpt
+parseAddHost = do
+  hostname <- strArgument $ metavar "HOSTNAME"
+  hardwareConf <-
+    optional $
+      strOption $
+        long "hardware-conf"
+          <> pathMeta
+          <> help "hardware-configuration.nix path"
+  conf <-
+    optional $
+      strOption $
+        long "conf"
+          <> pathMeta
+          <> help "configuration.nix path. Will be copied to hosts/<host>/default.nix"
+  root <- strOption (long "root" <> pathMeta <> value "/")
+  force <- parseForce
+  flake <- parseFlakePath
+  pure AddHostOpt {hostname, hardwareConf, conf, root, force, flake}
+
+parseUpdateDconf :: Parser UpdateDconfOpt
+parseUpdateDconf = do
+  force <- parseForce
+  pure UpdateDconfOpt {force}
+
+pathMeta :: Mod OptionFields a
+pathMeta = metavar "PATH"
+
+parseExtra :: Parser [Text]
+parseExtra =
+  many $
+    strArgument $
+      help "Extra arguments to pass to nix"
+        <> metavar "ARGS"
+
+parseForce :: Parser Bool
+parseForce =
+  switch $
+    help "Override the existing file"
+      <> long "force"
+      <> short 'f'
+
+parseFlakePath :: Parser (Maybe FilePath)
+parseFlakePath =
+  optional
+    ( fromText
+        <$> strOption
+          ( long "flake"
+              <> help "Where the flake is"
+              <> pathMeta
+          )
+    )
+
+data Opt = Opt
+  { cmd :: Command
+  }
+
+data Command
+  = Gc
+  | Rebuild FlakeOpt
+  | Push
+  | Update FlakeOpt
+  | Upgrade FlakeOpt
+  | Rollback FlakeOpt
+  | AddHost AddHostOpt
+  | Cd
+  | UpdateDconf UpdateDconfOpt
+
+data FlakeOpt = FlakeOpt
+  { flake :: Maybe FilePath,
+    extra :: [Text]
+  }
+
+data UpdateDconfOpt = UpdateDconfOpt
+  { force :: Bool
+  }
+
+data AddHostOpt = AddHostOpt
+  { hostname :: Text,
+    hardwareConf :: Maybe FilePath,
+    conf :: Maybe FilePath,
+    root :: FilePath,
+    force :: Bool,
+    flake :: Maybe FilePath
+  }
+
+versionOption :: Parser (a -> a)
+versionOption = infoOption "1.0" $ long "version" <> help "Show the version"
+
+isRoot :: IO Bool
+isRoot = do
+  uid <- System.Posix.getRealUserID
+  pure $ uid == System.Posix.CUid 0
+
+getFlake :: MonadIO io => Maybe FilePath -> io FilePath
+getFlake mPath = pure (fromMaybe dotfilesDir mPath)
+
+toText' :: FilePath -> Text
+toText' path = case toText path of
+  Left text -> text
+  Right text -> text
+
+checkIsRoot :: IO ()
+checkIsRoot =
+  whenM isRoot $
+    die "You must not be root when running this. You will be prompted for your password when it is needed"
+
+dotfilesDir :: FilePath
+dotfilesDir = "/etc/dotfiles"
+
+unlessM :: Monad m => m Bool -> m () -> m ()
+unlessM condM m = do
+  cond <- condM
+  unless cond m
+
+whenM :: Monad m => m Bool -> m () -> m ()
+whenM condM m = do
+  cond <- condM
+  when cond m
