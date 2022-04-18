@@ -16,14 +16,14 @@ in
       stack
       ghc
       ghcid
-      haskellPackages.hoogle
-      haskellPackages.stan
       hlint
-      haskellPackages.ghci-dap
-      haskellPackages.haskell-debug-adapter
-      haskellPackages.haskell-dap # for stack
-      haskellPackages.threadscope
-      haskellPackages.ghcup
+      # haskellPackages.hoogle
+      # haskellPackages.stan
+      # haskellPackages.ghci-dap
+      # haskellPackages.haskell-debug-adapter
+      # haskellPackages.haskell-dap # for stack
+      # haskellPackages.threadscope
+      # haskellPackages.ghcup
     ];
 
     home.sessionPath = [ "$HOME/.cabal/bin" "$HOME/.ghcup/bin" ];

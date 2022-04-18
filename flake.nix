@@ -2,8 +2,11 @@
   description = "my system";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable"; # primary nixpkgs
-    nixpkgs-unstable.url = "nixpkgs/master"; # for packages on the edge
+    # primary nixpkgs
+    # unstable is too unstable
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs-very-unstable.url = "nixpkgs/master"; # for packages on the edge
 
     utils.url = "github:numtide/flake-utils";
 
@@ -17,7 +20,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, utils, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-very-unstable, utils, ... }@inputs:
     let
       system = "x86_64-linux";
       mkPkgs = pkgs: extraOverlays: import pkgs {
@@ -28,11 +31,13 @@
       overlays = [ ];
       pkgs = mkPkgs nixpkgs overlays;
       pkgs-unstable = mkPkgs nixpkgs-unstable overlays;
+      pkgs-very-unstable = mkPkgs nixpkgs-very-unstable overlays;
       lib = nixpkgs.lib.extend (final: prev: { my = import ./lib { inherit pkgs inputs; lib = final; }; });
     in
     rec {
       overlay = final: prev: {
         unstable = pkgs-unstable;
+        very-unstable = pkgs-very-unstable;
         my = self.packages."${system}";
       };
 

@@ -27,7 +27,7 @@ let
       };
       shell = {
         fish.enable = mkDefault true;
-        bash.enable = mkDefault true;
+        bash.enable = mkDefault false;
         programs.enable = mkDefault true;
       };
       desktop = {

@@ -1,4 +1,4 @@
-{ options, config, unstable, pkgs, lib, my, ... }:
+{ options, config, very-unstable, pkgs, lib, my, ... }:
 
 let
   cfg = config.modules.dev.rust;
@@ -11,7 +11,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       rustup
-      unstable.rust-analyzer
+      very-unstable.rust-analyzer
       cargo-watch
       cargo-edit
       cargo-expand

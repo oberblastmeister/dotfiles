@@ -9,7 +9,7 @@
     # give home-manager some extra arguments that we can receive in modules
     # similar to how we give lib.nixosSystem specialArgs
     extraSpecialArgs = {
-      inherit (pkgs) unstable;
+      inherit (pkgs) unstable very-unstable;
       inherit inputs system;
       # inherit my instead of whole lib because home-manager needs to use
       # it's own special extended stdlib and it will clash with the lib name

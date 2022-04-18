@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ options, config, lib, pkgs, unstable, ... }:
 
 let
   cfg = config.modules.desktop.gnome;
@@ -44,7 +44,7 @@ in
 
       gnomeExtensions.clipboard-indicator
       gnomeExtensions.appindicator
-      gnomeExtensions.pop-shell
+      unstable.gnomeExtensions.pop-shell
 
       orchis
       papirus-icon-theme

@@ -15,7 +15,7 @@ in
       enable = true;
       # use unstable to avoid cannot capture screen issue
       # https://github.com/flameshot-org/flameshot/issues/1910
-      package = unstable.flameshot;
+      # package = unstable.flameshot;
       settings = {
         General = {
           uiColor = "#83a598";

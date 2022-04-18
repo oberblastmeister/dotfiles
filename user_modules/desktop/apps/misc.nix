@@ -1,4 +1,4 @@
-{ config, lib, my, pkgs, ... }:
+{ config, lib, my, pkgs, unstable, ... }:
 
 let
   cfg = config.modules.desktop.apps.misc;
@@ -21,7 +21,7 @@ in
       peek
       qalculate-gtk
       zotero
-      popsicle
+      unstable.popsicle
       # insecure right now
       # obsidian
     ];
