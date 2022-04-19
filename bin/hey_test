@@ -113,13 +113,16 @@ generateHardwareConfig root dir = do
   sudoProc "nixos-generate-config" ["--root", toText' root, "--dir", toText' dir]
   rm $ dir </> "configuration.nix"
 
-flakeProc :: MonadIO io => Text -> [Text] -> FlakeOpt -> io ()
+flakeProc :: MonadIO io => Text -> [Text] -> FlakeOpt -> io ExitCode
 flakeProc cmd args FlakeOpt {flake, extra} = do
   flake <- getFlake flake
   sudoProc cmd (args ++ ["--flake", toText' flake] ++ extra)
 
-sudoProc :: MonadIO io => Text -> [Text] -> io ()
-sudoProc cmd args = procs' "sudo" $ cmd : args
+sudoProc :: MonadIO io => Text -> [Text] -> io ExitCode
+sudoProc cmd args = proc' "sudo" $ cmd : args
+
+sudoProcs :: MonadIO io => Text -> [Text] -> io ()
+sudoProcs cmd args = procs' "sudo" $ cmd : args
 
 inproc' :: Text -> [Text] -> Shell Line
 inproc' cmd args = inproc cmd args empty
