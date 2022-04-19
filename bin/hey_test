@@ -2,6 +2,8 @@
 #!nix-shell -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ turtle optparse-applicative unix ])"
 #!nix-shell -i runghc
 
+-- vim: ft=haskell
+
 {-# LANGUAGE ApplicativeDo #-}
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE NamedFieldPuns #-}
@@ -137,9 +139,7 @@ parseOpt :: ParserInfo Opt
 parseOpt =
   info
     (helper <*> versionOption <*> parseOpt')
-    ( fullDesc
-        <> progDesc "Nix system helper"
-    )
+    (fullDesc <> progDesc "Nix system helper")
 
 parseOpt' :: Parser Opt
 parseOpt' = do
@@ -181,7 +181,7 @@ parseAddHost = do
         long "conf"
           <> pathMeta
           <> help "configuration.nix path. Will be copied to hosts/<host>/default.nix"
-  root <- strOption (long "root" <> pathMeta <> value "/")
+  root <- strOption $ long "root" <> pathMeta <> value "/"
   force <- parseForce
   flake <- parseFlakePath
   pure AddHostOpt {hostname, hardwareConf, conf, root, force, flake}
