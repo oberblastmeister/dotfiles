@@ -3,7 +3,6 @@
 #!nix-shell -i runghc
 
 -- vim: ft=haskell
-
 {-# LANGUAGE ApplicativeDo #-}
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE NamedFieldPuns #-}
@@ -55,8 +54,8 @@ runRebuild flakeOpt = do
 runPush :: IO ()
 runPush = do
   proc' "git" ["add", "."]
-  proc' "git" ["commit", "-m", "."]
-  proc' "git" ["push"]
+    .&&. proc' "git" ["commit", "-m", "."]
+    .&&. proc' "git" ["push"]
   pure ()
 
 runUpdate :: FlakeOpt -> IO ()
@@ -85,7 +84,7 @@ runUpdateDconf UpdateDconfOpt {force} = do
   inproc' "dconf" ["dump", "/"] & output dconfSettings
   exists <- testfile dconfNix
   when (not exists && not force) $ die "dconf.nix exists, pass --force to override it"
-  proc' "dconf2nix" ["-i", toText' dconfSettings, "-o", toText' dconfDir]
+  procs' "dconf2nix" ["-i", toText' dconfSettings, "-o", toText' dconfDir]
   pure ()
 
 runAddHost :: AddHostOpt -> IO ()
@@ -107,7 +106,7 @@ runAddHost AddHostOpt {flake, hostname, conf, hardwareConf, root, force} = do
     case conf of
       Nothing -> cp (flake </> "host_template" </> "default.nix") (hostDir </> "default.nix")
       Just conf -> cp conf $ hostDir </> "default.nix"
-  proc' "git" ["add", toText' hostDir]
+  procs' "git" ["add", toText' hostDir]
 
 generateHardwareConfig :: FilePath -> FilePath -> IO ()
 generateHardwareConfig root dir = do
@@ -120,13 +119,16 @@ flakeProc cmd args FlakeOpt {flake, extra} = do
   sudoProc cmd (args ++ ["--flake", toText' flake] ++ extra)
 
 sudoProc :: MonadIO io => Text -> [Text] -> io ()
-sudoProc cmd args = proc' "sudo" $ cmd : args
+sudoProc cmd args = procs' "sudo" $ cmd : args
 
 inproc' :: Text -> [Text] -> Shell Line
 inproc' cmd args = inproc cmd args empty
 
-proc' :: MonadIO io => Text -> [Text] -> io ()
-proc' cmd args = procs cmd args empty
+proc' :: MonadIO io => Text -> [Text] -> io ExitCode
+proc' cmd args = proc cmd args empty
+
+procs' :: MonadIO io => Text -> [Text] -> io ()
+procs' cmd args = procs cmd args empty
 
 optPrefs :: ParserPrefs
 optPrefs =
