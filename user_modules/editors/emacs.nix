@@ -17,7 +17,7 @@ in
 
     programs.emacs = {
       enable = true;
-      package = pkgs.emacsGcc;
+      package = pkgs.emacsNativeComp;
       extraPackages = (epkgs: [ epkgs.vterm ]);
     };
 

@@ -39,6 +39,9 @@ in
         credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
         merge.tool = "vimdiff";
         core.editor = "vim";
+        safe.directory = [
+          "/etc/dotfiles"
+        ];
       };
     };
 

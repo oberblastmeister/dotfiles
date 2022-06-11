@@ -50,7 +50,6 @@ in
         bat
         exa
         fd
-        fzf
         ripgrep
         ripgrep-all
         tmux
@@ -78,9 +77,27 @@ in
             vlang.disabled = true;
           };
         } // allIntegrations;
-        fzf = {
-          enable = true;
-        } // allIntegrations;
+        fzf =
+          let
+            defaultOptions = [
+              "--ansi"
+              "--preview 'bat --style=numbers --color=always --line-range :500 --theme=gruvbox-dark {}'"
+            ];
+            defaultCommand = "fd --type file --color always";
+          in
+          {
+            enable = true;
+            changeDirWidgetCommand = "fd --type directory --color always";
+            changeDirWidgetOptions = [
+              "--ansi"
+              "--preview 'exa --level 3 --tree --color always --group-directories-first --icons {} | head -50'"
+            ];
+            fileWidgetCommand = defaultCommand;
+            fileWidgetOptions = defaultOptions;
+            inherit defaultCommand;
+            inherit defaultOptions;
+            tmux.enableShellIntegration = false;
+          } // allIntegrations;
         bottom.enable = true;
         direnv = {
           enable = true;
@@ -101,6 +118,7 @@ in
 
       modules.shell.git.enable = true;
       modules.shell.tmux.enable = true;
+      modules.shell.ranger.enable = true;
     })
   ];
 }

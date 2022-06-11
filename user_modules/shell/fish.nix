@@ -12,7 +12,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.fish = {
       shellInit = ''
-        source ${nixosConfig.dotfiles.configDir + "/fish/config.fish"}
+        source ${nixosConfig.dotfiles.naiveConfigDir + "/fish/config.fish"}
       '';
     };
   };

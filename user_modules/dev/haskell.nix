@@ -1,4 +1,4 @@
-{ options, config, pkgs, lib, my, ... }:
+{ options, config, pkgs, unstable, lib, my, ... }:
 
 let
   cfg = config.modules.dev.haskell;
@@ -11,12 +11,17 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       cabal2nix
-      # haskell-language-server
       cabal-install
       stack
-      ghc
+      # ghc
+      unstable.haskell.compiler.ghc922
       ghcid
-      hlint
+      unstable.haskell-language-server
+      unstable.ormolu
+      unstable.hlint
+      (pkgs.writeShellScriptBin "pghci" ''
+        cabal repl --repl-options "-interactive-print=Text.Pretty.Simple.pPrint" --build-depends pretty-simple
+      '')
       # haskellPackages.hoogle
       # haskellPackages.stan
       # haskellPackages.ghci-dap
