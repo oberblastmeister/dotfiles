@@ -65,4 +65,6 @@ in
   };
 
   users.defaultUserShell = pkgs.fish;
+
+  system.stateVersion = "22.05";
 }

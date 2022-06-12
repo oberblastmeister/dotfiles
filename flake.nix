@@ -4,12 +4,14 @@
   inputs = {
     # primary nixpkgs
     # unstable is too unstable
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    nixpkgs-very-unstable.url = "nixpkgs/master"; # for packages on the edge
+    # make sure to change the version number to update
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-very-unstable.url = "github:NixOS/nixpkgs/master"; # for packages on the edge
 
     utils.url = "github:numtide/flake-utils";
 
+    # might need to pin this to same version as nixpkgs
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
