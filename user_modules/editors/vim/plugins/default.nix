@@ -126,7 +126,7 @@ in
         {
           plugin = telescope-nvim;
           config = ''
-            source ${nvimConfigDir + /telescope.lua}
+            source ${naiveNvimConfigDir + "/telescope.lua"}
           '';
         }
         telescope-fzy-native-nvim
@@ -134,7 +134,7 @@ in
 
         {
           config = ''
-            source ${nvimConfigDir + /nvim-treesitter.lua}
+            source ${naiveNvimConfigDir + "/nvim-treesitter.lua"}
           '';
           plugin = (nvim-treesitter.withPlugins (
             plugins: with plugins; [
@@ -148,6 +148,7 @@ in
               # tree-sitter-haskell # crashes with a loop
               tree-sitter-python
               tree-sitter-ocaml
+              tree-sitter-rust
             ]
           ));
         }
@@ -160,13 +161,19 @@ in
         {
           plugin = nvim-cmp;
           config = ''
-            source ${nvimConfigDir + /cmp.lua}
+            source ${naiveNvimConfigDir + "/cmp.lua"}
           '';
         }
         cmp-nvim-lsp
         cmp-buffer
-        luasnip
+        {
+          plugin = luasnip;
+          config = ''
+            source ${naiveNvimConfigDir + "/luasnip.vim"}
+          '';
+        }
         cmp_luasnip
+        cmp-cmdline
 
         {
           plugin = haskell-vim;
@@ -192,6 +199,13 @@ in
             vim.g.haskell_backpack = 1                -- to enable highlighting of backpack keywords
             EOF
           '';
+        }
+
+        {
+          plugin = pkgs.vimUtils.buildVimPlugin {
+            name = "dirbuf";
+            src = inputs.dirbuf;
+          };
         }
       ];
   };
