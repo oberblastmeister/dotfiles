@@ -131,6 +131,7 @@ in
         }
         telescope-fzy-native-nvim
         telescope-fzf-native-nvim
+        telescope-file-browser-nvim
 
         {
           config = ''
@@ -206,6 +207,9 @@ in
             name = "dirbuf";
             src = inputs.dirbuf;
           };
+          config = ''
+            source ${naiveNvimConfigDir + "/dirbuf.lua"}
+          '';
         }
       ];
   };
