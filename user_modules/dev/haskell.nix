@@ -14,7 +14,7 @@ in
       cabal-install
       stack
       # ghc
-      unstable.haskell.compiler.ghc922
+      unstable.haskell.compiler.ghc923
       ghcid
       unstable.haskell-language-server
       unstable.ormolu
