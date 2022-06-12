@@ -35,7 +35,9 @@
         config.allowUnfree = true;
         overlays = [ self.overlay ] ++ extraOverlays ++ (builtins.attrValues self.overlays);
       };
-      overlays = [ ];
+      overlays = [
+        inputs.nur.overlay
+      ];
       pkgs = mkPkgs nixpkgs overlays;
       pkgs-unstable = mkPkgs nixpkgs-unstable overlays;
       pkgs-very-unstable = mkPkgs nixpkgs-very-unstable overlays;
@@ -50,7 +52,9 @@
 
       overlays = lib.my.modules.importAll ./overlays;
 
-      nixosModules = { dotfiles = import ./.; } // lib.my.modules.importAll ./modules;
+      nixosModules = {
+        dotfiles = import ./.;
+      } // lib.my.modules.importAll ./modules;
 
       nixosConfigurations = lib.my.hosts.map ./hosts { };
     }
