@@ -721,7 +721,7 @@
     "task.problemMatchers.neverPrompt": {
         "process": true
     },
-    "agdaMode.connection.agdaPath": "/nix/store/irjg1q06zpiwdzvbm6rabm0yf6nrkjsh-agdaWithPackages-2.6.2.1/bin/agda",
+    "agdaMode.connection.agdaPath": "/etc/profiles/per-user/brian/bin/agda",
     "python.formatting.blackPath": "",
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
@@ -734,13 +734,25 @@
         "jsonc": false,
         "rust": false,
         "kotlin": false,
+        "toml": false,
+        "nix": false,
         "shellscript": false,
-        "nix": false
+        "go": false,
+        "java": false,
+        "cpp": false,
+        "python": false,
+        "git-commit": false,
+        "agda": false
     },
     "files.associations": {
         "*.dump-simpl": "haskell"
     },
-    "terminal.integrated.defaultProfile.linux": "fish"
+    "haskell.plugin.rename.config.crossModule": true,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "clangd.checkUpdates": true,
+    "clangd.arguments": [
+        "--header-insertion=never"
+    ]
     // OPTIONAL: The server needs to be configured
     // to read the logs from the out directory as well.
     // "texlab.auxDirectory": "out",

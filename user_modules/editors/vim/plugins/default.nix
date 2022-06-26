@@ -137,21 +137,7 @@ in
           config = ''
             source ${naiveNvimConfigDir + "/nvim-treesitter.lua"}
           '';
-          plugin = (nvim-treesitter.withPlugins (
-            plugins: with plugins; [
-              tree-sitter-bash
-              tree-sitter-c
-              tree-sitter-lua
-              tree-sitter-json
-              tree-sitter-yaml
-              tree-sitter-toml
-              tree-sitter-nix
-              # tree-sitter-haskell # crashes with a loop
-              tree-sitter-python
-              tree-sitter-ocaml
-              tree-sitter-rust
-            ]
-          ));
+          plugin = (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars));
         }
 
         {

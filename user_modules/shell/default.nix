@@ -68,6 +68,7 @@ in
         youtube-dl
         zellij
         cachix
+        gnumake
       ];
 
       programs = {

@@ -27,5 +27,16 @@
             "  $0"
         ],
         "description": ""
+    },
+    "core viewing options": {
+        "prefix": "core options",
+        "body": [
+            "{-# OPTIONS_GHC -ddump-simpl",
+            "-ddump-to-file",
+            "-dsuppress-module-prefixes",
+            "-dsuppress-coercions",
+            "-dsuppress-idinfo #-}"
+        ],
+        "description": ""
     }
 }
