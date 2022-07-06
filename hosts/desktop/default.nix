@@ -51,16 +51,6 @@
     pkgs.driversi686Linux.amdvlk
   ];
 
-  home-manager.users.brian.modules = {
-    presets.enable = "full";
-    desktop = {
-      apps = {
-        zoom.enable = true;
-      };
-      browsers.chrome.enable = true;
-    };
-  };
-
   # this makes chinese work with the ibus input method
   # if using gnome, make sure to also add Chinese (Intelligent Pinyin) to input sources with regular Chinese
   i18n.inputMethod.enabled = "ibus";
@@ -71,4 +61,23 @@
     table-chinese
     m17n
   ];
+
+  home-manager.users.brian = {
+    modules = {
+      presets.enable = "full";
+      desktop = {
+        apps = {
+          zoom.enable = true;
+        };
+        browsers.chrome.enable = true;
+      };
+    };
+
+    home.packages = with pkgs; [
+      steam
+      lutris
+      heroic
+      legendary-gl
+    ];
+  };
 }

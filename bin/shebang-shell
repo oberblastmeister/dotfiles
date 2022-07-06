@@ -1,0 +1,66 @@
+#! /usr/bin/env cached-nix-shell
+#! nix-shell -i python3 -p python310
+
+import re
+import sys
+from pathlib import Path
+from typing import cast
+import subprocess
+import shlex
+
+shebang_pat = re.compile(r"#!\s*(.*)")
+packages_pat = re.compile(r"-p\s+(.+?)(?:\s+-)?")
+
+
+def collect_packages(args: list[str]) -> list[str]:
+    packages = []
+    args_iter = iter(args)
+    while True:
+        arg = next(args_iter, None)
+        if arg is None:
+            return packages
+        elif arg == "-p" or arg == "--packages":
+            while True:
+                arg = next(args_iter, None)
+                if arg == None:
+                    return packages
+                elif arg.startswith("-"):
+                    break
+                packages.append(arg)
+
+
+def get_packages(path: str) -> list[str]:
+    packages = []
+    with open(path) as file:
+        for line in file:
+            line = line.rstrip()
+            m = shebang_pat.match(line)
+            if m is None:
+                return packages
+            command = shlex.split(m.group(1))
+            if command[0] != "nix-shell":
+                continue
+            packages.extend(collect_packages(command[1:]))
+    return packages
+
+
+def main():
+    if len(sys.argv) < 2:
+        raise Exception("Must have at least one argument")
+    path = sys.argv[1]
+    nix_args = []
+    if len(sys.argv) > 2:
+        if sys.argv[2] == "--":
+            nix_args = sys.argv[3:]
+        else:
+            raise Exception("Only one argument expected for the path")
+    packages = get_packages(path)
+    if not packages:
+        raise Exception("No packages found")
+    command = ["nix-shell", "-p"] + packages + nix_args
+    print(shlex.join(command))
+    subprocess.run(command)
+
+
+if __name__ == "__main__":
+    main()

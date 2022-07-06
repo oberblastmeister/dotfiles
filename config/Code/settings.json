@@ -687,6 +687,13 @@
     // stop vscode update messages
     "update.mode": "none",
     "python.formatting.provider": "black",
+    "python.formatting.blackPath": "/home/brian/.nix-profile/bin/black",
+    // support match statements
+    // https://github.com/psf/black/issues/2242
+    "python.formatting.blackArgs": [
+        "--target-version",
+        "py310"
+    ],
     "python.languageServer": "Pylance",
     "texlab.server.autoDownload": true,
     "texlab.build.onSave": true,
@@ -722,7 +729,6 @@
         "process": true
     },
     "agdaMode.connection.agdaPath": "/etc/profiles/per-user/brian/bin/agda",
-    "python.formatting.blackPath": "",
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
@@ -742,17 +748,22 @@
         "cpp": false,
         "python": false,
         "git-commit": false,
-        "agda": false
+        "agda": false,
+        "c": false,
+        "json": false
     },
     "files.associations": {
-        "*.dump-simpl": "haskell"
+        "*.dump-simpl": "haskell",
+        "*.h": "c",
+        "cabal.project": "cabal",
+        "cabal.project.local": "cabal",
     },
     "haskell.plugin.rename.config.crossModule": true,
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "clangd.checkUpdates": true,
     "clangd.arguments": [
         "--header-insertion=never"
-    ]
+    ],
     // OPTIONAL: The server needs to be configured
     // to read the logs from the out directory as well.
     // "texlab.auxDirectory": "out",

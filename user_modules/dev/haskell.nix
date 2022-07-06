@@ -22,6 +22,7 @@ in
       (pkgs.writeShellScriptBin "pghci" ''
         cabal repl --repl-options "-interactive-print=Text.Pretty.Simple.pPrint" --build-depends pretty-simple
       '')
+      haskell-ci
       # haskellPackages.hoogle
       # haskellPackages.stan
       # haskellPackages.ghci-dap

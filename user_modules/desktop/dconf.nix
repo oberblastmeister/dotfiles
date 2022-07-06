@@ -52,7 +52,7 @@ in
         icon-theme = "ePapirus";
         font-name = "Noto Sans 11";
         document-font-name = "Noto Sans 11";
-        monospace-font-name = "CaskaydiaCove Nerd Font 10";
+        monospace-font-name = "Cascadia Code 10";
         titlebar-font = "Noto Sans Bold 11";
       };
       "org/gnome/shell/extensions/user-theme" = {

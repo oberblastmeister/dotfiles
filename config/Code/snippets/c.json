@@ -1,0 +1,14 @@
+{
+	"include guard": {
+		"prefix": "include guard",
+		"body": [
+			"#ifndef _${1:GUARD_NAME}_H",
+			"#define _${1:GUARD_NAME}_H",
+			"",
+			"$2",
+			"",
+			"#endif"
+		],
+		"description": "include guard"
+	}
+}

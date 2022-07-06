@@ -63,9 +63,7 @@ in
         archiver
         notify-desktop
         tokei
-        act
         binutils
-        youtube-dl
         zellij
         cachix
         gnumake

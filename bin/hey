@@ -1,5 +1,5 @@
 #! /usr/bin/env cached-nix-shell
-#! nix-shell -i python3 -p python310 nixFlakes
+#! nix-shell -i python3 -p python310 python310Packages.click nixFlakes
 # vim: ft=python
 
 # yo command
