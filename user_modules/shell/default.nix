@@ -67,7 +67,12 @@ in
         zellij
         cachix
         gnumake
+        tldr
       ];
+
+      home.sessionVariables = {
+        BAT_THEME = "gruvbox-dark";
+      };
 
       programs = {
         starship = {
@@ -109,6 +114,9 @@ in
           # fish integration is read only and is already set by default
           [ "enableFishIntegration" ]);
         zoxide = {
+          enable = true;
+        } // allIntegrations;
+        navi = {
           enable = true;
         } // allIntegrations;
       };

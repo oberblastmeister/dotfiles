@@ -126,7 +126,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "background";
+      last-panel = "keyboard";
       window-state = mkTuple [ 1244 988 ];
     };
 
@@ -400,7 +400,7 @@ with lib.hm.gvariant;
       network-total-in-bits = false;
       show-dependencies = false;
       show-whose-processes = "user";
-      window-state = mkTuple [ 2512 988 ];
+      window-state = mkTuple [ 620 988 ];
     };
 
     "org/gnome/gnome-system-monitor/disktreenew" = {
@@ -424,13 +424,13 @@ with lib.hm.gvariant;
       sidebar-visible = true;
       sort-inverse = false;
       sort-type = "file::mtime";
-      startup-current-file = "";
-      startup-location = "file:///home/brian/Pictures";
+      startup-current-file = "file:///home/brian/projects/pvector/docs/diagram.png";
+      startup-location = "file:///home/brian/projects/pvector/docs";
       statusbar-visible = true;
       thumbnail-list-visible = true;
       viewer-sidebar = "hidden";
-      window-height = 940;
-      window-width = 2512;
+      window-height = 988;
+      window-width = 2560;
     };
 
     "org/gnome/gthumb/data-migration" = {
@@ -469,7 +469,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/nautilus/window-state" = {
-      initial-size = mkTuple [ 2512 988 ];
+      initial-size = mkTuple [ 613 988 ];
       maximized = false;
     };
 
@@ -489,6 +489,7 @@ with lib.hm.gvariant;
     "org/gnome/settings-daemon/plugins/media-keys" = {
       control-center = [ "<Super>s" ];
       custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+      screensaver = [];
       www = [ "<Super>b" ];
     };
 
@@ -510,11 +511,11 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
-      app-picker-layout = "[{'org.gnome.Contacts.desktop': <{'position': <0>}>, 'org.gnome.Weather.desktop': <{'position': <1>}>, 'org.gnome.clocks.desktop': <{'position': <2>}>, 'org.gnome.Maps.desktop': <{'position': <3>}>, 'org.gnome.Totem.desktop': <{'position': <4>}>, 'org.gnome.Calculator.desktop': <{'position': <5>}>, 'org.gnome.gedit.desktop': <{'position': <6>}>, 'simple-scan.desktop': <{'position': <7>}>, 'gnome-control-center.desktop': <{'position': <8>}>, 'anki.desktop': <{'position': <9>}>, 'org.gnome.Characters.desktop': <{'position': <10>}>, 'org.gnome.FileRoller.desktop': <{'position': <11>}>, 'yelp.desktop': <{'position': <12>}>, 'org.gnome.Connections.desktop': <{'position': <13>}>, 'org.gnome.Screenshot.desktop': <{'position': <14>}>, 'ca.desrt.dconf-editor.desktop': <{'position': <15>}>, 'org.gnome.Cheese.desktop': <{'position': <16>}>, 'discord.desktop': <{'position': <17>}>, 'org.gnome.font-viewer.desktop': <{'position': <18>}>, 'org.gnome.baobab.desktop': <{'position': <19>}>, 'org.gnome.DiskUtility.desktop': <{'position': <20>}>, 'org.gnome.Evince.desktop': <{'position': <21>}>}, {'drracket.desktop': <{'position': <0>}>, 'element-desktop.desktop': <{'position': <1>}>, 'org.gnome.Extensions.desktop': <{'position': <2>}>, 'firefox-private.desktop': <{'position': <3>}>, 'fish.desktop': <{'position': <4>}>, 'org.gnome.gThumb.desktop': <{'position': <5>}>, 'org.gnome.eog.desktop': <{'position': <6>}>, 'lf.desktop': <{'position': <7>}>, 'org.gnome.Logs.desktop': <{'position': <8>}>, 'Mailspring.desktop': <{'position': <9>}>, 'cups.desktop': <{'position': <10>}>, 'mpv.desktop': <{'position': <11>}>, 'nixos-manual.desktop': <{'position': <12>}>, 'c65df4ad-b1c8-4e6f-9213-588de75547d3': <{'position': <13>}>, 'com.github.alainm23.planner.desktop': <{'position': <14>}>, 'slideshow.desktop': <{'position': <15>}>, 'org.gnome.Tour.desktop': <{'position': <16>}>, 'org.gnome.tweaks.desktop': <{'position': <17>}>, 'umpv.desktop': <{'position': <18>}>, 'nvim.desktop': <{'position': <19>}>, 'xterm.desktop': <{'position': <20>}>, 'Alacritty.desktop': <{'position': <21>}>, 'org.gnome.Calendar.desktop': <{'position': <22>}>, 'org.gnome.seahorse.Application.desktop': <{'position': <23>}>}, {'org.gnome.Geary.desktop': <{'position': <0>}>, 'org.gnome.Music.desktop': <{'position': <1>}>, 'org.gnome.Photos.desktop': <{'position': <2>}>, 'pavucontrol.desktop': <{'position': <3>}>, 'virt-manager.desktop': <{'position': <4>}>, 'code.desktop': <{'position': <5>}>, 'org.gnome.Epiphany.desktop': <{'position': <6>}>, 'Zoom.desktop': <{'position': <7>}>}]";
+      app-picker-layout = "[{'org.gnome.Contacts.desktop': <{'position': <0>}>, 'org.gnome.Weather.desktop': <{'position': <1>}>, 'org.gnome.clocks.desktop': <{'position': <2>}>, 'org.gnome.Maps.desktop': <{'position': <3>}>, 'org.gnome.Totem.desktop': <{'position': <4>}>, 'org.gnome.Calculator.desktop': <{'position': <5>}>, 'simple-scan.desktop': <{'position': <6>}>, 'anki.desktop': <{'position': <7>}>, 'yelp.desktop': <{'position': <8>}>, 'ca.desrt.dconf-editor.desktop': <{'position': <9>}>, 'org.gnome.Cheese.desktop': <{'position': <10>}>, 'discord.desktop': <{'position': <11>}>}, {'drracket.desktop': <{'position': <0>}>, 'element-desktop.desktop': <{'position': <1>}>, 'org.gnome.Extensions.desktop': <{'position': <2>}>, 'fish.desktop': <{'position': <3>}>, 'org.gnome.gThumb.desktop': <{'position': <4>}>, 'lf.desktop': <{'position': <5>}>, 'Mailspring.desktop': <{'position': <6>}>, 'cups.desktop': <{'position': <7>}>, 'mpv.desktop': <{'position': <8>}>, 'nixos-manual.desktop': <{'position': <9>}>, 'com.github.alainm23.planner.desktop': <{'position': <10>}>, 'slideshow.desktop': <{'position': <11>}>, 'org.gnome.Tour.desktop': <{'position': <12>}>, 'org.gnome.Boxes.desktop': <{'position': <13>}>, 'io.github.celluloid_player.Celluloid.desktop': <{'position': <14>}>, 'umpv.desktop': <{'position': <15>}>, 'nl.hjdskes.gcolor3.desktop': <{'position': <16>}>, 'nvim.desktop': <{'position': <17>}>, 'coqide.desktop': <{'position': <18>}>, 'xterm.desktop': <{'position': <19>}>, 'emacs.desktop': <{'position': <20>}>, 'emacsclient.desktop': <{'position': <21>}>, 'org.gnome.Calendar.desktop': <{'position': <22>}>, 'firefox.desktop': <{'position': <23>}>}, {'org.gnome.Geary.desktop': <{'position': <0>}>, 'org.gnome.Music.desktop': <{'position': <1>}>, 'org.gnome.Photos.desktop': <{'position': <2>}>, 'virt-manager.desktop': <{'position': <3>}>, 'code.desktop': <{'position': <4>}>, 'org.gnome.Epiphany.desktop': <{'position': <5>}>, 'org.flameshot.Flameshot.desktop': <{'position': <6>}>, 'Zoom.desktop': <{'position': <7>}>, 'gpick.desktop': <{'position': <8>}>, 'heroic.desktop': <{'position': <9>}>, 'kitty.desktop': <{'position': <10>}>, 'net.lutris.Lutris.desktop': <{'position': <11>}>, 'minecraft-launcher.desktop': <{'position': <12>}>, 'obsidian.desktop': <{'position': <13>}>, 'virtualbox.desktop': <{'position': <14>}>, 'com.uploadedlobster.peek.desktop': <{'position': <15>}>, 'qalculate-gtk.desktop': <{'position': <16>}>, 'ranger.desktop': <{'position': <17>}>, 'org.gnome.Settings.desktop': <{'position': <18>}>, 'steam.desktop': <{'position': <19>}>, 'tectonic.desktop': <{'position': <20>}>, 'org.gnome.TextEditor.desktop': <{'position': <21>}>, 'com.system76.Popsicle.desktop': <{'position': <22>}>, 'Utilities': <{'position': <23>}>}, {'org.pwmt.zathura.desktop': <{'position': <0>}>, 'zotero-6.0.4.desktop': <{'position': <1>}>}]";
       disable-user-extensions = false;
       disabled-extensions = [ "apps-menu@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "clipboard-indicator@tudmotu.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "pop-shell@system76.com" ];
-      favorite-apps = [ "google-chrome.desktop" "org.gnome.Nautilus.desktop" "gnome-system-monitor.desktop" ];
+      favorite-apps = [ "google-chrome.desktop" "org.gnome.Nautilus.desktop" "Alacritty.desktop" "gnome-system-monitor.desktop" ];
       welcome-dialog-last-shown-version = "40.4";
     };
 

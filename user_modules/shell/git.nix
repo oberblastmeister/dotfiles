@@ -26,22 +26,28 @@ in
         rv = "remote -v";
         br = "branch";
         sw = "switch";
+        spull = ''
+          !git pull && git submodule sync --recursive && git submodule update --init --recursive
+        '';
       };
       userEmail = lib.mkDefault "littlebubu.shu@gmail.com";
       userName = lib.mkDefault "brian";
       extraConfig = {
         init.defaultBranch = "main";
-        pull.rebase = false; # merge (the default strategy)
+        # rebase by default, and include merges in the rebase
+        pull.rebase = "merges";
         # make it work with gnome keyring
         # this will cache the password
         # this might compile for a long time though,
         # becase we are overriding the package
-        credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
+        # gitFull includes libsecret
+        credential.helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
         merge.tool = "vimdiff";
         core.editor = "vim";
         safe.directory = [
           "/etc/dotfiles"
         ];
+        status.submoduleSummary = true;
       };
     };
 
@@ -51,7 +57,6 @@ in
 
     home.packages = with pkgs; [
       gh
-      git-open
     ];
   };
 }

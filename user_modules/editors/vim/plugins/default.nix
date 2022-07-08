@@ -21,8 +21,8 @@ in
   config = {
     programs.neovim.plugins =
       with pkgs.vimPlugins; [
+        # the dummy plugin must be loaded first because we want the vscode stuff to take over
         {
-          # must be loaded first
           plugin = dummyPlugin;
           config = ''
             if exists('g:vscode')
@@ -161,6 +161,7 @@ in
         }
         cmp_luasnip
         cmp-cmdline
+        lspkind-nvim # nice icons for completion
 
         {
           plugin = haskell-vim;
