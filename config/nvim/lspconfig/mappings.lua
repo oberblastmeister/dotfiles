@@ -32,5 +32,5 @@ api.nvim_buf_set_keymap(0, 'n', '<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_cal
 -- diagnostic
 api.nvim_buf_set_keymap(0, 'n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', {noremap = true})
 api.nvim_buf_set_keymap(0, 'n', '<leader>ll', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', {noremap = true})
-api.nvim_buf_set_keymap(0, 'n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>', {noremap = true})
-api.nvim_buf_set_keymap(0, 'n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>', {noremap = true})
+api.nvim_buf_set_keymap(0, 'n', ']g', '<cmd>lua vim.diagnostic.goto_next { wrap = false }<CR>', {noremap = true})
+api.nvim_buf_set_keymap(0, 'n', '[g', '<cmd>lua vim.diagnostic.goto_prev { wrap = false }<CR>', {noremap = true})

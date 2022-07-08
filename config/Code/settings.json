@@ -746,7 +746,7 @@
         "go": false,
         "java": false,
         "cpp": false,
-        "python": false,
+        "python": true,
         "git-commit": false,
         "agda": false,
         "c": false,

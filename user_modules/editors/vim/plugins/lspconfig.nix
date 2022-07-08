@@ -19,7 +19,7 @@ in
       local util = require 'lspconfig/util'
 
       local function custom_on_attach(client, bufnr)
-        vim.cmd [[source ${nvimConfigDir + /lspconfig/mappings.lua}]]
+        vim.cmd [[source ${naiveNvimConfigDir + "/lspconfig/mappings.lua"}]]
       end
 
       local LspDefaults = {

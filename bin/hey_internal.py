@@ -8,6 +8,7 @@ import shutil
 import os
 import sys
 from dataclasses import dataclass
+import click
 
 
 def is_root() -> bool:
@@ -203,7 +204,7 @@ def get_parser() -> ArgumentParser:
     defaultFlake = pathlib.Path(__file__).parent.parent.resolve()
     parser.add_argument(
         "--flake",
-        type=pathlib.Path,
+        type=Path,
         nargs="?",
         help="Optionaly specify where the flake is",
         default=defaultFlake,
