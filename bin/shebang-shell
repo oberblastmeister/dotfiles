@@ -9,9 +9,6 @@ from pathlib import Path
 import subprocess
 import shlex
 
-shebang_pat = re.compile(r"#!\s*(.*)")
-packages_pat = re.compile(r"-p\s+(.+?)(?:\s+-)?")
-
 
 def parse_shebang(args: list[str]) -> list[str]:
     packages = []
@@ -35,10 +32,10 @@ def parse_file(path: str) -> list[str]:
     with open(path) as file:
         for line in file:
             line = line.rstrip()
-            m = shebang_pat.match(line)
-            if m is None:
+            if not line.startswith("#!"):
                 return packages
-            command = shlex.split(m.group(1))
+            line = line[2:]
+            command = shlex.split(line.lstrip())
             if command[0] != "nix-shell":
                 continue
             packages.extend(parse_shebang(command[1:]))
@@ -48,12 +45,27 @@ def parse_file(path: str) -> list[str]:
 def get_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.description = "Open a nix-shell with the packages from a shebang"
-    parser.add_argument("path", help="Path to a file with a nix-shell shebang", type=Path)
-    parser.add_argument("--legacy", help="Use the legacy nix-shell", action="store_true")
-    parser.add_argument("--shell", help="Shell to use", default="fish")
-    parser.add_argument("nix_shell_args", nargs="*", help="Optional arguments to pass to nix-shell", type=list[str])
+    parser.add_argument(
+        "path", help="Path to a file with a nix-shell shebang", type=Path
+    )
+    parser.add_argument(
+        "--new", help="Use the new nix command", action="store_true"
+    )
+    parser.add_argument(
+        "--shell",
+        help="Shell to use (not respected by legacy nix-shell)",
+        default="fish",
+        type=str,
+    )
+    parser.add_argument(
+        "nix_shell_args",
+        nargs="*",
+        help="Optional arguments to pass to nix-shell",
+        type=list[str],
+    )
     return parser.parse_args()
-    
+
+
 def main():
     args = get_args()
     packages = parse_file(args.path)
@@ -61,13 +73,15 @@ def main():
         raise Exception("No packages found")
 
     command = None
-    if args.legacy:
-        command = ["nix-shell", "-p"] + packages + args.nix_shell_args
+    if args.new:
+        command = (
+            ["nix", "shell"] + ["nixpkgs#" + p for p in packages] + args.nix_shell_args
+        )
     else:
-        command = ["nix", "shell"] + ["nixpkgs#" + p for p in packages] + args.nix_shell_args
+        command = ["nix-shell", "-p"] + packages + args.nix_shell_args
 
     env = os.environ.copy()
-    env['SHELL'] = args.shell
+    env["SHELL"] = args.shell
     print(shlex.join(command))
     subprocess.run(command, env=env)
 
