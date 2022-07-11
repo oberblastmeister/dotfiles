@@ -1,13 +1,9 @@
-import argparse
-import pathlib
-from pathlib import Path
-import subprocess
-from argparse import ArgumentParser
-from typing import Any, Optional, Tuple, TypeVar, cast
-import shutil
 import os
-import sys
-from dataclasses import dataclass
+import pathlib
+import shutil
+import subprocess
+from pathlib import Path
+from typing import Optional, TypeVar
 import click
 
 T = TypeVar("T")
@@ -25,12 +21,13 @@ def is_root() -> bool:
 
 @click.group(invoke_without_command=True)
 @click.version_option()
+@click.pass_context
 @click.option(
     "--flake",
     type=click.Path(exists=True),
     default=pathlib.Path(__file__).parent.parent.resolve(),
 )
-def cli(flake):
+def cli(cx: click.Context, flake):
     """
     Helper for nix
     """
@@ -76,8 +73,8 @@ def cli_rollback(cx: click.Context):
 
 
 @cli.command("rebuild")
-@click.argument("--extra", nargs=-1)
 @click.pass_context
+@click.argument("extra", nargs=-1)
 def cli_rebuild(cx: click.Context, extra):
     run_rebuild(unwrap(cx.parent).params["flake"], list(extra))
 
@@ -97,7 +94,8 @@ def cli_push():
     subprocess.run(["git", "push"])
 
 
-@click.command("add-host")
+@cli.command("add-host")
+@click.pass_context
 @click.argument("hostname")
 @click.option("--force", is_flag=True)
 @click.option("--conf", type=click.Path(exists=True))

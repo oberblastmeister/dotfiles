@@ -29,6 +29,9 @@ in
         spull = ''
           !git pull && git submodule sync --recursive && git submodule update --init --recursive
         '';
+        supdate = ''
+          !git submodule sync --recursive && git submodule update --init --recursive
+        '';
       };
       userEmail = lib.mkDefault "littlebubu.shu@gmail.com";
       userName = lib.mkDefault "brian";
