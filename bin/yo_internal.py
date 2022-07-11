@@ -48,21 +48,27 @@ def run_rebuild(flake: Path, extra: list[str]):
     subprocess.run(cmd)
 
 
-def run_update(flake: Path):
-    subprocess.run(["nix", "flake", "update", flake])
+def run_update(flake: Path, inputs: list[str]):
+    if not inputs:
+        subprocess.run(["nix", "flake", "update", flake])
+    else:
+        for input in inputs:
+            subprocess.run(["nix", "flake", "lock", "--update-input", input])
 
 
 @cli.command("update")
+@click.argument("inputs", nargs=-1)
 @click.pass_context
-def cli_update(cx: click.Context):
-    run_update(unwrap(cx.parent).params["flake"])
+def cli_update(cx: click.Context, inputs):
+    run_update(unwrap(cx.parent).params["flake"], inputs)
 
 
 @cli.command("upgrade")
+@click.argument("inputs", nargs=-1)
 @click.pass_context
-def cli_upgrade(cx: click.Context):
+def cli_upgrade(cx: click.Context, inputs):
     flake = unwrap(cx.parent).params["flake"]
-    run_update(flake)
+    run_update(flake, inputs)
     run_rebuild(flake, ["switch"])
 
 
