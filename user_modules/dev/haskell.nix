@@ -16,9 +16,9 @@ in
       # ghc
       unstable.haskell.compiler.ghc923
       ghcid
-      unstable.haskell-language-server
-      unstable.ormolu
-      unstable.hlint
+      haskell-language-server
+      ormolu
+      hlint
       (pkgs.writeShellScriptBin "pghci" ''
         cabal repl --repl-options "-interactive-print=Text.Pretty.Simple.pPrint" --build-depends pretty-simple
       '')

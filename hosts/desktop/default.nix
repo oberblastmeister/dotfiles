@@ -21,17 +21,15 @@
   modules = {
     presets.enable = "full";
     virtualisation = {
-      virt-manager.enable = true;
+      # virt-manager.enable = true;
+      # docker.enable = true;
       virtualbox.enable = true;
-      docker.enable = true;
     };
     hardware = {
       microcode.amd.enable = true;
       opengl.enable = true;
     };
   };
-
-  virtualisation.anbox.enable = true;
 
   services.printing = {
     enable = true;
@@ -76,10 +74,6 @@
     };
 
     home.packages = with pkgs; [
-      steam
-      lutris
-      heroic
-      legendary-gl
       # unstable.keyd
     ];
   };

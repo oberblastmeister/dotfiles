@@ -12,16 +12,10 @@ in
     home.packages = with pkgs; [
       anki
       mailspring
-      gource
-      elementary-planner
-      element-desktop
       gthumb
       mpv
       celluloid
       peek
-      qalculate-gtk
-      zotero
-      unstable.popsicle
       # insecure right now
       # obsidian
     ];

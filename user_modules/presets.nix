@@ -21,9 +21,9 @@ let
         python.enable = mkDefault true;
         cc.enable = mkDefault true;
         markdown.enable = mkDefault true;
-        racket.enable = mkDefault true;
-        java.enable = mkDefault true;
-        latex.enable = mkDefault true;
+        # racket.enable = mkDefault true;
+        # java.enable = mkDefault true;
+        # latex.enable = mkDefault true;
       };
       shell = {
         fish.enable = mkDefault true;
@@ -31,9 +31,6 @@ let
         programs.enable = mkDefault true;
       };
       desktop = {
-        browsers.firefox.enable = mkDefault true;
-        # terminals.gnome-terminal.enable = mkDefault true;
-        terminals.wezterm.enable = mkDefault true;
         terminals.alacritty.enable = mkDefault true;
         apps = {
           enableAll = mkDefault true;

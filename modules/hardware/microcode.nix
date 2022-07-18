@@ -19,15 +19,11 @@ in
     })
 
     (lib.mkIf cfg.amd.enable {
-      environment.systemPackages = [
-        microcodeAmd
-      ];
+      hardware.cpu.amd.updateMicrocode = true;
     })
 
     (lib.mkIf cfg.intel.enable {
-      environment.systemPackages = [
-        microcodeIntel
-      ];
+      hardware.cpu.intel.updateMicrocode = true;
     })
   ];
 }
