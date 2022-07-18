@@ -27,6 +27,8 @@ jobs:
         with:
           name: oberblastmeister-dotfiles
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          # add binary cache through cachix name
+          extraPullNames: nix-community 
 
       - name: Build target
         run: |
