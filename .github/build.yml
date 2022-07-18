@@ -1,0 +1,42 @@
+name: Build
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: desktop
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v16
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - uses: cachix/cachix-action@v10
+        with:
+          name: oberblastmeister-dotfiles
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+
+      - name: Build target
+        run: |
+          set -o pipefail
+          nix build .#nixosConfigurations.${{ matrix.target }}.config.system.build.toplevel --fallback --show-trace -v --log-format raw > >(tee /tmp/nix-build-out.log) 2> >(tee /tmp/nix-build-err.log >&2)
+
+      - name: Output build failure
+        if: failure()
+        run: |
+          drv=$(grep "For full logs, run" /tmp/nix-build-err.log | grep -oE "/nix/store/.*.drv")
+          nix log $drv
+          echo $drv
+          exit 1
