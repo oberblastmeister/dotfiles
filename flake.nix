@@ -25,6 +25,9 @@
       url = "github:elihunter173/dirbuf.nvim";
       flake = false;
     };
+    kmonad = {
+      url = "github:kmonad/kmonad?dir=nix";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-very-unstable, utils, ... }@inputs:

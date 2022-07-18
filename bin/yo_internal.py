@@ -1,5 +1,6 @@
 import os
 import pathlib
+import shlex
 import shutil
 import subprocess
 from pathlib import Path
@@ -82,7 +83,7 @@ def cli_rollback(cx: click.Context):
 @click.pass_context
 @click.argument("extra", nargs=-1)
 def cli_rebuild(cx: click.Context, extra):
-    run_rebuild(unwrap(cx.parent).params["flake"], list(extra))
+    run_rebuild(unwrap(cx.parent).params["flake"], ["switch"] + list(extra))
 
 
 def generate_hardware_config(root: Path, dir: Path) -> None:
@@ -158,6 +159,20 @@ def cli_update_dconf(cx: click.Context, force):
         raise click.ClickException("dconf.nix exists, pass --force to override it")
     subprocess.run(["dconf2nix", "-i", dconf_settings, "-o", dconf_nix])
 
+@cli.command("list")
+def cli_list():
+    subprocess.run(["profile-list"])
+
+@cli.command("remove")
+def cli_remove():
+    subprocess.run(["fzf-remove"])
+    
+@cli.command("install")
+@click.argument("packages", nargs=-1)
+def cli_install(packages):
+    for package in packages:
+        print(f"Installing {package}")
+        subprocess.run(["nix", "profile", "install", "nixpkgs#" + package])
 
 def main():
     cli()

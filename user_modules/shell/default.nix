@@ -98,8 +98,8 @@ in
             ];
             fileWidgetCommand = defaultCommand;
             fileWidgetOptions = defaultOptions;
-            inherit defaultCommand;
-            inherit defaultOptions;
+            # inherit defaultCommand;
+            # inherit defaultOptions;
             tmux.enableShellIntegration = false;
           } // allIntegrations;
         bottom.enable = true;

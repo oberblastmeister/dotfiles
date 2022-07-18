@@ -78,6 +78,7 @@
       lutris
       heroic
       legendary-gl
+      # unstable.keyd
     ];
   };
 }

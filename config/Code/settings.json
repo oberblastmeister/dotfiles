@@ -490,6 +490,11 @@
                     "key": "s",
                     "name": "stage",
                     "command": "git.stageSelectedRanges",
+                },
+                {
+                    "key": "v",
+                    "name": "view",
+                    "command": "editor.action.dirtydiff.next"
                 }
             ],
         },
@@ -767,6 +772,8 @@
     "git.mergeEditor": true,
     "githubPullRequests.fileListLayout": "tree",
     "editor.acceptSuggestionOnCommitCharacter": false,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
     // OPTIONAL: The server needs to be configured
     // to read the logs from the out directory as well.
     // "texlab.auxDirectory": "out",
