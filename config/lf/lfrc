@@ -1,0 +1,287 @@
+# =======================================================================
+# ================================ options ==============================
+# =======================================================================
+set previewer pistol
+
+# dynamically set number of columns
+cmd recol %{{
+    w=$(tput cols)
+    if [ $w -le 60 ]; then
+        lf -remote "send $id set ratios 1:2"
+    else
+        lf -remote "send $id set ratios 1:2:3"
+    fi
+}}
+recol
+
+# interpreter for shell commands (needs to be POSIX compatible)
+set shell zsh
+set shellopts '-eu:--shwordsplit'
+set ifs "\n"
+
+set number
+set relativenumber
+set scrolloff 10
+set incsearch
+# set color256
+set icons
+set hidden!
+
+# =======================================================================
+# ================================ commands =============================
+# =======================================================================
+
+# comment this out if doesn't work
+cmd open ${{
+   # this open command only works for kitty
+   # first check if terminal is not neovim terminal
+   lf-open "$f"
+}}
+
+# move current file or selected files to trash folder
+cmd trash %trash $fx
+
+# extract the current file with the right command
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+cmd mkdir ${{
+    mkdir -p "$@"
+    lf -remote "send $id select \"$@\""
+}}
+
+cmd touch ${{
+    touch "$@"
+    lf -remote "send $id select \"$@\""
+}}
+
+# copy and rename at the same time
+cmd go_put %cp -r "$fx" "$@";
+
+# compress current file or selected files with tar and gunzip
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+cmd fzf_jump ${{
+   FZF_DEFAULT_COMMAND="$FZF_ALT_C_COMMAND" 
+   FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS"
+
+   res="$(fzf)"
+   cmd="cd"                                                       
+   lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd fzf ${{
+   FZF_DEFAULT_COMMAND="fd --follow --exclude .git --color=always"
+   FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS"
+
+   res="$(fzf)"
+
+   if [ -f "$res" ]; then
+     cmd="select"
+   elif [ -d "$res" ]; then
+     cmd="cd"                                                       
+   fi
+
+   lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd fzf_files ${{
+      FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always"
+      FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
+
+      res="$(fzf)"
+
+      if [ "$TERM" != "xterm-256color" ]
+      then
+	 # ~/bin/launch-devour.sh "$f"
+	 lf-launch.sh "$res"
+      else
+	 # if the terminal is neovim do default action, floaterm will handle the rest
+	 lf -remote "send $id open $res"
+      fi
+}}
+
+cmd z %lf -remote "send $id cd '$(zoxide query $1)'"
+
+cmd z_fzf ${{
+      res="$(zoxide query -i)"
+
+      if [ -f "$res" ]; then
+	cmd="select"
+      elif [ -d "$res" ]; then
+	cmd="cd"                                                       
+      fi
+
+      lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd z_add %zoxide add $f
+
+cmd broot_jump ${{
+   f=$(mktemp)
+   res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
+   rm -f "$f"
+   if [ -f "$res" ]; then
+     cmd="select"
+   elif [ -d "$res" ]; then
+     cmd="cd"                                                       
+   fi
+   lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd Link %{{
+	lf -remote 'load' | while read file; do
+		if [ ! -n "${mode+1}" ]; then
+			mode="$file"
+			continue
+		fi
+		files+=("$file")
+	done
+	if [ "${#files[@]}" -le 1 ]; then
+		lf -remote "send $id echo no files to link"
+		exit 0
+	fi
+	# symbolicly copy mode is indicating a soft link
+	if [[ "$mode" == copy ]]; then
+		ln -sr $files -t .
+	# while a move mode is indicating a hard link
+	elif [[ "$mode" == move ]]; then
+		ln $files -t .
+	fi
+}}
+
+cmd rifle ${{
+    set -f
+    rifle -l $f
+    read -p "Select runner: " runner
+    rifle -p $runner $f
+}}
+
+cmd video_preview ${{
+    CACHE=$(mktemp /tmp/thumb_cache.XXXXX)
+    ffmpegthumbnailer -i "$f" -o $CACHE -s 0
+    $HOME/.config/lf/draw_img.sh $CACHE && rm $CACHE
+}}
+
+cmd bulk-rename ${{
+    bulk-rename
+}}
+
+# new folder with selected items
+cmd newfold ${{
+    set -f
+    read newd
+    mkdir $newd
+    mv $fx $newd
+}}
+
+cmd yank-dirname ${{
+    dirname -- "$f" | tr -d '\n' | xclip -i -selection clipboard
+}}
+
+cmd yank-path ${{
+    echo "$fx" | xclip -i -selection clipboard
+}}
+
+cmd yank-basename ${{
+    echo "$fx" |
+      xargs -r -d '\n' basename -a -- |
+      xclip -i -selection clipboard
+}}
+
+cmd yank-basename-without-extension ${{
+    echo "$fx" |
+      xargs -r -d '\n' basename -a -- |
+      awk -e '{
+        for (i=length($0); i > 0; i--) {
+          if (substr($0, i, 1) == ".") {
+            if (i == 1) print $0
+            else print substr($0, 0, i-1)
+
+            break
+          }
+        }
+
+        if (i == 0)
+          print $0
+      }' | xclip -i -selection clipboard
+}}
+
+cmd dragon %dragon-drag-and-drop -a -x $fx
+cmd dragon-stay %dragon-drag-and-drop -a $fx
+cmd dragon-individual %dragon-drag-and-drop $fx
+cmd dlfile %dlfile
+
+# =======================================================================
+# ================================ mappings =============================
+# =======================================================================
+
+# fzf
+map <a-c> :fzf_jump
+map <c-p> :fzf
+map <c-t> :fzf_files
+
+# broot
+# map b :broot_jump
+
+# general
+map . set hidden!
+map gh :cd ~
+
+map a push :touch<space>
+map A push :mkdir<space>
+
+map D trash
+map <delete> delete
+map <enter> shell
+
+# execute current file (must be executable)
+map x $$f
+map X !$f
+
+map P :Link
+map gp push :go_put<space>
+
+map - $$HOME/.config/lf/draw_img.sh $f
+map + :video_preview
+
+map R :bulk-rename
+
+map <a-n> newfold
+
+map <c-o> push q
+
+# dragon
+map br dragon
+map bs dragon-stay
+map bi dragon-individual
+
+# zoxide
+map zj push :z<space>
+map zi z_fzf
+# unmap set info size:time
+map za z_add
