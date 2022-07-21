@@ -11,6 +11,10 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       google-chrome
+      # also needed for cargo doc --open to work
+      (pkgs.writeShellScriptBin "chrome" ''
+        google-chrome-stable "$@"
+      '')
     ];
   };
 }

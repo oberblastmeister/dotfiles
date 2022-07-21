@@ -15,16 +15,13 @@ cmd recol %{{
 recol
 
 # interpreter for shell commands (needs to be POSIX compatible)
-set shell zsh
-set shellopts '-eu:--shwordsplit'
-set ifs "\n"
-
+set shell bash
 set number
 set relativenumber
 set scrolloff 10
 set incsearch
 # set color256
-set icons
+# set icons
 set hidden!
 
 # =======================================================================

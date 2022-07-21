@@ -1,4 +1,4 @@
-{ options, config, nixosConfig, lib, my, pkgs, ... }:
+{ inputs, options, config, nixosConfig, lib, my, pkgs, ... }:
 
 let
   cfg = config.modules.shell.fish;
@@ -15,5 +15,6 @@ in
         source ${nixosConfig.dotfiles.naiveConfigDir + "/fish/config.fish"}
       '';
     };
+    xdg.configFile."fish/functions/lfcd.fish".source = inputs.lf + "/etc/lfcd.fish";
   };
 }

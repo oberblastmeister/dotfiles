@@ -17,6 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # user flake stuff
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -27,6 +28,10 @@
     };
     kmonad = {
       url = "github:kmonad/kmonad?dir=nix";
+    };
+    lf = {
+      url = "github:gokcehan/lf";
+      flake = false;
     };
   };
 

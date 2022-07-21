@@ -126,6 +126,7 @@ in
       modules.shell.git.enable = true;
       modules.shell.tmux.enable = true;
       modules.shell.ranger.enable = true;
+      modules.shell.lf.enable = true;
     })
   ];
 }

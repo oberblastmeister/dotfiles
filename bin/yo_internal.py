@@ -17,7 +17,7 @@ def unwrap(optional: Optional[T]) -> T:
 
 
 def is_root() -> bool:
-    return os.getuid() == 0
+    return os.geteuid() == 0
 
 
 @click.group(invoke_without_command=True)
@@ -34,7 +34,7 @@ def cli(cx: click.Context, flake):
     """
     if is_root():
         raise click.ClickException(
-            "You must not be root. hey will ask you for your password when root is needed."
+            "You must not be root. yo will ask you for your password when root is needed."
         )
 
 

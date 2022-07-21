@@ -8,6 +8,11 @@ function ranger-cd
     commandline -f repaint
 end
 
+function lf-cd-repaint
+    lfcd
+    commandline -f repaint
+end
+
 function fish_user_key_bindings
     # Execute this once per mode that emacs bindings should be used in
     fish_default_key_bindings -M insert
@@ -18,5 +23,5 @@ function fish_user_key_bindings
     # The argument specifies the initial mode (insert, "default" or visual).
     fish_vi_key_bindings --no-erase insert
 
-    bind -M insert \co ranger-cd
+    bind -M insert \co lf-cd-repaint
 end

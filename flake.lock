@@ -122,6 +122,22 @@
         "type": "github"
       }
     },
+    "lf": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1657456375,
+        "narHash": "sha256-W84CNvJFVxHYaLcjBmSmqdZADaCsK3gjm/6VHxxnmSw=",
+        "owner": "gokcehan",
+        "repo": "lf",
+        "rev": "e03143299d4596bbc9bb8a2d8a1b0931e3183410",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gokcehan",
+        "repo": "lf",
+        "type": "github"
+      }
+    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -294,6 +310,7 @@
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "kmonad": "kmonad",
+        "lf": "lf",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
