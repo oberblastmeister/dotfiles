@@ -58,9 +58,6 @@ in
       "org/gnome/shell/extensions/user-theme" = {
         name = "Orchis";
       };
-      "org/gnome/desktop/input-sources" = {
-        xkb-options = [ "ctrl:nocaps" ];
-      };
       "org/gnome/desktop/peripherals/touchpad" = {
         disable-while-typing = false;
         two-finger-scrolling-enabled = true;

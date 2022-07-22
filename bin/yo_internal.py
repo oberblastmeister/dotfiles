@@ -48,7 +48,6 @@ def run_rebuild(flake: Path, extra: list[str]):
     cmd = ["sudo", "nixos-rebuild", "--flake", flake] + extra
     subprocess.run(cmd)
 
-
 def run_update(flake: Path, inputs: list[str]):
     if not inputs:
         subprocess.run(["nix", "flake", "update", flake])
