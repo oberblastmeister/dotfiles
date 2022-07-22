@@ -58,10 +58,10 @@ jobs:
           nix build .#${{ env.target }} --fallback --show-trace -v --log-format raw
 
       - name: Fetch old system to profile
-        run: nix build "github:oberblastmeister/dotfiles#${{ env.target }}" -v --log-format raw --profile ./profile
+        run: nix build "github:oberblastmeister/dotfiles#${{ env.target }}" -v --log-format raw --profile ./profile --show-trace --no-write-lock-file
 
       - name: Add new system to profile
-        run: nix build ${{ env.target }} -v --log-format raw --profile ./profile
+        run: nix build .#${{ env.target }} -v --log-format raw --profile ./profile
 
       - name: Diff profile
         id: diff
