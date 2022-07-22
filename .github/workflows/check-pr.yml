@@ -1,20 +1,16 @@
-name: Build
+name: "Build pull request"
 on:
-  # Manual triggering
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+  pull_request:
 jobs:
-  build:
+  tests:
+    name: "Build ${{ matrix.target }}"
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         include:
           - os: ubuntu-latest
             target: desktop
-
-    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Create Nix mount point
@@ -30,11 +26,6 @@ jobs:
           remove-haskell: true
           build-mount-path: "/nix"
           overprovision-lvm: true
-
-      - name: Free space after maximization
-        run: |
-          echo "Free space:"
-          df -h
 
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -57,22 +48,32 @@ jobs:
 
       - name: Set full target
         run: |
-          echo "target=nixosConfigurations.${{ matrix.target }}.config.system.build.toplevel"
+          echo "target=nixosConfigurations.${{ matrix.target }}.config.system.build.toplevel" >> $GITHUB_ENV
 
       - name: Build target
         run: |
-          set -o pipefail
-          nix build .#${{ env.target }} --fallback --show-trace -v --log-format raw > >(tee /tmp/nix-build-out.log) 2> >(tee /tmp/nix-build-err.log >&2)
+          nix build .#${{ env.target }} --fallback --show-trace -v --log-format raw
 
-      - name: Output build failure
-        if: failure()
+      - name: Fetch old system to profile
+        run: nix build "github:oberblastmeister/dotfiles#${{ env.target }}" -v --log-format raw --profile ./profile
+
+      - name: Add new system to profile
+        run: nix build ${{ env.target }} -v --log-format raw --profile ./profile
+
+      - name: Diff profile
+        id: diff
         run: |
-          drv=$(grep "For full logs, run" /tmp/nix-build-err.log | grep -oE "/nix/store/.*.drv")
-          nix log $drv
-          echo $drv
-          exit 1
-          
-      - name: Free space after build
-        run: |
-          echo "Free space:"
-          df -h
+          diff="$(nix profile diff-closures --profile ./profile)"
+          echo "$diff"
+          echo "::set-output name=diff::$diff"
+
+      - name: Comment PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: ".#${{ env.target }}"
+          message: |
+            ### Diff of `${{ env.target }}`
+
+            ```
+            ${{ steps.diff.outputs.diff }}
+            ```
