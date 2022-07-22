@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-i=$(profile-list | fzf | awk '{print $1;}')
-nix profile remove "$i"
+nix profile remove "$(fzf-index)"

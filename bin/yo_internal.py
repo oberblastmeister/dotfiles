@@ -165,7 +165,7 @@ def cli_list():
 @cli.command("remove")
 def cli_remove():
     subprocess.run(["fzf-remove"])
-    
+
 @cli.command("install")
 @click.argument("packages", nargs=-1)
 def cli_install(packages):
