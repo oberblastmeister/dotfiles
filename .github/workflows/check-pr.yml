@@ -1,6 +1,9 @@
 name: "Build pull request"
 on:
   pull_request:
+    paths-ignore:
+      - "**.md"
+      - "bin/**"
 jobs:
   tests:
     name: "Build ${{ matrix.target }}"
