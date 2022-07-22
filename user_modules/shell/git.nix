@@ -58,8 +58,8 @@ in
       enable = true;
     };
 
-    home.packages = with pkgs; [
-      gh
+    home.packages = [
+      unstable.gh
     ];
   };
 }
