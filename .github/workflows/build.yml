@@ -57,7 +57,7 @@ jobs:
 
       - name: Set full target
         run: |
-          echo "target=nixosConfigurations.${{ matrix.target }}.config.system.build.toplevel"
+          echo "target=nixosConfigurations.${{ matrix.target }}.config.system.build.toplevel" >> $GITHUB_ENV
 
       - name: Build target
         run: |
