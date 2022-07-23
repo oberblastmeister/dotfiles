@@ -13,4 +13,4 @@
     @capsesc)
 
 (defalias
-    capsesc (tap-hold-next-release 200 esc lctl))
+    capsesc (tap-hold-next 200 esc lctl))

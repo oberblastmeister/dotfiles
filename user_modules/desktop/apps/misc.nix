@@ -17,7 +17,7 @@ in
       celluloid
       peek
       # insecure right now
-      # obsidian
+      obsidian
     ];
   };
 }
