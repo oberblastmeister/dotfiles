@@ -6,7 +6,7 @@
             "",
             "import Test.Hspec",
             "",
-            "spec :: spec",
+            "spec :: Spec",
             "spec = do",
             "  $0"
         ],

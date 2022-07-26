@@ -25,3 +25,8 @@ function fish_user_key_bindings
 
     bind -M insert \co lf-cd-repaint
 end
+
+alias hb="hadrian/build -j"
+alias hbq="hb --flavour=Quick"
+alias hbqs="hbq --skip='//*.mk' --skip='stage1:lib:rts'"
+alias hbqf="hbqs --freeze1"

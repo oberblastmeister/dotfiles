@@ -319,5 +319,5 @@
     {
         "key": "ctrl+y",
         "command": "-redo"
-    }
+    },
 ]

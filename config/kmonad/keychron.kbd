@@ -6,11 +6,18 @@
 
 (defsrc
     esc
-    caps)
+    caps 
+    rctl)
 
 (deflayer qwerty
+    esc
+    lctl
+    (layer-toggle special))
+
+(deflayer special
+    _
     caps
-    @capsesc)
+    _)
 
 (defalias
     capsesc (tap-hold-next 200 esc lctl))

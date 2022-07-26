@@ -33,6 +33,10 @@
       url = "github:gokcehan/lf";
       flake = false;
     };
+    fish-async-prompt = {
+      url = "github:acomagu/fish-async-prompt";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-very-unstable, utils, ... }@inputs:

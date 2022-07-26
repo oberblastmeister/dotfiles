@@ -67,7 +67,10 @@ in
         zellij
         cachix
         gnumake
-        tldr
+        jq
+        tealdeer
+        cht-sh
+        shellcheck
       ];
 
       home.sessionVariables = {

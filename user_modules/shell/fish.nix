@@ -14,6 +14,8 @@ in
       shellInit = ''
         source ${nixosConfig.dotfiles.naiveConfigDir + "/fish/config.fish"}
       '';
+      plugins = [
+      ];
     };
     xdg.configFile."fish/functions/lfcd.fish".source = inputs.lf + "/etc/lfcd.fish";
   };
