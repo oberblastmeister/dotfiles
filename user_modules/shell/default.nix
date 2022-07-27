@@ -66,7 +66,6 @@ in
         binutils
         zellij
         cachix
-        gnumake
         jq
         tealdeer
         cht-sh
@@ -120,6 +119,10 @@ in
           enable = true;
         } // allIntegrations;
         navi = {
+          enable = true;
+        } // allIntegrations;
+        # enables better command-not-found
+        nix-index = {
           enable = true;
         } // allIntegrations;
       };

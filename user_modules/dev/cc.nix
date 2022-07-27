@@ -14,6 +14,7 @@ in
       # clang-tools
       # note: gcc has a conflict with nix for some reason
       gdb
+      gnumake
       cmake
     ];
   };
