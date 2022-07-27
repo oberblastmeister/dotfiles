@@ -10,9 +10,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      # clang
-      # clang-tools
-      # note: gcc has a conflict with nix for some reason
+      clang-tools
       gdb
       gnumake
       cmake

@@ -83,43 +83,44 @@ cmd zip ${{
 }}
 
 cmd fzf_jump ${{
-   FZF_DEFAULT_COMMAND="$FZF_ALT_C_COMMAND" 
-   FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS"
+    export FZF_DEFAULT_COMMAND="$FZF_ALT_C_COMMAND" 
+    export FZF_DEFAULT_OPTS="$FZF_ALT_C_OPTS"
 
-   res="$(fzf)"
-   cmd="cd"                                                       
-   lf -remote "send $id $cmd \"$res\""
+    res="$(fzf)"
+
+    cmd="cd"                                                       
+    lf -remote "send $id $cmd \"$res\""
 }}
 
 cmd fzf ${{
-   FZF_DEFAULT_COMMAND="fd --follow --exclude .git --color=always"
-   FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS"
+    export FZF_DEFAULT_COMMAND="fd --follow --exclude .git --color=always"
+    export FZF_DEFAULT_OPTS="$FZF_ALT_C_OPTS"
 
-   res="$(fzf)"
+    res="$(fzf)"
 
-   if [ -f "$res" ]; then
+    if [ -f "$res" ]; then
      cmd="select"
-   elif [ -d "$res" ]; then
+    elif [ -d "$res" ]; then
      cmd="cd"                                                       
-   fi
+    fi
 
-   lf -remote "send $id $cmd \"$res\""
+    lf -remote "send $id $cmd \"$res\""
 }}
 
 cmd fzf_files ${{
-      FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always"
-      FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
+    export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always"
+    export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
 
-      res="$(fzf)"
+    res="$(fzf)"
 
-      if [ "$TERM" != "xterm-256color" ]
-      then
-	 # ~/bin/launch-devour.sh "$f"
-	 lf-launch.sh "$res"
-      else
-	 # if the terminal is neovim do default action, floaterm will handle the rest
-	 lf -remote "send $id open $res"
-      fi
+    if [ "$TERM" != "xterm-256color" ]
+    then
+    # ~/bin/launch-devour.sh "$f"
+    lf-launch.sh "$res"
+    else
+    # if the terminal is neovim do default action, floaterm will handle the rest
+    lf -remote "send $id open $res"
+    fi
 }}
 
 cmd z %lf -remote "send $id cd '$(zoxide query $1)'"
@@ -178,12 +179,6 @@ cmd rifle ${{
     rifle -p $runner $f
 }}
 
-cmd video_preview ${{
-    CACHE=$(mktemp /tmp/thumb_cache.XXXXX)
-    ffmpegthumbnailer -i "$f" -o $CACHE -s 0
-    $HOME/.config/lf/draw_img.sh $CACHE && rm $CACHE
-}}
-
 cmd bulk-rename ${{
     bulk-rename
 }}
@@ -228,11 +223,9 @@ cmd yank-basename-without-extension ${{
       }' | xclip -i -selection clipboard
 }}
 
-cmd dragon %dragon-drag-and-drop -a -x $fx
-cmd dragon-stay %dragon-drag-and-drop -a $fx
-cmd dragon-individual %dragon-drag-and-drop $fx
-cmd dlfile %dlfile
-
+cmd trash ${{
+    trash put "$fx"
+}}
 # =======================================================================
 # ================================ mappings =============================
 # =======================================================================
@@ -252,7 +245,7 @@ map gh :cd ~
 map a push :touch<space>
 map A push :mkdir<space>
 
-map D trash
+map D :trash
 map <delete> delete
 map <enter> shell
 
@@ -263,19 +256,11 @@ map X !$f
 map P :Link
 map gp push :go_put<space>
 
-map - $$HOME/.config/lf/draw_img.sh $f
-map + :video_preview
-
 map R :bulk-rename
 
 map <a-n> newfold
 
 map <c-o> push q
-
-# dragon
-map br dragon
-map bs dragon-stay
-map bi dragon-individual
 
 # zoxide
 map zj push :z<space>

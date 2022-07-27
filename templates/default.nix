@@ -1,8 +1,6 @@
-let mkTemplate = path: {
-  inherit path;
-  description = "";
-};
-in
 {
-  haskell = mkTemplate ./haskell;
+  haskell = {
+    path = ./haskell;
+    description = "Haskell template";
+  };
 }
