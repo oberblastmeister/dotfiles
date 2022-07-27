@@ -58,6 +58,9 @@ jobs:
           # add binary cache through cachix name
           extraPullNames: nix-community 
 
+      - name: Check flake
+        run: nix flake check
+
       - name: Set full target
         run: |
           echo "target=nixosConfigurations.${{ matrix.target }}.config.system.build.toplevel" >> $GITHUB_ENV

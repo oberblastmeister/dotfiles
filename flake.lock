@@ -35,22 +35,6 @@
         "type": "github"
       }
     },
-    "fish-async-prompt": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1653809859,
-        "narHash": "sha256-RpZgnB9g+kCkt576Qe4LG5erlUjQl70ibf0Jn2+1F5A=",
-        "owner": "acomagu",
-        "repo": "fish-async-prompt",
-        "rev": "b866f232a4a5ded7e16cda648648c43925c01ba0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "acomagu",
-        "repo": "fish-async-prompt",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -326,7 +310,6 @@
       "inputs": {
         "dirbuf": "dirbuf",
         "emacs-overlay": "emacs-overlay",
-        "fish-async-prompt": "fish-async-prompt",
         "home-manager": "home-manager",
         "kmonad": "kmonad",
         "lf": "lf",
