@@ -70,6 +70,7 @@ in
         tealdeer
         cht-sh
         shellcheck
+        vivid
       ];
 
       home.sessionVariables = {
@@ -123,6 +124,9 @@ in
         } // allIntegrations;
         # enables better command-not-found
         nix-index = {
+          enable = true;
+        } // allIntegrations;
+        dircolors = {
           enable = true;
         } // allIntegrations;
       };
