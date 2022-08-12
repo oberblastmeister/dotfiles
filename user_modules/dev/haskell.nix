@@ -11,7 +11,8 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       cabal2nix
-      cabal-install
+      # until cabal-3.8 is out
+      # cabal-install
       stack
       # ghc
       unstable.haskell.compiler.ghc924

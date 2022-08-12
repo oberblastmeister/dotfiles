@@ -320,7 +320,7 @@
     "workbench.list.smoothScrolling": true,
     // fonts
     "editor.fontWeight": "normal",
-    "editor.fontFamily": "Cascadia Code",
+    "editor.fontFamily": "Cascadia Code, FiraCode Nerd Font",
     "editor.fontLigatures": true,
     "editor.suggestSelection": "first",
     "editor.minimap.enabled": false,
