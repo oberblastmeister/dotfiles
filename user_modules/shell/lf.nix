@@ -16,6 +16,6 @@ in
       pistol
     ];
 
-    modules.link."lf/lfrc" = "symlink";
+    modules.link.config."lf/lfrc" = "symlink";
   };
 }

@@ -22,6 +22,7 @@ let
         cc.enable = mkDefault true;
         markdown.enable = mkDefault true;
         racket.enable = mkDefault true;
+        javascript.enable = mkDefault true;
         # java.enable = mkDefault true;
         # latex.enable = mkDefault true;
       };

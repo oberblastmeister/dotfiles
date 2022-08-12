@@ -72,9 +72,5 @@
         browsers.chrome.enable = true;
       };
     };
-
-    home.packages = with pkgs; [
-      # unstable.keyd
-    ];
   };
 }

@@ -133,6 +133,7 @@ in
         telescope-fzf-native-nvim
         telescope-file-browser-nvim
 
+        vim-polyglot
         {
           config = ''
             source ${naiveNvimConfigDir + "/nvim-treesitter.lua"}
@@ -198,6 +199,8 @@ in
             source ${naiveNvimConfigDir + "/dirbuf.lua"}
           '';
         }
+
+        nvim-colorizer-lua
       ];
   };
 }

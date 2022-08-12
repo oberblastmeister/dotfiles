@@ -6,7 +6,7 @@
 # use this when you have finished the install
 # cached-nix-shell will be available which is much faster
 
-import yo_internal
+import hey_internal
 
 if __name__ == '__main__':
-    yo_internal.main()
+    hey_internal.main()

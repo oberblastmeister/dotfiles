@@ -1,4 +1,4 @@
-{ options, config, lib, my, pkgs, ... }:
+{ inputs, options, config, lib, my, pkgs, ... }:
 
 let
   bashCfg = config.modules.shell.bash;

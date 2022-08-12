@@ -56,7 +56,7 @@ jobs:
           name: oberblastmeister-dotfiles
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           # add binary cache through cachix name
-          extraPullNames: nix-community 
+          extraPullNames: nix-community, nix-script
 
       - name: Check flake
         run: nix flake check

@@ -5,6 +5,8 @@
     # Install user packages to /etc/profiles instead. Necessary for
     # nixos-rebuild build-vm to work.
     useUserPackages = true;
+    # useGlobalPkgs is false
+    # so overlays must be added in the respective user module
 
     # give home-manager some extra arguments that we can receive in modules
     # similar to how we give lib.nixosSystem specialArgs
