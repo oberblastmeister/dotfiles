@@ -15,6 +15,7 @@ in
       cargo-watch
       cargo-edit
       cargo-expand
+      cargo-outdated
     ];
 
     home.sessionVariables = {
