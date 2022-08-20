@@ -28,6 +28,7 @@ function fish_user_key_bindings
     bind -M insert \co lf-cd-repaint
 end
 
+alias np="nix profile"
 alias ls="exa --icons"
 alias tree="exa --tree --icons"
 alias hb="hadrian/build -j"

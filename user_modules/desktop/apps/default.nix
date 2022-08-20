@@ -14,7 +14,6 @@ in
       misc.enable = mkDefault true;
       flameshot.enable = mkDefault true;
       ulauncher.enable = mkDefault true;
-      discord.enable = mkDefault true;
       zathura.enable = mkDefault true;
     };
   };

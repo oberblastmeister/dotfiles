@@ -89,20 +89,20 @@ in
 
         {
           plugin = gitsigns-nvim;
-          config = ''
-            lua << EOF
-            require('gitsigns').setup {
-              signs = {
-                add          = {hl = 'GitGutterAdd'   , text = '┃'},
-                change       = {hl = 'GitGutterChange', text = '┃'},
-                delete       = {hl = 'GitGutterDelete', text = '┃'},
-                topdelete    = {hl = 'GitGutterDelete', text = '┃'},
-                changedelete = {hl = 'GitGutterChangeDelete', text = '┃'},
-              },
-              current_line_blame = true,
-            }
-            EOF
-          '';
+          # config = ''
+          #   lua << EOF
+          #   require('gitsigns').setup {
+          #     signs = {
+          #       add          = {hl = 'GitGutterAdd'   , text = '┃'},
+          #       change       = {hl = 'GitGutterChange', text = '┃'},
+          #       delete       = {hl = 'GitGutterDelete', text = '┃'},
+          #       topdelete    = {hl = 'GitGutterDelete', text = '┃'},
+          #       changedelete = {hl = 'GitGutterChangeDelete', text = '┃'},
+          #     },
+          #     current_line_blame = true,
+          #   }
+          #   EOF
+          # '';
         }
 
         {
