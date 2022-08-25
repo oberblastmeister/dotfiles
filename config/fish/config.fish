@@ -35,3 +35,4 @@ alias hb="hadrian/build -j"
 alias hbq="hb --flavour=Quick"
 alias hbqs="hbq --skip='//*.mk' --skip='stage1:lib:rts'"
 alias hbqf="hbqs --freeze1"
+alias t=trash

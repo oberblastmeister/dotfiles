@@ -33,7 +33,7 @@ in
         autoOptimiseStore = true;
         binaryCaches = [
           "https://nix-community.cachix.org"
-          "https://hydra.iohk.io"
+          "https://cache.iog.io"
           "https://oberblastmeister-dotfiles.cachix.org"
         ];
         binaryCachePublicKeys = [

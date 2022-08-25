@@ -1,0 +1,86 @@
+#! /usr/bin/env cached-nix-shell
+#! nix-shell -i python3 -p python310
+# vim: ft=python
+
+import itertools
+from pathlib import Path
+import sys
+from typing import NoReturn, Optional
+
+
+def sigfigs(num: str) -> int:
+    # find dot in number and check if it exists
+    if "." in num:
+        num = num.replace(".", "")
+        i = next(i for i, c in enumerate(num) if c != "0")
+        return len(num[i:])
+    else:
+        if "e" in num:
+            num = num[: num.index("e")]
+        return sum(1 for _ in itertools.takewhile(lambda x: x != "0", num))
+
+
+def parse_float(s: str) -> bool:
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+
+# function to parse an arithmetic expression into addition, subtraction, multiplication and division
+def parse_expr(expression: str) -> Optional[tuple[str, str, str]]:
+    tokens = expression.split()
+    if len(tokens) != 3:
+        return None
+    if not (parse_float(tokens[0]) and parse_float(tokens[2])):
+        return None
+    if tokens[1] not in ["+", "-", "*", "/"]:
+        return None
+    return tuple(tokens)
+
+
+def exit(s: str) -> NoReturn:
+    print(s)
+    sys.exit(1)
+
+
+def run(s: str) -> str | int:
+    arith = parse_expr(s)
+    if arith is not None:
+        match arith[1]:
+            case "*" | "*":
+                return min(sigfigs(arith[0]), sigfigs(arith[2]))
+            case "+" | "-":
+                match ("." in arith[0], "." in arith[2]):
+                    case (True, True):
+                        pass
+                    case (False, True):
+                        pass
+                    case (True, False):
+                        pass
+                    case (False, False):
+                        pass
+                raise NotImplementedError(
+                    "Addition and subtraction are not implemented"
+                )
+            case _:
+                raise Exception
+    if parse_float(s):
+        return sigfigs(s)
+    return "Invalid expression"
+
+
+def main():
+    if len(sys.argv) < 2:
+        exit(f"Usage: {Path(sys.argv[0]).name} <expr>")
+
+    res = run(sys.argv[1])
+    if type(res) is int:
+        print(res)
+    else:
+        exit(f"Error: {res}")
+
+
+if __name__ == "__main__":
+    main()

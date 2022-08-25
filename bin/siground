@@ -1,0 +1,39 @@
+#! /usr/bin/env cached-nix-shell
+#! nix-shell -i python3 -p python310
+# vim: ft=python
+
+
+from pathlib import Path
+import sys
+from typing import Optional
+
+
+def parse_num(s: str) -> Optional[tuple[int, str]]:
+    rel = s.index(".")
+    if "." in s[rel:]:
+        return None
+    s = s.replace(".", "")
+    return (rel - 1, s)
+
+
+def exit(s: str):
+    print(s)
+    sys.exit(1)
+
+
+def error(s: str):
+    exit(f"Error: {s}")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        exit(f"Usage: {Path(sys.argv[0]).name} <expr>")
+
+    res = parse_num(sys.argv[1])
+    if res is None:
+        error("Invalid number")
+    (i, s) = res
+    i = i - int(sys.argv[2])
+    if i < 0 or i > len(s):
+        error("Invalid place")
+    pass

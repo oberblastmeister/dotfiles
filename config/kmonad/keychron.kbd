@@ -1,23 +1,31 @@
+;; vim: ft=lisp
+;; vim: commentstring=;;%s
+;; vim: shiftwidth=2
+
 (defcfg
-    input (device-file "/dev/input/by-id/usb-Keychron_Keychron_Q1-if02-event-kbd")
-    output (uinput-sink "keychron")
-    fallthrough true
-    allow-cmd false)
+  input (device-file "/dev/input/by-id/usb-Keychron_Keychron_Q1-if02-event-kbd")
+  output (uinput-sink "keychron")
+  fallthrough true
+  allow-cmd false)
 
 (defsrc
-    esc
-    caps 
-    rctl)
+  esc
+  caps 
+  lctl rctl)
 
 (deflayer qwerty
-    esc
-    lctl
-    (layer-toggle special))
-
-(deflayer special
-    _
-    caps
-    _)
+  esc
+  lctl
+  rctl @spec)
 
 (defalias
-    capsesc (tap-hold-next 200 esc lctl))
+  spec (layer-toggle special))
+
+;; lctl + rctl = caps
+(deflayer special
+  _
+  _
+  caps   _)
+
+(defalias
+  capsesc (tap-hold-next 200 esc lctl))
