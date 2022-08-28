@@ -18,6 +18,7 @@ in
       peek
       # insecure right now
       unstable.obsidian
+      font-manager
     ];
   };
 }

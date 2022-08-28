@@ -13,8 +13,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
-
     programs.emacs = {
       enable = true;
       package = pkgs.emacsNativeComp;

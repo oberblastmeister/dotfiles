@@ -18,8 +18,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlay ];
-
     modules.editors.vim = {
       extraConfig = ''
         " settings

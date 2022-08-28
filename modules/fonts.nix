@@ -16,6 +16,7 @@ in
       # for chinese to work
       noto-fonts-cjk
       noto-fonts-emoji
+      roboto
 
       # monospace
       (nerdfonts.override {
