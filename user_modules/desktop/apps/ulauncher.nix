@@ -12,6 +12,6 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = [ package ];
-    xdg.configFile."autostart/Ulauncher.desktop".source = nixosConfig.dotfiles.configDir + "/autostart/Ulauncher.desktop";
+    modules.link.config."autostart/Ulauncher.desktop" = "copy";
   };
 }

@@ -22,7 +22,7 @@ in
           if value == "symlink"
           then config.lib.file.mkOutOfStoreSymlink (nixosConfig.dotfiles.naiveConfigDir + "/" + name)
           else if value == "copy"
-          then nixosConfig.dotfiles.configDir + "/" + name
+          then nixosConfig.dotfiles.configDir + ("/" + name) # weird parenthesis to make sure slash is on name first
           # impossible because must be member of enum type
           else abort "impossible";
         in { source = res; };

@@ -19,6 +19,18 @@ in
       extraPackages = (epkgs: [ epkgs.vterm ]);
     };
 
+    services.emacs = {
+      enable = true;
+    };
+
+    systemd.user.services.emacs.Unit = {
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+
+    # on X emacs can't open display for some reason
+    modules.link.config."autostart/Emacs.desktop" = "copy";
+
     home.packages = with pkgs; [
       ## Emacs itself
       binutils # native-comp needs 'as', provided by this
@@ -33,7 +45,7 @@ in
       imagemagick # for image-dired
       zstd # for undo-fu-session/undo-tree compression
 
-      emacs-all-the-icons-fonts 
+      emacs-all-the-icons-fonts
     ];
 
     home.sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
