@@ -46,7 +46,6 @@
   hardware.opengl.extraPackages = [
     pkgs.amdvlk
   ];
-  # To enable Vulkan support for 32-bit applications, also add:
   hardware.opengl.extraPackages32 = [
     pkgs.driversi686Linux.amdvlk
   ];

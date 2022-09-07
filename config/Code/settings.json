@@ -812,6 +812,10 @@
             ]
         }
     },
+    "settingsSync.ignoredSettings": [
+        "workbench.colorTheme"
+    ],
+    "explorer.confirmDelete": false,
     // OPTIONAL: The server needs to be configured
     // to read the logs from the out directory as well.
     // "texlab.auxDirectory": "out",
