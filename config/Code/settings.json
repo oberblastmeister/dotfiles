@@ -729,7 +729,6 @@
     "task.problemMatchers.neverPrompt": {
         "process": true
     },
-    "agdaMode.connection.agdaPath": "/etc/profiles/per-user/brian/bin/agda",
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": false,
@@ -813,9 +812,12 @@
         }
     },
     "settingsSync.ignoredSettings": [
-        "workbench.colorTheme"
+        "workbench.colorTheme",
+        "haskell.serverExecutablePath"
     ],
     "explorer.confirmDelete": false,
+    "agdaMode.connection.agdaPath": "/etc/profiles/per-user/brian/bin/agda",
+    "haskell.serverExecutablePath": "/home/brian/projects/haskell-language-server/dist-newstyle/build/x86_64-linux/ghc-9.2.4/haskell-language-server-1.8.0.0/x/haskell-language-server/build/haskell-language-server/haskell-language-server",
     // OPTIONAL: The server needs to be configured
     // to read the logs from the out directory as well.
     // "texlab.auxDirectory": "out",

@@ -11,12 +11,12 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       python310
-      python39Packages.pip
-      python39Packages.ipython
       black
-      python39Packages.setuptools
-      python39Packages.pylint
-      python39Packages.poetry
+      # python39Packages.pip
+      # python39Packages.ipython
+      # python39Packages.setuptools
+      # python39Packages.pylint
+      # python39Packages.poetry
     ];
   };
 }
