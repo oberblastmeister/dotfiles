@@ -31,9 +31,11 @@ end
 alias np="nix profile"
 alias ls="exa --icons"
 alias tree="exa --tree --icons"
+
 alias hb="hadrian/build -j"
 alias hbq="hb --flavour=Quick"
 alias hbqs="hbq --skip='//*.mk' --skip='stage1:lib:rts'"
 alias hbqf="hbqs --freeze1"
+
 alias t=trash
 alias ghb="gh browse"

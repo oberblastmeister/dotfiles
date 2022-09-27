@@ -23,6 +23,7 @@ in
       (pkgs.writeShellScriptBin "pghci" ''
         cabal repl --repl-options "-interactive-print=Text.Pretty.Simple.pPrint" --build-depends pretty-simple
       '')
+      nur.repos.mpickering.ghc-head-from
       # haskell-ci
       # haskellPackages.hoogle
       # haskellPackages.stan

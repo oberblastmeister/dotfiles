@@ -71,6 +71,7 @@ in
         cht-sh
         shellcheck
         vivid
+        moreutils
       ];
 
       home.sessionVariables = {

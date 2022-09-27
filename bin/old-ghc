@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+nix shell -f https://gitlab.haskell.org/bgamari/ghcs-nix/-/archive/master/ghcs-nix-master.tar.gz "ghc-$1"
