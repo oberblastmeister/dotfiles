@@ -22,9 +22,6 @@
       # look for a nixpkgs channel.
       ++ [
       {
-        nixpkgs.overlays = [
-          inputs.nur.overlay
-        ];
         home.stateVersion = lib.mkDefault config.system.stateVersion;
       }
     ];

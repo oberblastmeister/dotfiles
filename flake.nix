@@ -44,7 +44,6 @@
         overlays = extraOverlays ++ (builtins.attrValues self.overlays);
       };
       overlays = [
-        inputs.nur.overlay
       ];
       pkgs = mkPkgs nixpkgs overlays;
       pkgs-unstable = mkPkgs nixpkgs-unstable overlays;
