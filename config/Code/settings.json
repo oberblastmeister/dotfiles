@@ -365,7 +365,10 @@
     },
     "[racket]": {
         "editor.bracketPairColorization.enabled": true,
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+        "editor.autoClosingBrackets": "never",
+        "editor.autoClosingOvertype": "never",
+        "editor.autoClosingQuotes": "never"
     },
     "[cabal]": {
         "editor.tabSize": 2,
