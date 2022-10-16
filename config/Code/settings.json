@@ -749,7 +749,7 @@
         "go": false,
         "java": false,
         "cpp": false,
-        "python": true,
+        "python": false,
         "git-commit": false,
         "agda": false,
         "c": false,

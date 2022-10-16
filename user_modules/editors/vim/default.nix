@@ -1,4 +1,4 @@
-{ config, nixosConfig, my, lib, pkgs, inputs, ... }:
+{ config, nixosConfig, my, lib, pkgs, unstable, inputs, ... }:
 
 let
   cfg = config.modules.editors.vim;
@@ -49,7 +49,6 @@ in
       vimdiffAlias = true;
       withNodeJs = true;
       withPython3 = true;
-      withRuby = true;
     };
   };
 }

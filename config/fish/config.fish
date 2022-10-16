@@ -37,5 +37,6 @@ alias hbq="hb --flavour=Quick"
 alias hbqs="hbq --skip='//*.mk' --skip='stage1:lib:rts'"
 alias hbqf="hbqs --freeze1"
 
+alias rm='echo "Not running rm. This command is dangerous!"; false'
 alias t=trash
 alias ghb="gh browse"

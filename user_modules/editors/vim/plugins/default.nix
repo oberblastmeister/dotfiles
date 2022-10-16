@@ -133,13 +133,14 @@ in
         telescope-fzf-native-nvim
         telescope-file-browser-nvim
 
-        vim-polyglot
-        {
-          config = ''
-            source ${naiveNvimConfigDir + "/nvim-treesitter.lua"}
-          '';
-          plugin = (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars));
-        }
+        # vim-polyglot
+        # {
+        #   config = ''
+        #     source ${naiveNvimConfigDir + "/nvim-treesitter.lua"}
+        #   '';
+        #   plugin = (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars));
+        # }
+        # playground
 
         {
           config = cfg.lspconfig.config;

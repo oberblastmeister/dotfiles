@@ -17,5 +17,7 @@ in
       gnumake
       cmake
     ];
+
+    modules.link.home.".clang-format" = "symlink";
   };
 }
