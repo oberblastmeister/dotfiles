@@ -72,6 +72,7 @@ in
         shellcheck
         vivid
         moreutils
+        xsel
       ];
 
       home.sessionVariables = {

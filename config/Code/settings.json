@@ -763,7 +763,7 @@
     },
     "haskell.plugin.rename.config.crossModule": true,
     "terminal.integrated.enableMultiLinePasteWarning": false,
-    "clangd.checkUpdates": true,
+    "clangd.checkUpdates": false,
     "clangd.arguments": [
         "--header-insertion=never"
     ],
@@ -821,6 +821,7 @@
     "explorer.confirmDelete": false,
     "agdaMode.connection.agdaPath": "/etc/profiles/per-user/brian/bin/agda",
     "haskell.serverExecutablePath": "/home/brian/projects/haskell-language-server/dist-newstyle/build/x86_64-linux/ghc-9.2.4/haskell-language-server-1.8.0.0/x/haskell-language-server/build/haskell-language-server/haskell-language-server",
+    "clangd.path": "/etc/profiles/per-user/brian/bin/clangd",
     // OPTIONAL: The server needs to be configured
     // to read the logs from the out directory as well.
     // "texlab.auxDirectory": "out",
