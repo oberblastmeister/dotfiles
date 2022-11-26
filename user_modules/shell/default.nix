@@ -73,6 +73,7 @@ in
         vivid
         moreutils
         xsel
+        appimage-run
       ];
 
       home.sessionVariables = {

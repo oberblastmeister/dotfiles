@@ -54,6 +54,9 @@ in
     curl
     wget
     gcc
+    # full man pages
+    man-pages
+    man-pages-posix
   ];
 
   programs = {
@@ -65,6 +68,9 @@ in
   };
 
   users.defaultUserShell = pkgs.fish;
+
+  # man pages for other utilities
+  documentation.dev.enable = true;
 
   system.stateVersion = "22.05";
 }
