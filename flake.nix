@@ -5,7 +5,7 @@
     # primary nixpkgs
     # unstable is too unstable
     # make sure to change the version number to update
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-very-unstable.url = "github:NixOS/nixpkgs/master"; # for packages on the edge
 
@@ -13,7 +13,7 @@
 
     # might need to pin this to same version as nixpkgs
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

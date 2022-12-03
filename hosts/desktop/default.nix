@@ -16,7 +16,7 @@
     ];
   };
 
-  nix.trustedUsers = [ "root" "brian" ];
+  nix.settings.trusted-users = [ "root" "brian" ];
 
   modules = {
     presets.enable = "full";

@@ -30,17 +30,19 @@ in
         ];
         # flake registries with `nix registry`
         registry = registryInputs // { dotfiles.flake = inputs.self; };
-        autoOptimiseStore = true;
-        binaryCaches = [
-          "https://nix-community.cachix.org"
-          "https://cache.iog.io"
-          "https://oberblastmeister-dotfiles.cachix.org"
-        ];
-        binaryCachePublicKeys = [
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-          "oberblastmeister-dotfiles.cachix.org-1:No99K5o9+Ab7Hq2CFgNZQQjDqlQIQzNkrA3FING6OrE="
-        ];
+        settings = {
+          auto-optimise-store = true;
+          substituters = [
+            "https://nix-community.cachix.org"
+            # "https://cache.iog.io"
+            "https://oberblastmeister-dotfiles.cachix.org"
+          ];
+          trusted-public-keys = [
+            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+            # "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+            "oberblastmeister-dotfiles.cachix.org-1:No99K5o9+Ab7Hq2CFgNZQQjDqlQIQzNkrA3FING6OrE="
+          ];
+        };
       };
 
     # must be set so cli commands such as `nix-env` and `nix profile` work
