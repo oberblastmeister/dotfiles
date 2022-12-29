@@ -31,6 +31,8 @@ in
     # on X emacs can't open display for some reason
     modules.link.config."autostart/Emacs.desktop" = "copy";
 
+    modules.link.config."doom" = "symlink";
+
     home.packages = with pkgs; [
       ## Emacs itself
       binutils # native-comp needs 'as', provided by this

@@ -323,7 +323,6 @@
     "editor.fontFamily": "Cascadia Code, FiraCode Nerd Font",
     "editor.fontLigatures": true,
     "editor.suggestSelection": "first",
-    "editor.minimap.enabled": false,
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     // do not accept completions on enter
     "editor.acceptSuggestionOnEnter": "off",
@@ -334,14 +333,20 @@
     "editor.largeFileOptimizations": false,
     // "outline.problems.colors": false,
     "problems.showCurrentInStatus": true,
-    "editor.renderWhitespace": "none",
     "redhat.telemetry.enabled": false,
     "workbench.startupEditor": "none",
     "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
         "**/.classpath": true,
         "**/.project": true,
         "**/.settings": true,
-        "**/.factorypath": true
+        "**/.factorypath": true,
+        "**/*.olean": true
     },
     "editor.cursorBlinking": "solid",
     "editor.suggest.localityBonus": true,
@@ -686,8 +691,6 @@
     "workbench.panel.defaultLocation": "right",
     "extensions.ignoreRecommendations": true,
     "telemetry.telemetryLevel": "off",
-    // cancel the stupid menu from popping up
-    "window.menuBarVisibility": "hidden",
     // stop vscode update messages
     "update.mode": "none",
     "python.formatting.provider": "black",
@@ -799,7 +802,6 @@
         }
     },
     "workbench.reduceMotion": "off",
-    "workbench.activityBar.visible": false,
     "gruvboxMaterial.darkPalette": "original",
     "workbench.colorTheme": "Gruvbox Medium Dark",
     "editor.tokenColorCustomizations": {
@@ -822,7 +824,17 @@
     "agdaMode.connection.agdaPath": "/etc/profiles/per-user/brian/bin/agda",
     "haskell.serverExecutablePath": "/home/brian/projects/haskell-language-server/dist-newstyle/build/x86_64-linux/ghc-9.2.4/haskell-language-server-1.8.0.0/x/haskell-language-server/build/haskell-language-server/haskell-language-server",
     "clangd.path": "/etc/profiles/per-user/brian/bin/clangd",
-    // OPTIONAL: The server needs to be configured
-    // to read the logs from the out directory as well.
-    // "texlab.auxDirectory": "out",
+    "gluon.language-server.path": "/home/brian/.cargo/bin/gluon_language-server",
+    "lean4.elaborationDelay": 100,
+    
+    // minimal ui settings
+    "editor.glyphMargin": false,
+    "editor.minimap.enabled": false,
+    "editor.folding": false,
+    "workbench.statusBar.visible": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.activityBar.visible": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.overviewRulerBorder": false,
+    "editor.renderWhitespace": "none",
 }
