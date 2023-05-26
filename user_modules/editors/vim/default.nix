@@ -1,11 +1,11 @@
-{ config, nixosConfig, my, lib, pkgs, unstable, inputs, ... }:
+{ config, dirs, my, lib, pkgs, unstable, inputs, ... }:
 
 let
   cfg = config.modules.editors.vim;
   inherit (lib) mkOption types;
   inherit (config.lib.file) mkOutOfStoreSymlink;
-  naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
-  nvimConfigDir = nixosConfig.dotfiles.configDir + /nvim;
+  naiveNvimConfigDir = dirs.naiveConfigDir + "/nvim";
+  nvimConfigDir = dirs.configDir + /nvim;
   nvimMappingsDir = nvimConfigDir + /mappings;
 in
 {

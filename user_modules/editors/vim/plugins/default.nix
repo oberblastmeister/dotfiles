@@ -1,10 +1,10 @@
-{ config, nixosConfig, my, lib, pkgs, inputs, ... }:
+{ config, dirs, my, lib, pkgs, inputs, ... }:
 
 let
   cfg = config.modules.editors.vim;
   inherit (lib) mkOption types;
-  naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
-  nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
+  naiveNvimConfigDir = dirs.naiveConfigDir + "/nvim";
+  nvimConfigDir = dirs.configDir + "/nvim";
   vscodeConfigDir = nvimConfigDir + "/vscode";
   naiveVscodeConfigDir = naiveNvimConfigDir + "/vscode";
   dummyPlugin = pkgs.vimUtils.buildVimPlugin {

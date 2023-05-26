@@ -1,4 +1,4 @@
-{ config, nixosConfig, my, lib, pkgs, inputs, ... }:
+{ config, dirs, my, lib, pkgs, inputs, ... }:
 
 let
   cfg = config.modules.desktop.terminals.wezterm;
@@ -10,7 +10,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.file."${config.xdg.configHome}/wezterm/wezterm.lua".source = mkOutOfStoreSymlink (nixosConfig.dotfiles.naiveConfigDir + "/wezterm/wezterm.lua");
+    home.file."${config.xdg.configHome}/wezterm/wezterm.lua".source = mkOutOfStoreSymlink (dirs.naiveConfigDir + "/wezterm/wezterm.lua");
   };
 }
 

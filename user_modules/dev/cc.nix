@@ -16,6 +16,7 @@ in
       gdb
       gnumake
       cmake
+      nasm
     ];
 
     modules.link.home.".clang-format" = "symlink";

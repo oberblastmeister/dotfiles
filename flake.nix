@@ -51,7 +51,6 @@
       lib = nixpkgs.lib.extend (final: prev: { my = import ./lib { inherit pkgs inputs; lib = final; }; });
     in
     rec {
-
       overlays = {
         default = final: prev: {
           unstable = pkgs-unstable;

@@ -1,11 +1,11 @@
-{ config, nixosConfig, my, lib, pkgs, inputs, ... }:
+{ config, dirs, my, lib, pkgs, inputs, ... }:
 
 let
   writeIf = cond: s: if cond then s else "";
   addIf = cond: x: if cond then [ x ] else [ ];
   devCfg = config.modules.dev;
-  nvimConfigDir = nixosConfig.dotfiles.configDir + "/nvim";
-  naiveNvimConfigDir = nixosConfig.dotfiles.naiveConfigDir + "/nvim";
+  nvimConfigDir = dirs.configDir + "/nvim";
+  naiveNvimConfigDir = dirs.naiveConfigDir + "/nvim";
   inherit (lib) types mkOption;
 in
 {

@@ -1,4 +1,4 @@
-{ inputs, options, config, nixosConfig, lib, my, pkgs, ... }:
+{ inputs, options, config, dirs, lib, my, pkgs, ... }:
 
 let
   cfg = config.modules.shell.fish;
@@ -12,7 +12,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.fish = {
       shellInit = ''
-        source ${nixosConfig.dotfiles.naiveConfigDir + "/fish/config.fish"}
+        source ${dirs.naiveConfigDir + "/fish/config.fish"}
       '';
       plugins = [
       ];

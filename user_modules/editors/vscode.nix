@@ -1,8 +1,8 @@
-{ config, nixosConfig, my, lib, pkgs, unstable, inputs, ... }:
+{ config, dirs, my, lib, pkgs, unstable, inputs, ... }:
 
 let
   cfg = config.modules.editors.vscode;
-  naiveCodeDir = nixosConfig.dotfiles.naiveConfigDir + "/Code";
+  naiveCodeDir = dirs.naiveConfigDir + "/Code";
   toDir = "${config.xdg.configHome}/Code/User";
   inherit (lib) mkOption types;
   inherit (config.lib.file) mkOutOfStoreSymlink;

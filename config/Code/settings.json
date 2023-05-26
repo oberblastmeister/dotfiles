@@ -322,7 +322,6 @@
     "editor.fontWeight": "normal",
     "editor.fontFamily": "Cascadia Code, FiraCode Nerd Font",
     "editor.fontLigatures": true,
-    "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     // do not accept completions on enter
     "editor.acceptSuggestionOnEnter": "off",
@@ -350,7 +349,7 @@
     },
     "editor.cursorBlinking": "solid",
     "editor.suggest.localityBonus": true,
-    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.scrollback": 100000,
     // languages
     "vim.foldfix": true,
     "gitlens.codeLens.enabled": false,
@@ -370,7 +369,7 @@
     },
     "[racket]": {
         "editor.bracketPairColorization.enabled": true,
-        "editor.tabSize": 2,
+        "editor.tabSize": 1,
         "editor.autoClosingBrackets": "never",
         "editor.autoClosingOvertype": "never",
         "editor.autoClosingQuotes": "never"
@@ -737,29 +736,11 @@
     },
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
-        "*": false,
-        "yaml": false,
-        "plaintext": false,
-        "markdown": false,
-        "haskell": false,
-        "cabal": false,
-        "jsonc": false,
-        "rust": false,
-        "kotlin": false,
-        "toml": false,
-        "nix": false,
-        "shellscript": false,
-        "go": false,
-        "java": false,
-        "cpp": false,
-        "python": false,
-        "git-commit": false,
-        "agda": false,
-        "c": false,
-        "json": false
+        "*": true,
     },
     "files.associations": {
         "*.dump-simpl": "haskell",
+        "*.dump-splices": "haskell",
         "*.h": "c",
         "cabal.project": "cabal",
         "cabal.project.local": "cabal",
@@ -772,7 +753,6 @@
     ],
     "git.mergeEditor": true,
     "githubPullRequests.fileListLayout": "tree",
-    "editor.acceptSuggestionOnCommitCharacter": false,
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.analysis.inlayHints.variableTypes": true,
     "git.detectSubmodules": false,
@@ -818,15 +798,14 @@
     },
     "settingsSync.ignoredSettings": [
         "workbench.colorTheme",
-        "haskell.serverExecutablePath"
+        "haskell.serverExecutablePath",
+        "-agdaMode.connection.agdaPath"
     ],
     "explorer.confirmDelete": false,
-    "agdaMode.connection.agdaPath": "/etc/profiles/per-user/brian/bin/agda",
+    "gluon.language-server.path": "/home/brian/.cargo/bin/gluon_language-server",
     "haskell.serverExecutablePath": "/home/brian/projects/haskell-language-server/dist-newstyle/build/x86_64-linux/ghc-9.2.4/haskell-language-server-1.8.0.0/x/haskell-language-server/build/haskell-language-server/haskell-language-server",
     "clangd.path": "/etc/profiles/per-user/brian/bin/clangd",
-    "gluon.language-server.path": "/home/brian/.cargo/bin/gluon_language-server",
     "lean4.elaborationDelay": 100,
-    
     // minimal ui settings
     "editor.glyphMargin": false,
     "editor.minimap.enabled": false,
@@ -837,4 +816,23 @@
     "editor.hideCursorInOverviewRuler": true,
     "editor.overviewRulerBorder": false,
     "editor.renderWhitespace": "none",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "workbench.editor.tabCloseButton": "off",
+    "workbench.colorCustomizations": { // object that allows you to customize your color theme: https://code.visualstudio.com/docs/getstarted/theme-color-reference 
+        "tab.activeBorder": "#0000", // removes border to highlight active tabs (the colors formats are: #RGB, #RGBA, #RRGGBB or #RRGGBBAA)
+        "tab.unfocusedActiveBorder": "#0000"
+    },
+    "haskell.plugin.class.codeLensOn": false,
+    "haskell.plugin.importLens.codeLensOn": false,
+    "haskell.plugin.refineImports.codeLensOn": false,
+    "haskell.plugin.tactics.codeLensOn": false,
+    "haskell.plugin.hlint.diagnosticsOn": false,
+    "zig.zls.path": "/home/brian/.config/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+    "zig.zls.checkForUpdate": false,
+    "editor.experimental.useCustomCodeActionMenu": true,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1,
+        "asvetliakov.vscode-neovim": 1
+    }
 }

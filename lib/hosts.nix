@@ -10,6 +10,7 @@ rec {
       specialArgs = {
         inherit (pkgs) unstable very-unstable;
         inherit lib inputs system;
+        dirs = import ../dirs.nix;
       };
       modules = [
         {

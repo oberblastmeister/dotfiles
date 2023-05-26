@@ -28,7 +28,6 @@
     //     "key": "ctrl+x",
     //     "command": "-vscode-neovim.send"
     // },
-
     // space mappings
     {
         "key": "space",
@@ -106,7 +105,6 @@
         "key": "ctrl+t",
         "command": "-vscode-neovim.send",
         "when": "neovim.mode == cmdline_insert || neovim.mode == cmdline_normal || neovim.mode == cmdline_replace"
-        
     },
     {
         "key": "ctrl+t",
@@ -319,5 +317,27 @@
     {
         "key": "ctrl+y",
         "command": "-redo"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
     },
 ]

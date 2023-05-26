@@ -1,7 +1,7 @@
-{ nixosConfig, config, options, unstable, pkgs, lib, my, ... }:
+{ dirs, config, options, unstable, pkgs, lib, my, ... }:
 let
   cfg = config.modules.shell.tmux;
-  naiveTmuxDir = nixosConfig.dotfiles.naiveConfigDir + "/tmux";
+  naiveTmuxDir = dirs.naiveConfigDir + "/tmux";
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 {
@@ -14,6 +14,6 @@ in
       tmux
     ];
     
-    xdg.configFile."tmux/tmux.conf".source = mkOutOfStoreSymlink (nixosConfig.dotfiles.naiveConfigDir + "/tmux/tmux.conf");
+    xdg.configFile."tmux/tmux.conf".source = mkOutOfStoreSymlink (dirs.naiveConfigDir + "/tmux/tmux.conf");
   };
 }

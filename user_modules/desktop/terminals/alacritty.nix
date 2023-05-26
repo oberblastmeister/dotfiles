@@ -1,8 +1,8 @@
-{ config, nixosConfig, my, lib, pkgs, inputs, ... }:
+{ config, dirs, my, lib, pkgs, inputs, ... }:
 
 let
   cfg = config.modules.desktop.terminals.alacritty;
-  fromDir = nixosConfig.dotfiles.naiveConfigDir + "/alacritty";
+  fromDir = dirs.naiveConfigDir + "/alacritty";
   toDir = "${config.xdg.configHome}/alacritty";
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
