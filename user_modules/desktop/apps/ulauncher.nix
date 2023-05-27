@@ -1,4 +1,4 @@
-{ config, nixosConfig, options, unstable, pkgs, lib, my, ... }:
+{ config, options, unstable, pkgs, lib, my, ... }:
 
 let
   package = pkgs.ulauncher;

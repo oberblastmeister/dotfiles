@@ -35,7 +35,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-very-unstable, utils, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-very-unstable, utils, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       mkPkgs = pkgs: extraOverlays: import pkgs {
@@ -65,8 +65,63 @@
 
       nixosConfigurations = lib.my.hosts.map ./hosts { };
 
-      templates = import ./templates;
-    }
+      homeConfigurations.brian = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          # Specify your home configuration modules here, for example,
+          # the path to your home.nix.
+          modules = [
+            ./homes/laptop.nix
+            {
+              imports = lib.my.modules.importAllRec' ./user_modules;
+              home = {
+                username = "brian";
+                stateVersion = "22.05";
+                homeDirectory = "/home/brian";
+              };
+              modules = {
+                # dev = {
+                #   rust.enable = true;
+                #   haskell.enable = true;
+                #   lean.enable = true;
+                #   agda.enable = true;
+                #   cc.enable = true;
+                # };
+                dev.python.enable = false;
+                editors = {
+                  vim.enable = true;
+                };
+                shell = {
+                  programs.enable = true;
+                  fish.enable = true;
+                };
+                desktop = {
+                  # apps = {
+                  #   ulauncher.enable = true;
+                  #   flameshot.enable = true;
+                  # };
+                  dconf.enable = true;
+                  # don't enable installing package, gpu accelerated programs don't work
+                  terminals.alacritty.enableConfig = true;
+                };
+              };
+
+              home.packages = with pkgs; [
+                gnome.gnome-tweaks
+              ];
+            }
+          ];
+
+          extraSpecialArgs = {
+            inherit (pkgs) unstable very-unstable;
+            inherit inputs system;
+            inherit (lib) my;
+            dirs = import ./dirs.nix;
+          };
+        };
+
+        templates = import ./templates;
+      }
     // (utils.lib.eachSystem [ system ] (system:
       rec {
         packages = lib.my.modules.map ./packages (p: pkgs.callPackage p { }) // { };

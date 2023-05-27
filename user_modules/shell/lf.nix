@@ -1,4 +1,4 @@
-{ inputs, options, config, nixosConfig, lib, my, pkgs, ... }:
+{ inputs, options, config, lib, my, pkgs, ... }:
 
 let
   cfg = config.modules.shell.lf;

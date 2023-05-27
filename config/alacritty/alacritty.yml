@@ -12,7 +12,10 @@ font:
   italic:
     # family: CaskaydiaCove Nerd Font
     family: Cascadia Code
-      
+
+window:
+  decorations: "none"
+
 # Colors (Gruvbox dark)
 colors:
   # Default colors

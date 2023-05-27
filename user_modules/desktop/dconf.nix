@@ -1,15 +1,16 @@
-{ config, nixosConfig, options, unstable, pkgs, lib, my, ... }:
+{ config, options, unstable, pkgs, lib, my, ... }:
 
 let
-  nixosCfg = nixosConfig.modules.desktop.gnome;
   inherit (lib.hm) gvariant;
+  cfg = config.modules.desktop.dconf;
 in
 {
-  config = lib.mkIf nixosCfg.enable {
+  options.modules.desktop.dconf = {
+    enable = my.options.mkEnable;
+  };
+
+  config = lib.mkIf cfg.enable {
     dconf.settings = {
-      "org/gnome/mutter" = {
-        edge-tiling = false;
-      };
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super>q" ];
         maximize = [ "<Alt><Super>k" ];
@@ -42,19 +43,10 @@ in
         toggle-message-tray = [ ];
         toggle-overview = [ ];
       };
-      "org/gnome/settings-daemon/plugins/media-keys" = {
-        control-center = [ "<Super>s" ];
-        www = [ "<Super>b" ];
-      };
-      "org/gnome/desktop/interface" = {
-        cursor-theme = "Bibata-Modern-Ice";
-        gtk-theme = "Orchis";
-        icon-theme = "ePapirus";
-        font-name = "Noto Sans 11";
-        document-font-name = "Noto Sans 11";
-        monospace-font-name = "Cascadia Code 10";
-        titlebar-font = "Noto Sans Bold 11";
-      };
+      # "org/gnome/settings-daemon/plugins/media-keys" = {
+      #   control-center = [ "<Super>s" ];
+      #   www = [ "<Super>b" ];
+      # };
       "org/gnome/shell/extensions/user-theme" = {
         name = "Orchis";
       };
@@ -64,16 +56,6 @@ in
       };
       "org/gnome/desktop/peripherals/keyboard" = {
         repeat-interval = gvariant.mkUint32 18;
-      };
-      "org/gnome/shell" = {
-        disable-user-extensions = false;
-        enabled-extensions = [
-          "user-theme@gnome-shell-extensions.gcampax.github.com"
-          "clipboard-indicator@tudmotu.com"
-          "drive-menu@gnome-shell-extensions.gcampax.github.com"
-          "appindicatorsupport@rgcjonas.gmail.com"
-          "pop-shell@system76.com"
-        ];
       };
     };
   };

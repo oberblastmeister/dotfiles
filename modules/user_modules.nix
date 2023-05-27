@@ -1,4 +1,4 @@
-{ system, config, dirs, lib, pkgs, inputs, ... }:
+{ system, config, lib, pkgs, inputs, ... }:
 
 {
   home-manager = {
@@ -12,7 +12,7 @@
     # similar to how we give lib.nixosSystem specialArgs
     extraSpecialArgs = {
       inherit (pkgs) unstable very-unstable;
-      inherit inputs system dirs;
+      inherit inputs system;
       # inherit my instead of whole lib because home-manager needs to use
       # it's own special extended stdlib and it will clash with the lib name
       inherit (lib) my;

@@ -44,18 +44,6 @@ in
             " second dummy config
           '';
         }
-        {
-          plugin = packer-nvim;
-          config = ''
-            lua << EOF
-            require('packer').init {
-              luarocks = {
-                python_cmd = 'python' -- Set the python command to use for running hererocks
-              }
-            }
-            EOF
-          '';
-        }
         vim-nix
         vim-surround
         {

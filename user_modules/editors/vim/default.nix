@@ -35,6 +35,8 @@ in
     };
 
     programs.neovim = {
+      # must be unwrapped or will fail
+      package = unstable.neovim-unwrapped;
       enable = true;
       extraConfig = ''
         ${cfg.extraConfig}

@@ -123,22 +123,20 @@ in
           enable = true;
         } // allIntegrations;
         navi = {
-          enable = true;
+          enable = false;
         } // allIntegrations;
         # enables better command-not-found
         nix-index = {
-          enable = true;
+          enable = false;
         } // allIntegrations;
         dircolors = {
           enable = true;
         } // allIntegrations;
       };
 
-      # services.lorri.enable = true;
-
       modules.shell.git.enable = true;
       modules.shell.tmux.enable = true;
-      modules.shell.ranger.enable = true;
+      modules.shell.ranger.enable = false;
       modules.shell.lf.enable = true;
     })
   ];
