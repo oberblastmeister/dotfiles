@@ -47,9 +47,6 @@ in
       #   control-center = [ "<Super>s" ];
       #   www = [ "<Super>b" ];
       # };
-      "org/gnome/shell/extensions/user-theme" = {
-        name = "Orchis";
-      };
       "org/gnome/desktop/peripherals/touchpad" = {
         disable-while-typing = false;
         two-finger-scrolling-enabled = true;

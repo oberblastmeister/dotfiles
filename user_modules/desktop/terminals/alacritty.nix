@@ -2,9 +2,6 @@
 
 let
   cfg = config.modules.desktop.terminals.alacritty;
-  fromDir = dirs.naiveConfigDir + "/alacritty";
-  toDir = "${config.xdg.configHome}/alacritty";
-  inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 
 {
@@ -18,6 +15,6 @@ in
       enable = true;
     };
   } // lib.mkIf (cfg.enableConfig || cfg.enable) {
-    home.file."${toDir}/alacritty.yml".source = mkOutOfStoreSymlink (fromDir + "/alacritty.yml");
+    modules.link.config."alacritty/alacritty.yml" = "symlink";
   };
 }

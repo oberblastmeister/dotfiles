@@ -1,5 +1,3 @@
-print('yo')
-
 vim.g.mapleader = ' '
 
 o.termguicolors = true

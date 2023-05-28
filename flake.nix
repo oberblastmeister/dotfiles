@@ -96,6 +96,7 @@
               ];
 
               modules = {
+                fonts.enable = true;
                 editors = {
                   vim.enable = true;
                 };
