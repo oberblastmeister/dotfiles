@@ -20,19 +20,21 @@ in
   config = lib.mkIf cfg.enable {
     modules.editors.vim = {
       extraConfig = ''
+        source ${naiveNvimConfigDir + "/user_init.lua"}
+
         " settings
         source ${nvimConfigDir + /settings.vim}
         
         " mappings
-        source ${nvimMappingsDir + /command.vim}
         source ${nvimMappingsDir + /normal.vim}
         source ${nvimMappingsDir + /leader.vim}
         source ${nvimMappingsDir + /visual.vim}
         source ${nvimMappingsDir + /insert.vim}
         
-        source ${naiveNvimConfigDir + "/user_init.lua"}
       '';
     };
+
+    modules.link.config."nvim/lua" = "symlink";
 
     programs.neovim = {
       # must be unwrapped or will fail

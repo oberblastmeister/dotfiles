@@ -72,22 +72,30 @@
           # the path to your home.nix.
           modules = [
             ./homes/laptop.nix
+            ({ config, ... }:
             {
               imports = lib.my.modules.importAllRec' ./user_modules;
+              home.sessionPath = [ "$HOME/.cargo/bin" ];
               home = {
                 username = "brian";
                 stateVersion = "22.05";
                 homeDirectory = "/home/brian";
               };
+
+              # gtk = {
+              #   enable = true;
+
+              #   iconTheme = {
+              #     name = "Papirus-Dark";
+              #     package = pkgs.papirus-icon-theme;
+              #   };
+              # };
+
+              home.packages = with pkgs; [
+                # gnomeExtensions.blur-my-shell
+              ];
+
               modules = {
-                # dev = {
-                #   rust.enable = true;
-                #   haskell.enable = true;
-                #   lean.enable = true;
-                #   agda.enable = true;
-                #   cc.enable = true;
-                # };
-                dev.python.enable = false;
                 editors = {
                   vim.enable = true;
                 };
@@ -96,20 +104,17 @@
                   fish.enable = true;
                 };
                 desktop = {
-                  # apps = {
-                  #   ulauncher.enable = true;
-                  #   flameshot.enable = true;
-                  # };
+                  apps = {
+                    # ulauncher for some reason sets its python dependencies in the PATH of the process
+                    ulauncher.enableConfig = true;
+                    flameshot.enable = true;
+                  };
                   dconf.enable = true;
                   # don't enable installing package, gpu accelerated programs don't work
                   terminals.alacritty.enableConfig = true;
                 };
               };
-
-              home.packages = with pkgs; [
-                gnome.gnome-tweaks
-              ];
-            }
+            })
           ];
 
           extraSpecialArgs = {
