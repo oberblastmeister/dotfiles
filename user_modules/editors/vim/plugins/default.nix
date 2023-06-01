@@ -5,6 +5,7 @@ let
   inherit (lib) mkOption types;
   naiveNvimConfigDir = dirs.naiveConfigDir + "/nvim";
   nvimConfigDir = dirs.configDir + "/nvim";
+  nvimMappingsDir = nvimConfigDir + "/mappings";
   vscodeConfigDir = nvimConfigDir + "/vscode";
   naiveVscodeConfigDir = naiveNvimConfigDir + "/vscode";
   dummyPlugin = pkgs.vimUtils.buildVimPlugin {
@@ -38,6 +39,23 @@ in
             endif
           '';
         }
+
+        {
+          plugin = dummyPlugin;
+          config = ''
+            source ${naiveNvimConfigDir + "/user_init.lua"}
+
+            " settings
+            source ${nvimConfigDir + /settings.vim}
+            
+            " mappings
+            source ${nvimMappingsDir + /normal.vim}
+            source ${nvimMappingsDir + /leader.vim}
+            source ${nvimMappingsDir + /visual.vim}
+            source ${nvimMappingsDir + /insert.vim}
+          '';
+        }
+
         {
           plugin = dummyPlugin;
           config = ''
@@ -152,6 +170,12 @@ in
         cmp_luasnip
         cmp-cmdline
         lspkind-nvim # nice icons for completion
+        {
+          plugin = lspsaga-nvim;
+          config = ''
+            source ${naiveNvimConfigDir + "/lspsaga.lua"}
+          '';
+        }
 
         # {
         #   plugin = haskell-vim;

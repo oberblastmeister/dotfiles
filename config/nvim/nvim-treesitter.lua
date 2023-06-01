@@ -7,7 +7,7 @@ require'nvim-treesitter.configs'.setup {
 
   highlight = {
     enable = true,
-    disable = {},  -- list of language that will be disabled
+    disable = {"sh", "diff"},  -- list of language that will be disabled
     custom_captures = {}
   },
 

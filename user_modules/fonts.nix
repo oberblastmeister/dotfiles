@@ -1,4 +1,4 @@
-{ config, pkgs, my, ... }:
+{ config, pkgs, lib, my, ... }:
 
 let
   cfg = config.modules.fonts;

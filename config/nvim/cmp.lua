@@ -61,7 +61,7 @@ cmp.setup {
     { name = 'buffer' },
   },
   experimental = {
-    ghost_text = false,
+    ghost_text = true,
   },
 }
 

@@ -75,7 +75,10 @@
             ({ config, ... }:
             {
               imports = lib.my.modules.importAllRec' ./user_modules;
-              home.sessionPath = [ "$HOME/.cargo/bin" ];
+              
+              # very import, makes icon and cursor themes work, and others stuff too
+              targets.genericLinux.enable = true;
+
               home = {
                 username = "brian";
                 stateVersion = "22.05";
@@ -96,9 +99,17 @@
               ];
 
               modules = {
+                dev = {
+                  rust.enable = true;
+                  haskell.enable = true;
+                  lean.enable = true;
+                  agda.enable = true;
+                  cc.enable = true;
+                };
                 fonts.enable = true;
                 editors = {
                   vim.enable = true;
+                  vscode.enable = true;
                 };
                 shell = {
                   programs.enable = true;
@@ -107,8 +118,8 @@
                 desktop = {
                   apps = {
                     # ulauncher for some reason sets its python dependencies in the PATH of the process
-                    ulauncher.enableConfig = true;
-                    flameshot.enable = true;
+                    # ulauncher.enableConfig = true;
+                    # flameshot.enable = true;
                   };
                   dconf.enable = true;
                   # don't enable installing package, gpu accelerated programs don't work

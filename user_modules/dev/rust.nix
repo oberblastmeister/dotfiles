@@ -18,6 +18,6 @@ in
       cargo-outdated
     ];
 
-    home.sessionPath = [ "${config.home.sessionVariables.CARGO_HOME}/bin" ];
+    home.sessionPath = [ "$HOME/.cargo/bin" ];
   };
 }
