@@ -25,7 +25,6 @@
       # docker.enable = true;
       virtualbox.enable = true;
       docker.enable = true;
-      podman.enable = true;
     };
     hardware = {
       microcode.amd.enable = true;

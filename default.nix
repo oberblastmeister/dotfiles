@@ -38,7 +38,7 @@ in
   };
 
   networking = {
-    # firewall.enable = mkDefault true;
+    firewall.enable = false;
 
     # the installation environment enables this
     # gnome enables this
