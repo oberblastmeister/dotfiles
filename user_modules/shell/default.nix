@@ -77,6 +77,7 @@ in
         xsel
         appimage-run
         gh
+        distrobox
       ];
 
       home.sessionVariables = {

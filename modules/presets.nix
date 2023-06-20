@@ -5,7 +5,6 @@ let
 
   fullPreset = {
     modules = {
-      fonts.enable = mkDefault true;
       kmonad.enable = mkDefault true;
       desktop.gnome.enable = mkDefault true;
     };

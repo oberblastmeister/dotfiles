@@ -94,35 +94,6 @@
                 ANOTHER = "another";
               };
 
-              gtk = {
-                enable = true;
-
-                theme = {
-                  name = "Orchis-Dark";
-                };
-
-                iconTheme = {
-                  name = "Papirus-Dark";
-                };
-
-                cursorTheme = {
-                  name = "Bibata-Modern-Ice";
-                };
-              };
-
-              home.packages = with pkgs; [
-                flat-remix-gtk
-                flat-remix-gnome
-                orchis-theme
-                papirus-icon-theme
-                whitesur-gtk-theme
-                whitesur-icon-theme
-                bibata-cursors
-
-                gnomeExtensions.blur-my-shell
-                gnomeExtensions.dash-to-dock
-                gnomeExtensions.dash-to-panel
-              ];
 
               modules = {
                 dev = {
@@ -144,6 +115,7 @@
                   fish.enable = true;
                 };
                 desktop = {
+                  theme.enable = true;
                   apps = {
                     # ulauncher for some reason sets its python dependencies in the PATH of the process
                     # ulauncher.enableConfig = true;
@@ -161,7 +133,7 @@
             inherit (pkgs) unstable very-unstable;
             inherit inputs system;
             inherit (lib) my;
-            dirs = import ./dirs.nix { user = "brian"; };
+            dirs = import ./dirs.nix;
           };
         };
 

@@ -66,10 +66,8 @@
     modules = {
       presets.enable = "full";
       desktop = {
-        apps = {
-          zoom.enable = true;
-        };
         browsers.chrome.enable = true;
+        terminals.alacritty.enable = true;
       };
     };
   };

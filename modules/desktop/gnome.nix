@@ -42,13 +42,8 @@ in
       gnome.dconf-editor
       dconf2nix
 
-      gnomeExtensions.clipboard-indicator
       gnomeExtensions.appindicator
       unstable.gnomeExtensions.pop-shell
-
-      orchis
-      papirus-icon-theme
-      bibata-cursors
 
       xfce.thunar
     ];

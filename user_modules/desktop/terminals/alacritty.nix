@@ -10,11 +10,12 @@ in
     enableConfig = my.options.mkEnable;
   };
 
-  config = lib.mkIf cfg.enable {
-    programs.alacritty = {
-      enable = true;
-    };
-  } // lib.mkIf (cfg.enableConfig || cfg.enable) {
-    modules.link.config."alacritty/alacritty.yml" = "symlink";
-  };
+  config = lib.mkMerge [
+    (lib.mkIf cfg.enable {
+      programs.alacritty.enable = true;
+    })
+    (lib.mkIf (cfg.enable || cfg.enableConfig) {
+      modules.link.config."alacritty/alacritty.yml" = "symlink";
+    })
+  ];
 }

@@ -10,17 +10,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    boot.loader = {
-      efi = {
-        canTouchEfiVariables = mkDefault true;
-      };
-      grub = {
-        enable = true;
-        # only support efi
-        device = mkDefault "nodev";
-        efiSupport = mkDefault true;
-        useOSProber = mkDefault true;
-      };
+    boot.loader.grub = {
+      enable = true;
+      version = 2;
+      device = "nodev";
+      useOSProber = true;
     };
   };
 }

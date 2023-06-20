@@ -6,6 +6,7 @@ let
 
   fullPreset = {
     modules = {
+      fonts.enable = true;
       editors = {
         vim.enable = mkDefault true;
         vscode.enable = mkDefault true;
@@ -33,6 +34,7 @@ let
         programs.enable = mkDefault true;
       };
       desktop = {
+        theme.enable = true;
         terminals.alacritty.enable = mkDefault true;
         apps = {
           enableAll = mkDefault true;
