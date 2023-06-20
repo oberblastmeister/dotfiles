@@ -10,13 +10,16 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      python310
-      black
+      rye
+      # python310
+      # black
       # python39Packages.pip
       # python39Packages.ipython
       # python39Packages.setuptools
       # python39Packages.pylint
       # python39Packages.poetry
     ];
+
+    home.sessionPath = [ "$HOME/.rye/shims" ];
   };
 }

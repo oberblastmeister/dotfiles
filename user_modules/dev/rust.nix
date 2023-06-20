@@ -11,7 +11,6 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       rustup
-      unstable.rust-analyzer
       cargo-watch
       cargo-edit
       cargo-expand

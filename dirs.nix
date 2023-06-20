@@ -1,5 +1,7 @@
+{ user }:
+
 rec {
-  naiveDir = "/etc/dotfiles";
+  naiveDir = "/home/" + user + "/dotfiles";
   naiveConfigDir = naiveDir + "/config";
   naiveBinDir = naiveDir + "/bin";
   naiveModulesDir = naiveDir + "/modules";

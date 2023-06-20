@@ -10,13 +10,14 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
+      # haskellPackages.ghcup
       cabal2nix
       # until cabal-3.8 is out
       # cabal-install
-      stack
+      # stack
       # ghc
-      unstable.haskell.compiler.ghc924
-      unstable.haskell-language-server # make sure this uses the same packages as ghc does, or there will be errors
+      # unstable.haskell.compiler.ghc924
+      # unstable.haskell-language-server # make sure this uses the same packages as ghc does, or there will be errors
       ghcid
       ormolu
       hlint

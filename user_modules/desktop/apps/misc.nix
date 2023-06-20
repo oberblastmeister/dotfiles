@@ -10,7 +10,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      anki-bin # binary version, more up to date
+      # anki-bin # binary version, more up to date
       gthumb
       mpv
       celluloid
@@ -18,6 +18,7 @@ in
       # insecure right now
       unstable.obsidian
       font-manager
+      popsicle
     ];
   };
 }

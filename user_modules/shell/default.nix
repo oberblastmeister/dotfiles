@@ -20,8 +20,10 @@ in
   config = lib.mkMerge [
     {
       programs = {
+        # important, hm needs this to set proper environment variables
+        # makes stuff like .desktop files appear
         bash = {
-          enable = bashCfg.enable;
+          enable = true;
         };
         zsh = {
           enable = zshCfg.enable;
@@ -74,6 +76,7 @@ in
         moreutils
         xsel
         appimage-run
+        gh
       ];
 
       home.sessionVariables = {

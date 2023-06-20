@@ -5,7 +5,7 @@
     # primary nixpkgs
     # unstable is too unstable
     # make sure to change the version number to update
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-very-unstable.url = "github:NixOS/nixpkgs/master"; # for packages on the edge
 
@@ -13,7 +13,7 @@
 
     # might need to pin this to same version as nixpkgs
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -32,6 +32,10 @@
     lf = {
       url = "github:gokcehan/lf";
       flake = false;
+    };
+    nixgl = {
+      url = "github:guibou/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -85,21 +89,44 @@
                 homeDirectory = "/home/brian";
               };
 
-              # gtk = {
-              #   enable = true;
+              home.sessionVariables = {
+                ANKI_WAYLAND = 1;
+                ANOTHER = "another";
+              };
 
-              #   iconTheme = {
-              #     name = "Papirus-Dark";
-              #     package = pkgs.papirus-icon-theme;
-              #   };
-              # };
+              gtk = {
+                enable = true;
+
+                theme = {
+                  name = "Orchis-Dark";
+                };
+
+                iconTheme = {
+                  name = "Papirus-Dark";
+                };
+
+                cursorTheme = {
+                  name = "Bibata-Modern-Ice";
+                };
+              };
 
               home.packages = with pkgs; [
-                # gnomeExtensions.blur-my-shell
+                flat-remix-gtk
+                flat-remix-gnome
+                orchis-theme
+                papirus-icon-theme
+                whitesur-gtk-theme
+                whitesur-icon-theme
+                bibata-cursors
+
+                gnomeExtensions.blur-my-shell
+                gnomeExtensions.dash-to-dock
+                gnomeExtensions.dash-to-panel
               ];
 
               modules = {
                 dev = {
+                  python.enable = true;
                   rust.enable = true;
                   haskell.enable = true;
                   lean.enable = true;
@@ -113,6 +140,7 @@
                 };
                 shell = {
                   programs.enable = true;
+                  bash.enable = true;
                   fish.enable = true;
                 };
                 desktop = {
@@ -133,7 +161,7 @@
             inherit (pkgs) unstable very-unstable;
             inherit inputs system;
             inherit (lib) my;
-            dirs = import ./dirs.nix;
+            dirs = import ./dirs.nix { user = "brian"; };
           };
         };
 

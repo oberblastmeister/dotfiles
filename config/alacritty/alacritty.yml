@@ -49,7 +49,7 @@ colors:
 
 # autostart tmux
 shell:
-  program: /bin/bash
+  program: bash
   args:
     - -l
     - -c
