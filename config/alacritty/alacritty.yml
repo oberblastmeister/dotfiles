@@ -13,6 +13,9 @@ font:
     # family: CaskaydiaCove Nerd Font
     family: Cascadia Code
 
+mouse:
+  hide_when_typing: false
+
 window:
   decorations: "none"
 
@@ -54,3 +57,4 @@ shell:
     - -l
     - -c
     - "tmux"
+      

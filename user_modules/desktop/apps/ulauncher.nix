@@ -11,9 +11,13 @@ in
     enableConfig = my.options.mkEnable;
   };
 
-  config = lib.mkIf cfg.enable {
-    home.packages = [ package ];
-  } // lib.mkIf (cfg.enableConfig || cfg.enable) {
-    modules.link.config."autostart/Ulauncher.desktop" = "copy";
-  };
+  config = lib.mkMerge [
+    (lib.mkIf cfg.enable {
+      home.packages = [ package ];
+    })
+    (lib.mkIf (cfg.enable || cfg.enableConfig) {
+      # use pkgs.mkAutoStart
+      modules.link.config."autostart/Ulauncher.desktop" = "copy";
+    })
+  ];
 }

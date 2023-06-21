@@ -3,11 +3,7 @@ let
   cfg = config.modules.presets;
   inherit (lib) types mkOption mkDefault;
 
-  fullPreset = {
-    modules = {
-      desktop.gnome.enable = mkDefault true;
-    };
-  };
+  fullPreset = { };
 
   minimalPreset = { };
 in
