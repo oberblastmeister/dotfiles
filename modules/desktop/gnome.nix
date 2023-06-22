@@ -12,6 +12,9 @@ in
   config = lib.mkIf cfg.enable {
     programs.dconf.enable = true;
 
+    # need to do this if kde is enabled
+    # programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
+
     services = {
       xserver = {
         enable = true;

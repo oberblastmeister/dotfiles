@@ -41,6 +41,10 @@ alias hbqf="hbq --freeze1"
 alias rm='echo "Not running rm. This command is dangerous!"; false'
 alias t=trash
 alias ghb="gh browse"
+alias code="code --ozone-platform-hint=auto"
+
+alias db='distrobox'
+alias dbe='db enter'
 
 fish_add_path ~/.ghcup/bin
 fish_add_path ~/.cabal/bin

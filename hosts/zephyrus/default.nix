@@ -1,9 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, old, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
   ];
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   users.users.brian = {
     isNormalUser = true;
@@ -44,22 +46,13 @@
 
   nix.settings.trusted-users = [ "root" "brian" ];
 
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
-  # override the kde one
-  # programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
-
-  # environment.systemPackages = with pkgs; [
-  #   libsForQt5.bismuth
-  # ];
-
   modules = {
     # desktop.gnome.enable = true;
+    desktop.kde.enable = true;
     virtualisation = {
       # virt-manager.enable = true;
       # docker.enable = true;
-      virtualbox.enable = true;
+      # virtualbox.enable = true;
       podman.enable = true;
     };
     hardware = {
@@ -103,23 +96,45 @@
   home-manager.users.brian = {
     home.packages = with pkgs; [
       my.onagre
+      anki-bin
+      # insecure right now
+      unstable.obsidian
     ];
 
     modules = {
-      presets.enable = "full";
+      desktop.kde.enable = true;
+      fonts.enable = true;
+      editors = {
+        vim.enable = true;
+        vscode.enable = true;
+        emacs.enable = true;
+      };
+      dev = {
+        rust.enable = true;
+        haskell.enable = true;
+        # idris.enable = true;
+        agda.enable = true;
+        ocaml.enable = true;
+        # coq.enable = true;
+        python.enable = true;
+        cc.enable = true;
+        markdown.enable = true;
+        # racket.enable = true;
+        javascript.enable = true;
+        lean.enable = true;
+        # java.enable = true;
+        # latex.enable = true;
+      };
+      shell = {
+        fish.enable = true;
+        bash.enable = false;
+        programs.enable = true;
+      };
       desktop = {
-        theme.enable = true;
-        # gnome.enable = true;
-        # dconf.enable = true;
+        theme.enablePackages = true;
         browsers.chrome.enable = true;
         browsers.firefox.enable = true;
         terminals.alacritty.enable = true;
-      };
-    };
-
-    dconf.settings = {
-      "org/gnome/mutter" = {
-        experimental-features = [ "scale-monitor-framebuffer" ];
       };
     };
   };

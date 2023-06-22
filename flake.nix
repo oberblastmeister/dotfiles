@@ -8,7 +8,7 @@
     nixpkgs-old.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-very-unstable.url = "github:NixOS/nixpkgs/master"; # for packages on the edge
+    nixpkgs-very-unstable.url = "githubNixOS/nixpkgs/master"; # for packages on the edge
 
     utils.url = "github:numtide/flake-utils";
 

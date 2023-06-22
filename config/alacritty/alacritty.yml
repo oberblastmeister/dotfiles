@@ -16,8 +16,8 @@ font:
 mouse:
   hide_when_typing: false
 
-window:
-  decorations: "none"
+# window:
+#   decorations: "none"
 
 # Colors (Gruvbox dark)
 colors:

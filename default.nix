@@ -72,5 +72,10 @@ in
   # man pages for other utilities
   documentation.dev.enable = true;
 
+  # use with nix profile install --impure
+  environment.sessionVariables = {
+    NIXPKGS_ALLOW_UNFREE = "1";
+  };
+
   system.stateVersion = "22.05";
 }
