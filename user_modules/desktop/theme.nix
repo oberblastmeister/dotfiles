@@ -14,7 +14,8 @@
       };
 
       iconTheme = {
-        name = "Papirus-Dark";
+        # name = "Papirus-Dark";
+        name = "Tela-circle-dark";
       };
 
       cursorTheme = {
@@ -27,13 +28,10 @@
       flat-remix-gnome
       orchis-theme
       papirus-icon-theme
+      tela-icon-theme
       whitesur-gtk-theme
       whitesur-icon-theme
       bibata-cursors
-
-      gnomeExtensions.blur-my-shell
-      gnomeExtensions.dash-to-dock
-      gnomeExtensions.dash-to-panel
     ];
   };
 }

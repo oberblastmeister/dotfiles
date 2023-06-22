@@ -43,3 +43,4 @@ alias t=trash
 alias ghb="gh browse"
 
 fish_add_path ~/.ghcup/bin
+fish_add_path ~/.cabal/bin

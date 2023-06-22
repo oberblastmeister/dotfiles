@@ -5,6 +5,7 @@
     # primary nixpkgs
     # unstable is too unstable
     # make sure to change the version number to update
+    nixpkgs-old.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-very-unstable.url = "github:NixOS/nixpkgs/master"; # for packages on the edge
@@ -39,7 +40,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-very-unstable, utils, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-old, nixpkgs-unstable, nixpkgs-very-unstable, utils, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       mkPkgs = pkgs: extraOverlays: import pkgs {
@@ -49,6 +50,7 @@
       };
       overlays = [
       ];
+      pkgs-old = mkPkgs nixpkgs-old overlays;
       pkgs = mkPkgs nixpkgs overlays;
       pkgs-unstable = mkPkgs nixpkgs-unstable overlays;
       pkgs-very-unstable = mkPkgs nixpkgs-very-unstable overlays;
@@ -57,6 +59,7 @@
     rec {
       overlays = {
         default = final: prev: {
+          old = pkgs-old;
           unstable = pkgs-unstable;
           very-unstable = pkgs-very-unstable;
           my = self.packages."${system}";

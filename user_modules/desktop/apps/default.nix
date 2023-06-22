@@ -13,7 +13,6 @@ in
     modules.desktop.apps = {
       misc.enable = mkDefault true;
       flameshot.enable = mkDefault true;
-      ulauncher.enable = mkDefault true;
       zathura.enable = mkDefault true;
     };
   };

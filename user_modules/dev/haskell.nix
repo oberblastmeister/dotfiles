@@ -13,9 +13,9 @@ in
       # haskellPackages.ghcup
       cabal2nix
       # until cabal-3.8 is out
-      # cabal-install
-      # stack
-      # ghc
+      cabal-install
+      stack
+      ghc
       # unstable.haskell.compiler.ghc924
       # unstable.haskell-language-server # make sure this uses the same packages as ghc does, or there will be errors
       ghcid

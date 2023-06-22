@@ -8,7 +8,7 @@ rec {
     lib.nixosSystem {
       inherit system;
       specialArgs = {
-        inherit (pkgs) unstable very-unstable;
+        inherit (pkgs) old unstable very-unstable;
         inherit lib inputs system;
         dirs = import ../dirs.nix;
       };

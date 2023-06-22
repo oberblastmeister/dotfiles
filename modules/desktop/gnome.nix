@@ -36,16 +36,5 @@ in
         desktopManager.gnome.enable = true;
       };
     };
-
-    environment.systemPackages = with pkgs; [
-      gnome.gnome-tweaks
-      gnome.dconf-editor
-      dconf2nix
-
-      gnomeExtensions.appindicator
-      unstable.gnomeExtensions.pop-shell
-
-      xfce.thunar
-    ];
   };
 }

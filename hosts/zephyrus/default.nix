@@ -17,7 +17,11 @@
   };
 
   # this is very important to enable native wayland apps for stuff like electron (vscode, discord)
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    # still experimental
+    # NIXOS_OZONE_WL = "1";
+    DISABLE_QT5_COMPAT = "1";
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -40,20 +44,23 @@
 
   nix.settings.trusted-users = [ "root" "brian" ];
 
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
+  # override the kde one
+  # programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
 
-  environment.systemPackages = with pkgs; [
-    libsForQt5.bismuth
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   libsForQt5.bismuth
+  # ];
 
   modules = {
-    desktop.gnome.enable = true;
+    # desktop.gnome.enable = true;
     virtualisation = {
       # virt-manager.enable = true;
       # docker.enable = true;
       virtualbox.enable = true;
-      docker.enable = true;
+      podman.enable = true;
     };
     hardware = {
       microcode.amd.enable = true;
@@ -94,11 +101,16 @@
   programs.rog-control-center.enable = true;
 
   home-manager.users.brian = {
+    home.packages = with pkgs; [
+      my.onagre
+    ];
+
     modules = {
       presets.enable = "full";
       desktop = {
-        apps.ulauncher.enable = true;
-        dconf.enable = true;
+        theme.enable = true;
+        # gnome.enable = true;
+        # dconf.enable = true;
         browsers.chrome.enable = true;
         browsers.firefox.enable = true;
         terminals.alacritty.enable = true;

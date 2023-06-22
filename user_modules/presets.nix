@@ -34,7 +34,6 @@ let
         programs.enable = mkDefault true;
       };
       desktop = {
-        theme.enable = true;
         terminals.alacritty.enable = mkDefault true;
         apps = {
           enableAll = mkDefault true;
