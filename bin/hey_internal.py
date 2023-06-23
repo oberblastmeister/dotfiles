@@ -40,7 +40,7 @@ def cli(cx: click.Context, flake):
 
 @cli.command("gc")
 def cli_gc():
-    subprocess.run(["sudo", "nix-collect-garbage", "-d"])
+    subprocess.run(["sudo", "nix-collect-garbage"])
     subprocess.run(["sudo", "nix-store", "--optimise"])
 
 

@@ -15,6 +15,7 @@ in
 
     home.packages = with pkgs; [
       libsForQt5.qtstyleplugin-kvantum
+      libsForQt5.kate
       latte-dock
     ];
   };

@@ -19,18 +19,13 @@
   nix.settings.trusted-users = [ "root" "brian" ];
 
   modules = {
-    presets.enable = "full";
+    desktop.gnome.enable = true;
     virtualisation = {
       # virt-manager.enable = true;
-      # docker.enable = true;
       virtualbox.enable = true;
-      docker.enable = true;
-    };
-    hardware = {
-      microcode.amd.enable = true;
-      opengl.enable = true;
     };
   };
+  virtualisation.docker.enable = true;
 
   services.printing = {
     enable = true;
@@ -50,6 +45,20 @@
   hardware.opengl.extraPackages32 = [
     pkgs.driversi686Linux.amdvlk
   ];
+  hardware.opengl = {
+    enable = true;
+
+    # enable vulkan support
+    driSupport = true;
+    # For 32 bit applications
+    driSupport32Bit = true;
+
+    # extraPackages = with pkgs; [
+    #   libGL
+    #   vaapiVdpau
+    #   libvdpau-va-gl
+    # ];
+  };
 
   # this makes chinese work with the ibus input method
   # if using gnome, make sure to also add Chinese (Intelligent Pinyin) to input sources with regular Chinese
@@ -64,7 +73,33 @@
 
   home-manager.users.brian = {
     modules = {
-      presets.enable = "full";
+      fonts.enable = true;
+      editors = {
+        vim.enable = true;
+        vscode.enable = true;
+        emacs.enable = true;
+      };
+      dev = {
+        rust.enable = true;
+        haskell.enable = true;
+        idris.enable = true;
+        agda.enable = true;
+        ocaml.enable = true;
+        coq.enable = true;
+        python.enable = true;
+        cc.enable = true;
+        markdown.enable = true;
+        racket.enable = true;
+        javascript.enable = true;
+        lean.enable = true;
+        # java.enable = true;
+        # latex.enable = true;
+      };
+      shell = {
+        fish.enable = true;
+        bash.enable = false;
+        programs.enable = true;
+      };
       desktop = {
         browsers.chrome.enable = true;
         terminals.alacritty.enable = true;

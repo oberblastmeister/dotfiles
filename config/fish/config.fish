@@ -37,11 +37,12 @@ alias hbf="hb --freeze1"
 alias hbq="hb --flavour=Quick"
 alias hbqs="hbq --skip='//*.mk' --skip='stage1:lib:rts'"
 alias hbqf="hbq --freeze1"
+alias hadrian_load_hls='hadrian/build --build-root=.hie-bios --flavour=ghc-in-ghci --docs=none -j tool:ghc/Main.hs'
 
 alias rm='echo "Not running rm. This command is dangerous!"; false'
 alias t=trash
 alias ghb="gh browse"
-alias code="code --ozone-platform-hint=auto"
+# alias code="code --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations"
 
 alias db='distrobox'
 alias dbe='db enter'

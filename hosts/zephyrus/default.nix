@@ -46,20 +46,18 @@
 
   nix.settings.trusted-users = [ "root" "brian" ];
 
+  # run android apps on wayland
+  virtualisation.waydroid.enable = true;
+
   modules = {
     # desktop.gnome.enable = true;
     desktop.kde.enable = true;
     virtualisation = {
       # virt-manager.enable = true;
-      # docker.enable = true;
       # virtualbox.enable = true;
-      podman.enable = true;
-    };
-    hardware = {
-      microcode.amd.enable = true;
-      opengl.enable = true;
     };
   };
+  virtualisation.podman.enable = true;
 
   services.printing = {
     enable = true;
@@ -70,6 +68,7 @@
   };
 
   # amd stuff
+  # video drivers
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
@@ -79,6 +78,20 @@
   hardware.opengl.extraPackages32 = [
     pkgs.driversi686Linux.amdvlk
   ];
+  hardware.opengl = {
+    enable = true;
+
+    # enable vulkan support
+    driSupport = true;
+    # For 32 bit applications
+    driSupport32Bit = true;
+
+    # extraPackages = with pkgs; [
+    #   libGL
+    #   vaapiVdpau
+    #   libvdpau-va-gl
+    # ];
+  };
 
   # this makes chinese work with the ibus input method
   # if using gnome, make sure to also add Chinese (Intelligent Pinyin) to input sources with regular Chinese
@@ -95,7 +108,6 @@
 
   home-manager.users.brian = {
     home.packages = with pkgs; [
-      my.onagre
       anki-bin
       # insecure right now
       unstable.obsidian

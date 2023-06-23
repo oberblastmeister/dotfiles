@@ -38,6 +38,7 @@ in
   };
 
   networking = {
+    # screws up containers like docker
     firewall.enable = false;
 
     # the installation environment enables this
@@ -76,6 +77,8 @@ in
   environment.sessionVariables = {
     NIXPKGS_ALLOW_UNFREE = "1";
   };
+
+  hardware.enableAllFirmware = true;
 
   system.stateVersion = "22.05";
 }
