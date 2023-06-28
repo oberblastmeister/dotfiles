@@ -10,7 +10,7 @@
 
 (defsrc
   esc
-  caps 
+  caps
   lctl rctl)
 
 (deflayer qwerty

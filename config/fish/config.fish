@@ -28,7 +28,7 @@ function fish_user_key_bindings
     bind -M insert \co lf-cd-repaint
 end
 
-alias np="nix profile"
+# alias np="nix profile"
 alias ls="exa --icons"
 alias tree="exa --tree --icons"
 
@@ -46,6 +46,10 @@ alias ghb="gh browse"
 
 alias db='distrobox'
 alias dbe='db enter'
+alias dba='distrobox-export -a'
+function dbb
+    distrobox-export --bin $(command -v "$argv[1]") --export-path ~/.local/bin
+end
 
 fish_add_path ~/.ghcup/bin
 fish_add_path ~/.cabal/bin

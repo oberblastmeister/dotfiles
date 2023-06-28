@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# taken from nixpkgs/nixos/modules/services/x11/desktop-managers/plasma5.nix
+
+# The KDE icon cache is supposed to update itself automatically, but it uses
+# the timestamp on the icon theme directory as a trigger. This doesn't work
+# on NixOS because the timestamp never changes. As a workaround, delete the
+# icon cache at login and session activation.
+# See also: http://lists-archives.org/kde-devel/26175-what-when-will-icon-cache-refresh.html
+rm -fv $HOME/.cache/icon-cache.kcache
+
+# xdg-desktop-settings generates this empty file but
+# it makes kbuildsyscoca5 fail silently. To fix this
+# remove that menu if it exists.
+rm -fv ''${XDG_CONFIG_HOME}/menus/applications-merged/xdg-desktop-menu-dummy.menu
+
+# Qt writes a weird ‘libraryPath’ line to
+# ~/.config/Trolltech.conf that causes the KDE plugin
+# paths of previous KDE invocations to be searched.
+# Obviously using mismatching KDE libraries is potentially
+# disastrous, so here we nuke references to the Nix store
+# in Trolltech.conf.  A better solution would be to stop
+# Qt from doing this wackiness in the first place.
+trolltech_conf="''${XDG_CONFIG_HOME}/Trolltech.conf"
+if [ -e "$trolltech_conf" ]; then
+  ${getBin pkgs.gnused}/bin/sed -i "$trolltech_conf" -e '/nix\\store\|nix\/store/ d'
+fi
+
+# Remove the kbuildsyscoca5 cache. It will be regenerated
+# immediately after. This is necessary for kbuildsyscoca5 to
+# recognize that software that has been removed.
+rm -fv $HOME/.cache/ksycoca*
+
+kbuildsycoca5

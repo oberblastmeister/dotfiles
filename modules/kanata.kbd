@@ -1,0 +1,19 @@
+;; vim: set filetype=lisp :
+;; vim: set tabstop=2 :
+
+(defsrc
+  caps
+  lctl rctl)
+
+(deflayer default
+  lctl
+  _    @spec)
+
+
+(deflayer special
+  caps
+  _    _)
+
+(defalias
+  spec (layer-toggle special))
+

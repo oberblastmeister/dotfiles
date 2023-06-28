@@ -31,7 +31,6 @@ in
               set clipboard^=unnamed,unnamedplus
 
               packadd vim-surround
-              packadd targets.vim
               
               source ${naiveVscodeConfigDir + "/mappings.vim"}
               

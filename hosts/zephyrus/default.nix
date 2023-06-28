@@ -1,5 +1,6 @@
 { config, lib, old, pkgs, ... }:
 
+
 {
   imports = [
     ./hardware-configuration.nix
@@ -47,11 +48,12 @@
   nix.settings.trusted-users = [ "root" "brian" ];
 
   # run android apps on wayland
-  virtualisation.waydroid.enable = true;
+  # virtualisation.waydroid.enable = true;
 
   modules = {
     # desktop.gnome.enable = true;
     desktop.kde.enable = true;
+    kanata.enable = true;
     virtualisation = {
       # virt-manager.enable = true;
       # virtualbox.enable = true;
@@ -95,16 +97,46 @@
 
   # this makes chinese work with the ibus input method
   # if using gnome, make sure to also add Chinese (Intelligent Pinyin) to input sources with regular Chinese
-  i18n.inputMethod.enabled = "ibus";
-  i18n.inputMethod.ibus.engines = with pkgs.ibus-engines; [
-    rime
-    libpinyin
-    table
-    table-chinese
-    m17n
-  ];
+  # i18n.inputMethod = {
+  #   enabled = "ibus";
+  #   ibus.engines = with pkgs.ibus-engines; [
+  #     rime
+  #     libpinyin
+  #     table
+  #     table-chinese
+  #     m17n
+  #   ];
+  # };
+
+  # i18n.inputMethod = {
+  #   enabled = "fcitx5";
+  #   fcitx5.addons = with pkgs; [
+  #     fcitx5-gtk
+  #     fcitx5-rime
+  #   ];
+  # };
 
   programs.rog-control-center.enable = true;
+  programs.rog-control-center.autoStart = true;
+
+  # make flatpak font stuff work
+  system.fsPackages = [ pkgs.bindfs ];
+  fileSystems = let
+    mkRoSymBind = path: {
+      device = path;
+      fsType = "fuse.bindfs";
+      options = [ "ro" "resolve-symlinks" "x-gvfs-hide" ];
+    };
+    aggregatedFonts = pkgs.buildEnv {
+      name = "system-fonts";
+      paths = config.fonts.fonts;
+      pathsToLink = [ "/share/fonts" ];
+    };
+  in {
+    # Create an FHS mount to support flatpak host icons/fonts
+    "/usr/share/icons" = mkRoSymBind (config.system.path + "/share/icons");
+    "/usr/share/fonts" = mkRoSymBind (aggregatedFonts + "/share/fonts");
+  };
 
   home-manager.users.brian = {
     home.packages = with pkgs; [

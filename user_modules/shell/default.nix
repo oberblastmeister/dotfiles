@@ -61,12 +61,9 @@ in
         onefetch
         direnv
         xclip
-        glow
-        archiver
-        notify-desktop
+        xsel
         tokei
         binutils
-        zellij
         cachix
         jq
         tealdeer
@@ -74,10 +71,12 @@ in
         shellcheck
         vivid
         moreutils
-        xsel
         appimage-run
         gh
         distrobox
+        wl-clipboard
+        killall
+        duf
       ];
 
       home.sessionVariables = {

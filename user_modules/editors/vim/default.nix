@@ -24,6 +24,8 @@ in
         fd
         ripgrep
         bat
+        xclip
+        wl-clipboard
       ];
       viAlias = true;
       vimAlias = true;

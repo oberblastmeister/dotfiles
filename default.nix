@@ -66,6 +66,7 @@ in
     # very buggy perl script
     # sometimes needs the channel to be there
     command-not-found.enable = false;
+    nix-ld.enable = true;
   };
 
   users.defaultUserShell = pkgs.fish;

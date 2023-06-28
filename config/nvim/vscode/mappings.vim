@@ -66,7 +66,6 @@ nnoremap <space><space> <Cmd>call VSCodeNotify('editor.action.openLink')<CR>
 nnoremap <space>w <Cmd>Write<CR>
 nnoremap <space>q <Cmd>call VSCodeNotify('workbench.action.closeEditorsInGroup')<CR>
 
-nnoremap <S-Tab> <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
 nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
 nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
 
