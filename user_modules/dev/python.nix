@@ -10,7 +10,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      rye
+      # rye
       # python310
       # black
       # python39Packages.pip

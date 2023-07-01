@@ -53,7 +53,8 @@
   modules = {
     # desktop.gnome.enable = true;
     desktop.kde.enable = true;
-    kanata.enable = true;
+    # doesn't work with disable touchpad while typing
+    # kanata.enable = true;
     virtualisation = {
       # virt-manager.enable = true;
       # virtualbox.enable = true;
