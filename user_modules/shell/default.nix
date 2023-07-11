@@ -64,6 +64,8 @@ in
         xsel
         tokei
         binutils
+        # conflicts with binutils (addr2line)
+        (hiPrio llvmPackages_16.bintools)
         cachix
         jq
         tealdeer
@@ -77,6 +79,7 @@ in
         wl-clipboard
         killall
         duf
+        patchelf
       ];
 
       home.sessionVariables = {

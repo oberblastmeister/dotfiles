@@ -44,6 +44,8 @@ alias t=trash
 alias ghb="gh browse"
 # alias code="code --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations"
 
+alias dbs='distrobox-host-exec $SHELL'
+alias dbh='distrobox-host-exec'
 alias db='distrobox'
 alias dbe='db enter'
 alias dba='distrobox-export -a'

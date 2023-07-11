@@ -6,8 +6,6 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   users.users.brian = {
     isNormalUser = true;
     extraGroups = [
@@ -139,6 +137,18 @@
     "/usr/share/fonts" = mkRoSymBind (aggregatedFonts + "/share/fonts");
   };
 
+  # this is really important, allows flatpak cursor theme, fonts to be correct
+  # kde already adds xdg-desktop-portal-kde, but need to add xdg-desktop-portal-gtk for gtk apps to work
+  # flatpak reads settings from xdg-desktop-portal-gtk
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+    ];
+  };
+
   home-manager.users.brian = {
     home.packages = with pkgs; [
       anki-bin
@@ -180,6 +190,7 @@
         browsers.chrome.enable = true;
         browsers.firefox.enable = true;
         terminals.alacritty.enable = true;
+        apps.zathura.enable = true;
       };
     };
   };

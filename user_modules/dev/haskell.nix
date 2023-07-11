@@ -16,14 +16,15 @@ in
       cabal-install
       stack
       ghc
+      haskell-language-server
       # unstable.haskell.compiler.ghc924
       # unstable.haskell-language-server # make sure this uses the same packages as ghc does, or there will be errors
       ghcid
       ormolu
       hlint
-      (pkgs.writeShellScriptBin "pghci" ''
-        cabal repl --repl-options "-interactive-print=Text.Pretty.Simple.pPrint" --build-depends pretty-simple
-      '')
+      # (pkgs.writeShellScriptBin "pghci" ''
+      #   cabal repl --repl-options "-interactive-print=Text.Pretty.Simple.pPrint" --build-depends pretty-simple
+      # '')
       # haskell-ci
       # haskellPackages.hoogle
       # haskellPackages.stan
