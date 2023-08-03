@@ -1,4 +1,4 @@
-{ inputs, options, config, lib, my, pkgs, ... }:
+{ inputs, options, config, lib, my, pkgs, unstable, ... }:
 
 let
   bashCfg = config.modules.shell.bash;
@@ -65,7 +65,7 @@ in
         tokei
         binutils
         # conflicts with binutils (addr2line)
-        (hiPrio llvmPackages_16.bintools)
+        # (pkgs.hiPrio llvmPackages_16.bintools)
         cachix
         jq
         tealdeer
@@ -74,12 +74,12 @@ in
         vivid
         moreutils
         appimage-run
-        gh
-        distrobox
+        unstable.distrobox
         wl-clipboard
         killall
         duf
         patchelf
+        file # show file type, can detect pie exe and more
       ];
 
       home.sessionVariables = {

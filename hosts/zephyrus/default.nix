@@ -107,13 +107,22 @@
   #   ];
   # };
 
-  # i18n.inputMethod = {
-  #   enabled = "fcitx5";
-  #   fcitx5.addons = with pkgs; [
-  #     fcitx5-gtk
-  #     fcitx5-rime
-  #   ];
-  # };
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-gtk
+      libsForQt5.fcitx5-qt
+
+      # this gives the pinyin mode, with cloud support
+      fcitx5-chinese-addons
+
+      # use "Pinyin Symbol (m17n)" to allow typing pinyin symbols literally
+      fcitx5-m17n
+
+      # rime support
+      fcitx5-rime
+    ];
+  };
 
   programs.rog-control-center.enable = true;
   programs.rog-control-center.autoStart = true;

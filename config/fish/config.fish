@@ -53,5 +53,8 @@ function dbb
     distrobox-export --bin $(command -v "$argv[1]") --export-path ~/.local/bin
 end
 
+# add these because we need to prepend to path
 fish_add_path ~/.ghcup/bin
 fish_add_path ~/.cabal/bin
+fish_add_path ~/.local/bin
+fish_add_path --append ~/.local/bin/zig-linux-x86_64-0.11.0-dev.4004+a57608217
