@@ -36,6 +36,9 @@ in
       userEmail = lib.mkDefault "littlebubu.shu@gmail.com";
       userName = lib.mkDefault "brian";
       extraConfig = {
+        # postBuffer 2GB
+        http.postBuffer = "2097152000";
+        https.postBuffer = "2097152000";
         init.defaultBranch = "main";
         # rebase by default, and include merges in the rebase
         pull.rebase = "merges";
@@ -58,8 +61,8 @@ in
       enable = true;
     };
 
-    home.packages = [
-      unstable.gh
+    home.packages = with pkgs; [
+      gh
     ];
   };
 }

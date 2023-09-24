@@ -19,6 +19,8 @@ in
       noto-fonts-emoji
       roboto
 
+      arphic-ukai
+
       # monospace
       (nerdfonts.override {
         fonts = [

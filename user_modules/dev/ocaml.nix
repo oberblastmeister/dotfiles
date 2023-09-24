@@ -2,6 +2,15 @@
 
 let
   cfg = config.modules.dev.ocaml;
+  # TODO: abstract this
+  bashCfg = config.modules.shell.bash;
+  zshCfg = config.modules.shell.zsh;
+  fishCfg = config.modules.shell.fish;
+  allIntegrations = {
+    enableBashIntegration = bashCfg.enable;
+    enableZshIntegration = zshCfg.enable;
+    enableFishIntegration = fishCfg.enable;
+  };
 in
 {
   options.modules.dev.ocaml = {
@@ -10,12 +19,17 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      ocaml
-      dune_2
-      opam
-      ocamlformat
-      ocamlPackages.ocaml-lsp
-      ocamlPackages.utop
+      openssl
+      # ocaml
+      # dune_2
+      # opam
+      # ocamlformat
+      # ocamlPackages.ocaml-lsp
+      # ocamlPackages.utop
     ];
+
+    programs.opam = {
+      enable = true;
+    } // allIntegrations;
   };
 }

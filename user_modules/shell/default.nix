@@ -65,6 +65,7 @@ in
         tokei
         binutils
         # conflicts with binutils (addr2line)
+        # also not exactly the same behavior (see dwarfdump)
         # (pkgs.hiPrio llvmPackages_16.bintools)
         cachix
         jq
@@ -80,6 +81,7 @@ in
         duf
         patchelf
         file # show file type, can detect pie exe and more
+        ouch
       ];
 
       home.sessionVariables = {

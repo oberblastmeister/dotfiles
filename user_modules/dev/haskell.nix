@@ -22,6 +22,7 @@ in
       ghcid
       ormolu
       hlint
+      haskellPackages.lhs2tex
       # (pkgs.writeShellScriptBin "pghci" ''
       #   cabal repl --repl-options "-interactive-print=Text.Pretty.Simple.pPrint" --build-depends pretty-simple
       # '')

@@ -18,7 +18,7 @@ in
 
     programs.neovim = {
       # must be unwrapped or will fail
-      package = unstable.neovim-unwrapped;
+      # package = unstable.neovim-unwrapped;
       enable = true;
       extraPackages = with pkgs; [
         fd

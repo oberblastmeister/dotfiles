@@ -18,18 +18,22 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      (very-unstable.google-chrome.override {
+      unstable.brave
+      (unstable.chromium.override {
         inherit commandLineArgs;
       })
-      (very-unstable.google-chrome-beta.override {
+      (pkgs.google-chrome.override {
         inherit commandLineArgs;
       })
-      (very-unstable.google-chrome-dev.override {
+      (unstable.google-chrome-beta.override {
+        inherit commandLineArgs;
+      })
+      (unstable.google-chrome-dev.override {
         inherit commandLineArgs;
       })
       # also needed for cargo doc --open to work
       (pkgs.writeShellScriptBin "chrome" ''
-        google-chrome-beta "$@" || google-chrome-unstable "$@" || google-chrome-stable "$@"
+        google-chrome-unstable "$@" || google-chrome-beta "$@" || google-chrome-stable "$@"
       '')
     ];
   };

@@ -1,4 +1,4 @@
-{ options, config, pkgs, lib, my, ... }:
+{ options, config, pkgs, unstable, lib, my, ... }:
 
 let
   cfg = config.modules.dev.python;
@@ -10,7 +10,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      # rye
+      unstable.rye
       # python310
       # black
       # python39Packages.pip
