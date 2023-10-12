@@ -119,6 +119,7 @@ in
     zlib
     gmp5
     ncurses
+    icu66
   ];
 
   users.defaultUserShell = pkgs.fish;

@@ -126,6 +126,7 @@
 
   programs.rog-control-center.enable = true;
   programs.rog-control-center.autoStart = true;
+  programs.kdeconnect.enable = true;
 
   # make flatpak font stuff work
   system.fsPackages = [ pkgs.bindfs ];

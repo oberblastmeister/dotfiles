@@ -1,4 +1,4 @@
-{ options, config, pkgs, lib, my, ... }:
+{ options, config, pkgs, unstable, lib, my, ... }:
 
 let
   cfg = config.modules.dev.agda;
@@ -13,9 +13,8 @@ in
       (agda.withPackages
         (p: [
           p.standard-library
+          p.cubical
         ]))
-      # this is broken for now
-      # haskellPackages.agda-language-server
     ];
   };
 }

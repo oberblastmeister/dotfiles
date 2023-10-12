@@ -10,9 +10,33 @@ function ranger-cd
     commandline -f repaint
 end
 
+function yazi-cd
+    set tmp (mktemp)
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    command yazi --cwd-file=$tmp $argv
+    if test -f "$tmp"
+        set dir (cat $tmp)
+        command rm -f $tmp
+        if test -d "$dir"
+            if test "$dir" != (pwd)
+                cd $dir
+            end
+        end
+    end
+end
+
 function lf-cd-repaint
     lfcd
     commandline -f repaint
+end
+
+function yazi-cd-repaint
+    yazi-cd
+    commandline -f repaint
+end
+
+function testing
+    echo "bruhbruhbruh"
 end
 
 function fish_user_key_bindings
@@ -25,7 +49,9 @@ function fish_user_key_bindings
     # The argument specifies the initial mode (insert, "default" or visual).
     fish_vi_key_bindings --no-erase insert
 
-    bind -M insert \co lf-cd-repaint
+    # bind -M insert \co lf-cd-repaint
+    bind -M insert \co yazi-cd-repaint
+    # bind -M insert \cw testing
 end
 
 # alias np="nix profile"
