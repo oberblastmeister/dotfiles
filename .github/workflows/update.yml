@@ -38,7 +38,7 @@ jobs:
           echo "::set-output name=message::$message"
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           # needed so that this triggers further workflows. not ideal.
           token: ${{ secrets.PAT }}
