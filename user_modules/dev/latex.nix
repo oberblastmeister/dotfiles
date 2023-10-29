@@ -10,8 +10,9 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      texlive.combined.scheme-basic
-      texlive.latexmk
+      (texlive.combine {
+        inherit (texlive) scheme-medium latexmk;
+      })
       tectonic
       texlab
     ];

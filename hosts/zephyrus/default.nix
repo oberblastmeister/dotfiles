@@ -188,7 +188,7 @@
         javascript.enable = true;
         lean.enable = true;
         # java.enable = true;
-        # latex.enable = true;
+        latex.enable = true;
       };
       shell = {
         fish.enable = true;
