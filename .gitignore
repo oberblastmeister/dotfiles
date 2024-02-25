@@ -1,3 +1,6 @@
 result
 *.qcow2
 .ropeproject
+.direnv/
+target/
+startuptime.log

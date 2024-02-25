@@ -13,65 +13,6 @@ in
     type = types.str;
     default = ''
       lua << EOF
-      
-      local lspconfig = require 'lspconfig'
-      local configs = require 'lspconfig/configs'
-      local util = require 'lspconfig/util'
-
-      local function custom_on_attach(client, bufnr)
-        vim.cmd [[source ${naiveNvimConfigDir + "/lspconfig/mappings.lua"}]]
-      end
-
-      local LspDefaults = {
-        on_attach = custom_on_attach,
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
-      }
-
-      function LspDefaults:with(user_config)
-        return vim.tbl_extend("keep", user_config, self)
-      end
-
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-          underline = true,
-
-          signs = false,
-
-          virtual_text = false,
-
-          -- virtual_text = {
-          --   spacing = 1,
-          --   prefix = ' ',
-          -- },
-
-          update_in_insert = true,
-        }
-      )
-    
-      ${writeIf devCfg.python.enable "lspconfig.pyright.setup(LspDefaults)"}
-      
-      ${writeIf devCfg.rust.enable "lspconfig.rust_analyzer.setup(LspDefaults)"}
-      
-      ${writeIf devCfg.haskell.enable "lspconfig.hls.setup(LspDefaults)"}
-      
-      ${writeIf devCfg.ocaml.enable "lspconfig.ocamllsp.setup(LspDefaults)"}
-      
-      ${writeIf devCfg.cc.enable "lspconfig.clangd.setup(LspDefaults)"}
-      
-      lspconfig.vimls.setup(LspDefaults)
-
-      lspconfig.jsonls.setup(LspDefaults)
-      
-      lspconfig.yamlls.setup(LspDefaults)
-      
-      lspconfig.bashls.setup(LspDefaults)
-
-      lspconfig.rnix.setup(LspDefaults)
-      
-      dofile('${naiveNvimConfigDir + "/lspconfig/after.lua"}') {
-        LspDefaults = LspDefaults,
-      }
-
       EOF
     '';
   };

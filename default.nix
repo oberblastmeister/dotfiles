@@ -56,8 +56,8 @@ in
     wget
     gcc
     # full man pages
-    man-pages
-    man-pages-posix
+    # man-pages
+    # man-pages-posix
   ];
 
   programs = {
@@ -125,7 +125,7 @@ in
   users.defaultUserShell = pkgs.fish;
 
   # man pages for other utilities
-  documentation.dev.enable = true;
+  documentation.dev.enable = false;
 
   # use with nix profile install --impure
   environment.sessionVariables = {

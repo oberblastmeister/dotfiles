@@ -164,6 +164,8 @@
       anki-bin
       # insecure right now
       unstable.obsidian
+      unstable.minecraft
+      zoom-us
     ];
 
     modules = {
@@ -172,19 +174,19 @@
       editors = {
         vim.enable = true;
         vscode.enable = true;
-        emacs.enable = true;
+        emacs.enable = false;
       };
       dev = {
         rust.enable = true;
         haskell.enable = true;
-        # idris.enable = true;
+        idris.enable = true;
         agda.enable = true;
         ocaml.enable = true;
         # coq.enable = true;
         python.enable = true;
         cc.enable = true;
         markdown.enable = true;
-        # racket.enable = true;
+        racket.enable = true;
         javascript.enable = true;
         lean.enable = true;
         # java.enable = true;

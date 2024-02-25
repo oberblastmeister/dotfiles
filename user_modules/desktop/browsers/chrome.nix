@@ -22,18 +22,9 @@ in
       (unstable.chromium.override {
         inherit commandLineArgs;
       })
-      (pkgs.google-chrome.override {
-        inherit commandLineArgs;
-      })
-      (unstable.google-chrome-beta.override {
-        inherit commandLineArgs;
-      })
-      (unstable.google-chrome-dev.override {
-        inherit commandLineArgs;
-      })
       # also needed for cargo doc --open to work
       (pkgs.writeShellScriptBin "chrome" ''
-        google-chrome-unstable "$@" || google-chrome-beta "$@" || google-chrome-stable "$@"
+        google-chrome-stable "$@"
       '')
     ];
   };

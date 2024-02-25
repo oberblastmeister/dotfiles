@@ -1,5 +1,3 @@
-vim.g.mapleader = ' '
-
 o.termguicolors = true
 o.number = true
 o.relativenumber = true
@@ -25,11 +23,7 @@ o.wrap = false
 
 -- tabs/spaces setting
 o.expandtab = true
--- number of spaces that a tab counts for
-o.tabstop = 4
--- number of spaces to use for each step of autoindent
-o.shiftwidth = 4
-o.softtabstop = 4
 o.autoindent = true
+set_indent(o, 4)
 
 o.hidden = true

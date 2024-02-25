@@ -12,6 +12,7 @@ in
     home.packages = with pkgs; [
       idris
       idris2
+      chez
     ];
   };
 }

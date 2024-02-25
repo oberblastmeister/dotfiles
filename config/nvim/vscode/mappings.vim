@@ -74,19 +74,19 @@ xnoremap K <Cmd>call VSCodeNotifyVisual('editor.action.showHover', 1)<CR>
 nnoremap gy <Cmd>call VSCodeNotify('editor.action.goToTypeDefinition')<CR>
 nnoremap gr <Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
 nnoremap gi <Cmd>call VSCodeNotify('editor.action.goToImplementation')<CR>
-nmap o A<cr>
+" nmap o A<cr>
 
 " for some reason this is not on by default, check changelog for
 " vscode-neovim, they enabled auto indent for some reason
-filetype indent off
+" filetype indent off
 
 
-lua << EOF
-vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  group = 'YankHighlight',
-  callback = function()
-    vim.highlight.on_yank({ higroup = 'Visual', timeout = '250' })
-  end
-})
-EOF
+" lua << EOF
+" vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+" vim.api.nvim_create_autocmd('TextYankPost', {
+"   group = 'YankHighlight',
+"   callback = function()
+"     vim.highlight.on_yank({ higroup = 'Visual', timeout = '250' })
+"   end
+" })
+" EOF

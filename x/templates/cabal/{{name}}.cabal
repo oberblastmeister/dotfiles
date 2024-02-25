@@ -1,0 +1,123 @@
+cabal-version: 3.6
+
+name: {{name}}
+
+version:            0.1.0.0
+
+license: MIT
+
+license-file: LICENSE
+
+author: Brian
+
+maintainer: littlebubu.shu@gmail.com
+
+build-type: Simple
+
+extra-doc-files: CHANGELOG.md
+
+common common-flags
+  default-extensions:
+    FlexibleInstances,
+    FlexibleContexts,
+    InstanceSigs,
+    MultiParamTypeClasses,
+    ConstraintKinds,
+    LambdaCase,
+    EmptyCase,
+    TupleSections,
+    BangPatterns,
+    TypeApplications,
+    StandaloneDeriving,
+    RankNTypes,
+    ScopedTypeVariables,
+    NamedFieldPuns,
+    DuplicateRecordFields,
+    GeneralizedNewtypeDeriving,
+    DataKinds,
+    ConstraintKinds,
+    TypeApplications,
+    KindSignatures,
+    StandaloneKindSignatures,
+    DeriveFoldable,
+    DeriveFunctor,
+    DeriveGeneric,
+    DeriveLift,
+    DeriveTraversable ,
+    GeneralizedNewtypeDeriving,
+    BlockArguments,
+    GADTs,
+    PolyKinds,
+    ViewPatterns,
+    PatternSynonyms,
+    TypeFamilies,
+    FunctionalDependencies,
+    ExistentialQuantification,
+    TypeOperators,
+    NoFieldSelectors,
+    OverloadedLabels,
+    OverloadedRecordDot,
+    StrictData,
+    TypeData,
+  default-language: GHC2021
+  ghc-options:
+    -Wall
+    -Wincomplete-record-updates
+    -Wredundant-constraints
+    -Wno-name-shadowing
+    -Werror=incomplete-patterns
+    -Werror=incomplete-uni-patterns
+    -Werror=missing-methods
+    -Wno-missing-signatures
+  build-depends: 
+    base >= 4.17,
+    text >= 2.0,
+    hashable,
+    filepath >= 1.4.100.4,
+    directory,
+    bytestring,
+    mtl,
+    containers,
+    unordered-containers,
+    optics,
+    pretty-simple,
+    vector,
+    deepseq,
+
+library
+  import: common-flags
+
+  exposed-modules:
+    Lib.hs
+
+  hs-source-dirs: src
+
+common rtsopts
+  ghc-options:
+    -threaded
+    -rtsopts
+    -with-rtsopts=-N
+
+executable {{name}}
+    import: common-flags, rtsopts
+
+    main-is: Main.hs
+
+    build-depends:
+      {{name}}
+
+    hs-source-dirs: app
+
+test-suite {{name}}-test
+    import: common-flags, rtsopts
+
+    type: exitcode-stdio-1.0
+
+    hs-source-dirs: test
+
+    main-is: Main.hs
+
+    build-depends:
+      {{name}},
+      tasty,
+      tasty-hunit,

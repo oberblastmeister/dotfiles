@@ -49,8 +49,8 @@ function fish_user_key_bindings
     # The argument specifies the initial mode (insert, "default" or visual).
     fish_vi_key_bindings --no-erase insert
 
-    # bind -M insert \co lf-cd-repaint
-    bind -M insert \co yazi-cd-repaint
+    bind -M insert \co lf-cd-repaint
+    # bind -M insert \co yazi-cd-repaint
     # bind -M insert \cw testing
 end
 
@@ -76,15 +76,16 @@ alias db='distrobox'
 alias dbe='db enter'
 alias dba='distrobox-export -a'
 function dbb
-    distrobox-export --bin $(command -v "$argv[1]") --export-path ~/.local/bin
+    distrobox-export --bin (realpath (command -v "$argv[1]")) --export-path ~/.local/bin
 end
 alias zcc='zig cc'
 alias venv='source .venv/bin/activate.fish'
 alias venvd='deactivate'
+alias cp_template='wl-copy < ~/projects/my/cp_template/ocaml/template.ml'
 
 # add these because we need to prepend to path
-fish_add_path ~/.ghcup/bin
 fish_add_path ~/.cabal/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.local/bin/zig-linux-x86_64-0.12.0-dev.163+6780a6bbf
 fish_add_path ~/.rye/shims
+fish_add_path ~/.pack/bin

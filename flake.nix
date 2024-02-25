@@ -46,6 +46,9 @@
       mkPkgs = pkgs: extraOverlays: import pkgs {
         inherit system;
         config.allowUnfree = true;
+	config.permittedInsecurePackages = [
+	  "electron-25.9.0"
+	];
         overlays = extraOverlays ++ (builtins.attrValues self.overlays);
       };
       overlays = [
@@ -72,6 +75,7 @@
 
       nixosConfigurations = lib.my.hosts.map ./hosts { };
 
+      # this stuff is for non nixos linux or macos
       homeConfigurations.brian = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 

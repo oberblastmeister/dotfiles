@@ -82,6 +82,7 @@ in
         patchelf
         file # show file type, can detect pie exe and more
         ouch
+        difftastic
       ];
 
       home.sessionVariables = {

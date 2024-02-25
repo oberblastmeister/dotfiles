@@ -13,7 +13,7 @@ in
       # haskellPackages.ghcup
       cabal2nix
       # until cabal-3.8 is out
-      cabal-install
+      unstable.cabal-install
       stack
       ghc
       haskell-language-server
