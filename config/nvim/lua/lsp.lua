@@ -4,6 +4,11 @@ local util = require 'lspconfig/util'
 
 -- coq
 local coq = require "coq"
+vim.g.coq_settings = {
+  ["keymap.recommended"] = true,
+  ["keymap.bigger_preview"] = nil,
+  ["keymap.jump_to_mark"] = "<c-m>",
+}
 vim.cmd [[autocmd! InsertEnter * COQnow -s]]
 
 local function custom_on_attach(client, bufnr)
@@ -11,16 +16,16 @@ local function custom_on_attach(client, bufnr)
 
     vim.cmd [[command! -nargs=0 -buffer FormatLsp lua vim.lsp.buf.formatting()]]
 
-    api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua require"telescope.builtin".lsp_definitions()<CR>', {noremap = true})
+    km('n', '<c-]>', require"telescope.builtin".lsp_definitions, { buffer = true })
+    km('n', 'K', vim.lsp.buf.hover, { buffer = true })
+
     api.nvim_buf_set_keymap(0, 'n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', {noremap = true})
     api.nvim_buf_set_keymap(0, 'n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>', {noremap = true})
     api.nvim_buf_set_keymap(0, 'n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', {noremap = true})
 
-    api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
-    -- api.nvim_buf_set_keymap(0, 'i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {noremap = true})
+    api.nvim_buf_set_keymap(0, 'i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {noremap = true})
 
     -- references
-    api.nvim_buf_set_keymap(0, 'n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>', {noremap = true})
     api.nvim_buf_set_keymap(0, 'n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", {noremap = true}) -- fuzzy references
 
     -- symbols
@@ -31,7 +36,7 @@ local function custom_on_attach(client, bufnr)
     api.nvim_buf_set_keymap(0, 'n', '<leader>=', '<cmd>lua vim.lsp.buf.format()<CR><cmd>echo "Formatted!"<CR>', {noremap = true})
 
     -- actions
-    api.nvim_buf_set_keymap(0, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {noremap = true})
+    api.nvim_buf_set_keymap(0, 'n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', {noremap = true})
     api.nvim_buf_set_keymap(0, 'n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', {noremap = true})
 
     -- calls
@@ -43,6 +48,8 @@ local function custom_on_attach(client, bufnr)
     api.nvim_buf_set_keymap(0, 'n', '<leader>ll', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', {noremap = true})
     api.nvim_buf_set_keymap(0, 'n', ']g', '<cmd>lua vim.diagnostic.goto_next { wrap = false }<CR>', {noremap = true})
     api.nvim_buf_set_keymap(0, 'n', '[g', '<cmd>lua vim.diagnostic.goto_prev { wrap = false }<CR>', {noremap = true})
+
+    -- client.server_capabilities.semanticTokensProvider = nil
 end
 
 local LspDefaults = {
@@ -77,7 +84,7 @@ lspconfig.rust_analyzer.setup(LspDefaults)
 
 lspconfig.hls.setup(LspDefaults)
 
-lspconfig.ocamllsp.setup(LspDefaults)
+lspconfig.ocamllsp.setup(coq.lsp_ensure_capabilities(LspDefaults))
 
 lspconfig.clangd.setup(LspDefaults)
 

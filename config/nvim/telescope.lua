@@ -25,7 +25,7 @@ telescope.setup {
   },
   extensions = {
     file_browser = {
-      -- theme = "ivy",
+      theme = "ivy",
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = false,
       mappings = {
@@ -40,7 +40,7 @@ telescope.setup {
   }
 }
 
-telescope.load_extension "fzy_native"
+telescope.load_extension "fzf"
 telescope.load_extension "file_browser"
 
 -- general

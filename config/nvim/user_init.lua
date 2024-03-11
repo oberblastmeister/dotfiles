@@ -3,7 +3,6 @@ augroup = vim.api.nvim_create_augroup
 autocmd = vim.api.nvim_create_autocmd
 km = vim.keymap.set
 o = vim.opt
-ol = vim.opt_local
 cmd = vim.cmd
 function set_indent(scope, size)
   -- number of spaces that a tab counts for
@@ -26,3 +25,6 @@ require 'treesitter'
 
 -- Make sure to set `mapleader` before lazy so your mappings are correct
 vim.g.mapleader = ' '
+-- vim.g.conjure.mapping.doc_word = nil
+vim.g["conjure#mapping#doc_word"] = '<C-S-K>'
+

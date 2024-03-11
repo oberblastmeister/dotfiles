@@ -1,4 +1,4 @@
-{ config, dirs, my, lib, pkgs, inputs, ... }:
+{ config, dirs, my, lib, pkgs, unstable, very-unstable, inputs, ... }:
 
 let
   cfg = config.modules.editors.vim;
@@ -13,7 +13,7 @@ let
     src = ../dummy_plugin;
   };
   plugins =
-    with pkgs.vimPlugins; [
+    with unstable.vimPlugins; [
       # the dummy plugin must be loaded first because we want the vscode stuff to take over
       {
         plugin = dummyPlugin;
@@ -47,13 +47,6 @@ let
         '';
       }
 
-      {
-        plugin = lazy-nvim;
-        config = ''
-          source ${naiveNvimConfigDir + "/lazy.lua"}
-        '';
-      }
-
       vim-nix
       vim-surround
 
@@ -62,7 +55,14 @@ let
       vim-sexp-mappings-for-regular-people
       conjure
       # TODO: this is slowing down startup time 
-      parinfer-rust
+
+      {
+        plugin = parinfer-rust;
+        optional = true;
+        config = ''
+          source ${naiveNvimConfigDir + "/parinfer.lua"}
+        '';
+      }
 
       {
         plugin = vim-commentary;
@@ -88,6 +88,8 @@ let
           let g:gruvbox_sign_column = 'bg0'
           let g:gruvbox_italic = 1
           let g:gruvbox_invert_selection = 0
+
+          source ${naiveNvimConfigDir + "/gruvbox.lua"}
         '';
       }
 
@@ -143,8 +145,9 @@ let
       {
         config = ''
         '';
-        plugin = (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars));
+        plugin = nvim-treesitter.withAllGrammars;
       }
+      nvim-treesitter-refactor
       playground
 
       {
@@ -169,8 +172,9 @@ let
       # cmp_luasnip
       # cmp-cmdline
       # lspkind-nvim # nice icons for completion
-      coq_nvim
-      coq-artifacts
+
+      pkgs.vimPlugins.coq_nvim
+      pkgs.vimPlugins.coq-artifacts
 
       {
         plugin = lspsaga-nvim;

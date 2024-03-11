@@ -15,6 +15,7 @@ in
 
   config = lib.mkIf cfg.enable {
     modules.link.config."nvim/lua" = "symlink";
+    modules.link.config."nvim/ftplugin" = "symlink";
 
     programs.neovim = {
       # must be unwrapped or will fail

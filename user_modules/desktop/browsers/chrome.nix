@@ -22,6 +22,9 @@ in
       (unstable.chromium.override {
         inherit commandLineArgs;
       })
+      (unstable.google-chrome.override {
+        inherit commandLineArgs;
+      })
       # also needed for cargo doc --open to work
       (pkgs.writeShellScriptBin "chrome" ''
         google-chrome-stable "$@"

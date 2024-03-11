@@ -27,3 +27,4 @@ o.autoindent = true
 set_indent(o, 4)
 
 o.hidden = true
+o.pumblend = 45

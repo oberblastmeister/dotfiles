@@ -18,15 +18,15 @@ local function ft_opt(ft, option, value)
 end
 
 
-ft_opt({'lua'}, function()
-  set_indent(ol, 2)
-end)
+-- ft_opt({'lua'}, function()
+--   set_indent(ol, 2)
+-- end)
 
-ft_opt({'racket'}, function()
-  set_indent(ol, 2)
-  ol.commentstring = '; %s'
-end)
+-- ft_opt({'racket'}, function()
+--   set_indent(ol, 2)
+--   ol.commentstring = '; %s'
+-- end)
 
-ft_opt({'ocaml'}, function()
-  set_indent(ol, 2)
-end)
+-- ft_opt({'ocaml'}, function()
+--   set_indent(ol, 2)
+-- end)
