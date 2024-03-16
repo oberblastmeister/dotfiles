@@ -166,6 +166,7 @@
       unstable.obsidian
       unstable.minecraft
       zoom-us
+      zotero
     ];
 
     modules = {
