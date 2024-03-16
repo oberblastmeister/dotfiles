@@ -10,7 +10,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    fonts.fonts = with pkgs; [
+    fonts.packages = with pkgs; [
       ubuntu_font_family
       noto-fonts
       # for chinese to work

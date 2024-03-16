@@ -13,7 +13,7 @@ in
     boot.loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot.enable = true;
-      systemd-boot.configurationLimit = mkDefault 10;
+      systemd-boot.configurationLimit = mkDefault 15;
     };
   };
 }

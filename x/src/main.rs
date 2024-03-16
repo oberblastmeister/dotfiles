@@ -1,6 +1,6 @@
 mod use_nix;
 mod clean_nix;
-mod dot;
+mod commit;
 
 use clap::Parser;
 use xshell::Shell;
@@ -12,7 +12,7 @@ pub enum Command {
         packages: Vec<String>,
     },
     CleanNix {},
-    Dot,
+    Commit,
 }
 
 fn main() -> anyhow::Result<()> {
@@ -21,6 +21,6 @@ fn main() -> anyhow::Result<()> {
     match Command::parse() {
         UseNix { packages } => use_nix::run(&sh, &packages),
         CleanNix {  } => clean_nix::run(&sh),
-        Dot { } => dot::run(&sh),
+        Commit { } => commit::run(&sh),
     }
 }

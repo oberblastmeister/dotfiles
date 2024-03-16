@@ -6,7 +6,7 @@
     # unstable is too unstable
     # make sure to change the version number to update
     nixpkgs-old.url = "github:NixOS/nixpkgs/nixos-22.05";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-very-unstable.url = "github:NixOS/nixpkgs/master"; # for packages on the edge
 
@@ -14,7 +14,7 @@
 
     # might need to pin this to same version as nixpkgs
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -45,10 +45,14 @@
       system = "x86_64-linux";
       mkPkgs = pkgs: extraOverlays: import pkgs {
         inherit system;
-        config.allowUnfree = true;
-	config.permittedInsecurePackages = [
-	  "electron-25.9.0"
-	];
+        config = {
+          allowUnfree = true;
+          allowBroken = true;
+          permittedInsecurePackages = [
+            "electron-25.9.0"
+            "nix-2.15.3"
+          ];
+        };
         overlays = extraOverlays ++ (builtins.attrValues self.overlays);
       };
       overlays = [
@@ -77,16 +81,16 @@
 
       # this stuff is for non nixos linux or macos
       homeConfigurations.brian = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+        inherit pkgs;
 
-          # Specify your home configuration modules here, for example,
-          # the path to your home.nix.
-          modules = [
-            ./homes/laptop.nix
-            ({ config, ... }:
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [
+          ./homes/laptop.nix
+          ({ config, ... }:
             {
               imports = lib.my.modules.importAllRec' ./user_modules;
-              
+
               # very import, makes icon and cursor themes work, and others stuff too
               targets.genericLinux.enable = true;
 
@@ -134,18 +138,18 @@
                 };
               };
             })
-          ];
+        ];
 
-          extraSpecialArgs = {
-            inherit (pkgs) unstable very-unstable;
-            inherit inputs system;
-            inherit (lib) my;
-            dirs = import ./dirs.nix;
-          };
+        extraSpecialArgs = {
+          inherit (pkgs) unstable very-unstable;
+          inherit inputs system;
+          inherit (lib) my;
+          dirs = import ./dirs.nix;
         };
+      };
 
-        templates = import ./templates;
-      }
+      templates = import ./templates;
+    }
     // (utils.lib.eachSystem [ system ] (system:
       rec {
         packages = lib.my.modules.map ./packages (p: pkgs.callPackage p { }) // { };

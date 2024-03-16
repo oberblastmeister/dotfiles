@@ -14,8 +14,9 @@ rec {
       };
       modules = [
         {
+          # make sure not to use the nixpkgs.config options
+          # because we are using an externally passed instance of pkgs
           nixpkgs.pkgs = pkgs;
-          nixpkgs.config.allowUnfree = true;
           networking.hostName = lib.mkDefault (lib.removeSuffix ".nix" (baseNameOf path));
         }
         (lib.filterAttrs (n: v: !lib.elem n [ "system" ]) attrs)

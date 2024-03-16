@@ -20,7 +20,7 @@ in
     # home.file."${toDir}/snippets".source = mkOutOfStoreSymlink (naiveCodeDir + "/snippets");
 
     home.packages = with pkgs; [
-      rnix-lsp
+      # rnix-lsp
       # ((unstable.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
       #   src = (builtins.fetchTarball {
       #     url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";

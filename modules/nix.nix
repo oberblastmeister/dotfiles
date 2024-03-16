@@ -32,6 +32,7 @@ in
         registry = registryInputs // { dotfiles.flake = inputs.self; };
         settings = {
           auto-optimise-store = true;
+          # for caching
           substituters = [
             "https://nix-community.cachix.org"
             # "https://cache.iog.io"

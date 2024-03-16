@@ -10,7 +10,6 @@ in
 
   config = lib.mkIf cfg.enable { 
     home.packages = with pkgs; [
-      idris
       idris2
       chez
     ];

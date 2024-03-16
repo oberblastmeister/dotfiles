@@ -50,7 +50,7 @@ in
     (lib.mkIf cfg.programs.enable {
       home.packages = with pkgs; [
         bat
-        exa
+        eza
         fd
         ripgrep
         ripgrep-all
