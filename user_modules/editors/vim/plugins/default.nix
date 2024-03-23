@@ -175,6 +175,7 @@ let
 
       pkgs.vimPlugins.coq_nvim
       pkgs.vimPlugins.coq-artifacts
+      nvim-autopairs
 
       {
         plugin = lspsaga-nvim;

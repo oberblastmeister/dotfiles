@@ -21,6 +21,7 @@ in
       ormolu
       hlint
       haskellPackages.lhs2tex
+      # unstable.haskellPackages.cabal-gild
       # unstable.haskell.compiler.ghc924
       # unstable.haskell-language-server # make sure this uses the same packages as ghc does, or there will be errors
       # (pkgs.writeShellScriptBin "pghci" ''

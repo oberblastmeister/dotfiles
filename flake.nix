@@ -51,6 +51,7 @@
           permittedInsecurePackages = [
             "electron-25.9.0"
             "nix-2.15.3"
+            "openssl-1.1.1w" # for sublime4
           ];
         };
         overlays = extraOverlays ++ (builtins.attrValues self.overlays);

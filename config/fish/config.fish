@@ -54,6 +54,8 @@ function fish_user_key_bindings
     # bind -M insert \cw testing
 end
 
+alias st='sublime4'
+
 # alias np="nix profile"
 alias ls="exa --icons"
 alias tree="exa --tree --icons"
