@@ -117,7 +117,7 @@ in
     xorg.libxkbfile
     xorg.libxshmfence
     zlib
-    gmp5
+    gmp
     ncurses
     icu66
   ];
