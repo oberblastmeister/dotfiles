@@ -18,17 +18,17 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      unstable.brave
-      (unstable.chromium.override {
-        inherit commandLineArgs;
-      })
-      (unstable.google-chrome.override {
-        inherit commandLineArgs;
-      })
+      # unstable.brave
+      # (unstable.chromium.override {
+      #   inherit commandLineArgs;
+      # })
+      # (unstable.google-chrome.override {
+      #   inherit commandLineArgs;
+      # })
       # also needed for cargo doc --open to work
-      (pkgs.writeShellScriptBin "chrome" ''
-        google-chrome-stable "$@"
-      '')
+      # (pkgs.writeShellScriptBin "chrome" ''
+      #   google-chrome-stable "$@"
+      # '')
     ];
   };
 }

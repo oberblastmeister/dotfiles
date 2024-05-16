@@ -23,6 +23,9 @@ in
       ++ (addIf devCfg.ocaml.enable ocamlPackages.ocaml-lsp)
       ++ (addIf devCfg.cc.enable clang-tools) ++ [
       nodePackages.vscode-json-languageserver
+      (pkgs.writeShellScriptBin "json-language-server" ''
+        vscode-json-languageserver
+      '')
       nodePackages.yaml-language-server
       nodePackages.bash-language-server
       nodePackages.vim-language-server

@@ -116,7 +116,7 @@ in
             # inherit defaultCommand;
             # inherit defaultOptions;
             tmux.enableShellIntegration = false;
-          } // allIntegrations;
+          } /* // allIntegrations */;
         bottom.enable = true;
         direnv = {
           enable = true;

@@ -6,6 +6,9 @@
     ./hardware-configuration.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "mt7921e" ];
+
   users.users.brian = {
     isNormalUser = true;
     extraGroups = [
@@ -166,11 +169,13 @@
       anki-bin
       # insecure right now
       unstable.obsidian
-      unstable.minecraft
+      # unstable.minecraft
       zoom-us
       zotero
       unstable.sublime4
       asm-lsp
+      unstable.zed-editor
+      # (unstable.zed-editor.overrideAttrs (_: _: { doCheck = false; }))
     ];
 
     modules = {
