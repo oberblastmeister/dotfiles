@@ -1,0 +1,46 @@
+[
+  {
+    "context": "Terminal", "bindings": {
+      "ctrl-t": "workspace::ToggleBottomDock",
+      "ctrl-n": "workspace::NewTerminal",
+    }
+  },
+  // normal mode
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      // "ctrl-w z": "workspace::ToggleZoom",
+      // "ctrl-l": "workspace::SplitRight",
+      // "ctrl-l": ["workspace::SendKeystrokes", "ctrl-w l"],
+      // "ctrl-h": ["workspace::SendKeystrokes", "ctrl-w h"],
+      // "ctrl-k": ["workspace::SendKeystrokes", "ctrl-w k"],
+      // "ctrl-j": ["workspace::SendKeystrokes", "ctrl-w j"],
+      "ctrl-t": "terminal_panel::ToggleFocus",
+      "ctrl-w t": "terminal_panel::ToggleFocus",
+      "] g": "editor::GoToDiagnostic",
+      "[ g": "editor::GoToPrevDiagnostic",
+      "g r": "editor::FindAllReferences",
+      "shift-k": "editor::Hover",
+      "space l a": "editor::ToggleCodeActions",
+      "space l r": "editor::Rename",
+      "space =": "editor::Format",
+      "space l l": "diagnostics::Deploy",
+      "space w": "workspace::SaveWithoutFormat",
+      "space q": "pane::CloseAllItems",
+    }
+  },
+  // insert mode
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+    }
+  },
+  // these will happen even in the menu
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-e": "editor::MoveToEndOfLine",
+      "ctrl-a": "editor::MoveToBeginningOfLine",
+    }
+  },
+]

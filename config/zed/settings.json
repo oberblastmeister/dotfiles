@@ -1,0 +1,35 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "format_on_save": "off",
+  // disable cursor blink
+  "cursor_blink": false,
+  // use relative line numbers
+  "relative_line_numbers": true,
+  // hide the scroll bar
+  "scrollbar": { "show": "never" },
+  "theme": "Github Dark",
+  "vim_mode": true,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "buffer_line_height": "standard",
+  // "buffer_line_height": "comfortable",
+  // "Zed Mono": "Cascadia Code",
+  "buffer_font_family": "Cascadia Code",
+  // "ui_font_family": "Zed Mono",
+  "ui_font_family": "Cascadia Code",
+  "enable_preview_from_file_finder": true,
+  // "buffer_font_family": "Zed Mono",
+  "project_panel": {
+    "folder_icons": true,
+  }
+}
